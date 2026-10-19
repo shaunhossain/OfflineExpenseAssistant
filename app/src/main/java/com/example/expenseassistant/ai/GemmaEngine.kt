@@ -118,7 +118,7 @@ class GemmaEngine private constructor() {
 
         Log.i(TAG, "Extracting model from assets to ${targetFile.absolutePath}...")
         context.assets.open(MODEL_FILENAME).use { input ->
-            val totalBytes = input.available().takeIf { it > 0 } ?: (304 * 1024 * 1024)
+            val totalBytes = input.available().takeIf { it > 0 }?.toLong() ?: (521L * 1024 * 1024)
             var copiedBytes = 0L
 
             FileOutputStream(targetFile).use { output ->
@@ -158,7 +158,7 @@ class GemmaEngine private constructor() {
 
     companion object {
         private const val TAG = "GemmaEngine"
-        const val MODEL_FILENAME = "gemma3-270m-it-q8.litertlm"
+        const val MODEL_FILENAME = "Qwen2.5-0.5B-Instruct_multi-prefill-seq_q8_ekv1280.task"
 
         @Volatile
         private var INSTANCE: GemmaEngine? = null

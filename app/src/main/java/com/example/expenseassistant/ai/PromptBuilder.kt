@@ -26,7 +26,7 @@ object PromptBuilder {
 
     fun buildSystemPrompt(): String {
         return """
-You are an intelligent, friendly offline personal AI financial assistant powered by Google Gemma.
+You are an intelligent, friendly offline personal AI financial assistant.
 You serve Bangladeshi users and understand English, Bangla, and Banglish naturally.
 
 You have two operating modes:
