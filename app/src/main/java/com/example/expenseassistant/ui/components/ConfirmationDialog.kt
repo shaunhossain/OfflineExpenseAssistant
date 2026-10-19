@@ -111,6 +111,17 @@ fun ConfirmationDialog(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
+                confirmation.validationResult.occurredAt?.let { timestamp ->
+                    val dateFormatted = java.text.SimpleDateFormat("dd MMMM yyyy", java.util.Locale.getDefault()).format(java.util.Date(timestamp))
+                    Text(
+                        text = "📅 Date: $dateFormatted",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                }
+
                 // Amount
                 OutlinedTextField(
                     value = amountText,

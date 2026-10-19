@@ -254,7 +254,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         category: String,
         note: String,
         type: TransactionType,
-        sourceText: String
+        sourceText: String,
+        occurredAt: Long? = null
     ) {
         viewModelScope.launch {
             repository.saveExpense(
@@ -262,6 +263,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 category = category,
                 note = note,
                 type = type,
+                occurredAt = occurredAt ?: System.currentTimeMillis(),
                 sourceText = sourceText,
                 needsReview = false
             )
@@ -270,9 +272,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             refreshHabits()
 
             val taka = Money(amountMinor).toFormattedString()
+            val dateNote = if (occurredAt != null) {
+                val d = java.text.SimpleDateFormat("dd MMM yyyy", java.util.Locale.getDefault()).format(java.util.Date(occurredAt))
+                " on $d"
+            } else ""
             _chatMessages.value = _chatMessages.value + ChatMessage(
                 sender = MessageSender.ASSISTANT,
-                text = "✓ Successfully recorded $taka for $category ($note)."
+                text = "✓ Successfully recorded $taka for $category ($note)$dateNote."
             )
         }
     }
@@ -296,6 +302,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     category = item.category,
                     note = item.note,
                     type = item.type,
+                    occurredAt = item.occurredAt ?: System.currentTimeMillis(),
                     sourceText = sourceText,
                     needsReview = false
                 )

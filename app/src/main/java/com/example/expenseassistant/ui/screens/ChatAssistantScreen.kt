@@ -100,7 +100,8 @@ fun ChatAssistantScreen(
                     category = category,
                     note = note,
                     type = type,
-                    sourceText = conf.sourceText
+                    sourceText = conf.sourceText,
+                    occurredAt = conf.validationResult.occurredAt
                 )
             },
             onDismiss = { viewModel.cancelPendingConfirmation() }

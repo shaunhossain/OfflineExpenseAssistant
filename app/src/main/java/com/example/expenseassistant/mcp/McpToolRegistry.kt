@@ -13,13 +13,14 @@ class McpToolRegistry(private val tools: ExpenseTools) {
         hour: Int? = null,
         minute: Int? = null,
         query: String? = null,
-        items: List<SingleItemConfirmation> = emptyList()
+        items: List<SingleItemConfirmation> = emptyList(),
+        occurredAt: Long? = null
     ): ToolResult {
         Log.i("McpToolRegistry", "Executing tool: $toolName")
         return when (toolName) {
-            "prepare_expense" -> tools.prepareExpense(amountMinor, category, note, sourceText)
+            "prepare_expense" -> tools.prepareExpense(amountMinor, category, note, sourceText, occurredAt)
             "prepare_multiple_expenses" -> tools.prepareMultipleExpenses(items, sourceText)
-            "prepare_income" -> tools.prepareIncome(amountMinor, note, sourceText)
+            "prepare_income" -> tools.prepareIncome(amountMinor, note, sourceText, occurredAt)
             "get_spending_summary" -> tools.getSpendingSummary()
             "get_item_total" -> tools.getItemOrCategoryTotal(query ?: note ?: "")
             "get_financial_balance" -> tools.getFinancialBalance()

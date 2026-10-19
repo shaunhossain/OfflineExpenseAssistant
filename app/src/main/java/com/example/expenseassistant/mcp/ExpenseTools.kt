@@ -17,7 +17,8 @@ data class SingleItemConfirmation(
     val amountMinor: Long,
     val category: String,
     val note: String,
-    val type: TransactionType = TransactionType.EXPENSE
+    val type: TransactionType = TransactionType.EXPENSE,
+    val occurredAt: Long? = null
 )
 
 sealed interface ToolResult {
@@ -115,13 +116,15 @@ class ExpenseTools(private val repository: ExpenseRepository) {
         amountMinor: Long?,
         category: String?,
         note: String?,
-        sourceText: String
+        sourceText: String,
+        occurredAt: Long? = null
     ): ToolResult {
         val validation = TransactionValidator.validate(
             rawAmountMinor = amountMinor,
             rawCategory = category,
             rawNote = note,
-            intentType = "EXPENSE"
+            intentType = "EXPENSE",
+            occurredAt = occurredAt
         )
         return ToolResult.RequireConfirmation(
             validationResult = validation,
@@ -145,13 +148,15 @@ class ExpenseTools(private val repository: ExpenseRepository) {
     fun prepareIncome(
         amountMinor: Long?,
         note: String?,
-        sourceText: String
+        sourceText: String,
+        occurredAt: Long? = null
     ): ToolResult {
         val validation = TransactionValidator.validate(
             rawAmountMinor = amountMinor,
             rawCategory = "Salary",
             rawNote = note,
-            intentType = "INCOME"
+            intentType = "INCOME",
+            occurredAt = occurredAt
         )
         return ToolResult.RequireConfirmation(
             validationResult = validation,

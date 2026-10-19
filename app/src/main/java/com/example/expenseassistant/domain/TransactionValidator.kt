@@ -9,7 +9,8 @@ data class ValidationResult(
     val normalizedNote: String,
     val type: TransactionType,
     val needsReview: Boolean,
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
+    val occurredAt: Long? = null
 )
 
 object TransactionValidator {
@@ -33,7 +34,8 @@ object TransactionValidator {
         rawAmountMinor: Long?,
         rawCategory: String?,
         rawNote: String?,
-        intentType: String?
+        intentType: String?,
+        occurredAt: Long? = null
     ): ValidationResult {
         if (rawAmountMinor == null || rawAmountMinor <= 0L) {
             return ValidationResult(
@@ -43,7 +45,8 @@ object TransactionValidator {
                 normalizedNote = rawNote ?: "",
                 type = TransactionType.EXPENSE,
                 needsReview = true,
-                errorMessage = "Invalid or missing amount"
+                errorMessage = "Invalid or missing amount",
+                occurredAt = occurredAt
             )
         }
 
@@ -56,7 +59,8 @@ object TransactionValidator {
                 normalizedNote = rawNote ?: "",
                 type = TransactionType.EXPENSE,
                 needsReview = true,
-                errorMessage = "Amount exceeds safety limit (৳$MAX_TRANSACTION_BDT)"
+                errorMessage = "Amount exceeds safety limit (৳$MAX_TRANSACTION_BDT)",
+                occurredAt = occurredAt
             )
         }
 
@@ -84,7 +88,8 @@ object TransactionValidator {
             normalizedNote = if (cleanNote.isNotBlank()) cleanNote else normalizedCategory,
             type = type,
             needsReview = needsReview,
-            errorMessage = null
+            errorMessage = null,
+            occurredAt = occurredAt
         )
     }
 
@@ -115,7 +120,10 @@ object TransactionValidator {
                     text.contains("chal") || text.contains("dal") || text.contains("oil") ||
                     text.contains("tel") || text.contains("shobji") || text.contains("mach") ||
                     text.contains("murgi") || text.contains("chicken") || text.contains("mangsho") ||
-                    text.contains("meat") || text.contains("dim") || text.contains("egg") -> "Grocery"
+                    text.contains("meat") || text.contains("dim") || text.contains("egg") ||
+                    text.contains("sawpno") || text.contains("swapno") || text.contains("shwapno") ||
+                    text.contains("agora") || text.contains("meenabazar") || text.contains("unimart") ||
+                    text.contains("chaldal") -> "Grocery"
 
             text.contains("bill") || text.contains("current") || text.contains("electricity") ||
                     text.contains("gas") || text.contains("wifi") || text.contains("internet") ||

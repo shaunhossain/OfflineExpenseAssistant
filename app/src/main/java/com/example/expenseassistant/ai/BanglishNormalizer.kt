@@ -4,12 +4,18 @@ import com.example.expenseassistant.domain.TransactionValidator
 import com.example.expenseassistant.mcp.SingleItemConfirmation
 import java.util.regex.Pattern
 
+data class ExtractedDate(
+    val cleanedText: String,
+    val timestamp: Long?
+)
+
 data class QuickParseResult(
     val matched: Boolean,
     val intent: String,
     val amountMinor: Long? = null,
     val category: String? = null,
     val note: String? = null,
+    val occurredAt: Long? = null,
     val reminderHour: Int? = null,
     val reminderMinute: Int? = null,
     val searchQuery: String? = null,
@@ -50,7 +56,13 @@ object BanglishNormalizer {
         return text.trim()
     }
 
-    fun parseSingleExpensePart(rawPart: String): SingleItemConfirmation? {
+    fun isDateWord(w: String): Boolean {
+        val lower = w.lowercase().trim()
+        val dateWords = setOf("tarikh", "tarik", "tarike", "tarikhe", "date", "tarikher", "tarikhor")
+        return dateWords.contains(lower)
+    }
+
+    fun parseSingleExpensePart(rawPart: String, defaultOccurredAt: Long? = null): SingleItemConfirmation? {
         val part = rawPart.trim().removePrefix("and").removePrefix("ar").removePrefix("ebong").trim()
         if (part.isBlank()) return null
 
@@ -61,12 +73,13 @@ object BanglishNormalizer {
             val amount = m1.group(1)?.toDoubleOrNull() ?: return null
             var note = m1.group(2)?.trim() ?: ""
             note = cleanExpenseNote(note.removePrefix("tk").trim())
-            if (note.isNotBlank() && amount > 0) {
+            if (note.isNotBlank() && !isDateWord(note) && amount > 0) {
                 val category = TransactionValidator.mapToValidCategory(null, note, com.example.expenseassistant.data.TransactionType.EXPENSE)
                 return SingleItemConfirmation(
                     amountMinor = (amount * 100).toLong(),
                     category = category,
-                    note = note
+                    note = note,
+                    occurredAt = defaultOccurredAt
                 )
             }
         }
@@ -79,34 +92,36 @@ object BanglishNormalizer {
             val amount = m2.group(2)?.toDoubleOrNull() ?: return null
             note = note.removePrefix("ajke").removePrefix("aj").trim()
             note = cleanExpenseNote(note)
-            if (note.isNotBlank() && amount > 0) {
+            if (note.isNotBlank() && !isDateWord(note) && amount > 0) {
                 val category = TransactionValidator.mapToValidCategory(null, note, com.example.expenseassistant.data.TransactionType.EXPENSE)
                 return SingleItemConfirmation(
                     amountMinor = (amount * 100).toLong(),
                     category = category,
-                    note = note
+                    note = note,
+                    occurredAt = defaultOccurredAt
                 )
             }
         }
 
         // Pattern C: Natural Language clause fallback: e.g. "60 tk diye nasta korsi", "dupure 180 tk lunch"
-        val natural = parseNaturalLanguageExpense(part)
-        if (natural != null && natural.amountMinor != null && !natural.note.isNullOrBlank()) {
+        val natural = parseNaturalLanguageExpense(part, defaultOccurredAt)
+        if (natural != null && natural.amountMinor != null && !natural.note.isNullOrBlank() && !isDateWord(natural.note)) {
             return SingleItemConfirmation(
                 amountMinor = natural.amountMinor,
                 category = natural.category ?: "Other",
-                note = natural.note
+                note = natural.note,
+                occurredAt = defaultOccurredAt
             )
         }
 
         return null
     }
 
-    fun parseMultipleExpenses(text: String): List<SingleItemConfirmation> {
+    fun parseMultipleExpenses(text: String, defaultOccurredAt: Long? = null): List<SingleItemConfirmation> {
         // Try splitting by comma, semicolon, newline, or conjunction words
         val parts = text.split(Regex("[,;\\n+]|\\s+(?:and|ar|ebong|plus|&)\\s+"))
         if (parts.size >= 2) {
-            val parsedList = parts.mapNotNull { parseSingleExpensePart(it) }
+            val parsedList = parts.mapNotNull { parseSingleExpensePart(it, defaultOccurredAt) }
             if (parsedList.size >= 2) {
                 return parsedList
             }
@@ -121,14 +136,17 @@ object BanglishNormalizer {
             val nt = matcher.group(2)?.trim()
             if (amt != null && amt > 0 && !nt.isNullOrBlank()) {
                 val cleanNote = cleanExpenseNote(nt)
-                val cat = TransactionValidator.mapToValidCategory(null, cleanNote, com.example.expenseassistant.data.TransactionType.EXPENSE)
-                foundItems.add(
-                    SingleItemConfirmation(
-                        amountMinor = (amt * 100).toLong(),
-                        category = cat,
-                        note = cleanNote
+                if (cleanNote.isNotBlank() && !isDateWord(cleanNote)) {
+                    val cat = TransactionValidator.mapToValidCategory(null, cleanNote, com.example.expenseassistant.data.TransactionType.EXPENSE)
+                    foundItems.add(
+                        SingleItemConfirmation(
+                            amountMinor = (amt * 100).toLong(),
+                            category = cat,
+                            note = cleanNote,
+                            occurredAt = defaultOccurredAt
+                        )
                     )
-                )
+                }
             }
         }
         if (foundItems.size >= 2) {
@@ -328,6 +346,7 @@ object BanglishNormalizer {
             "laglo", "lagse", "gese", "gelo", "holo", "hoise", "galo", "giyese", "geche",
             "diye", "diya", "dite", "ashte", "ashar", "ashlam", "jete", "jawar", "jawyar", "gelam",
             "pothe", "shomoy", "hoye", "nilam", "nisi", "ferar",
+            "tarikh", "tarik", "tarike", "tarikhe", "date",
             "spent", "paid", "bought", "had", "ate", "cost", "add", "record", "log", "please", "enter"
         )
         val words = rawNote.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
@@ -335,7 +354,67 @@ object BanglishNormalizer {
         return if (filtered.isNotEmpty()) filtered.joinToString(" ") else rawNote.trim()
     }
 
-    fun parseIncomeTransaction(text: String): QuickParseResult? {
+    fun extractDateAndClean(rawText: String): ExtractedDate {
+        var text = rawText
+        var targetTime: Long? = null
+
+        // 1. Explicit Day of Month: e.g. "4 tarikh", "4 tarikhe", "tarikh 4", "4 date", "15 tarikh", "4 tarik"
+        val dayPattern = Pattern.compile(
+            "\\b(?:(?:tarikh|tarik|date)\\s*(\\d{1,2})|(\\d{1,2})\\s*(?:tarikh|tarik|tarike|tarikhe|date|th\\s*e|th\\b))\\b",
+            Pattern.CASE_INSENSITIVE
+        )
+        val matcher = dayPattern.matcher(text)
+        if (matcher.find()) {
+            val dayStr = matcher.group(1) ?: matcher.group(2)
+            val day = dayStr?.toIntOrNull()
+            if (day != null && day in 1..31) {
+                val cal = java.util.Calendar.getInstance()
+                val currentDay = cal.get(java.util.Calendar.DAY_OF_MONTH)
+                cal.set(java.util.Calendar.DAY_OF_MONTH, day)
+                cal.set(java.util.Calendar.HOUR_OF_DAY, 12)
+                cal.set(java.util.Calendar.MINUTE, 0)
+                cal.set(java.util.Calendar.SECOND, 0)
+                cal.set(java.util.Calendar.MILLISECOND, 0)
+                // If day is greater than today's day of month, user likely meant last month
+                if (day > currentDay) {
+                    cal.add(java.util.Calendar.MONTH, -1)
+                }
+                targetTime = cal.timeInMillis
+                text = text.removeRange(matcher.start(), matcher.end()).trim()
+            }
+        }
+
+        // 2. Relative Days: "gotokal", "yesterday", "porshu", "ajke", "today"
+        if (targetTime == null) {
+            val lower = text.lowercase()
+            if (lower.contains("gotokal") || lower.contains("yesterday")) {
+                val cal = java.util.Calendar.getInstance()
+                cal.add(java.util.Calendar.DAY_OF_YEAR, -1)
+                cal.set(java.util.Calendar.HOUR_OF_DAY, 12)
+                cal.set(java.util.Calendar.MINUTE, 0)
+                cal.set(java.util.Calendar.SECOND, 0)
+                cal.set(java.util.Calendar.MILLISECOND, 0)
+                targetTime = cal.timeInMillis
+                text = text.replace(Regex("\\b(?:gotokal|gotokalke|yesterday)\\b", RegexOption.IGNORE_CASE), " ").trim()
+            } else if (lower.contains("porshu") || lower.contains("gotoporshu")) {
+                val cal = java.util.Calendar.getInstance()
+                cal.add(java.util.Calendar.DAY_OF_YEAR, -2)
+                cal.set(java.util.Calendar.HOUR_OF_DAY, 12)
+                cal.set(java.util.Calendar.MINUTE, 0)
+                cal.set(java.util.Calendar.SECOND, 0)
+                cal.set(java.util.Calendar.MILLISECOND, 0)
+                targetTime = cal.timeInMillis
+                text = text.replace(Regex("\\b(?:gotoporshu|porshu)\\b", RegexOption.IGNORE_CASE), " ").trim()
+            }
+        }
+
+        return ExtractedDate(
+            cleanedText = text.replace(Regex("\\s+"), " ").trim(),
+            timestamp = targetTime
+        )
+    }
+
+    fun parseIncomeTransaction(text: String, defaultOccurredAt: Long? = null): QuickParseResult? {
         val t = text.lowercase().trim()
         val incomeKeywords = listOf("salary", "salay", "beton", "income", "bonus", "cashback", "remittance", "credited", "deposit")
         val receiveVerbs = listOf("paisi", "peyechi", "paise", "paichi", "pelam", "received", "got", "dhukse", "dhuklo")
@@ -373,7 +452,7 @@ object BanglishNormalizer {
 
         val stopWords = setOf(
             "ami", "amra", "amar", "tumi", "apni", "amader",
-            "aj", "ajke", "kalke", "gotokal",
+            "aj", "ajke", "kalke", "gotokal", "tarikh", "tarik", "tarike", "tarikhe", "date",
             "tk", "taka", "takar", "tkr", "theke", "er", "ar", "diye",
             "paisi", "peyechi", "paise", "paichi", "pelam", "received", "got", "dhukse", "dhuklo"
         )
@@ -392,11 +471,12 @@ object BanglishNormalizer {
             intent = "prepare_income",
             amountMinor = (foundAmount * 100).toLong(),
             category = "Salary",
-            note = note
+            note = note,
+            occurredAt = defaultOccurredAt
         )
     }
 
-    fun parseNaturalLanguageExpense(text: String): QuickParseResult? {
+    fun parseNaturalLanguageExpense(text: String, defaultOccurredAt: Long? = null): QuickParseResult? {
         val clean = text.trim()
         if (clean.isBlank()) return null
 
@@ -425,6 +505,7 @@ object BanglishNormalizer {
         val stopWords = setOf(
             "ami", "amra", "amar", "tumi", "apni", "amader", "tar", "tader", "ke", "der",
             "aj", "ajke", "kalke", "gotokal", "dupure", "shokale", "raate", "bikale", "shondhay",
+            "tarikh", "tarik", "tarike", "tarikhe", "date",
             "diye", "diasilam", "dilam", "disi", "korsi", "korechi", "korlam", "kore", "kora",
             "kheyechi", "khelam", "khailam", "khaisi", "kinlam", "kinechi", "kina",
             "laglo", "lagse", "gese", "gelo", "galo", "giyese", "geche", "holo", "hoise",
@@ -465,7 +546,8 @@ object BanglishNormalizer {
             intent = intent,
             amountMinor = (foundAmount * 100).toLong(),
             category = category,
-            note = note
+            note = note,
+            occurredAt = defaultOccurredAt
         )
     }
 
@@ -562,14 +644,19 @@ object BanglishNormalizer {
             )
         }
 
+        // Date and Day Extraction (e.g. "4 tarikh", "4 tarikhe", "15 tarikh", "gotokal", etc.)
+        val dateInfo = extractDateAndClean(text)
+        val textWithoutDate = dateInfo.cleanedText
+        val occurredAt = dateInfo.timestamp
+
         // 8. Check for income: "salary paisi 30000 tk", "100 tk salay peyechi", "5000 tk bonus pelam", etc.
-        val incomeParsed = parseIncomeTransaction(text)
+        val incomeParsed = parseIncomeTransaction(textWithoutDate, occurredAt)
         if (incomeParsed != null) {
             return incomeParsed
         }
 
         // 9. Check for MULTIPLE expenses: e.g. "50 tk sosage , 320 tk murgi , 420 tk bazar"
-        val multipleItems = parseMultipleExpenses(text)
+        val multipleItems = parseMultipleExpenses(textWithoutDate, occurredAt)
         if (multipleItems.size >= 2) {
             return QuickParseResult(
                 matched = true,
@@ -580,45 +667,47 @@ object BanglishNormalizer {
 
         // 10. Strict Pattern: "<amount> tk <note>" -> e.g. "50 tk bus vara", "100 tk cha ar bill"
         val amountFirstRegex = Pattern.compile("^(\\d+(?:\\.\\d+)?)\\s*(?:tk)?\\s+(.+)$")
-        val amountFirstMatcher = amountFirstRegex.matcher(text)
+        val amountFirstMatcher = amountFirstRegex.matcher(textWithoutDate)
         if (amountFirstMatcher.find()) {
             val amount = amountFirstMatcher.group(1)?.toDoubleOrNull()
             var note = amountFirstMatcher.group(2)?.trim() ?: ""
             note = cleanExpenseNote(note.removePrefix("tk").trim())
-            if (amount != null && amount > 0 && note.isNotBlank()) {
+            if (amount != null && amount > 0 && note.isNotBlank() && !isDateWord(note)) {
                 val category = TransactionValidator.mapToValidCategory(null, note, com.example.expenseassistant.data.TransactionType.EXPENSE)
                 return QuickParseResult(
                     matched = true,
                     intent = "prepare_expense",
                     amountMinor = (amount * 100).toLong(),
                     category = category,
-                    note = note
+                    note = note,
+                    occurredAt = occurredAt
                 )
             }
         }
 
         // 11. Strict Pattern: "<note> <amount> tk" -> e.g. "ajke lunch 250 tk", "cha ar bill 100 tk", "rickshaw vara dilam 60 tk"
         val amountLastRegex = Pattern.compile("^(.+?)\\s+(\\d+(?:\\.\\d+)?)\\s*(?:tk)?$")
-        val amountLastMatcher = amountLastRegex.matcher(text)
+        val amountLastMatcher = amountLastRegex.matcher(textWithoutDate)
         if (amountLastMatcher.find()) {
             var note = amountLastMatcher.group(1)?.trim() ?: ""
             val amount = amountLastMatcher.group(2)?.toDoubleOrNull()
             note = note.removePrefix("ajke").removePrefix("aj").trim()
             note = cleanExpenseNote(note)
-            if (amount != null && amount > 0 && note.isNotBlank()) {
+            if (amount != null && amount > 0 && note.isNotBlank() && !isDateWord(note)) {
                 val category = TransactionValidator.mapToValidCategory(null, note, com.example.expenseassistant.data.TransactionType.EXPENSE)
                 return QuickParseResult(
                     matched = true,
                     intent = "prepare_expense",
                     amountMinor = (amount * 100).toLong(),
                     category = category,
-                    note = note
+                    note = note,
+                    occurredAt = occurredAt
                 )
             }
         }
 
         // 12. Natural Language Sentences with filler words/verbs: e.g. "ami 200 tk diye lunch korsi", "rickshaw vara dilam 60 tk"
-        val naturalExpense = parseNaturalLanguageExpense(text)
+        val naturalExpense = parseNaturalLanguageExpense(textWithoutDate, occurredAt)
         if (naturalExpense != null) {
             return naturalExpense
         }

@@ -385,4 +385,43 @@ class BanglishNormalizerTest {
         assertTrue(q3.matched)
         assertEquals("seed_mock_transactions", q3.intent)
     }
+
+    @Test
+    fun testTarikhExpense() {
+        val res = BanglishNormalizer.tryFastDeterministicParse("4 tarikh 100 tk sawpno bazar")
+        assertTrue(res.matched)
+        assertEquals("prepare_expense", res.intent)
+        assertEquals(10000L, res.amountMinor)
+        assertEquals("Grocery", res.category)
+        assertEquals("sawpno bazar", res.note)
+        org.junit.Assert.assertNotNull(res.occurredAt)
+
+        val cal = java.util.Calendar.getInstance()
+        cal.timeInMillis = res.occurredAt!!
+        assertEquals(4, cal.get(java.util.Calendar.DAY_OF_MONTH))
+
+        // Inverted: "sawpno bazar 100 tk 4 tarikh"
+        val res2 = BanglishNormalizer.tryFastDeterministicParse("sawpno bazar 100 tk 4 tarikh")
+        assertTrue(res2.matched)
+        assertEquals("prepare_expense", res2.intent)
+        assertEquals(10000L, res2.amountMinor)
+        assertEquals("Grocery", res2.category)
+        org.junit.Assert.assertNotNull(res2.occurredAt)
+
+        // "4 tarikhe 250 tk lunch"
+        val res3 = BanglishNormalizer.tryFastDeterministicParse("4 tarikhe 250 tk lunch")
+        assertTrue(res3.matched)
+        assertEquals("prepare_expense", res3.intent)
+        assertEquals(25000L, res3.amountMinor)
+        assertEquals("Food", res3.category)
+        org.junit.Assert.assertNotNull(res3.occurredAt)
+
+        // "gotokal 80 tk rickshaw vara"
+        val res4 = BanglishNormalizer.tryFastDeterministicParse("gotokal 80 tk rickshaw vara")
+        assertTrue(res4.matched)
+        assertEquals("prepare_expense", res4.intent)
+        assertEquals(8000L, res4.amountMinor)
+        assertEquals("Transport", res4.category)
+        org.junit.Assert.assertNotNull(res4.occurredAt)
+    }
 }

@@ -29,7 +29,8 @@ class AssistantRouter(
                 hour = fastResult.reminderHour,
                 minute = fastResult.reminderMinute,
                 query = fastResult.searchQuery,
-                items = fastResult.multipleItems
+                items = fastResult.multipleItems,
+                occurredAt = fastResult.occurredAt
             )
         }
 
