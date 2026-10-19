@@ -42,6 +42,9 @@ object BanglishNormalizer {
         text = text.replace("taka", "tk")
         text = text.replace("bdt", "tk")
 
+        // Normalize spoken number words (der, arai, sare sotero, barosho, etc.)
+        text = normalizeSpokenNumbers(text)
+
         // Normalize common Banglish variations using word boundaries
         text = text.replace(Regex("\\b(?:khoros|khorosh|koroch|koros|khoroc|koroc)\\b", RegexOption.IGNORE_CASE), "khoroch")
         text = text.replace(Regex("\\b(?:khoroser|korocher|koroser|khorocer|korocer)\\b", RegexOption.IGNORE_CASE), "khorocher")
@@ -53,6 +56,224 @@ object BanglishNormalizer {
         text = text.replace(Regex("\\bhishab\\b", RegexOption.IGNORE_CASE), "hisab")
 
         return text.trim()
+    }
+
+    /**
+     * Converts spoken Bengali/Banglish numerical expressions and traditional fractions
+     * into standard ASCII numbers.
+     * Handles:
+     * - "der" (1.5), "der hajar" (1500), "dersho" (150)
+     * - "arai" (2.5), "arai hajar" (2500), "araisho" (250)
+     * - "sare <num>" (num + 0.5), e.g. "sare sotero" -> 17.5, "sare tin hajar" -> 3500, "sare barosho" -> 1250
+     * - Hundred-words: "barosho" (1200), "choddosho" (1400), "ponerosho" (1500), "satsho" (700), etc.
+     * - "sowa" (+0.25) and "poune" (-0.25)
+     * - Native Bengali script forms: দেড়শ, আড়াইশ, বারোশ, সাড়ে সতেরো, etc.
+     */
+    fun normalizeSpokenNumbers(raw: String): String {
+        var s = raw
+
+        // 1. Bengali script hundreds and fractions
+        val bnScriptHundreds = listOf(
+            "দেড়শো" to "150", "দেড়শ" to "150",
+            "আড়াইশো" to "250", "আড়াইশ" to "250",
+            "একশো" to "100", "একশ" to "100",
+            "দুইশো" to "200", "দুইশ" to "200",
+            "তিনশো" to "300", "তিনশ" to "300",
+            "চারশো" to "400", "চারশ" to "400",
+            "পাঁচশো" to "500", "পাঁচশ" to "500",
+            "ছয়শো" to "600", "ছয়শ" to "600",
+            "সাতশো" to "700", "সাতশ" to "700",
+            "আটশো" to "800", "আটশ" to "800",
+            "নয়শো" to "900", "নয়শ" to "900",
+            "এগারোশো" to "1100", "এগারোশ" to "1100",
+            "বারোশো" to "1200", "বারোশ" to "1200",
+            "তেরোশো" to "1300", "তেরোশ" to "1300",
+            "চৌদ্দশো" to "1400", "চৌদ্দশ" to "1400",
+            "পনেরোশো" to "1500", "পনেরোশ" to "1500",
+            "ষোলশো" to "1600", "ষোলশ" to "1600",
+            "সতেরোশো" to "1700", "সতেরোশ" to "1700",
+            "আঠারোশো" to "1800", "আঠারোশ" to "1800",
+            "উনিশশো" to "1900", "উনিশশ" to "1900",
+            "বিশশো" to "2000", "বিশশ" to "2000"
+        )
+        s = s.replace(Regex("দেড়\\s*হাজার"), "1500")
+        s = s.replace(Regex("আড়াই\\s*হাজার"), "2500")
+        s = s.replace(Regex("দেড়\\s*লাখ"), "150000")
+        s = s.replace(Regex("আড়াই\\s*লাখ"), "250000")
+        s = s.replace(Regex("দেড়\\s*(?:টাকা|tk\\b)"), "1.5 tk")
+        s = s.replace(Regex("আড়াই\\s*(?:টাকা|tk\\b)"), "2.5 tk")
+        for ((bnWord, numVal) in bnScriptHundreds) {
+            s = s.replace(bnWord, numVal)
+        }
+
+        // 2. Banglish Hundreds map
+        val hundredsMap = listOf(
+            "eksho" to 100, "ek sho" to 100,
+            "dersho" to 150, "der sho" to 150, "derhsho" to 150,
+            "duisho" to 200, "dushho" to 200, "duso" to 200, "dui sho" to 200,
+            "araisho" to 250, "arai sho" to 250, "arhaisho" to 250,
+            "tinsho" to 300, "tin sho" to 300,
+            "charsho" to 400, "char sho" to 400,
+            "pachsho" to 500, "pasho" to 500, "pach sho" to 500,
+            "choysho" to 600, "choy sho" to 600,
+            "satsho" to 700, "shatsho" to 700, "sat sho" to 700,
+            "atsho" to 800, "aatsho" to 800, "aat sho" to 800, "at sho" to 800,
+            "noysho" to 900, "noy sho" to 900,
+            "egarosho" to 1100, "egaro sho" to 1100,
+            "barosho" to 1200, "baro sho" to 1200,
+            "terosho" to 1300, "tero sho" to 1300,
+            "choddosho" to 1400, "chouddosho" to 1400, "choddo sho" to 1400,
+            "ponerosho" to 1500, "ponero sho" to 1500,
+            "sholosho" to 1600, "solosho" to 1600, "solo sho" to 1600,
+            "soterosho" to 1700, "shoterosho" to 1700, "sotero sho" to 1700,
+            "atharsho" to 1800, "atharosho" to 1800, "atharo sho" to 1800,
+            "unishsho" to 1900, "unish sho" to 1900,
+            "bishsho" to 2000, "bis sho" to 2000
+        )
+
+        val bengaliNumberWords = mapOf(
+            "shunno" to 0, "ek" to 1, "dui" to 2, "tin" to 3, "char" to 4,
+            "pach" to 5, "paach" to 5, "choy" to 6, "sat" to 7, "shat" to 7,
+            "aat" to 8, "at" to 8, "noy" to 9, "dosh" to 10,
+            "egaro" to 11, "baro" to 12, "tero" to 13, "choddo" to 14, "chouddo" to 14,
+            "ponero" to 15, "sholo" to 16, "solo" to 16, "sotero" to 17, "shotero" to 17,
+            "atharo" to 18, "athara" to 18, "unish" to 19, "bish" to 20, "bis" to 20,
+            "kuri" to 20, "ekrish" to 21, "baish" to 22, "teish" to 23, "chobbish" to 24,
+            "pocchish" to 25, "pochish" to 25, "chabbish" to 26, "sathash" to 27,
+            "athash" to 28, "unirish" to 29, "trish" to 30, "tirish" to 30,
+            "poytirish" to 35, "chollish" to 40, "ponchash" to 50
+        )
+
+        // 3. "sare" with hundred-words e.g. "sare barosho" -> 1250, "sare tinsho" -> 350
+        val hundredWordsRegex = hundredsMap.map { it.first.replace(" ", "\\s+") }.joinToString("|")
+        val sareHundredPattern = Pattern.compile("\\b(?:sare|share|sade)\\s+($hundredWordsRegex)\\b", Pattern.CASE_INSENSITIVE)
+        val mSareH = sareHundredPattern.matcher(s)
+        val sbSareH = StringBuffer()
+        while (mSareH.find()) {
+            val matchedWord = mSareH.group(1)?.lowercase()?.replace(Regex("\\s+"), " ") ?: ""
+            val valH = hundredsMap.firstOrNull { it.first == matchedWord }?.second
+            if (valH != null) {
+                mSareH.appendReplacement(sbSareH, (valH + 50).toString())
+            } else {
+                mSareH.appendReplacement(sbSareH, mSareH.group(0) ?: "")
+            }
+        }
+        mSareH.appendTail(sbSareH)
+        s = sbSareH.toString()
+
+        // 4. "sare <num> (hajar|hazar|k)" -> (num + 0.5) * 1000
+        val sareHajarPattern = Pattern.compile("\\b(?:sare|share|sade)\\s+([a-zA-Z]+|\\d+)\\s*(?:hajar|hazar|k)\\b", Pattern.CASE_INSENSITIVE)
+        val mSareHajar = sareHajarPattern.matcher(s)
+        val sbSareHajar = StringBuffer()
+        while (mSareHajar.find()) {
+            val numStr = mSareHajar.group(1)?.lowercase() ?: ""
+            val numVal = bengaliNumberWords[numStr]?.toDouble() ?: numStr.toDoubleOrNull()
+            if (numVal != null) {
+                val total = (numVal + 0.5) * 1000
+                val formatted = if (total % 1.0 == 0.0) total.toLong().toString() else total.toString()
+                mSareHajar.appendReplacement(sbSareHajar, formatted)
+            } else {
+                mSareHajar.appendReplacement(sbSareHajar, mSareHajar.group(0) ?: "")
+            }
+        }
+        mSareHajar.appendTail(sbSareHajar)
+        s = sbSareHajar.toString()
+
+        // 5. "sare <num> sho" -> (num + 0.5) * 100
+        val sareShoPattern = Pattern.compile("\\b(?:sare|share|sade)\\s+([a-zA-Z]+|\\d+)\\s*sho\\b", Pattern.CASE_INSENSITIVE)
+        val mSareSho = sareShoPattern.matcher(s)
+        val sbSareSho = StringBuffer()
+        while (mSareSho.find()) {
+            val numStr = mSareSho.group(1)?.lowercase() ?: ""
+            val numVal = bengaliNumberWords[numStr]?.toDouble() ?: numStr.toDoubleOrNull()
+            if (numVal != null) {
+                val total = (numVal + 0.5) * 100
+                val formatted = if (total % 1.0 == 0.0) total.toLong().toString() else total.toString()
+                mSareSho.appendReplacement(sbSareSho, formatted)
+            } else {
+                mSareSho.appendReplacement(sbSareSho, mSareSho.group(0) ?: "")
+            }
+        }
+        mSareSho.appendTail(sbSareSho)
+        s = sbSareSho.toString()
+
+        // 6. "sare <num>" e.g. "sare sotero" -> 17.5, "sare tin" -> 3.5
+        val numWordsRegex = bengaliNumberWords.keys.joinToString("|")
+        val sarePlainPattern = Pattern.compile("\\b(?:sare|share|sade)\\s+($numWordsRegex|\\d+)\\b", Pattern.CASE_INSENSITIVE)
+        val mSarePlain = sarePlainPattern.matcher(s)
+        val sbSarePlain = StringBuffer()
+        while (mSarePlain.find()) {
+            val numStr = mSarePlain.group(1)?.lowercase() ?: ""
+            val numVal = bengaliNumberWords[numStr]?.toDouble() ?: numStr.toDoubleOrNull()
+            if (numVal != null) {
+                val total = numVal + 0.5
+                val formatted = if (total % 1.0 == 0.0) total.toLong().toString() else total.toString()
+                mSarePlain.appendReplacement(sbSarePlain, formatted)
+            } else {
+                mSarePlain.appendReplacement(sbSarePlain, mSarePlain.group(0) ?: "")
+            }
+        }
+        mSarePlain.appendTail(sbSarePlain)
+        s = sbSarePlain.toString()
+
+        // 7. "der hajar" / "arai hajar" / "lakh"
+        s = s.replace(Regex("\\b(?:der|derh|dedh)\\s*(?:hajar|hazar|k)\\b", RegexOption.IGNORE_CASE), "1500")
+        s = s.replace(Regex("\\b(?:arai|arhai|adhai)\\s*(?:hajar|hazar|k)\\b", RegexOption.IGNORE_CASE), "2500")
+        s = s.replace(Regex("\\b(?:der|derh|dedh)\\s*lakh\\b", RegexOption.IGNORE_CASE), "150000")
+        s = s.replace(Regex("\\b(?:arai|arhai|adhai)\\s*lakh\\b", RegexOption.IGNORE_CASE), "250000")
+
+        // 8. "der sho" / "arai sho"
+        s = s.replace(Regex("\\b(?:der|derh|dedh)\\s*sho\\b", RegexOption.IGNORE_CASE), "150")
+        s = s.replace(Regex("\\b(?:arai|arhai|adhai)\\s*sho\\b", RegexOption.IGNORE_CASE), "250")
+
+        // 9. Replace standalone hundreds: "barosho", "dersho", "araisho", "satsho", etc.
+        for ((w, v) in hundredsMap) {
+            val p = Pattern.compile("\\b" + Pattern.quote(w) + "\\b", Pattern.CASE_INSENSITIVE)
+            s = p.matcher(s).replaceAll(v.toString())
+        }
+
+        // 10. Standalone "der" / "arai" followed by currency (tk/taka)
+        s = s.replace(Regex("\\b(?:der|derh|dedh)\\b(?=\\s*(?:tk|taka\\b))", RegexOption.IGNORE_CASE), "1.5")
+        s = s.replace(Regex("\\b(?:arai|arhai|adhai)\\b(?=\\s*(?:tk|taka\\b))", RegexOption.IGNORE_CASE), "2.5")
+
+        // 11. "sowa" (+0.25) and "poune" (-0.25)
+        s = s.replace(Regex("\\b(?:sowa|showa)\\s+hajar\\b", RegexOption.IGNORE_CASE), "1250")
+        s = s.replace(Regex("\\b(?:poune|pone|powne)\\s+hajar\\b", RegexOption.IGNORE_CASE), "750")
+        val sowaPattern = Pattern.compile("\\b(?:sowa|showa)\\s+($numWordsRegex|\\d+)\\b", Pattern.CASE_INSENSITIVE)
+        val mSowa = sowaPattern.matcher(s)
+        val sbSowa = StringBuffer()
+        while (mSowa.find()) {
+            val numStr = mSowa.group(1)?.lowercase() ?: ""
+            val numVal = bengaliNumberWords[numStr]?.toDouble() ?: numStr.toDoubleOrNull()
+            if (numVal != null) {
+                val total = numVal + 0.25
+                val formatted = if (total % 1.0 == 0.0) total.toLong().toString() else total.toString()
+                mSowa.appendReplacement(sbSowa, formatted)
+            } else {
+                mSowa.appendReplacement(sbSowa, mSowa.group(0) ?: "")
+            }
+        }
+        mSowa.appendTail(sbSowa)
+        s = sbSowa.toString()
+
+        val pounePattern = Pattern.compile("\\b(?:poune|pone|powne)\\s+($numWordsRegex|\\d+)\\b", Pattern.CASE_INSENSITIVE)
+        val mPoune = pounePattern.matcher(s)
+        val sbPoune = StringBuffer()
+        while (mPoune.find()) {
+            val numStr = mPoune.group(1)?.lowercase() ?: ""
+            val numVal = bengaliNumberWords[numStr]?.toDouble() ?: numStr.toDoubleOrNull()
+            if (numVal != null) {
+                val total = numVal - 0.25
+                val formatted = if (total % 1.0 == 0.0) total.toLong().toString() else total.toString()
+                mPoune.appendReplacement(sbPoune, formatted)
+            } else {
+                mPoune.appendReplacement(sbPoune, mPoune.group(0) ?: "")
+            }
+        }
+        mPoune.appendTail(sbPoune)
+        s = sbPoune.toString()
+
+        return s
     }
 
     fun isDateWord(w: String): Boolean {

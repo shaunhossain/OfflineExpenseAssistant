@@ -507,4 +507,91 @@ class BanglishNormalizerTest {
         assertTrue(q7.matched)
         assertEquals("get_highest_expense", q7.intent)
     }
+
+    @Test
+    fun testBengaliSpokenFractionsAndHundreds() {
+        // "der tk diye cha khailam" (1.5 tk)
+        val r1 = BanglishNormalizer.tryFastDeterministicParse("der tk diye cha khailam")
+        assertTrue(r1.matched)
+        assertEquals("prepare_expense", r1.intent)
+        assertEquals(150L, r1.amountMinor)
+        assertEquals("Food", r1.category)
+
+        // "arai tk bus vara" (2.5 tk)
+        val r2 = BanglishNormalizer.tryFastDeterministicParse("arai tk bus vara")
+        assertTrue(r2.matched)
+        assertEquals("prepare_expense", r2.intent)
+        assertEquals(250L, r2.amountMinor)
+        assertEquals("Transport", r2.category)
+
+        // "sare sotero tk cha" (17.5 tk)
+        val r3 = BanglishNormalizer.tryFastDeterministicParse("sare sotero tk cha")
+        assertTrue(r3.matched)
+        assertEquals("prepare_expense", r3.intent)
+        assertEquals(1750L, r3.amountMinor)
+        assertEquals("Food", r3.category)
+
+        // "barosho tk bazar korlam" (1200 tk)
+        val r4 = BanglishNormalizer.tryFastDeterministicParse("barosho tk bazar korlam")
+        assertTrue(r4.matched)
+        assertEquals("prepare_expense", r4.intent)
+        assertEquals(120000L, r4.amountMinor)
+        assertEquals("Grocery", r4.category)
+
+        // "dersho tk nasta" (150 tk)
+        val r5 = BanglishNormalizer.tryFastDeterministicParse("dersho tk nasta")
+        assertTrue(r5.matched)
+        assertEquals("prepare_expense", r5.intent)
+        assertEquals(15000L, r5.amountMinor)
+        assertEquals("Food", r5.category)
+
+        // "araisho tk rickshaw" (250 tk)
+        val r6 = BanglishNormalizer.tryFastDeterministicParse("araisho tk rickshaw")
+        assertTrue(r6.matched)
+        assertEquals("prepare_expense", r6.intent)
+        assertEquals(25000L, r6.amountMinor)
+        assertEquals("Transport", r6.category)
+
+        // "der hajar taka lunch" (1500 tk)
+        val r7 = BanglishNormalizer.tryFastDeterministicParse("der hajar taka lunch")
+        assertTrue(r7.matched)
+        assertEquals("prepare_expense", r7.intent)
+        assertEquals(150000L, r7.amountMinor)
+        assertEquals("Food", r7.category)
+
+        // "arai hajar tk rent" (2500 tk)
+        val r8 = BanglishNormalizer.tryFastDeterministicParse("arai hajar tk rent")
+        assertTrue(r8.matched)
+        assertEquals("prepare_expense", r8.intent)
+        assertEquals(250000L, r8.amountMinor)
+        assertEquals("Bills", r8.category)
+
+        // "sare tin hajar tk bill" (3500 tk)
+        val r9 = BanglishNormalizer.tryFastDeterministicParse("sare tin hajar tk bill")
+        assertTrue(r9.matched)
+        assertEquals("prepare_expense", r9.intent)
+        assertEquals(350000L, r9.amountMinor)
+        assertEquals("Bills", r9.category)
+
+        // "sare barosho taka groceries" (1250 tk)
+        val r10 = BanglishNormalizer.tryFastDeterministicParse("sare barosho taka groceries")
+        assertTrue(r10.matched)
+        assertEquals("prepare_expense", r10.intent)
+        assertEquals(125000L, r10.amountMinor)
+        assertEquals("Grocery", r10.category)
+
+        // Bengali script: "দেড়শ টাকা নাস্তা" (150 tk)
+        val r11 = BanglishNormalizer.tryFastDeterministicParse("দেড়শ টাকা নাস্তা")
+        assertTrue(r11.matched)
+        assertEquals("prepare_expense", r11.intent)
+        assertEquals(15000L, r11.amountMinor)
+        assertEquals("Food", r11.category)
+
+        // Bengali script: "বারোশ টাকা বাজার" (1200 tk)
+        val r12 = BanglishNormalizer.tryFastDeterministicParse("বারোশ টাকা বাজার")
+        assertTrue(r12.matched)
+        assertEquals("prepare_expense", r12.intent)
+        assertEquals(120000L, r12.amountMinor)
+        assertEquals("Grocery", r12.category)
+    }
 }

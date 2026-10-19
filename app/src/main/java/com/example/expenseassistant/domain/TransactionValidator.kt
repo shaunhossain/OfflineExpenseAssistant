@@ -104,13 +104,16 @@ object TransactionValidator {
 
         return when {
             text.contains("basha vara") || text.contains("bari vara") || text.contains("flat vara") ||
+                    text.contains("বাসা ভাড়া") || text.contains("বাড়ি ভাড়া") ||
                     text.contains("house rent") || text.contains("room rent") -> "Bills"
 
             text.contains("bus") || text.contains("vara") || text.contains("bhara") || text.contains("bada") ||
                     text.contains("rickshaw") || text.contains("riksa") || text.contains("riksha") || text.contains("rikshaw") ||
                     text.contains("cng") || text.contains("uber") || text.contains("pathao") ||
                     text.contains("metro") || text.contains("train") || text.contains("transport") ||
-                    text.contains("gari") || text.contains("auto") || text.contains("tempo") -> "Transport"
+                    text.contains("gari") || text.contains("auto") || text.contains("tempo") ||
+                    text.contains("বাস") || text.contains("ভাড়া") || text.contains("রিকশা") ||
+                    text.contains("গাড়ি") || text.contains("সিএনজি") -> "Transport"
 
             text.contains("cha") || text.contains("tea") || text.contains("coffee") ||
                     text.contains("lunch") || text.contains("dinner") || text.contains("breakfast") ||
@@ -121,9 +124,12 @@ object TransactionValidator {
                     text.contains("misti") || text.contains("mishti") ||
                     text.contains("jhalmuri") || text.contains("singara") || text.contains("shingara") ||
                     text.contains("somosa") || text.contains("samucha") ||
+                    text.contains("নাস্তা") || text.contains("চা") || text.contains("কফি") ||
+                    text.contains("খাবার") || text.contains("লাঞ্চ") || text.contains("ডিনার") ||
                     text.contains("food") || text.contains("restaurant") -> "Food"
 
-            text.contains("bazar") || text.contains("bajar") || text.contains("bazaar") || text.contains("grocery") ||
+            text.contains("bazar") || text.contains("bajar") || text.contains("bazaar") ||
+                    text.contains("grocery") || text.contains("groceries") ||
                     text.contains("chal") || text.contains("chaal") || text.contains("dal") || text.contains("daal") ||
                     text.contains("oil") || text.contains("tel") ||
                     text.contains("shobji") || text.contains("sobji") || text.contains("soji") ||
@@ -134,26 +140,34 @@ object TransactionValidator {
                     text.contains("dudh") || text.contains("dud") ||
                     text.contains("sawpno") || text.contains("swapno") || text.contains("shwapno") ||
                     text.contains("agora") || text.contains("meenabazar") || text.contains("unimart") ||
-                    text.contains("chaldal") -> "Grocery"
+                    text.contains("chaldal") || text.contains("বাজার") || text.contains("সবজি") ||
+                    text.contains("মাছ") || text.contains("মাংস") || text.contains("চাল") ||
+                    text.contains("ডাল") || text.contains("তেল") || text.contains("ডিম") ||
+                    text.contains("মুদি") -> "Grocery"
 
             text.contains("bill") || text.contains("current") || text.contains("electricity") ||
                     text.contains("gas") || text.contains("wifi") || text.contains("internet") ||
                     text.contains("recharge") || text.contains("reacharge") || text.contains("rechrg") ||
-                    text.contains("rent") || text.contains("utility") -> "Bills"
+                    text.contains("rent") || text.contains("utility") ||
+                    text.contains("বিল") || text.contains("বিদ্যুৎ") || text.contains("গ্যাস") ||
+                    text.contains("পানি") || text.contains("রিচার্জ") -> "Bills"
 
             text.contains("cloth") || text.contains("shirt") || text.contains("pant") ||
-                    text.contains("shopping") || text.contains("shoe") || text.contains("daraz") -> "Shopping"
+                    text.contains("shopping") || text.contains("shoe") || text.contains("daraz") ||
+                    text.contains("জামা") || text.contains("কাপড়") -> "Shopping"
 
             text.contains("medicine") || text.contains("medicin") || text.contains("medical") ||
                     text.contains("osudh") || text.contains("oshudh") || text.contains("oushodh") ||
                     text.contains("osud") || text.contains("osod") ||
                     text.contains("doctor") || text.contains("hospital") || text.contains("pharmacy") ||
+                    text.contains("ঔষধ") || text.contains("ওষুধ") || text.contains("ডাক্তার") ||
+                    text.contains("হাসপাতাল") ||
                     text.contains("health") -> "Health"
 
             text.contains("movie") || text.contains("cinema") || text.contains("game") -> "Entertainment"
 
             text.contains("tuition") || text.contains("school") || text.contains("college") ||
-                    text.contains("book") || text.contains("boi") -> "Education"
+                    text.contains("book") || text.contains("boi") || text.contains("বই") -> "Education"
 
             else -> {
                 VALID_CATEGORIES.firstOrNull { it.equals(rawCategory, ignoreCase = true) } ?: "Other"
