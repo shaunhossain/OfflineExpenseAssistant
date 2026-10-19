@@ -42,23 +42,22 @@ object BanglishNormalizer {
         text = text.replace("taka", "tk")
         text = text.replace("bdt", "tk")
 
-        // Normalize common Banglish variations
-        text = text.replace("khoros", "khoroch")
-        text = text.replace("khorosh", "khoroch")
-        text = text.replace("bhara", "vara")
-        text = text.replace("paise", "paisi")
-        text = text.replace("paichi", "paisi")
-        text = text.replace("peyechi", "paisi")
-        text = text.replace("peyesi", "paisi")
-        text = text.replace("pelam", "paisi")
-        text = text.replace("salay", "salary")
+        // Normalize common Banglish variations using word boundaries
+        text = text.replace(Regex("\\b(?:khoros|khorosh|koroch|koros|khoroc|koroc)\\b", RegexOption.IGNORE_CASE), "khoroch")
+        text = text.replace(Regex("\\b(?:khoroser|korocher|koroser|khorocer|korocer)\\b", RegexOption.IGNORE_CASE), "khorocher")
+        text = text.replace(Regex("\\bbhara\\b", RegexOption.IGNORE_CASE), "vara")
+        text = text.replace(Regex("\\bbajar\\b", RegexOption.IGNORE_CASE), "bazar")
+        text = text.replace(Regex("\\b(?:paise|paichi|peyechi|peyesi|pelam|payci)\\b", RegexOption.IGNORE_CASE), "paisi")
+        text = text.replace(Regex("\\b(?:salay|salari)\\b", RegexOption.IGNORE_CASE), "salary")
+        text = text.replace(Regex("\\bveton\\b", RegexOption.IGNORE_CASE), "beton")
+        text = text.replace(Regex("\\bhishab\\b", RegexOption.IGNORE_CASE), "hisab")
 
         return text.trim()
     }
 
     fun isDateWord(w: String): Boolean {
         val lower = w.lowercase().trim()
-        val dateWords = setOf("tarikh", "tarik", "tarike", "tarikhe", "date", "tarikher", "tarikhor")
+        val dateWords = setOf("tarikh", "tarik", "tarek", "tarike", "tarikhe", "date", "tarikher", "tarikhor", "tareker")
         return dateWords.contains(lower)
     }
 
@@ -179,35 +178,40 @@ object BanglishNormalizer {
     fun isBalanceQuery(text: String): Boolean {
         val t = text.lowercase().trim()
         return t.contains("balance") ||
+                t.contains("balace") ||
                 t.contains("baki") ||
                 t.contains("savings") ||
-                (t.contains("koto") && t.contains("ache"))
+                (t.contains("koto") && (t.contains("ache") || t.contains("ase") || t.contains("ace") || t.contains("roilo")))
     }
 
     fun isHighestExpenseQuery(text: String): Boolean {
         val t = text.lowercase().trim()
         return t.contains("highest") ||
                 t.contains("shobcheye beshi") ||
+                t.contains("sobcheye beshi") ||
                 t.contains("shobcheye boro") ||
+                t.contains("sobcheye boro") ||
                 t.contains("biggest expense") ||
                 t.contains("max expense") ||
                 t.contains("maximum khoroch") ||
                 t.contains("maximum expense") ||
                 t.contains("top expense") ||
-                (t.contains("beshi taka") && (t.contains("kothay") || t.contains("khoroch") || t.contains("gese") || t.contains("gelo") || t.contains("hoise")))
+                (t.contains("beshi taka") && (t.contains("kothay") || t.contains("khoroch") || t.contains("khoros") || t.contains("koroch") || t.contains("gese") || t.contains("gelo") || t.contains("hoise")))
     }
 
     fun parsePeriodSummary(text: String): String? {
         val t = text.lowercase().trim()
-        val isToday = t.contains("today") || t.contains("ajke") || t.contains("ajker") ||
+        val isToday = t.contains("today") || t.contains("ajke") || t.contains("ajker") || t.contains("ajk") || t.contains("aaj") ||
                 t.contains("saradin") || t.contains("saradine") || t.contains("all day") ||
-                (t.startsWith("aj ") && t.contains("khoroch"))
-        val isYesterday = t.contains("yesterday") || t.contains("gotokal") || t.contains("gotokaler")
+                ((t.startsWith("aj ") || t.startsWith("aaj ")) && (t.contains("khoroch") || t.contains("khoros") || t.contains("koroch")))
+        val isYesterday = t.contains("yesterday") || t.contains("gotokal") || t.contains("gotokaler") || t.contains("gotokalke")
 
-        if (isToday && (t.contains("khoroch") || t.contains("expense") || t.contains("summary") || t.contains("hisab") || t.contains("gese") || t.contains("gelo") || t.contains("holo") || t.contains("data"))) {
+        val spendIndicators = t.contains("khoroch") || t.contains("khoros") || t.contains("koroch") || t.contains("expense") || t.contains("summary") || t.contains("hisab") || t.contains("hishab") || t.contains("gese") || t.contains("gelo") || t.contains("holo") || t.contains("hoise") || t.contains("data")
+
+        if (isToday && spendIndicators) {
             return "today"
         }
-        if (isYesterday && (t.contains("khoroch") || t.contains("expense") || t.contains("summary") || t.contains("hisab") || t.contains("gese") || t.contains("gelo") || t.contains("holo") || t.contains("data"))) {
+        if (isYesterday && spendIndicators) {
             return "yesterday"
         }
         return null
@@ -219,7 +223,12 @@ object BanglishNormalizer {
         k = k.removePrefix("amar ").removePrefix("amader ").trim()
         k = k.removeSuffix("koto").removeSuffix("koto taka").trim()
 
-        val genericWords = setOf("vara", "bhara", "khoroch", "cost", "bill", "expense", "spending", "taka", "tk", "gese", "gelo", "galo", "giyese", "geche", "hoise", "holo", "lagse", "laglo")
+        val genericWords = setOf(
+            "vara", "bhara", "bada", "khoroch", "khoros", "koroch", "cost", "bill", "expense", "spending",
+            "taka", "tk", "gese", "gelo", "galo", "giyese", "geche", "gache", "giese", "gesilo",
+            "hoise", "holo", "lagse", "lagce", "laglo", "lagsilo",
+            "disi", "dilam", "korsi", "kinlam", "paisi", "pelam"
+        )
         val parts = k.split(Regex("\\s+")).filter { it.isNotBlank() }
         val nonGeneric = parts.filter { it !in genericWords }
 
@@ -234,7 +243,7 @@ object BanglishNormalizer {
 
     private fun isStopWord(word: String): Boolean {
         val w = word.lowercase().trim()
-        val stops = setOf("khoroch", "hisab", "summary", "balance", "data", "expense", "taka", "tk", "all", "shob", "total", "report", "mash", "mashe", "ei mash", "ei mashe", "month", "this month")
+        val stops = setOf("khoroch", "khoros", "koroch", "hisab", "hishab", "summary", "balance", "balace", "data", "expense", "taka", "tk", "all", "shob", "sob", "total", "report", "mash", "mashe", "ei mash", "ei mashe", "month", "this month")
         return stops.contains(w)
     }
 
@@ -263,7 +272,7 @@ object BanglishNormalizer {
 
         // 3. "<item> [e/te/er/ar/ye] [mot]? koto [tk/taka] [gese/gelo/galo/giyese/geche/lagse/laglo/holo/hoise/khoroch/cost]?"
         val pInflected = Pattern.compile(
-            "^(.+?)(?:\\s+(?:e|te|er|ar|ye)|e|te|er|ar|ye)?(?:\\s+(?:mot|total))?\\s+koto(?:\\s*(?:tk|taka))?(?:\\s+(?:gese|gelo|galo|giyese|geche|lagse|laglo|holo|hoise|khoroch(?:\\s*(?:hoise|holo|hoyeche))?|cost))?$",
+            "^(.+?)(?:\\s+(?:e|te|er|ar|ye)|e|te|er|ar|ye)?(?:\\s+(?:mot|total))?\\s+koto(?:\\s*(?:tk|taka))?(?:\\s+(?:gese|gelo|galo|giyese|geche|gache|giese|lagse|lagce|laglo|lagsilo|holo|hoise|khoroch(?:\\s*(?:hoise|holo|hoyeche))?|khoros|koroch|cost))?$",
             Pattern.CASE_INSENSITIVE
         )
         val mInf = pInflected.matcher(clean)
@@ -276,7 +285,7 @@ object BanglishNormalizer {
 
         // 4. "<item> [vara/khoroch/cost/bill] [mot]? koto [tk/taka]?"
         val pVara = Pattern.compile(
-            "^(.+?)(?:\\s+(?:ar|er))?(?:\\s+(?:vara|khoroch|cost|bill))\\s+(?:mot\\s+)?koto(?:\\s*(?:tk|taka))?(?:\\s+(?:gese|gelo|geche|lagse|laglo|holo|hoise))?$",
+            "^(.+?)(?:\\s+(?:ar|er))?(?:\\s+(?:vara|bhara|bada|khoroch|khoros|koroch|cost|bill))\\s+(?:mot\\s+)?koto(?:\\s*(?:tk|taka))?(?:\\s+(?:gese|gelo|geche|gache|giese|lagse|lagce|laglo|lagsilo|holo|hoise))?$",
             Pattern.CASE_INSENSITIVE
         )
         val mVara = pVara.matcher(clean)
@@ -289,7 +298,7 @@ object BanglishNormalizer {
 
         // 5. "[mot]? koto [tk/taka] <item> [vara/khoroch/e/te] [gese/gelo/geche/hoise/holo/lagse/laglo]?"
         val pKotoPrefix = Pattern.compile(
-            "^(?:mot\\s+)?koto(?:\\s*(?:tk|taka))?\\s+(.+?)(?:\\s+(?:gese|gelo|galo|geche|hoise|holo|lagse|laglo))?$",
+            "^(?:mot\\s+)?koto(?:\\s*(?:tk|taka))?\\s+(.+?)(?:\\s+(?:gese|gelo|galo|geche|gache|giese|hoise|holo|lagse|lagce|laglo|lagsilo))?$",
             Pattern.CASE_INSENSITIVE
         )
         val mKoto = pKotoPrefix.matcher(clean)
@@ -340,13 +349,18 @@ object BanglishNormalizer {
 
     fun cleanExpenseNote(rawNote: String): String {
         val verbs = setOf(
-            "dilam", "disi", "diasilam", "korsi", "korechi", "korlam", "kore", "kora",
-            "kinlam", "kinechi", "kina", "kheyechi", "khelam", "khailam", "khaisi",
-            "peyechi", "peyesi", "pelam", "paisi", "paise", "paichi",
-            "laglo", "lagse", "gese", "gelo", "holo", "hoise", "galo", "giyese", "geche",
-            "diye", "diya", "dite", "ashte", "ashar", "ashlam", "jete", "jawar", "jawyar", "gelam",
+            "dilam", "disi", "dici", "diasilam", "disilam", "dise", "disen", "diyechi", "ditesi", "dese", "dite",
+            "korsi", "korci", "korechi", "korlam", "korsilam", "korchilam", "kore", "kora",
+            "kinlam", "kinci", "kinechi", "kinsi", "kinbo", "kina", "kinte",
+            "kheyechi", "khelam", "khailam", "khaisi", "khawa",
+            "peyechi", "peyesi", "pelam", "paisi", "paise", "paici", "payci",
+            "laglo", "lagse", "lagce", "lagbe", "lagsilo",
+            "gese", "gelo", "galo", "giyese", "gache", "giese", "gesilo", "holo", "hoise",
+            "diye", "diya", "dia", "dya", "ashte", "ashar", "ashlam", "jete", "jawar", "jawyar", "gelam",
             "pothe", "shomoy", "hoye", "nilam", "nisi", "ferar",
-            "tarikh", "tarik", "tarike", "tarikhe", "date",
+            "theke", "thika", "theikha", "theikei",
+            "jonno", "jnne", "jonne",
+            "tarikh", "tarik", "tarek", "tarike", "tarikhe", "date",
             "spent", "paid", "bought", "had", "ate", "cost", "add", "record", "log", "please", "enter"
         )
         val words = rawNote.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
@@ -358,9 +372,9 @@ object BanglishNormalizer {
         var text = rawText
         var targetTime: Long? = null
 
-        // 1. Explicit Day of Month: e.g. "4 tarikh", "4 tarikhe", "tarikh 4", "4 date", "15 tarikh", "4 tarik"
+        // 1. Explicit Day of Month: e.g. "4 tarikh", "4 tarikhe", "tarikh 4", "4 date", "15 tarikh", "4 tarik", "4 tarek"
         val dayPattern = Pattern.compile(
-            "\\b(?:(?:tarikh|tarik|date)\\s*(\\d{1,2})|(\\d{1,2})\\s*(?:tarikh|tarik|tarike|tarikhe|date|th\\s*e|th\\b))\\b",
+            "\\b(?:(?:tarikh|tarik|tarek|date)\\s*(\\d{1,2})|(\\d{1,2})\\s*(?:tarikh|tarik|tarek|tarike|tarikhe|tarikher|date|th\\s*e|th\\b|no\\b|number\\b))\\b",
             Pattern.CASE_INSENSITIVE
         )
         val matcher = dayPattern.matcher(text)
@@ -395,7 +409,7 @@ object BanglishNormalizer {
                 cal.set(java.util.Calendar.SECOND, 0)
                 cal.set(java.util.Calendar.MILLISECOND, 0)
                 targetTime = cal.timeInMillis
-                text = text.replace(Regex("\\b(?:gotokal|gotokalke|yesterday)\\b", RegexOption.IGNORE_CASE), " ").trim()
+                text = text.replace(Regex("\\b(?:gotokal|gotokalke|gotokaler|yesterday)\\b", RegexOption.IGNORE_CASE), " ").trim()
             } else if (lower.contains("porshu") || lower.contains("gotoporshu")) {
                 val cal = java.util.Calendar.getInstance()
                 cal.add(java.util.Calendar.DAY_OF_YEAR, -2)
@@ -416,8 +430,8 @@ object BanglishNormalizer {
 
     fun parseIncomeTransaction(text: String, defaultOccurredAt: Long? = null): QuickParseResult? {
         val t = text.lowercase().trim()
-        val incomeKeywords = listOf("salary", "salay", "beton", "income", "bonus", "cashback", "remittance", "credited", "deposit")
-        val receiveVerbs = listOf("paisi", "peyechi", "paise", "paichi", "pelam", "received", "got", "dhukse", "dhuklo")
+        val incomeKeywords = listOf("salary", "salay", "salari", "beton", "veton", "income", "bonus", "cashback", "remittance", "credited", "deposit")
+        val receiveVerbs = listOf("paisi", "peyechi", "paise", "paichi", "pelam", "peyesi", "payci", "received", "got", "dhukse", "dhuklo", "ashlo", "aslo")
 
         val hasIncomeKeyword = incomeKeywords.any { t.contains(it) }
         val hasReceiveVerb = receiveVerbs.any { t.contains(it) }
@@ -504,15 +518,18 @@ object BanglishNormalizer {
 
         val stopWords = setOf(
             "ami", "amra", "amar", "tumi", "apni", "amader", "tar", "tader", "ke", "der",
-            "aj", "ajke", "kalke", "gotokal", "dupure", "shokale", "raate", "bikale", "shondhay",
-            "tarikh", "tarik", "tarike", "tarikhe", "date",
-            "diye", "diasilam", "dilam", "disi", "korsi", "korechi", "korlam", "kore", "kora",
-            "kheyechi", "khelam", "khailam", "khaisi", "kinlam", "kinechi", "kina",
-            "laglo", "lagse", "gese", "gelo", "galo", "giyese", "geche", "holo", "hoise",
-            "theke", "er", "ar", "ebong", "jonno", "diya", "dite",
+            "aj", "ajke", "ajk", "aaj", "kalke", "gotokal", "dupure", "shokale", "raate", "bikale", "shondhay",
+            "tarikh", "tarik", "tarek", "tarike", "tarikhe", "date",
+            "diye", "diya", "dia", "dite", "diasilam", "disilam", "dilam", "disi", "dici", "dise", "disen",
+            "korsi", "korci", "korechi", "korlam", "korsilam", "korchilam", "kore", "kora",
+            "kheyechi", "khelam", "khailam", "khaisi", "khawa",
+            "kinlam", "kinci", "kinechi", "kinsi", "kinbo", "kina", "kinte",
+            "laglo", "lagse", "lagce", "lagbe", "lagsilo",
+            "gese", "gelo", "galo", "giyese", "gache", "giese", "gesilo", "holo", "hoise",
+            "theke", "thika", "theikha", "theikei", "er", "ar", "ebong", "jonno", "jnne", "jonne",
             "ashte", "ashar", "ashlam", "jete", "jawar", "jawyar", "gelam", "jaite", "jaoar",
             "pothe", "shomoy", "hoye", "nilam", "nisi", "ferar",
-            "expense", "khoroch", "tk", "taka", "takar", "tkr", "te", "e", "ye",
+            "expense", "khoroch", "khoros", "koroch", "tk", "taka", "takar", "tkr", "te", "e", "ye",
             "in", "at", "for", "on", "a", "an", "the", "i", "we", "my",
             "spent", "paid", "bought", "had", "ate", "cost",
             "can", "could", "you", "please", "add", "record", "log", "enter", "track", "save", "write"
@@ -530,10 +547,11 @@ object BanglishNormalizer {
         }
 
         val isIncome = textWithoutAmt.contains("salary") || textWithoutAmt.contains("salay") ||
-                textWithoutAmt.contains("beton") || textWithoutAmt.contains("bonus") ||
+                textWithoutAmt.contains("salari") || textWithoutAmt.contains("beton") ||
+                textWithoutAmt.contains("veton") || textWithoutAmt.contains("bonus") ||
                 textWithoutAmt.contains("income") || textWithoutAmt.contains("cashback") ||
                 textWithoutAmt.contains("paisi") || textWithoutAmt.contains("peyechi") ||
-                textWithoutAmt.contains("pelam")
+                textWithoutAmt.contains("pelam") || textWithoutAmt.contains("payci")
 
         val intent = if (isIncome) "prepare_income" else "prepare_expense"
         val category = if (isIncome) "Salary" else TransactionValidator.mapToValidCategory(null, note, com.example.expenseassistant.data.TransactionType.EXPENSE)

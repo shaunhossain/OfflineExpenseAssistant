@@ -424,4 +424,87 @@ class BanglishNormalizerTest {
         assertEquals("Transport", res4.category)
         org.junit.Assert.assertNotNull(res4.occurredAt)
     }
+
+    @Test
+    fun testMinedBanglishExpenseVariations() {
+        // "4 tarek 120 tk bajar korlam" (bajar -> bazar, tarek -> tarikh)
+        val r1 = BanglishNormalizer.tryFastDeterministicParse("4 tarek 120 tk bajar korlam")
+        assertTrue(r1.matched)
+        assertEquals("prepare_expense", r1.intent)
+        assertEquals(12000L, r1.amountMinor)
+        assertEquals("Grocery", r1.category)
+        assertEquals("bazar", r1.note)
+        org.junit.Assert.assertNotNull(r1.occurredAt)
+
+        // "amdr 1500 tk electricity bill disi"
+        val r2 = BanglishNormalizer.tryFastDeterministicParse("amdr 1500 tk electricity bill disi")
+        assertTrue(r2.matched)
+        assertEquals("prepare_expense", r2.intent)
+        assertEquals(150000L, r2.amountMinor)
+        assertEquals("Bills", r2.category)
+
+        // "15 tarek 450 tk medicin kinsi"
+        val r3 = BanglishNormalizer.tryFastDeterministicParse("15 tarek 450 tk medicin kinsi")
+        assertTrue(r3.matched)
+        assertEquals("prepare_expense", r3.intent)
+        assertEquals(45000L, r3.amountMinor)
+        assertEquals("Health", r3.category)
+        org.junit.Assert.assertNotNull(r3.occurredAt)
+
+        // "35000 tk beton payci"
+        val r4 = BanglishNormalizer.tryFastDeterministicParse("35000 tk beton payci")
+        assertTrue(r4.matched)
+        assertEquals("prepare_income", r4.intent)
+        assertEquals(3500000L, r4.amountMinor)
+        assertEquals("Salary", r4.category)
+
+        // "office ashte 60 tk riksa bada dilam"
+        val r5 = BanglishNormalizer.tryFastDeterministicParse("office ashte 60 tk riksa bada dilam")
+        assertTrue(r5.matched)
+        assertEquals("prepare_expense", r5.intent)
+        assertEquals(6000L, r5.amountMinor)
+        assertEquals("Transport", r5.category)
+    }
+
+    @Test
+    fun testMinedBanglishQueryVariations() {
+        // "amar balance koto ase" (ase instead of ache)
+        val q1 = BanglishNormalizer.tryFastDeterministicParse("amar balance koto ase")
+        assertTrue(q1.matched)
+        assertEquals("get_financial_balance", q1.intent)
+
+        // "koto taka ace"
+        val q2 = BanglishNormalizer.tryFastDeterministicParse("koto taka ace")
+        assertTrue(q2.matched)
+        assertEquals("get_financial_balance", q2.intent)
+
+        // "bajar e koto khoros hoise" (bajar, khoros)
+        val q3 = BanglishNormalizer.tryFastDeterministicParse("bajar e koto khoros hoise")
+        assertTrue(q3.matched)
+        assertEquals("get_item_total", q3.intent)
+        assertEquals("bazar", q3.searchQuery)
+
+        // "riksa vara te koto lagce" (riksa, lagce)
+        val q4 = BanglishNormalizer.tryFastDeterministicParse("riksa vara te koto lagce")
+        assertTrue(q4.matched)
+        assertEquals("get_item_total", q4.intent)
+        assertEquals("riksa", q4.searchQuery)
+
+        // "ajk saradin e koto koroch holo" (ajk, koroch)
+        val q5 = BanglishNormalizer.tryFastDeterministicParse("ajk saradin e koto koroch holo")
+        assertTrue(q5.matched)
+        assertEquals("get_period_summary", q5.intent)
+        assertEquals("today", q5.searchQuery)
+
+        // "gotokalke koto khoros holo" (gotokalke, khoros)
+        val q6 = BanglishNormalizer.tryFastDeterministicParse("gotokalke koto khoros holo")
+        assertTrue(q6.matched)
+        assertEquals("get_period_summary", q6.intent)
+        assertEquals("yesterday", q6.searchQuery)
+
+        // "sobcheye beshi khoros konta" (sobcheye, khoros)
+        val q7 = BanglishNormalizer.tryFastDeterministicParse("sobcheye beshi khoros konta")
+        assertTrue(q7.matched)
+        assertEquals("get_highest_expense", q7.intent)
+    }
 }
