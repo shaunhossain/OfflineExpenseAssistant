@@ -96,6 +96,8 @@ object BanglishNormalizer {
             "উনিশশো" to "1900", "উনিশশ" to "1900",
             "বিশশো" to "2000", "বিশশ" to "2000"
         )
+        s = s.replace(Regex("দেড়\\s*(?:শত|শো|শ)"), "150")
+        s = s.replace(Regex("আড়াই\\s*(?:শত|শো|শ)"), "250")
         s = s.replace(Regex("দেড়\\s*হাজার"), "1500")
         s = s.replace(Regex("আড়াই\\s*হাজার"), "2500")
         s = s.replace(Regex("দেড়\\s*লাখ"), "150000")
@@ -108,27 +110,27 @@ object BanglishNormalizer {
 
         // 2. Banglish Hundreds map
         val hundredsMap = listOf(
-            "eksho" to 100, "ek sho" to 100,
-            "dersho" to 150, "der sho" to 150, "derhsho" to 150,
-            "duisho" to 200, "dushho" to 200, "duso" to 200, "dui sho" to 200,
-            "araisho" to 250, "arai sho" to 250, "arhaisho" to 250,
-            "tinsho" to 300, "tin sho" to 300,
-            "charsho" to 400, "char sho" to 400,
-            "pachsho" to 500, "pasho" to 500, "pach sho" to 500,
-            "choysho" to 600, "choy sho" to 600,
-            "satsho" to 700, "shatsho" to 700, "sat sho" to 700,
-            "atsho" to 800, "aatsho" to 800, "aat sho" to 800, "at sho" to 800,
-            "noysho" to 900, "noy sho" to 900,
-            "egarosho" to 1100, "egaro sho" to 1100,
-            "barosho" to 1200, "baro sho" to 1200,
-            "terosho" to 1300, "tero sho" to 1300,
-            "choddosho" to 1400, "chouddosho" to 1400, "choddo sho" to 1400,
-            "ponerosho" to 1500, "ponero sho" to 1500,
-            "sholosho" to 1600, "solosho" to 1600, "solo sho" to 1600,
-            "soterosho" to 1700, "shoterosho" to 1700, "sotero sho" to 1700,
-            "atharsho" to 1800, "atharosho" to 1800, "atharo sho" to 1800,
-            "unishsho" to 1900, "unish sho" to 1900,
-            "bishsho" to 2000, "bis sho" to 2000
+            "eksho" to 100, "ek sho" to 100, "ek so" to 100, "ek soto" to 100, "ek shoto" to 100,
+            "dersho" to 150, "der sho" to 150, "derhsho" to 150, "derso" to 150, "der so" to 150, "der soto" to 150, "der shoto" to 150,
+            "duisho" to 200, "dushho" to 200, "duso" to 200, "dui sho" to 200, "dui so" to 200, "dui soto" to 200,
+            "araisho" to 250, "arai sho" to 250, "arhaisho" to 250, "araiso" to 250, "arai so" to 250, "arai soto" to 250, "arai shoto" to 250,
+            "tinsho" to 300, "tin sho" to 300, "tin so" to 300, "tin soto" to 300,
+            "charsho" to 400, "char sho" to 400, "char so" to 400, "char soto" to 400,
+            "pachsho" to 500, "pasho" to 500, "pach sho" to 500, "pach so" to 500, "pach soto" to 500,
+            "choysho" to 600, "choy sho" to 600, "choy so" to 600, "choy soto" to 600,
+            "satsho" to 700, "shatsho" to 700, "sat sho" to 700, "sat so" to 700, "sat soto" to 700,
+            "atsho" to 800, "aatsho" to 800, "aat sho" to 800, "at sho" to 800, "aat so" to 800, "at so" to 800, "aat soto" to 800,
+            "noysho" to 900, "noy sho" to 900, "noy so" to 900, "noy soto" to 900,
+            "egarosho" to 1100, "egaro sho" to 1100, "egaro so" to 1100, "egaro soto" to 1100,
+            "barosho" to 1200, "baro sho" to 1200, "baro so" to 1200, "baro soto" to 1200, "barosoto" to 1200, "baroshoto" to 1200,
+            "terosho" to 1300, "tero sho" to 1300, "tero so" to 1300, "tero soto" to 1300,
+            "choddosho" to 1400, "chouddosho" to 1400, "choddo sho" to 1400, "choddo so" to 1400, "chouddo soto" to 1400,
+            "ponerosho" to 1500, "ponero sho" to 1500, "ponero so" to 1500, "ponero soto" to 1500,
+            "sholosho" to 1600, "solosho" to 1600, "solo sho" to 1600, "solo so" to 1600, "solo soto" to 1600,
+            "soterosho" to 1700, "shoterosho" to 1700, "sotero sho" to 1700, "sotero so" to 1700, "sotero soto" to 1700,
+            "atharsho" to 1800, "atharosho" to 1800, "atharo sho" to 1800, "atharo so" to 1800, "atharo soto" to 1800,
+            "unishsho" to 1900, "unish sho" to 1900, "unish so" to 1900, "unish soto" to 1900,
+            "bishsho" to 2000, "bis sho" to 2000, "bis so" to 2000, "bish soto" to 2000
         )
 
         val bengaliNumberWords = mapOf(
@@ -222,9 +224,45 @@ object BanglishNormalizer {
         s = s.replace(Regex("\\b(?:der|derh|dedh)\\s*lakh\\b", RegexOption.IGNORE_CASE), "150000")
         s = s.replace(Regex("\\b(?:arai|arhai|adhai)\\s*lakh\\b", RegexOption.IGNORE_CASE), "250000")
 
-        // 8. "der sho" / "arai sho"
-        s = s.replace(Regex("\\b(?:der|derh|dedh)\\s*sho\\b", RegexOption.IGNORE_CASE), "150")
-        s = s.replace(Regex("\\b(?:arai|arhai|adhai)\\s*sho\\b", RegexOption.IGNORE_CASE), "250")
+        // 8. "der sho" / "der so" / "der soto" / "der shoto" / "derso"
+        s = s.replace(Regex("\\b(?:der|derh|dedh)\\s*(?:sho|so|shoto|soto)\\b", RegexOption.IGNORE_CASE), "150")
+        s = s.replace(Regex("\\b(?:derso|dedso|derhso)\\b", RegexOption.IGNORE_CASE), "150")
+        s = s.replace(Regex("\\b(?:arai|arhai|adhai)\\s*(?:sho|so|shoto|soto)\\b", RegexOption.IGNORE_CASE), "250")
+        s = s.replace(Regex("\\b(?:araiso|arhaiso|adhaiso)\\b", RegexOption.IGNORE_CASE), "250")
+
+        // General <num> soto / <num> shoto (e.g. tin soto -> 300, baro soto -> 1200)
+        val sotoPattern = Pattern.compile("\\b($numWordsRegex|\\d+)\\s*(?:shoto|soto)\\b", Pattern.CASE_INSENSITIVE)
+        val mSoto = sotoPattern.matcher(s)
+        val sbSoto = StringBuffer()
+        while (mSoto.find()) {
+            val numStr = mSoto.group(1)?.lowercase() ?: ""
+            val numVal = bengaliNumberWords[numStr]?.toDouble() ?: numStr.toDoubleOrNull()
+            if (numVal != null) {
+                val total = (numVal * 100).toLong()
+                mSoto.appendReplacement(sbSoto, total.toString())
+            } else {
+                mSoto.appendReplacement(sbSoto, mSoto.group(0) ?: "")
+            }
+        }
+        mSoto.appendTail(sbSoto)
+        s = sbSoto.toString()
+
+        // General <num> so (e.g. tin so -> 300, baro so -> 1200)
+        val soPattern = Pattern.compile("\\b($numWordsRegex|\\d+)\\s+so\\b", Pattern.CASE_INSENSITIVE)
+        val mSo = soPattern.matcher(s)
+        val sbSo = StringBuffer()
+        while (mSo.find()) {
+            val numStr = mSo.group(1)?.lowercase() ?: ""
+            val numVal = bengaliNumberWords[numStr]?.toDouble() ?: numStr.toDoubleOrNull()
+            if (numVal != null) {
+                val total = (numVal * 100).toLong()
+                mSo.appendReplacement(sbSo, total.toString())
+            } else {
+                mSo.appendReplacement(sbSo, mSo.group(0) ?: "")
+            }
+        }
+        mSo.appendTail(sbSo)
+        s = sbSo.toString()
 
         // 9. Replace standalone hundreds: "barosho", "dersho", "araisho", "satsho", etc.
         for ((w, v) in hundredsMap) {

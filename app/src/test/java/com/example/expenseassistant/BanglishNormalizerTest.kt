@@ -593,5 +593,41 @@ class BanglishNormalizerTest {
         assertEquals("prepare_expense", r12.intent)
         assertEquals(120000L, r12.amountMinor)
         assertEquals("Grocery", r12.category)
+
+        // "derso tk nasta" (150 tk)
+        val r13 = BanglishNormalizer.tryFastDeterministicParse("derso tk nasta")
+        assertTrue(r13.matched)
+        assertEquals(15000L, r13.amountMinor)
+        assertEquals("Food", r13.category)
+
+        // "der soto tk lunch" (150 tk)
+        val r14 = BanglishNormalizer.tryFastDeterministicParse("der soto tk lunch")
+        assertTrue(r14.matched)
+        assertEquals(15000L, r14.amountMinor)
+        assertEquals("Food", r14.category)
+
+        // "der so tk cha" (150 tk)
+        val r15 = BanglishNormalizer.tryFastDeterministicParse("der so tk cha")
+        assertTrue(r15.matched)
+        assertEquals(15000L, r15.amountMinor)
+        assertEquals("Food", r15.category)
+
+        // "araiso tk rickshaw" (250 tk)
+        val r16 = BanglishNormalizer.tryFastDeterministicParse("araiso tk rickshaw")
+        assertTrue(r16.matched)
+        assertEquals(25000L, r16.amountMinor)
+        assertEquals("Transport", r16.category)
+
+        // "baro soto tk bazar" (1200 tk)
+        val r17 = BanglishNormalizer.tryFastDeterministicParse("baro soto tk bazar")
+        assertTrue(r17.matched)
+        assertEquals(120000L, r17.amountMinor)
+        assertEquals("Grocery", r17.category)
+
+        // Bengali script: "দেড় শত টাকা নাস্তা" (150 tk)
+        val r18 = BanglishNormalizer.tryFastDeterministicParse("দেড় শত টাকা নাস্তা")
+        assertTrue(r18.matched)
+        assertEquals(15000L, r18.amountMinor)
+        assertEquals("Food", r18.category)
     }
 }
