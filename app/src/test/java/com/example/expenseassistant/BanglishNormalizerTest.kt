@@ -630,4 +630,37 @@ class BanglishNormalizerTest {
         assertEquals(15000L, r18.amountMinor)
         assertEquals("Food", r18.category)
     }
+
+    @Test
+    fun testJoinedCurrencyNormalization() {
+        assertEquals("100 tk ma ke bkash korlam", BanglishNormalizer.normalize("100tk ma ke bkash korlam"))
+        assertEquals("500 tk bhai k pathalam", BanglishNormalizer.normalize("500taka bhai k pathalam"))
+        assertEquals("50 tk", BanglishNormalizer.normalize("50৳"))
+        assertEquals("100 tk", BanglishNormalizer.normalize("১০০টাকা"))
+        assertEquals("tk 200", BanglishNormalizer.normalize("tk200"))
+    }
+
+    @Test
+    fun testMfsTransferComprehension() {
+        val r1 = BanglishNormalizer.tryFastDeterministicParse("100tk ma ke bkash korlam")
+        assertTrue(r1.matched)
+        assertEquals("prepare_expense", r1.intent)
+        assertEquals(10000L, r1.amountMinor)
+        assertEquals("ma ke bkash", r1.note)
+        assertEquals("Other", r1.category)
+
+        val r2 = BanglishNormalizer.tryFastDeterministicParse("500taka bhai k pathalam")
+        assertTrue(r2.matched)
+        assertEquals("prepare_expense", r2.intent)
+        assertEquals(50000L, r2.amountMinor)
+        assertEquals("bhai k", r2.note)
+        assertEquals("Other", r2.category)
+
+        val r3 = BanglishNormalizer.tryFastDeterministicParse("dost k 250 tk dilam")
+        assertTrue(r3.matched)
+        assertEquals("prepare_expense", r3.intent)
+        assertEquals(25000L, r3.amountMinor)
+        assertEquals("dost k", r3.note)
+        assertEquals("Other", r3.category)
+    }
 }

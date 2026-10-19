@@ -2,7 +2,34 @@ package com.example.expenseassistant.ai
 
 object ConversationalAiHelper {
 
-    fun tryConversationalResponse(userInput: String): String? {
+    fun isAdvisoryOrCoachingQuery(input: String): Boolean {
+        val text = input.trim().lowercase()
+        return text.contains("save money") || text.contains("taka bachabo") ||
+                text.contains("savings") || text.contains("shonchoy") ||
+                text.contains("budget") || text.contains("50/30/20") || text.contains("50 30 20") ||
+                text.contains("emergency fund") || text.contains("emergency taka") ||
+                text.contains("advice") || text.contains("consult") || text.contains("coaching") ||
+                text.contains("how to save") || text.contains("keno hisab") ||
+                text.contains("tips")
+    }
+
+    fun isPersonaOrSmallTalk(input: String): Boolean {
+        val text = input.trim().lowercase()
+        return text.contains("who are you") || text.contains("tumi ke") ||
+                text.contains("what are you") || text.contains("about yourself") ||
+                text.contains("tell me about you") || text.contains("introduce yourself") ||
+                text.contains("who made you") || text.contains("who created you") ||
+                text.contains("ke baniyeche") || text.contains("how are you") ||
+                text.contains("kemon acho") || text.contains("ki khobor") ||
+                text == "hi" || text == "hello" || text == "hey" ||
+                text.startsWith("hi ") || text.startsWith("hello ") || text.startsWith("hey ") ||
+                text.contains("thank") || text.contains("dhonnobad")
+    }
+
+    /**
+     * Fallback responses when Gemma 3 engine is not yet ready (model loading, extracting, error).
+     */
+    fun tryOfflineFallbackResponse(userInput: String): String? {
         val text = userInput.trim().lowercase()
 
         // 1. Identity & Persona
@@ -106,4 +133,10 @@ object ConversationalAiHelper {
 
         return null
     }
+
+    /**
+     * Backward-compatible helper method.
+     */
+    fun tryConversationalResponse(userInput: String): String? = tryOfflineFallbackResponse(userInput)
 }
+

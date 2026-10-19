@@ -42,6 +42,10 @@ object BanglishNormalizer {
         text = text.replace("taka", "tk")
         text = text.replace("bdt", "tk")
 
+        // Separate joined numbers and currency terms: e.g. "100tk" -> "100 tk", "500taka" -> "500 tk", "50৳" -> "50 tk"
+        text = text.replace(Regex("(\\d+(?:\\.\\d+)?)(tk)\\b", RegexOption.IGNORE_CASE), "$1 tk")
+        text = text.replace(Regex("\\b(tk)(\\d+(?:\\.\\d+)?)", RegexOption.IGNORE_CASE), "tk $2")
+
         // Normalize spoken number words (der, arai, sare sotero, barosho, etc.)
         text = normalizeSpokenNumbers(text)
 
@@ -613,6 +617,8 @@ object BanglishNormalizer {
             "kinlam", "kinci", "kinechi", "kinsi", "kinbo", "kina", "kinte",
             "kheyechi", "khelam", "khailam", "khaisi", "khawa",
             "peyechi", "peyesi", "pelam", "paisi", "paise", "paici", "payci",
+            "pathalam", "pathaisi", "pathaylam", "pathayechi", "pathiyechi", "pathano", "pathate",
+            "send", "sent", "transfer", "pathechi", "patheyasi",
             "laglo", "lagse", "lagce", "lagbe", "lagsilo",
             "gese", "gelo", "galo", "giyese", "gache", "giese", "gesilo", "holo", "hoise",
             "diye", "diya", "dia", "dya", "ashte", "ashar", "ashlam", "jete", "jawar", "jawyar", "gelam",
@@ -783,6 +789,8 @@ object BanglishNormalizer {
             "korsi", "korci", "korechi", "korlam", "korsilam", "korchilam", "kore", "kora",
             "kheyechi", "khelam", "khailam", "khaisi", "khawa",
             "kinlam", "kinci", "kinechi", "kinsi", "kinbo", "kina", "kinte",
+            "pathalam", "pathaisi", "pathaylam", "pathayechi", "pathiyechi", "pathano", "pathate",
+            "send", "sent", "transfer", "pathechi", "patheyasi",
             "laglo", "lagse", "lagce", "lagbe", "lagsilo",
             "gese", "gelo", "galo", "giyese", "gache", "giese", "gesilo", "holo", "hoise",
             "theke", "thika", "theikha", "theikei", "er", "ar", "ebong", "jonno", "jnne", "jonne",

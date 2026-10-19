@@ -67,7 +67,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val gemmaEngine = GemmaEngine.getInstance()
     private val tools = ExpenseTools(repository)
     private val toolRegistry = McpToolRegistry(tools)
-    private val assistantRouter = AssistantRouter(gemmaEngine, toolRegistry)
+    private val assistantRouter = AssistantRouter(gemmaEngine, toolRegistry, repository)
 
     val engineState: StateFlow<EngineState> = gemmaEngine.state
 

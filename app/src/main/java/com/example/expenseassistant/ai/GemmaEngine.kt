@@ -73,12 +73,20 @@ class GemmaEngine private constructor() {
         }
     }
 
-    suspend fun generateResponse(prompt: String): Flow<String> = flow {
-        val currentConversation = conversation
-        if (currentConversation == null) {
-            emit("Error: Gemma engine is not ready.")
-            return@flow
-        }
+    internal var testResponseEmitter: ((String) -> Flow<String>)? = null
+
+    internal fun setStateForTesting(newState: EngineState) {
+        _state.value = newState
+    }
+
+    suspend fun generateResponse(prompt: String): Flow<String> {
+        testResponseEmitter?.let { return it(prompt) }
+        return flow {
+            val currentConversation = conversation
+            if (currentConversation == null) {
+                emit("Error: Gemma engine is not ready.")
+                return@flow
+            }
 
         val fullResponse = StringBuilder()
         try {
@@ -96,6 +104,7 @@ class GemmaEngine private constructor() {
             emit("Error: ${e.localizedMessage}")
         }
     }.flowOn(Dispatchers.IO)
+    }
 
     private fun ensureModelFileExists(
         context: Context,
