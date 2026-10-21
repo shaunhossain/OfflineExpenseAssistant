@@ -25,6 +25,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,10 +49,17 @@ fun ConfirmationDialog(
     onDismiss: () -> Unit
 ) {
     val initialTaka = (confirmation.validationResult.normalizedAmountMinor / 100.0).toString()
-    var amountText by remember { mutableStateOf(initialTaka.removeSuffix(".0")) }
-    var selectedCategory by remember { mutableStateOf(confirmation.validationResult.normalizedCategory) }
-    var noteText by remember { mutableStateOf(confirmation.validationResult.normalizedNote) }
-    var selectedType by remember { mutableStateOf(confirmation.proposedType) }
+    var amountText by remember(confirmation) { mutableStateOf(initialTaka.removeSuffix(".0")) }
+    var selectedCategory by remember(confirmation) { mutableStateOf(confirmation.validationResult.normalizedCategory) }
+    var noteText by remember(confirmation) { mutableStateOf(confirmation.validationResult.normalizedNote) }
+    var selectedType by remember(confirmation) { mutableStateOf(confirmation.proposedType) }
+
+    LaunchedEffect(confirmation) {
+        amountText = (confirmation.validationResult.normalizedAmountMinor / 100.0).toString().removeSuffix(".0")
+        selectedCategory = confirmation.validationResult.normalizedCategory
+        noteText = confirmation.validationResult.normalizedNote
+        selectedType = confirmation.proposedType
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,

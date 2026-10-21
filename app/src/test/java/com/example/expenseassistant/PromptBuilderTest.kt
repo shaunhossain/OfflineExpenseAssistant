@@ -81,4 +81,19 @@ class PromptBuilderTest {
         val prompt2 = PromptBuilder.buildUserPrompt("500taka bhai k pathalam")
         assertTrue(prompt2 == "500 tk bhai k pathalam")
     }
+
+    @Test
+    fun testBuildBanglishSemanticBridgeAndEnrichedPrompt() {
+        val bridge = PromptBuilder.buildBanglishSemanticBridge("60 tk riksa bhara")
+        assertTrue(bridge.isNotEmpty())
+        assertTrue(bridge.contains("[Banglish Semantic Bridge:"))
+        assertTrue(bridge.contains("rickshaw"))
+        assertTrue(bridge.contains("fare"))
+
+        val enriched = PromptBuilder.buildEnrichedUserPrompt("50 tk bus vara")
+        assertTrue(enriched.startsWith("50 tk bus vara"))
+        assertTrue(enriched.contains("[Banglish Semantic Bridge:"))
+        assertTrue(enriched.contains("EnglishMeaning="))
+        assertTrue(enriched.contains("BengaliScript="))
+    }
 }

@@ -13,7 +13,11 @@ data class ParsedModelIntent(
     val reminderMinute: Int? = null,
     val query: String? = null,
     val items: List<com.example.expenseassistant.mcp.SingleItemConfirmation> = emptyList(),
-    val rawJson: String = ""
+    val rawJson: String = "",
+    val id: Long? = null,
+    val limit: Int? = null,
+    val isActive: Boolean? = null,
+    val occurredAt: Long? = null
 )
 
 object ModelOutputParser {
@@ -69,6 +73,16 @@ object ModelOutputParser {
             val query = if (obj.has("query") && !obj.get("query").isJsonNull) {
                 obj.get("query").asString.trim()
             } else null
+            val id = parseNullableLong(obj, "id")
+            val limit = parseNullableInt(obj, "limit")
+            val isActive = if (obj.has("isActive") && !obj.get("isActive").isJsonNull) {
+                try {
+                    obj.get("isActive").asBoolean
+                } catch (e: Exception) {
+                    obj.get("isActive").asString.toBooleanStrictOrNull()
+                }
+            } else null
+            val occurredAt = parseNullableLong(obj, "occurredAt")
 
             val items = mutableListOf<com.example.expenseassistant.mcp.SingleItemConfirmation>()
             if (obj.has("items") && obj.get("items").isJsonArray) {
@@ -109,7 +123,11 @@ object ModelOutputParser {
                 reminderMinute = reminderMinute,
                 query = query,
                 items = items,
-                rawJson = candidate
+                rawJson = candidate,
+                id = id,
+                limit = limit,
+                isActive = isActive,
+                occurredAt = occurredAt
             )
         } catch (e: Exception) {
             null
@@ -144,6 +162,15 @@ object ModelOutputParser {
             obj.get(field).asInt
         } catch (e: Exception) {
             obj.get(field).asString.toIntOrNull()
+        }
+    }
+
+    private fun parseNullableLong(obj: JsonObject, field: String): Long? {
+        if (!obj.has(field) || obj.get(field).isJsonNull) return null
+        return try {
+            obj.get(field).asLong
+        } catch (e: Exception) {
+            obj.get(field).asString.toLongOrNull()
         }
     }
 }

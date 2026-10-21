@@ -36,7 +36,34 @@ class GemmaEngine private constructor() {
 
     private var engine: Engine? = null
     private var conversation: Conversation? = null
+    private var turnCount: Int = 0
     private val mutex = Mutex()
+
+    /**
+     * Recreates the LiteRT-LM [Conversation] with a fresh KV cache and system prompt.
+     * Because Gemma 3 270M has a compact context window and every user prompt is
+     * self-contained (with its own Banglish semantic bridge or financial snapshot),
+     * resetting the conversation periodically or after an error prevents KV-cache
+     * saturation and multi-turn attention drift.
+     */
+    fun resetConversation() {
+        val currentEngine = engine ?: return
+        try {
+            conversation?.close()
+        } catch (e: Exception) {
+            Log.w(TAG, "Error closing previous conversation during reset", e)
+        }
+        try {
+            val convConfig = ConversationConfig(
+                systemInstruction = Contents.of(PromptBuilder.buildSystemPrompt())
+            )
+            conversation = currentEngine.createConversation(convConfig)
+            turnCount = 0
+            Log.d(TAG, "LiteRT-LM Conversation KV cache reset successfully.")
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to recreate LiteRT-LM Conversation", e)
+        }
+    }
 
     suspend fun initialize(context: Context) {
         mutex.withLock {
@@ -82,43 +109,49 @@ class GemmaEngine private constructor() {
     suspend fun generateResponse(prompt: String): Flow<String> {
         testResponseEmitter?.let { return it(prompt) }
         return flow {
+            if (turnCount >= MAX_TURNS_PER_CONVERSATION) {
+                resetConversation()
+            }
             val currentConversation = conversation
             if (currentConversation == null) {
                 emit("Error: Gemma engine is not ready.")
                 return@flow
             }
 
-        val fullResponse = StringBuilder()
-        try {
-            currentConversation.sendMessageAsync(prompt).collect { message ->
-                val chunk = message.contents.contents
-                    .filterIsInstance<Content.Text>()
-                    .joinToString("") { it.text }
-                if (chunk.isNotEmpty()) {
-                    fullResponse.append(chunk)
-                    emit(chunk)
+            val fullResponse = StringBuilder()
+            try {
+                turnCount++
+                currentConversation.sendMessageAsync(prompt).collect { message ->
+                    val chunk = message.contents.contents
+                        .filterIsInstance<Content.Text>()
+                        .joinToString("") { it.text }
+                    if (chunk.isNotEmpty()) {
+                        fullResponse.append(chunk)
+                        emit(chunk)
+                    }
                 }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error during inference; resetting conversation KV cache", e)
+                resetConversation()
+                emit("Error: ${e.localizedMessage}")
             }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error during inference", e)
-            emit("Error: ${e.localizedMessage}")
-        }
-    }.flowOn(Dispatchers.IO)
+        }.flowOn(Dispatchers.IO)
     }
 
     private fun ensureModelFileExists(
         context: Context,
         onProgress: (Int) -> Unit
     ): File {
-        val targetFile = File(context.filesDir, MODEL_FILENAME)
+        val filename = resolveModelFilename(context)
+        val targetFile = File(context.filesDir, filename)
         if (targetFile.exists() && targetFile.length() > 10_000_000L) {
             onProgress(100)
             return targetFile
         }
 
-        Log.i(TAG, "Extracting model from assets to ${targetFile.absolutePath}...")
-        context.assets.open(MODEL_FILENAME).use { input ->
-            val totalBytes = input.available().takeIf { it > 0 }?.toLong() ?: (521L * 1024 * 1024)
+        Log.i(TAG, "Extracting model '$filename' from assets to ${targetFile.absolutePath}...")
+        context.assets.open(filename).use { input ->
+            val totalBytes = input.available().takeIf { it > 0 }?.toLong() ?: (304L * 1024 * 1024)
             var copiedBytes = 0L
 
             FileOutputStream(targetFile).use { output ->
@@ -148,6 +181,7 @@ class GemmaEngine private constructor() {
         try {
             conversation?.close()
             conversation = null
+            turnCount = 0
             engine?.close()
             engine = null
             _state.value = EngineState.Uninitialized
@@ -158,7 +192,30 @@ class GemmaEngine private constructor() {
 
     companion object {
         private const val TAG = "GemmaEngine"
-        const val MODEL_FILENAME = "Qwen2.5-0.5B-Instruct_multi-prefill-seq_q8_ekv1280.task"
+        private const val MAX_TURNS_PER_CONVERSATION = 4
+        const val DEFAULT_MODEL_FILENAME = "gemma3-270m-it-q8.litertlm"
+        var MODEL_FILENAME = DEFAULT_MODEL_FILENAME
+
+        fun resolveModelFilename(context: Context): String {
+            val assetsList = try { context.assets.list("")?.toList() ?: emptyList() } catch (e: Exception) { emptyList() }
+            val gemma3 = assetsList.firstOrNull { it.contains("gemma3", ignoreCase = true) }
+            if (gemma3 != null) {
+                MODEL_FILENAME = gemma3
+                return gemma3
+            }
+            val anyGemma = assetsList.firstOrNull { it.contains("gemma", ignoreCase = true) }
+            if (anyGemma != null) {
+                MODEL_FILENAME = anyGemma
+                return anyGemma
+            }
+            val anyModel = assetsList.firstOrNull { it.endsWith(".litertlm") || it.endsWith(".task") }
+            if (anyModel != null) {
+                MODEL_FILENAME = anyModel
+                return anyModel
+            }
+            MODEL_FILENAME = DEFAULT_MODEL_FILENAME
+            return DEFAULT_MODEL_FILENAME
+        }
 
         @Volatile
         private var INSTANCE: GemmaEngine? = null

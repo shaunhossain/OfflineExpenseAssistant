@@ -59,6 +59,33 @@ interface ExpenseDao {
     @Query("DELETE FROM expenses")
     suspend fun deleteAllExpenses()
 
+    @Query("SELECT * FROM expenses WHERE id = :id")
+    suspend fun getExpenseById(id: Long): ExpenseEntity?
+
+    @Query("SELECT * FROM expenses ORDER BY occurredAt DESC, id DESC LIMIT 1")
+    suspend fun getLatestExpense(): ExpenseEntity?
+
+    @Query("SELECT * FROM expenses ORDER BY occurredAt DESC, id DESC LIMIT :limit")
+    suspend fun getRecentExpensesSync(limit: Int = 10): List<ExpenseEntity>
+
+    @Query("SELECT COUNT(*) FROM expenses")
+    suspend fun getExpenseCount(): Int
+
+    @Query("SELECT COUNT(*) FROM expenses WHERE type = 'EXPENSE'")
+    suspend fun getTotalExpenseTransactionCount(): Int
+
+    @Query("SELECT COUNT(*) FROM expenses WHERE type = 'INCOME'")
+    suspend fun getTotalIncomeTransactionCount(): Int
+
+    @Query("SELECT MIN(occurredAt) FROM expenses")
+    suspend fun getEarliestExpenseDate(): Long?
+
+    @Query("SELECT MAX(occurredAt) FROM expenses")
+    suspend fun getLatestExpenseDate(): Long?
+
+    @Query("SELECT COUNT(*) FROM reminders")
+    suspend fun getReminderCount(): Int
+
     // Reminders
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertReminder(reminder: ReminderEntity): Long

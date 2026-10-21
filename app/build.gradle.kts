@@ -57,7 +57,7 @@ android {
     }
 
     androidResources {
-        noCompress += listOf("litertlm")
+        noCompress += listOf("litertlm", "task", "tflite")
     }
 
     packaging {

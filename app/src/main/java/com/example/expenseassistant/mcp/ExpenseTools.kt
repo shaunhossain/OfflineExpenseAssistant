@@ -10,6 +10,7 @@ import com.example.expenseassistant.domain.SpendingAnalyzer
 import com.example.expenseassistant.domain.TransactionValidator
 import com.example.expenseassistant.domain.ValidationResult
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
@@ -56,6 +57,32 @@ sealed interface ToolResult {
         val insights: List<HabitInsight>
     ) : ToolResult
 
+    data class RequireDeleteConfirmation(
+        val transactionId: Long,
+        val itemDescription: String,
+        val amountMinor: Long,
+        val message: String
+    ) : ToolResult
+
+    data class RequireClearConfirmation(
+        val message: String
+    ) : ToolResult
+
+    data class DatabaseStatsResult(
+        val stats: com.example.expenseassistant.data.DatabaseStats,
+        val message: String
+    ) : ToolResult
+
+    data class ReminderListResult(
+        val reminders: List<com.example.expenseassistant.data.ReminderEntity>,
+        val message: String
+    ) : ToolResult
+
+    data class RecentTransactionsResult(
+        val transactions: List<com.example.expenseassistant.data.ExpenseEntity>,
+        val message: String
+    ) : ToolResult
+
     data class PlainMessage(
         val message: String
     ) : ToolResult
@@ -91,14 +118,79 @@ class ExpenseTools(private val repository: ExpenseRepository) {
             parametersSchema = """{}"""
         ),
         ToolDefinition(
+            name = "get_item_total",
+            description = "Calculates total amount spent on a specific item or category, with optional timeframe filter.",
+            parametersSchema = """{"query": "String", "period": "String?"}"""
+        ),
+        ToolDefinition(
+            name = "get_financial_balance",
+            description = "Calculates current monthly balance, income, savings rate, and expense totals.",
+            parametersSchema = """{}"""
+        ),
+        ToolDefinition(
+            name = "get_highest_expense",
+            description = "Retrieves the single largest expense recorded in the current month.",
+            parametersSchema = """{}"""
+        ),
+        ToolDefinition(
+            name = "get_period_summary",
+            description = "Fetches itemized transaction summary for a specified period (today, yesterday, week).",
+            parametersSchema = """{"period": "String"}"""
+        ),
+        ToolDefinition(
             name = "search_transactions",
             description = "Searches persisted transactions by keyword or category.",
             parametersSchema = """{"query": "String"}"""
         ),
         ToolDefinition(
+            name = "get_recent_transactions",
+            description = "Retrieves the latest transactions with their unique IDs, notes, categories, and amounts.",
+            parametersSchema = """{"limit": "Int?"}"""
+        ),
+        ToolDefinition(
+            name = "delete_transaction",
+            description = "Prepares confirmation to delete a specific transaction by its unique ID.",
+            parametersSchema = """{"id": "Long"}"""
+        ),
+        ToolDefinition(
+            name = "delete_last_transaction",
+            description = "Prepares confirmation to delete the most recently entered transaction.",
+            parametersSchema = """{}"""
+        ),
+        ToolDefinition(
+            name = "update_transaction",
+            description = "Updates an existing transaction record by ID.",
+            parametersSchema = """{"id": "Long", "amountMinor": "Long?", "category": "String?", "note": "String?"}"""
+        ),
+        ToolDefinition(
             name = "propose_reminder",
             description = "Proposes a daily or one-off expense reminder for user confirmation.",
             parametersSchema = """{"hour": "Int", "minute": "Int", "message": "String"}"""
+        ),
+        ToolDefinition(
+            name = "list_reminders",
+            description = "Lists all configured reminders with IDs, scheduled times, and active statuses.",
+            parametersSchema = """{}"""
+        ),
+        ToolDefinition(
+            name = "delete_reminder",
+            description = "Deletes a scheduled reminder by its ID.",
+            parametersSchema = """{"id": "Long"}"""
+        ),
+        ToolDefinition(
+            name = "toggle_reminder",
+            description = "Pauses or activates an existing reminder by ID.",
+            parametersSchema = """{"id": "Long", "isActive": "Boolean"}"""
+        ),
+        ToolDefinition(
+            name = "get_database_stats",
+            description = "Fetches aggregate database telemetry including total transactions, counts, and date range.",
+            parametersSchema = """{}"""
+        ),
+        ToolDefinition(
+            name = "clear_all_transactions",
+            description = "Prepares a confirmation request to delete all recorded transactions.",
+            parametersSchema = """{}"""
         ),
         ToolDefinition(
             name = "get_spending_patterns",
@@ -245,7 +337,7 @@ class ExpenseTools(private val repository: ExpenseRepository) {
         return ToolResult.HabitPatternsResult(insights)
     }
 
-    suspend fun getItemOrCategoryTotal(keyword: String): ToolResult {
+    suspend fun getItemOrCategoryTotal(keyword: String, period: String? = null): ToolResult {
         val cleanKeyword = keyword.trim().lowercase()
         if (cleanKeyword.isBlank()) {
             return getSpendingSummary()
@@ -268,9 +360,41 @@ class ExpenseTools(private val repository: ExpenseRepository) {
             return ToolResult.PlainMessage(message)
         }
 
-        val totalMinor = matches.sumOf { it.amountMinor }
-        val totalFormatted = Money(totalMinor).toFormattedString()
-        val dateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
+        // Apply period filter if specified
+        val (filteredMatches, periodLabel) = when {
+            period?.contains("week", ignoreCase = true) == true || period?.contains("shoptah", ignoreCase = true) == true -> {
+                val cal = Calendar.getInstance()
+                cal.firstDayOfWeek = Calendar.MONDAY
+                cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+                cal.set(Calendar.HOUR_OF_DAY, 0)
+                cal.set(Calendar.MINUTE, 0)
+                cal.set(Calendar.SECOND, 0)
+                cal.set(Calendar.MILLISECOND, 0)
+                if (cal.timeInMillis > System.currentTimeMillis()) {
+                    cal.add(Calendar.DAY_OF_MONTH, -7)
+                }
+                val startOfWeek = cal.timeInMillis
+                Pair(matches.filter { it.occurredAt >= startOfWeek }, "this week")
+            }
+            period?.contains("month", ignoreCase = true) == true || period?.contains("mash", ignoreCase = true) == true -> {
+                val cal = Calendar.getInstance()
+                cal.set(Calendar.DAY_OF_MONTH, 1)
+                cal.set(Calendar.HOUR_OF_DAY, 0)
+                cal.set(Calendar.MINUTE, 0)
+                cal.set(Calendar.SECOND, 0)
+                cal.set(Calendar.MILLISECOND, 0)
+                Pair(matches.filter { it.occurredAt >= cal.timeInMillis }, "this month")
+            }
+            period?.contains("today", ignoreCase = true) == true || period?.contains("aj", ignoreCase = true) == true -> {
+                val cal = Calendar.getInstance()
+                cal.set(Calendar.HOUR_OF_DAY, 0)
+                cal.set(Calendar.MINUTE, 0)
+                cal.set(Calendar.SECOND, 0)
+                cal.set(Calendar.MILLISECOND, 0)
+                Pair(matches.filter { it.occurredAt >= cal.timeInMillis }, "today")
+            }
+            else -> Pair(matches, null)
+        }
 
         val icon = when {
             cleanKeyword.contains("bus") || cleanKeyword.contains("vara") || cleanKeyword.contains("rickshaw") || cleanKeyword.contains("transport") -> "🚌"
@@ -283,15 +407,26 @@ class ExpenseTools(private val repository: ExpenseRepository) {
             else -> "📊"
         }
 
+        if (periodLabel != null && filteredMatches.isEmpty()) {
+            val allTimeTotal = Money(matches.sumOf { it.amountMinor }).toFormattedString()
+            val msg = "$icon No expenses found for '$keyword' $periodLabel.\n(All-time total: $allTimeTotal across ${matches.size} transactions)"
+            return ToolResult.PlainMessage(msg)
+        }
+
+        val totalMinor = filteredMatches.sumOf { it.amountMinor }
+        val totalFormatted = Money(totalMinor).toFormattedString()
+        val dateFormat = SimpleDateFormat("dd MMM, hh:mm a", Locale.getDefault())
+
         val sb = StringBuilder()
-        sb.append("$icon Total for '$keyword': $totalFormatted (${matches.size} transactions)\n\n")
+        val titleLabel = if (periodLabel != null) " ($periodLabel)" else ""
+        sb.append("$icon Total for '$keyword'$titleLabel: $totalFormatted (${filteredMatches.size} transactions)\n\n")
         sb.append("Recent matching expenses:\n")
-        matches.take(8).forEachIndexed { idx, tx ->
+        filteredMatches.take(8).forEachIndexed { idx, tx ->
             val dateStr = dateFormat.format(Date(tx.occurredAt))
             sb.append("${idx + 1}. ${Money(tx.amountMinor).toFormattedString()} • ${tx.note} [${tx.category}] ($dateStr)\n")
         }
-        if (matches.size > 8) {
-            sb.append("... and ${matches.size - 8} more transactions.\n")
+        if (filteredMatches.size > 8) {
+            sb.append("... and ${filteredMatches.size - 8} more transactions.\n")
         }
 
         return ToolResult.PlainMessage(sb.toString().trim())
@@ -300,11 +435,18 @@ class ExpenseTools(private val repository: ExpenseRepository) {
     suspend fun getFinancialBalance(): ToolResult {
         val summary = repository.getMonthlySummary()
         val monthName = SimpleDateFormat("MMMM yyyy", Locale.getDefault()).format(Date())
+        val savingsRateStr = if (summary.totalIncome.amountMinor > 0) {
+            val rate = ((summary.netBalance.amountMinor.toDouble() / summary.totalIncome.amountMinor.toDouble()) * 100).coerceAtLeast(0.0)
+            String.format(Locale.US, "%.1f%%", rate)
+        } else {
+            "N/A"
+        }
         val msg = """
-💰 Financial Balance ($monthName):
+💰 Financial Balance & Savings ($monthName):
 • Total Income: ${summary.totalIncome.toFormattedString()}
 • Total Expenses: ${summary.totalExpense.toFormattedString()}
-• Net Remaining: ${summary.netBalance.toFormattedString()}
+• Net Remaining / Savings: ${summary.netBalance.toFormattedString()}
+• Savings Rate: $savingsRateStr
 Across ${summary.transactionCount} transactions this month.
         """.trimIndent()
         return ToolResult.PlainMessage(msg)
@@ -331,11 +473,24 @@ Across ${summary.transactionCount} transactions this month.
 
     suspend fun getPeriodSummary(period: String): ToolResult {
         val isToday = period.lowercase().contains("today") || period.lowercase().contains("aj")
-        val summary = if (isToday) repository.getTodaySummary() else repository.getYesterdaySummary()
-        val title = if (isToday) "📅 Today's Summary" else "📅 Yesterday's Summary"
+        val isYesterday = period.lowercase().contains("yesterday") || period.lowercase().contains("gotokal")
+        val isWeek = period.lowercase().contains("week") || period.lowercase().contains("shoptah")
+
+        val summary = when {
+            isToday -> repository.getTodaySummary()
+            isYesterday -> repository.getYesterdaySummary()
+            isWeek -> repository.getThisWeekSummary()
+            else -> repository.getTodaySummary()
+        }
+        val title = when {
+            isToday -> "📅 Today's Summary"
+            isYesterday -> "📅 Yesterday's Summary"
+            isWeek -> "📅 This Week's Summary"
+            else -> "📅 Spending Summary"
+        }
 
         if (summary.transactions.isEmpty()) {
-            return ToolResult.PlainMessage("$title:\nNo transactions recorded for this day.")
+            return ToolResult.PlainMessage("$title:\nNo transactions recorded for this period.")
         }
 
         val sb = StringBuilder()
@@ -500,5 +655,141 @@ I understand natural English and Banglish!
                 "You can see all of them in the Analytics tab or ask 'full month data'."
 
         return ToolResult.PlainMessage(msg)
+    }
+
+    suspend fun getRecentTransactions(limit: Int = 10): ToolResult {
+        val list = repository.getRecentExpensesSync(limit)
+        if (list.isEmpty()) {
+            return ToolResult.PlainMessage("No recent transactions found.")
+        }
+        val dateFormat = SimpleDateFormat("dd MMM, hh:mm a", Locale.getDefault())
+        val sb = StringBuilder()
+        sb.append("📋 Recent Transactions (${list.size}):\n")
+        list.forEachIndexed { idx, tx ->
+            val amountStr = Money(tx.amountMinor).toFormattedString()
+            val sign = if (tx.type == TransactionType.INCOME.name) "+" else "-"
+            val dateStr = dateFormat.format(Date(tx.occurredAt))
+            sb.append("${idx + 1}. [ID: ${tx.id}] $sign$amountStr • ${tx.note} [${tx.category}] ($dateStr)\n")
+        }
+        return ToolResult.RecentTransactionsResult(list, sb.toString().trim())
+    }
+
+    suspend fun deleteTransaction(id: Long?): ToolResult {
+        if (id == null) {
+            return ToolResult.PlainMessage("Please specify a transaction ID to delete (e.g. 'delete transaction 5').")
+        }
+        val tx = repository.getExpenseById(id)
+            ?: return ToolResult.PlainMessage("Transaction with ID #$id was not found. Try 'recent transactions dekhao' to see valid IDs.")
+        val amountStr = Money(tx.amountMinor).toFormattedString()
+        return ToolResult.RequireDeleteConfirmation(
+            transactionId = tx.id,
+            itemDescription = "${tx.note} [${tx.category}]",
+            amountMinor = tx.amountMinor,
+            message = "Are you sure you want to delete transaction #$id: '${tx.note}' ($amountStr)?"
+        )
+    }
+
+    suspend fun deleteLastTransaction(): ToolResult {
+        val tx = repository.getLatestExpense()
+            ?: return ToolResult.PlainMessage("No transactions found to delete.")
+        val amountStr = Money(tx.amountMinor).toFormattedString()
+        val dateFormat = SimpleDateFormat("dd MMM, hh:mm a", Locale.getDefault())
+        val dateStr = dateFormat.format(Date(tx.occurredAt))
+        return ToolResult.RequireDeleteConfirmation(
+            transactionId = tx.id,
+            itemDescription = "${tx.note} [${tx.category}]",
+            amountMinor = tx.amountMinor,
+            message = "Are you sure you want to delete your last transaction: '${tx.note}' ($amountStr) from $dateStr?"
+        )
+    }
+
+    suspend fun updateTransaction(
+        id: Long?,
+        amountMinor: Long? = null,
+        category: String? = null,
+        note: String? = null,
+        occurredAt: Long? = null
+    ): ToolResult {
+        if (id == null) {
+            return ToolResult.PlainMessage("Please provide the transaction ID to update.")
+        }
+        val existing = repository.getExpenseById(id)
+            ?: return ToolResult.PlainMessage("Transaction with ID #$id was not found.")
+
+        val newNote = note?.takeIf { it.isNotBlank() } ?: existing.note
+        val newAmount = if (amountMinor != null && amountMinor > 0) amountMinor else existing.amountMinor
+        val newCat = category?.takeIf { it.isNotBlank() } ?: existing.category
+        val newOccurred = occurredAt ?: existing.occurredAt
+
+        val updated = existing.copy(
+            amountMinor = newAmount,
+            category = newCat,
+            note = newNote,
+            occurredAt = newOccurred
+        )
+        repository.updateExpense(updated)
+        val formattedAmount = Money(newAmount).toFormattedString()
+        return ToolResult.PlainMessage("✅ Updated transaction #$id: '$newNote' ($formattedAmount) [${newCat}]")
+    }
+
+    suspend fun listReminders(): ToolResult {
+        val list = repository.getAllRemindersSync()
+        if (list.isEmpty()) {
+            return ToolResult.PlainMessage("No expense reminders configured yet. You can set one by typing 'raat 9 tay reminder dio'.")
+        }
+        val sb = StringBuilder()
+        sb.append("⏰ Scheduled Reminders (${list.size}):\n")
+        list.forEachIndexed { idx, rem ->
+            val status = if (rem.isActive) "Active" else "Paused"
+            val hour12 = if (rem.hourOfDay == 0) 12 else if (rem.hourOfDay > 12) rem.hourOfDay - 12 else rem.hourOfDay
+            val amPm = if (rem.hourOfDay < 12) "AM" else "PM"
+            val timeStr = String.format(Locale.getDefault(), "%02d:%02d %s", hour12, rem.minute, amPm)
+            sb.append("${idx + 1}. [ID: ${rem.id}] $timeStr • \"${rem.message}\" ($status)\n")
+        }
+        return ToolResult.ReminderListResult(list, sb.toString().trim())
+    }
+
+    suspend fun deleteReminder(id: Long?): ToolResult {
+        if (id == null) {
+            return ToolResult.PlainMessage("Please specify a reminder ID to delete (e.g. 'delete reminder 1').")
+        }
+        repository.deleteReminder(id)
+        return ToolResult.PlainMessage("🗑️ Deleted reminder #$id.")
+    }
+
+    suspend fun toggleReminder(id: Long?, isActive: Boolean?): ToolResult {
+        if (id == null) {
+            return ToolResult.PlainMessage("Please specify a reminder ID to toggle.")
+        }
+        val targetActive = isActive ?: true
+        repository.toggleReminder(id, targetActive)
+        val statusText = if (targetActive) "Active" else "Paused"
+        return ToolResult.PlainMessage("⏰ Reminder #$id is now $statusText.")
+    }
+
+    suspend fun getDatabaseStats(): ToolResult {
+        val stats = repository.getDatabaseStats()
+        val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+        val earliestStr = stats.earliestOccurredAt?.let { dateFormat.format(Date(it)) } ?: "None"
+        val latestStr = stats.latestOccurredAt?.let { dateFormat.format(Date(it)) } ?: "None"
+        val netSavingsMinor = stats.totalIncomeMinor - stats.totalExpenseMinor
+        val netSign = if (netSavingsMinor >= 0) "+" else "-"
+
+        val msg = """
+📊 Database & Financial Telemetry:
+• Total Transactions: ${stats.totalTransactions} (${stats.expenseTransactions} expenses, ${stats.incomeTransactions} incomes)
+• All-time Expenses: ${Money(stats.totalExpenseMinor).toFormattedString()}
+• All-time Income: ${Money(stats.totalIncomeMinor).toFormattedString()}
+• Net Savings: $netSign${Money(Math.abs(netSavingsMinor)).toFormattedString()}
+• Active Reminders: ${stats.totalReminders}
+• Date Span: $earliestStr to $latestStr
+        """.trimIndent()
+        return ToolResult.DatabaseStatsResult(stats, msg)
+    }
+
+    fun clearAllTransactions(): ToolResult {
+        return ToolResult.RequireClearConfirmation(
+            message = "⚠️ Are you sure you want to delete ALL expense and income records? This action cannot be undone."
+        )
     }
 }

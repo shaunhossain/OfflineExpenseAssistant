@@ -27,6 +27,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
@@ -47,7 +48,12 @@ fun MultipleConfirmationDialog(
     onConfirm: (items: List<SingleItemConfirmation>, sourceText: String) -> Unit,
     onDismiss: () -> Unit
 ) {
-    val currentItems = remember { mutableStateListOf<SingleItemConfirmation>().apply { addAll(confirmation.items) } }
+    val currentItems = remember(confirmation) { mutableStateListOf<SingleItemConfirmation>().apply { addAll(confirmation.items) } }
+
+    LaunchedEffect(confirmation) {
+        currentItems.clear()
+        currentItems.addAll(confirmation.items)
+    }
     val totalMinor = currentItems.sumOf { it.amountMinor }
 
     AlertDialog(

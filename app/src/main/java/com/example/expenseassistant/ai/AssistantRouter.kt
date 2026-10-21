@@ -34,7 +34,7 @@ class AssistantRouter(
                 }
             } else null
 
-            val prompt = PromptBuilder.buildUserPrompt(trimmed, financialContext)
+            val prompt = PromptBuilder.buildEnrichedUserPrompt(trimmed, financialContext)
             val responseTokens = gemmaEngine.generateResponse(prompt).toList()
             val fullResponse = responseTokens.joinToString("").trim()
             Log.d(TAG, "Gemma output: $fullResponse")
@@ -42,10 +42,15 @@ class AssistantRouter(
             if (fullResponse.isNotBlank() && !fullResponse.startsWith("Error:")) {
                 val parsed = ModelOutputParser.parse(fullResponse)
                 if (parsed != null && parsed.intent.isNotBlank() && parsed.intent != "unknown") {
+                    val fastDeterministic = BanglishNormalizer.tryFastDeterministicParse(trimmed)
+
                     // Option C Guardrails against hallucinated transactions from small LLM on queries
                     if (parsed.intent == "prepare_expense" || parsed.intent == "prepare_income") {
-                        val rawHasDigits = trimmed.any { it.isDigit() }
+                        val rawHasDigits = trimmed.any { it.isDigit() } ||
+                                (fastDeterministic.matched && (fastDeterministic.amountMinor ?: 0L) > 0L)
                         val hasQuestionWord = trimmed.contains("koto", ignoreCase = true) ||
+                                trimmed.contains("kto", ignoreCase = true) ||
+                                trimmed.contains("কত") ||
                                 trimmed.contains("how much", ignoreCase = true) ||
                                 trimmed.contains("how many", ignoreCase = true) ||
                                 trimmed.contains("kothay", ignoreCase = true) ||
@@ -54,36 +59,127 @@ class AssistantRouter(
                                 trimmed.contains("?")
 
                         if (!rawHasDigits || hasQuestionWord) {
-                            val targetQuery = parsed.note?.takeIf { it.isNotBlank() }
-                                ?: parsed.category?.takeIf { it.isNotBlank() && it != "Other" }
-                                ?: trimmed
-                            Log.w(TAG, "Prevented hallucinated expense without digits in input: redirecting to get_item_total for '$targetQuery'")
+                            if (fastDeterministic.matched && fastDeterministic.intent !in setOf("prepare_expense", "prepare_income", "prepare_multiple_expenses")) {
+                                return toolRegistry.executeTool(
+                                    toolName = fastDeterministic.intent,
+                                    amountMinor = fastDeterministic.amountMinor,
+                                    category = fastDeterministic.category,
+                                    note = fastDeterministic.note,
+                                    sourceText = trimmed,
+                                    hour = fastDeterministic.reminderHour,
+                                    minute = fastDeterministic.reminderMinute,
+                                    query = fastDeterministic.searchQuery,
+                                    items = fastDeterministic.multipleItems,
+                                    occurredAt = fastDeterministic.occurredAt,
+                                    id = fastDeterministic.id,
+                                    limit = fastDeterministic.limit,
+                                    isActive = fastDeterministic.isActive
+                                )
+                            }
+
+                            val targetQuery = if (fastDeterministic.matched && fastDeterministic.intent == "get_item_total" && !fastDeterministic.searchQuery.isNullOrBlank()) {
+                                fastDeterministic.searchQuery
+                            } else {
+                                parsed.note?.takeIf { it.isNotBlank() }
+                                    ?: parsed.category?.takeIf { it.isNotBlank() && it != "Other" }
+                                    ?: trimmed
+                            }
+                            val targetPeriod = if (fastDeterministic.matched && fastDeterministic.intent == "get_item_total") fastDeterministic.note else null
+                            Log.w(TAG, "Prevented hallucinated expense without digits in input: redirecting to get_item_total for '$targetQuery' ($targetPeriod)")
                             return toolRegistry.executeTool(
                                 toolName = "get_item_total",
                                 query = targetQuery,
+                                note = targetPeriod,
+                                sourceText = trimmed
+                            )
+                        }
+
+                        // Cross-validation: if deterministic parser detected multiple expenses in a Banglish compound sentence
+                        // but the 270M LLM only extracted a single expense, promote to prepare_multiple_expenses
+                        if (fastDeterministic.matched &&
+                            fastDeterministic.intent == "prepare_multiple_expenses" &&
+                            fastDeterministic.multipleItems.size >= 2 &&
+                            parsed.items.isEmpty()
+                        ) {
+                            return toolRegistry.executeTool(
+                                toolName = "prepare_multiple_expenses",
+                                items = fastDeterministic.multipleItems,
                                 sourceText = trimmed
                             )
                         }
                     }
 
-                    val amountMinor = parsed.amount?.let { (it * 100).toLong() }
+                    // Cross-validation: reconcile Banglish income vs expense direction, dates, amounts, and categories
+                    val resolvedIntent = if (
+                        fastDeterministic.matched &&
+                        fastDeterministic.intent == "prepare_income" &&
+                        parsed.intent == "prepare_expense"
+                    ) {
+                        "prepare_income"
+                    } else {
+                        parsed.intent
+                    }
+
+                    val amountMinor = parsed.amount?.let { (it * 100).toLong() } ?: fastDeterministic.amountMinor
+                    val resolvedCategory = if (parsed.category.isNullOrBlank() || (parsed.category == "Other" && !fastDeterministic.category.isNullOrBlank() && fastDeterministic.category != "Other")) {
+                        fastDeterministic.category ?: parsed.category
+                    } else {
+                        parsed.category
+                    }
+                    val cleanParsedNote = parsed.note?.let { BanglishNormalizer.cleanExpenseNote(it) }?.takeIf { it.isNotBlank() }
+                    val detNote = fastDeterministic.note?.let { BanglishNormalizer.cleanExpenseNote(it) }?.takeIf { it.isNotBlank() }
+
+                    val finalNote = if (resolvedIntent == "get_item_total") {
+                        detNote ?: cleanParsedNote
+                    } else if (cleanParsedNote != null) {
+                        val rawInput = trimmed.lowercase()
+                        val normalizedInput = BanglishNormalizer.normalize(trimmed).lowercase()
+                        val parsedWords = cleanParsedNote.lowercase().split(Regex("\\s+")).filter { it.isNotBlank() }
+
+                        val parsedInInput = parsedWords.any { word ->
+                            rawInput.contains(word) || normalizedInput.contains(word) ||
+                                    BanglishTransliterator.transliterateSentence(rawInput).contains(word) ||
+                                    BanglishTransliterator.translateToEnglishGloss(rawInput).contains(word)
+                        }
+
+                        if (!parsedInInput) {
+                            Log.w(TAG, "Gemma hallucinated or carried over stale note '$cleanParsedNote' from previous turn. Overriding with '${detNote ?: "Expense"}' from current input.")
+                            detNote ?: "Expense"
+                        } else {
+                            cleanParsedNote
+                        }
+                    } else {
+                        detNote
+                    }
+                    val resolvedQuery = parsed.query?.takeIf { it.isNotBlank() } ?: fastDeterministic.searchQuery
+                    val resolvedOccurredAt = parsed.occurredAt ?: fastDeterministic.occurredAt
+                    val resolvedItems = if (parsed.items.isNotEmpty()) parsed.items else fastDeterministic.multipleItems
+
+                    if (resolvedIntent in setOf("prepare_expense", "prepare_income", "prepare_multiple_expenses")) {
+                        gemmaEngine.resetConversation()
+                    }
+
                     return toolRegistry.executeTool(
-                        toolName = parsed.intent,
+                        toolName = resolvedIntent,
                         amountMinor = amountMinor,
-                        category = parsed.category,
-                        note = parsed.note,
+                        category = resolvedCategory,
+                        note = finalNote,
                         sourceText = trimmed,
-                        hour = parsed.reminderHour,
-                        minute = parsed.reminderMinute,
-                        query = parsed.query,
-                        items = parsed.items
+                        hour = parsed.reminderHour ?: fastDeterministic.reminderHour,
+                        minute = parsed.reminderMinute ?: fastDeterministic.reminderMinute,
+                        query = resolvedQuery,
+                        items = resolvedItems,
+                        occurredAt = resolvedOccurredAt,
+                        id = parsed.id ?: fastDeterministic.id,
+                        limit = parsed.limit ?: fastDeterministic.limit,
+                        isActive = parsed.isActive ?: fastDeterministic.isActive
                     )
                 }
 
-                // If parsed is null, check if deterministic parser recognizes an expense/income transaction
+                // If parsed is null, check if deterministic parser recognizes an action
                 val fastTxFallback = BanglishNormalizer.tryFastDeterministicParse(trimmed)
-                if (fastTxFallback.matched && fastTxFallback.intent.startsWith("prepare_")) {
-                    Log.d(TAG, "Gemma did not output structured action JSON for transaction input. Executing deterministic fallback.")
+                if (fastTxFallback.matched) {
+                    Log.d(TAG, "Gemma did not output structured action JSON for input. Executing deterministic fallback: ${fastTxFallback.intent}")
                     return toolRegistry.executeTool(
                         toolName = fastTxFallback.intent,
                         amountMinor = fastTxFallback.amountMinor,
@@ -94,7 +190,10 @@ class AssistantRouter(
                         minute = fastTxFallback.reminderMinute,
                         query = fastTxFallback.searchQuery,
                         items = fastTxFallback.multipleItems,
-                        occurredAt = fastTxFallback.occurredAt
+                        occurredAt = fastTxFallback.occurredAt,
+                        id = fastTxFallback.id,
+                        limit = fastTxFallback.limit,
+                        isActive = fastTxFallback.isActive
                     )
                 }
 
@@ -118,8 +217,26 @@ class AssistantRouter(
                     minute = fastFallback.reminderMinute,
                     query = fastFallback.searchQuery,
                     items = fastFallback.multipleItems,
-                    occurredAt = fastFallback.occurredAt
+                    occurredAt = fastFallback.occurredAt,
+                    id = fastFallback.id,
+                    limit = fastFallback.limit,
+                    isActive = fastFallback.isActive
                 )
+            }
+
+            // Check data-grounded offline advisory
+            if (ConversationalAiHelper.isAdvisoryOrCoachingQuery(trimmed) && repository != null) {
+                try {
+                    val summary = repository.getMonthlySummary()
+                    return ToolResult.PlainMessage(ConversationalAiHelper.formatDataGroundedAdvisory(summary, trimmed))
+                } catch (e: Exception) {
+                    Log.w(TAG, "Could not compute data-grounded advisory", e)
+                }
+            }
+
+            val conversationalFallback = ConversationalAiHelper.tryOfflineFallbackResponse(trimmed)
+            if (conversationalFallback != null) {
+                return ToolResult.PlainMessage(conversationalFallback)
             }
         }
 
@@ -139,11 +256,23 @@ class AssistantRouter(
                 minute = fastResult.reminderMinute,
                 query = fastResult.searchQuery,
                 items = fastResult.multipleItems,
-                occurredAt = fastResult.occurredAt
+                occurredAt = fastResult.occurredAt,
+                id = fastResult.id,
+                limit = fastResult.limit,
+                isActive = fastResult.isActive
             )
         }
 
         // 2b. Check offline fallback conversational responses
+        if (ConversationalAiHelper.isAdvisoryOrCoachingQuery(trimmed) && repository != null) {
+            try {
+                val summary = repository.getMonthlySummary()
+                return ToolResult.PlainMessage(ConversationalAiHelper.formatDataGroundedAdvisory(summary, trimmed))
+            } catch (e: Exception) {
+                Log.w(TAG, "Could not compute data-grounded advisory", e)
+            }
+        }
+
         val conversationalFallback = ConversationalAiHelper.tryOfflineFallbackResponse(trimmed)
         if (conversationalFallback != null) {
             return ToolResult.PlainMessage(conversationalFallback)

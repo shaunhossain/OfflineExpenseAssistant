@@ -16,6 +16,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,10 +34,17 @@ fun ReminderConfirmationDialog(
     onConfirm: (title: String, message: String, hour: Int, minute: Int, reason: String) -> Unit,
     onDismiss: () -> Unit
 ) {
-    var title by remember { mutableStateOf(confirmation.title) }
-    var message by remember { mutableStateOf(confirmation.message) }
-    var hourText by remember { mutableStateOf(confirmation.hourOfDay.toString()) }
-    var minuteText by remember { mutableStateOf(String.format("%02d", confirmation.minute)) }
+    var title by remember(confirmation) { mutableStateOf(confirmation.title) }
+    var message by remember(confirmation) { mutableStateOf(confirmation.message) }
+    var hourText by remember(confirmation) { mutableStateOf(confirmation.hourOfDay.toString()) }
+    var minuteText by remember(confirmation) { mutableStateOf(String.format("%02d", confirmation.minute)) }
+
+    LaunchedEffect(confirmation) {
+        title = confirmation.title
+        message = confirmation.message
+        hourText = confirmation.hourOfDay.toString()
+        minuteText = String.format("%02d", confirmation.minute)
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,

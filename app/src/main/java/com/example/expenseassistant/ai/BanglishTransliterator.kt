@@ -1,0 +1,1404 @@
+// ==============================================================================
+// Auto-generated Offline Banglish -> Bengali Transliterator (3500 vocabulary entries)
+// Source: BanglaTLit 245k parallel corpus (prioritizing financial/daily domain)
+// ==============================================================================
+
+package com.example.expenseassistant.ai
+
+object BanglishTransliterator {
+
+    // Top 3500 confident transliterated word pairs
+    private val DICTIONARY: Map<String, String> = mapOf(
+        "taka" to "টাকা", "tk" to "টাকা", "tka" to "টাকা", "takar" to "টাকার",
+        "takay" to "টাকায়", "taaka" to "টাকা", "takaye" to "টাকায়", "tkr" to "টাকার",
+        "tkar" to "টাকার", "takare" to "টাকার", "takat" to "টাকায়", "poisa" to "পয়সা",
+        "poysha" to "পয়সা", "poesha" to "পয়সা", "poisha" to "পয়সা", "hajar" to "হাজার",
+        "hazar" to "হাজার", "hajer" to "হাজার", "hajaro" to "হাজার", "hajare" to "হাজার",
+        "lakh" to "লক্ষ", "lac" to "লাখ", "laakh" to "লাখ", "lakhe" to "লাখ",
+        "lokkho" to "লক্ষ", "lokkh" to "লক্ষ", "koti" to "কোটি", "crore" to "কোটি",
+        "kotee" to "কোটি", "kuti" to "কোটি", "shoto" to "শত", "soto" to "শত",
+        "sho" to "শ", "so" to "শ", "der" to "দেড়", "derh" to "দেড়",
+        "dedh" to "দেড়", "arai" to "আড়াই", "arhai" to "আড়াই", "adhai" to "আড়াই",
+        "sare" to "সাড়ে", "share" to "সাড়ে", "sade" to "সাড়ে", "khoroch" to "খরচ",
+        "khoros" to "খরচ", "koroch" to "খরচ", "koros" to "খরচ", "khoroc" to "খরচ",
+        "koroc" to "খরচ", "khoroj" to "খরচ", "khorche" to "খরচ", "khorocher" to "খরচের",
+        "khoroser" to "খরচের", "korocher" to "খরচের", "koroser" to "খরচের", "khorocer" to "খরচের",
+        "dilam" to "দিলাম", "delam" to "দিলাম", "dilm" to "দিলাম", "dilem" to "দিলাম",
+        "diasilam" to "দিলাম", "disilam" to "দিলাম", "diyechi" to "দিয়েছি", "dieci" to "দিয়েছি",
+        "diyeche" to "দিয়েছি", "disi" to "দিছি", "dici" to "দিছি", "dise" to "দিছি",
+        "disen" to "দিছি", "ditesi" to "দিছি", "dese" to "দিছি", "dilo" to "দিল",
+        "delo" to "দিল", "dibe" to "দিবে", "debe" to "দিবে", "diben" to "দিবে",
+        "dibo" to "দিবে", "dite" to "দিতে", "dete" to "দিতে", "korlam" to "করলাম",
+        "krlam" to "করলাম", "korlem" to "করলাম", "korechi" to "করেছি", "koreci" to "করেছি",
+        "koresi" to "করেছি", "koreche" to "করেছি", "korsi" to "করছি", "korci" to "করছি",
+        "korchi" to "করছি", "korsilam" to "করছি", "kinlam" to "কিনলাম", "kinlem" to "কিনলাম",
+        "kinechi" to "কিনেছি", "kinesilam" to "কিনেছি", "kineche" to "কিনেছি", "kinsi" to "কিনছি",
+        "kinci" to "কিনছি", "kinchilam" to "কিনছি", "kinbo" to "কিনব", "kinbe" to "কিনব",
+        "khelam" to "খেলাম", "khailam" to "খেলাম", "kheyechi" to "খেয়েছি", "khaisi" to "খেয়েছি",
+        "khaici" to "খেয়েছি", "pathalam" to "পাঠালাম", "pathaylam" to "পাঠালাম", "pathiyechi" to "পাঠিয়েছি",
+        "pathayechi" to "পাঠিয়েছি", "pathechi" to "পাঠিয়েছি", "pathaisi" to "পাঠাইছি", "pathayci" to "পাঠাইছি",
+        "pathaysi" to "পাঠাইছি", "pelam" to "পেলাম", "pailam" to "পেলাম", "peyechi" to "পেয়েছি",
+        "peyesi" to "পেয়েছি", "paisi" to "পাইছি", "paici" to "পাইছি", "paise" to "পাইছি",
+        "payci" to "পাইছি", "laglo" to "লাগলো", "lagsilo" to "লাগলো", "lagbe" to "লাগবে",
+        "lagba" to "লাগবে", "gelo" to "গেল", "galo" to "গেল", "gese" to "গেছে",
+        "geche" to "গেছে", "gesilo" to "গেছে", "holo" to "হলো", "holona" to "হলো",
+        "hoise" to "হইছে", "hoice" to "হইছে", "hoiche" to "হইছে", "vara" to "ভাড়া",
+        "bhara" to "ভাড়া", "bada" to "ভাড়া", "vaada" to "ভাড়া", "varah" to "ভাড়া",
+        "varar" to "ভাড়া", "bharar" to "ভাড়া", "bus" to "বাস", "buse" to "বাস",
+        "buser" to "বাস", "rickshaw" to "রিকশা", "riksa" to "রিকশা", "riksha" to "রিকশা",
+        "ricksa" to "রিকশা", "rikshaw" to "রিকশা", "cng" to "সিএনজি", "c.n.g" to "সিএনজি",
+        "auto" to "অটো", "otou" to "অটো", "train" to "ট্রেন", "trein" to "ট্রেন",
+        "metro" to "মেট্রো", "uber" to "উবার", "pathao" to "পাঠাও", "gari" to "গাড়ি",
+        "garir" to "গাড়ি", "gadi" to "গাড়ি", "khabar" to "খাবার", "khabaar" to "খাবার",
+        "khabare" to "খাবার", "nasta" to "নাস্তা", "nashta" to "নাস্তা", "nastah" to "নাস্তা",
+        "lunch" to "লাঞ্চ", "luncher" to "লাঞ্চ", "dinner" to "ডিনার", "dinar" to "ডিনার",
+        "bhat" to "ভাত", "vaat" to "ভাত", "biryani" to "বিরিয়ানি", "biriani" to "বিরিয়ানি",
+        "biriyani" to "বিরিয়ানি", "cha" to "চা", "tea" to "চা", "coffee" to "কফি",
+        "coffe" to "কফি", "ruti" to "রুটি", "roti" to "রুটি", "parata" to "পরোটা",
+        "porota" to "পরোটা", "porata" to "পরোটা", "singara" to "সিঙ্গারা", "shingara" to "সিঙ্গারা",
+        "fuchka" to "ফুচকা", "fuska" to "ফুচকা", "bazar" to "বাজার", "bajar" to "বাজার",
+        "baazar" to "বাজার", "bajare" to "বাজার", "bazare" to "বাজার", "chal" to "চাল",
+        "chaal" to "চাল", "dal" to "ডাল", "daal" to "ডাল", "tel" to "তেল",
+        "toil" to "তেল", "oil" to "তেল", "dim" to "ডিম", "deem" to "ডিম",
+        "dudh" to "দুধ", "dud" to "দুধ", "mach" to "মাছ", "maach" to "মাছ",
+        "macher" to "মাছ", "mangsho" to "মাংস", "mangso" to "মাংস", "murgi" to "মুরগি",
+        "moorgi" to "মুরগি", "morgi" to "মুরগি", "sobji" to "সবজি", "shobji" to "সবজি",
+        "shobjee" to "সবজি", "torkari" to "তরকারি", "aloo" to "আলু", "alu" to "আলু",
+        "peyaj" to "পেঁয়াজ", "piyaj" to "পেঁয়াজ", "peaj" to "পেঁয়াজ", "roshun" to "রসুন",
+        "rosun" to "রসুন", "morich" to "মরিচ", "moris" to "মরিচ", "bill" to "বিল",
+        "bil" to "বিল", "biddut" to "বিদ্যুৎ", "bidyut" to "বিদ্যুৎ", "bidut" to "বিদ্যুৎ",
+        "current" to "কারেন্ট", "karent" to "কারেন্ট", "gas" to "গ্যাস", "pani" to "পানি",
+        "paani" to "পানি", "wifi" to "ওয়াইফাই", "wi-fi" to "ওয়াইফাই", "internet" to "ইন্টারনেট",
+        "net" to "ইন্টারনেট", "recharge" to "রিচার্জ", "reacharge" to "রিচার্জ", "recharg" to "রিচার্জ",
+        "load" to "লোড", "flaxiload" to "লোড", "flexi" to "লোড", "basha" to "বাসা",
+        "basa" to "বাসা", "bashar" to "বাসা", "bkash" to "বিকাশ", "bekash" to "বিকাশ",
+        "bikash" to "বিকাশ", "bkas" to "বিকাশ", "bkashe" to "বিকাশ", "bikashe" to "বিকাশ",
+        "nagad" to "নগদ", "nogod" to "নগদ", "nagade" to "নগদ", "nogode" to "নগদ",
+        "rocket" to "রকেট", "roket" to "রকেট", "upay" to "উপায়", "upai" to "উপায়",
+        "cellfin" to "সেলফিন", "foodpanda" to "ফুডপান্ডা", "chaldal" to "চালডাল", "shwapno" to "স্বপ্ন",
+        "swapno" to "স্বপ্ন", "shopno" to "স্বপ্ন", "daraz" to "দারাজ", "osudh" to "ওষুধ",
+        "oshudh" to "ওষুধ", "ousodh" to "ওষুধ", "medicine" to "ওষুধ", "doctor" to "ডাক্তার",
+        "daktar" to "ডাক্তার", "hospital" to "হাসপাতাল", "haspatal" to "হাসপাতাল", "shopping" to "শপিং",
+        "shoping" to "শপিং", "jama" to "জামা", "kapor" to "কাপড়", "kaporer" to "কাপড়",
+        "kapod" to "কাপড়", "beton" to "বেতন", "veton" to "বেতন", "income" to "ইনকাম",
+        "bonus" to "বোনাস", "cashback" to "ক্যাশব্যাক", "ajke" to "আজকে", "aajke" to "আজকে",
+        "ajk" to "আজকে", "ajker" to "আজকে", "aj" to "আজ", "aaj" to "আজ",
+        "kalke" to "কালকে", "kaalke" to "কালকে", "kalk" to "কালকে", "gotokal" to "গতকাল",
+        "gotokalke" to "গতকাল", "gotokaler" to "গতকাল", "porshu" to "পরশু", "porsu" to "পরশু",
+        "tarikh" to "তারিখ", "tarik" to "তারিখ", "tarek" to "তারিখ", "tarike" to "তারিখ",
+        "tarikhe" to "তারিখ", "koto" to "কত", "kto" to "কত", "hisab" to "হিসাব",
+        "hishab" to "হিসাব", "balance" to "ব্যালেন্স", "balace" to "ব্যালেন্স", "mot" to "মোট",
+        "moth" to "মোট", "mote" to "মোট", "shobcheye" to "সবচেয়ে", "sobcheye" to "সবচেয়ে",
+        "shobche" to "সবচেয়ে", "sobche" to "সবচেয়ে", "baki" to "বাকি", "na" to "না",
+        "vai" to "ভাই", "post" to "পোস্ট", "ki" to "কি", "er" to "এর",
+        "kore" to "করে", "ta" to "টা", "ami" to "আমি", "e" to "এ",
+        "bro" to "ব্রো", "a" to "এ", "valo" to "ভালো", "to" to "তো",
+        "hobe" to "হবে", "plz" to "প্লিজ", "amar" to "আমার", "korte" to "করতে",
+        "ar" to "আর", "koren" to "করেন", "kora" to "করা", "hoy" to "হয়",
+        "apnar" to "আপনার", "link" to "লিংক", "korbo" to "করবো", "apni" to "আপনি",
+        "nai" to "নাই", "but" to "বাট", "theke" to "থেকে", "o" to "ও",
+        "jonno" to "জন্য", "diye" to "দিয়ে", "r" to "আর", "kaj" to "কাজ",
+        "te" to "তে", "kono" to "কোনো", "ei" to "এই", "use" to "ইউজ",
+        "kivabe" to "কিভাবে", "app" to "অ্যাপ", "ase" to "আসে", "den" to "দেন",
+        "korar" to "করার", "onek" to "অনেক", "download" to "ডাউনলোড", "try" to "ট্রাই",
+        "fb" to "এফবি", "tnx" to "থ্যাংকস", "help" to "হেল্প", "trickbd" to "ট্রিকবিডি",
+        "id" to "আইডি", "korle" to "করলে", "ai" to "এই", "eta" to "এটা",
+        "naki" to "নাকি", "jabe" to "যাবে", "din" to "দিন", "akta" to "একটা",
+        "thanks" to "থ্যাংকস", "ekta" to "একটা", "mb" to "এমবি", "phone" to "ফোন",
+        "sob" to "সব", "free" to "ফ্রি", "amr" to "আমার", "kotha" to "কথা",
+        "tai" to "তাই", "age" to "আগে", "1" to "১", "tar" to "তার",
+        "niye" to "নিয়ে", "thik" to "ঠিক", "2" to "২", "por" to "পর",
+        "ebong" to "এবং", "ata" to "এটা", "account" to "একাউন্ট", "root" to "রুট",
+        "jay" to "যায়", "ache" to "আছে", "tahole" to "তাহলে", "jodi" to "যদি",
+        "vaiya" to "ভাইয়া", "hoye" to "হয়ে", "kintu" to "কিন্তু", "site" to "সাইট",
+        "bolen" to "বলেন", "hoi" to "হয়", "abar" to "আবার", "je" to "যে",
+        "dile" to "দিলে", "user" to "ইউজার", "korun" to "করুন", "parben" to "পারবেন",
+        "kori" to "করি", "apps" to "অ্যাপস", "moto" to "মতো", "code" to "কোড",
+        "oi" to "ওই", "vi" to "ভাই", "nice" to "নাইস", "hmm" to "হুম",
+        "please" to "প্লিজ", "problem" to "প্রব্লেম", "comment" to "কমেন্ট", "and" to "এন্ড",
+        "korben" to "করবেন", "video" to "ভিডিও", "hole" to "হলে", "tini" to "তিনি",
+        "thakle" to "থাকলে", "onk" to "অনেক", "install" to "ইনস্টল", "mobile" to "মোবাইল",
+        "hack" to "হ্যাক", "google" to "গুগল", "onno" to "অন্য", "copy" to "কপি",
+        "4" to "৪", "ekti" to "একটি", "ke" to "কে", "hoto" to "হতো",
+        "paren" to "পারেন", "vpn" to "ভিপিএন", "khub" to "খুব", "thake" to "থাকে",
+        "me" to "মি", "ektu" to "একটু", "bhai" to "ভাই", "add" to "অ্যাড",
+        "version" to "ভার্সন", "jai" to "যায়", "speed" to "স্পিড", "kisu" to "কিছু",
+        "author" to "অথর", "ba" to "বা", "aro" to "আরো", "pore" to "পরে",
+        "akhon" to "এখন", "gula" to "গুলা", "kichu" to "কিছু", "file" to "ফাইল",
+        "new" to "নিউ", "kno" to "কেন", "facebook" to "ফেসবুক", "sim" to "সিম",
+        "number" to "নাম্বার", "korbe" to "করবে", "5" to "৫", "game" to "গেম",
+        "100" to "১০০", "lage" to "লাগে", "rom" to "রম", "3" to "৩",
+        "bole" to "বলে", "for" to "ফর", "amake" to "আমাকে", "vabe" to "ভাবে",
+        "chilo" to "ছিল", "pc" to "পিসি", "dekhen" to "দেখেন", "bar" to "বার",
+        "pabo" to "পাবো", "diya" to "দিয়ে", "good" to "গুড", "ace" to "আছে",
+        "mone" to "মনে", "vaia" to "ভাইয়া", "aktu" to "একটু", "dia" to "দিয়ে",
+        "ok" to "ওকে", "youtube" to "ইউটিউব", "jani" to "জানি", "sathe" to "সাথে",
+        "10" to "১০", "name" to "নাম", "trick" to "ট্রিক", "aita" to "এইটা",
+        "paben" to "পাবেন", "kon" to "কোন", "bolben" to "বলবেন", "on" to "অন",
+        "tobe" to "তবে", "chole" to "চলে", "somoy" to "সময়", "kew" to "কেউ",
+        "vlo" to "ভালো", "ha" to "হা", "phn" to "ফোন", "koi" to "কই",
+        "tader" to "তাদের", "eita" to "এইটা", "ekhon" to "এখন", "hbe" to "হবে",
+        "j" to "যে", "pare" to "পারে", "keno" to "কেন", "dorkar" to "দরকার",
+        "ja" to "যা", "tuner" to "টিউনার", "parbo" to "পারবো", "seta" to "সেটা",
+        "nah" to "নাহ", "you" to "ইউ", "sobai" to "সবাই", "payment" to "পেমেন্ট",
+        "off" to "অফ", "deya" to "দেয়া", "change" to "চেঞ্জ", "apk" to "এপিকে",
+        "dan" to "দেন", "connect" to "কানেক্ট", "saale" to "সালে", "ek" to "এক",
+        "time" to "টাইম", "k" to "কে", "hote" to "হতে", "pari" to "পারি",
+        "kom" to "কম", "update" to "আপডেট", "bangla" to "বাংলা", "card" to "কার্ড",
+        "i" to "আই", "pls" to "প্লিজ", "next" to "নেক্সট", "jara" to "যারা",
+        "system" to "সিস্টেম", "0" to "০", "nite" to "নিতে", "hoyna" to "হয়না",
+        "apnake" to "আপনাকে", "or" to "অর", "offer" to "অফার", "option" to "অপশন",
+        "sorry" to "সরি", "chai" to "চাই", "mod" to "মোড", "review" to "রিভিউ",
+        "data" to "ডাটা", "tara" to "তারা", "custom" to "কাস্টম", "apner" to "আপনার",
+        "notun" to "নতুন", "besi" to "বেশি", "mane" to "মানে", "search" to "সার্চ",
+        "pai" to "পাই", "gulo" to "গুলো", "just" to "জাস্ট", "beshi" to "বেশি",
+        "ti" to "টি", "gp" to "জিপি", "koro" to "করো", "nei" to "নেই",
+        "hocche" to "হচ্ছে", "kicu" to "কিছু", "faltu" to "ফালতু", "password" to "পাসওয়ার্ড",
+        "movie" to "মুভি", "ager" to "আগের", "gmail" to "জিমেইল", "full" to "ফুল",
+        "thank" to "থ্যাংক", "jane" to "জানে", "symphony" to "সিম্ফনি", "dekha" to "দেখা",
+        "meyad" to "মেয়াদ", "recovery" to "রিকভারি", "ni" to "নি", "prothom" to "প্রথম",
+        "mail" to "মেইল", "click" to "ক্লিক", "moddhe" to "মধ্যে", "no" to "নো",
+        "nijer" to "নিজের", "6" to "৬", "tarpor" to "তারপর", "apnr" to "আপনার",
+        "karon" to "কারণ", "website" to "ওয়েবসাইট", "all" to "অল", "dekhe" to "দেখে",
+        "7" to "৭", "chara" to "ছাড়া", "shathe" to "সাথে", "nam" to "নাম",
+        "best" to "বেস্ট", "check" to "চেক", "gele" to "গেলে", "admin" to "অ্যাডমিন",
+        "sundor" to "সুন্দর", "request" to "রিকুয়েস্ট", "browser" to "ব্রাউজার", "edit" to "এডিট",
+        "robi" to "রবি", "lekha" to "লেখা", "dewa" to "দেওয়া", "working" to "ওয়ার্কিং",
+        "dhonnobad" to "ধন্যবাদ", "sobar" to "সবার", "upload" to "আপলোড", "not" to "নট",
+        "dekhun" to "দেখুন", "bai" to "ভাই", "parle" to "পারলে", "screenshot" to "স্ক্রিনশট",
+        "pawa" to "পাওয়া", "dekhi" to "দেখি", "delete" to "ডিলিট", "bt" to "বাট",
+        "server" to "সার্ভার", "dekhte" to "দেখতে", "keu" to "কেউ", "asa" to "আশা",
+        "nije" to "নিজে", "dey" to "দেয়", "cholbe" to "চলবে", "gb" to "জিবি",
+        "kemne" to "কেমনে", "samsung" to "স্যামসাং", "taile" to "তাইলে", "sms" to "এসএমএস",
+        "bolte" to "বলতে", "ato" to "এত", "support" to "সাপোর্ট", "oita" to "ওইটা",
+        "hoyeche" to "হয়েছে", "kmne" to "কেমনে", "amio" to "আমিও", "wait" to "ওয়েট",
+        "play" to "প্লে", "com" to "কম", "page" to "পেজ", "kre" to "করে",
+        "ber" to "বের", "banan" to "বানান", "agei" to "আগেই", "way" to "ওয়ে",
+        "vul" to "ভুল", "vhai" to "ভাই", "tik" to "ঠিক", "dekhay" to "দেখায়",
+        "are" to "আরে", "reply" to "রিপ্লাই", "ss" to "এসএস", "paypal" to "পেপাল",
+        "jana" to "জানা", "sudhu" to "শুধু", "open" to "ওপেন", "shob" to "সব",
+        "porjonto" to "পর্যন্ত", "korse" to "করছে", "pic" to "পিক", "boro" to "বড়",
+        "eto" to "এতো", "ak" to "এক", "kache" to "কাছে", "port" to "পোর্ট",
+        "asbe" to "আসবে", "java" to "জাভা", "hosse" to "হচ্ছে", "sei" to "সেই",
+        "kothay" to "কোথায়", "channel" to "চ্যানেল", "bangladesh" to "বাংলাদেশ", "diyen" to "দিয়েন",
+        "email" to "ইমেইল", "kosto" to "কষ্ট", "my" to "মাই", "se" to "সে",
+        "hoba" to "হবে", "pack" to "প্যাক", "thaka" to "থাকা", "in" to "ইন",
+        "thakbe" to "থাকবে", "emon" to "এমন", "abal" to "আবাল", "amader" to "আমাদের",
+        "8" to "৮", "pro" to "প্রো", "chilen" to "ছিলেন", "re" to "রে",
+        "ekhane" to "এখানে", "part" to "পার্ট", "same" to "সেম", "kina" to "কিনা",
+        "karo" to "কারো", "theme" to "থিম", "airtel" to "এয়ারটেল", "group" to "গ্রুপ",
+        "of" to "অফ", "janen" to "জানেন", "active" to "একটিভ", "refer" to "রেফার",
+        "toh" to "তো", "bola" to "বলা", "korta" to "করতে", "korechen" to "করেছেন",
+        "tao" to "তাও", "kharap" to "খারাপ", "call" to "কল", "like" to "লাইক",
+        "brother" to "ব্রাদার", "show" to "শো", "point" to "পয়েন্ট", "only" to "অনলি",
+        "akhono" to "এখনো", "taar" to "তার", "title" to "টাইটেল", "drive" to "ড্রাইভ",
+        "jan" to "যান", "asen" to "আসেন", "jaben" to "যাবেন", "rokom" to "রকম",
+        "inbox" to "ইনবক্স", "login" to "লগইন", "it" to "ইট", "karone" to "কারণে",
+        "hon" to "হন", "dei" to "দেই", "fake" to "ফেক", "eti" to "এটি",
+        "old" to "ওল্ড", "korce" to "করছে", "thekei" to "থেকেই", "20" to "২০",
+        "kn" to "কেন", "hocce" to "হচ্ছে", "up" to "আপ", "plzz" to "প্লিজ",
+        "kibabe" to "কিভাবে", "unlimited" to "আনলিমিটেড", "matro" to "মাত্র", "lol" to "লল",
+        "ram" to "রেম", "amon" to "এমন", "flash" to "ফ্ল্যাশ", "screen" to "স্ক্রিন",
+        "jeta" to "যেটা", "giye" to "গিয়ে", "u" to "ইউ", "premium" to "প্রিমিয়াম",
+        "amk" to "আমাকে", "kaje" to "কাজে", "korlen" to "করলেন", "korlei" to "করলেই",
+        "nosto" to "নষ্ট", "take" to "তাকে", "store" to "স্টোর", "ra" to "রা",
+        "report" to "রিপোর্ট", "uc" to "ইউসি", "tor" to "তোর", "dhore" to "ধরে",
+        "create" to "ক্রিয়েট", "tutorial" to "টিউটোরিয়াল", "korsen" to "করসেন", "setting" to "সেটিং",
+        "nia" to "নিয়ে", "niya" to "নিয়ে", "likhe" to "লিখে", "moja" to "মজা",
+        "apne" to "আপনি", "akon" to "এখন", "accha" to "আচ্ছা", "direct" to "ডিরেক্ট",
+        "erokom" to "এরকম", "majhe" to "মাঝে", "bad" to "বাদ", "withdraw" to "উইথড্র",
+        "50" to "৫০", "hoina" to "হয়না", "img" to "ইমেজ", "bolun" to "বলুন",
+        "peye" to "পেয়ে", "pass" to "পাস", "credit" to "ক্রেডিট", "30" to "৩০",
+        "cai" to "চাই", "saaler" to "সালের", "khuje" to "খুঁজে", "ashe" to "আসে",
+        "vay" to "ভাই", "bondho" to "বন্ধ", "bujlam" to "বুঝলাম", "ekhono" to "এখনো",
+        "janaben" to "জানাবেন", "many" to "মেনি", "upor" to "উপর", "kinto" to "কিন্তু",
+        "jar" to "যার", "telegram" to "টেলিগ্রাম", "online" to "অনলাইন", "kase" to "কাছে",
+        "hisebe" to "হিসেবে", "ji" to "জি", "ota" to "ওটা", "royeche" to "রয়েছে",
+        "upokar" to "উপকার", "pending" to "পেন্ডিং", "somossa" to "সমস্যা", "jnno" to "জন্য",
+        "krte" to "করতে", "konta" to "কোনটা", "chesta" to "চেষ্টা", "coin" to "কয়েন",
+        "cilo" to "ছিল", "hishebe" to "হিসেবে", "ad" to "এড", "amra" to "আমরা",
+        "welcome" to "ওয়েলকাম", "nibo" to "নিবো", "hm" to "হুম", "apnader" to "আপনাদের",
+        "message" to "মেসেজ", "akhn" to "এখন", "shuru" to "শুরু", "krbo" to "করবো",
+        "nen" to "নেন", "kinte" to "কিনতে", "kuno" to "কোনো", "jantam" to "জানতাম",
+        "wow" to "ওয়াও", "via" to "ভাইয়া", "korena" to "করেনা", "profile" to "প্রোফাইল",
+        "lav" to "লাভ", "bd" to "বিডি", "valoi" to "ভালোই", "howar" to "হওয়ার",
+        "tumi" to "তুমি", "spam" to "স্প্যাম", "sara" to "ছাড়া", "photo" to "ফটো",
+        "thakun" to "থাকুন", "sure" to "সিউর", "kano" to "কেন", "contact" to "কন্টাক্ট",
+        "block" to "ব্লক", "mia" to "মিয়া", "gd" to "গুড", "trainer" to "ট্রেইনার",
+        "kothai" to "কোথায়", "koira" to "কইরা", "koran" to "করেন", "jante" to "জানতে",
+        "abr" to "আবার", "set" to "সেট", "is" to "ইস", "tnq" to "থ্যাংক",
+        "earn" to "আর্ন", "sudu" to "শুধু", "bolle" to "বললে", "domain" to "ডোমেইন",
+        "bitcoin" to "বিটকয়েন", "kobe" to "কবে", "cole" to "চলে", "your" to "ইওর",
+        "make" to "মেক", "sell" to "সেল", "dilen" to "দিলেন", "allah" to "আল্লাহ",
+        "toiri" to "তৈরি", "akto" to "একটু", "alada" to "আলাদা", "asha" to "আশা",
+        "software" to "সফটওয়্যার", "tips" to "টিপস", "kajer" to "কাজের", "pabe" to "পাবে",
+        "deyar" to "দেয়ার", "9" to "৯", "ip" to "আইপি", "teke" to "থেকে",
+        "parbe" to "পারবে", "dui" to "দুই", "hoyto" to "হয়তো", "tomar" to "তোমার",
+        "thnx" to "থ্যাংকস", "nokia" to "নোকিয়া", "zip" to "জিপ", "shudhu" to "শুধু",
+        "jekono" to "যেকোনো", "hoilo" to "হইলো", "font" to "ফন্ট", "keo" to "কেউ",
+        "neya" to "নেয়া", "soho" to "সহ", "error" to "এরর", "clear" to "ক্লিয়ার",
+        "noy" to "নয়", "jader" to "যাদের", "address" to "এড্রেস", "bujte" to "বুঝতে",
+        "dewar" to "দেওয়ার", "11" to "১১", "config" to "কনফিগ", "remove" to "রিমুভ",
+        "15" to "১৫", "thakte" to "থাকতে", "kaaj" to "কাজ", "sotti" to "সত্যি",
+        "tokhon" to "তখন", "mode" to "মোড", "korche" to "করছে", "first" to "ফার্স্ট",
+        "kmn" to "কেমন", "wapka" to "ওয়াপকা", "baje" to "বাজে", "janle" to "জানলে",
+        "reffer" to "রেফার", "jemon" to "যেমন", "kemon" to "কেমন", "kete" to "কেটে",
+        "real" to "রিয়েল", "web" to "ওয়েব", "apnara" to "আপনারা", "coinbase" to "কয়েনবেস",
+        "device" to "ডিভাইস", "koiren" to "কইরেন", "barano" to "বাড়ানো", "khela" to "খেলা",
+        "12" to "১২", "back" to "ব্যাক", "parlam" to "পারলাম", "tv" to "টিভি",
+        "dekhai" to "দেখায়", "pray" to "প্রায়", "hobena" to "হবেনা", "sathei" to "সাথেই",
+        "then" to "দেন", "banano" to "বানানো", "ses" to "শেষ", "playstore" to "প্লেস্টোর",
+        "last" to "লাস্ট", "kingroot" to "কিংরুট", "uninstall" to "আনইনস্টল", "kal" to "কাল",
+        "bangladesher" to "বাংলাদেশের", "oh" to "ওহ", "limit" to "লিমিট", "joto" to "যত",
+        "janan" to "জানান", "sesh" to "শেষ", "windows" to "উইন্ডোজ", "hok" to "হোক",
+        "nid" to "এনআইডি", "silo" to "ছিল", "obossoi" to "অবশ্যই", "egula" to "এগুলা",
+        "hoile" to "হইলে", "maybe" to "মেবি", "ekhn" to "এখন", "assa" to "আচ্ছা",
+        "boot" to "বুট", "charge" to "চার্জ", "kunu" to "কোনো", "size" to "সাইজ",
+        "shomoy" to "সময়", "naam" to "নাম", "kitkat" to "কিটক্যাট", "upore" to "উপরে",
+        "accept" to "একসেপ্ট", "ban" to "ব্যান", "publish" to "পাবলিশ", "die" to "দিয়ে",
+        "lite" to "লাইট", "dollar" to "ডলার", "parci" to "পারছি", "colbe" to "চলবে",
+        "already" to "অলরেডি", "d" to "ডি", "bistarito" to "বিস্তারিত", "ekjon" to "একজন",
+        "jokhon" to "যখন", "follow" to "ফলো", "college" to "কলেজ", "aga" to "আগে",
+        "balo" to "ভালো", "details" to "ডিটেলস", "msg" to "মেসেজ", "korcen" to "করছেন",
+        "korla" to "করলে", "plzzz" to "প্লিজ", "better" to "বেটার", "model" to "মডেল",
+        "sala" to "শালা", "prblm" to "প্রব্লেম", "korchen" to "করছেন", "bollen" to "বললেন",
+        "jate" to "যাতে", "year" to "ইয়ার", "kichui" to "কিছুই", "bolbo" to "বলবো",
+        "verify" to "ভেরিফাই", "jonne" to "জন্যে", "amer" to "আমার", "tay" to "টায়",
+        "join" to "জয়েন", "choto" to "ছোট", "amaro" to "আমারও", "miya" to "মিয়া",
+        "naa" to "না", "memory" to "মেমরি", "pagol" to "পাগল", "dekhlam" to "দেখলাম",
+        "wordpress" to "ওয়ার্ডপ্রেস", "script" to "স্ক্রিপ্ট", "dike" to "দিকে", "chalu" to "চালু",
+        "etar" to "এটার", "parchi" to "পারছি", "connected" to "কানেক্টেড", "hahaha" to "হাহাহা",
+        "1ta" to "১টা", "taratari" to "তাড়াতাড়ি", "lolipop" to "ললিপপ", "1000" to "১০০০",
+        "darun" to "দারুন", "very" to "ভেরি", "katbe" to "কাটবে", "kamne" to "কেমনে",
+        "hoyni" to "হয়নি", "opera" to "অপেরা", "visit" to "ভিসিট", "khali" to "খালি",
+        "kren" to "করেন", "ame" to "আমি", "hoya" to "হয়ে", "cesta" to "চেষ্টা",
+        "asole" to "আসলে", "nin" to "নিন", "log" to "লগ", "1gb" to "১জিবি",
+        "editor" to "এডিটর", "lagle" to "লাগলে", "dekte" to "দেখতে", "paid" to "পেইড",
+        "droid" to "ড্রয়েড", "abong" to "এবং", "akjon" to "একজন", "akn" to "এখন",
+        "prodhan" to "প্রধান", "ads" to "এডস", "tho" to "তো", "4g" to "৪জি",
+        "24" to "২৪", "connection" to "কানেকশন", "jon" to "জন", "bujhte" to "বুঝতে",
+        "jaba" to "যাবে", "fire" to "ফায়ার", "xposed" to "এক্সপোসড", "agula" to "এগুলা",
+        "taw" to "তাও", "dhoroner" to "ধরনের", "nki" to "নাকি", "html" to "এইচটিএমএল",
+        "3g" to "৩জি", "ay" to "এই", "proof" to "প্রুফ", "parsi" to "পারছি",
+        "dai" to "দেয়", "slow" to "স্লো", "suru" to "শুরু", "lock" to "লক",
+        "jelar" to "জেলার", "hacking" to "হ্যাকিং", "ney" to "নেই", "thaken" to "থাকেন",
+        "akhane" to "এখানে", "jekhane" to "যেখানে", "coc" to "সিওসি", "dial" to "ডায়াল",
+        "manush" to "মানুষ", "backup" to "ব্যাকআপ", "2ta" to "২টা", "kisui" to "কিছুই",
+        "arokom" to "এরকম", "somporke" to "সম্পর্কে", "korten" to "করতেন", "bhalo" to "ভালো",
+        "khelte" to "খেলতে", "onak" to "অনেক", "jete" to "যেতে", "bujhlam" to "বুঝলাম",
+        "btc" to "বিটিসি", "jaay" to "যায়", "computer" to "কম্পিউটার", "news" to "নিউজ",
+        "kindly" to "কাইন্ডলি", "manus" to "মানুষ", "chaile" to "চাইলে", "adsense" to "এডসেন্স",
+        "dichi" to "দিছি", "jei" to "যেই", "offline" to "অফলাইন", "pay" to "পে",
+        "shot" to "শট", "keyboard" to "কীবোর্ড", "fast" to "ফাস্ট", "cmnt" to "কমেন্ট",
+        "easy" to "ইজি", "aste" to "আসতে", "walton" to "ওয়াল্টন", "from" to "ফ্রম",
+        "ken" to "কেন", "aponar" to "আপনার", "kiso" to "কিছু", "khule" to "খুলে",
+        "uttor" to "উত্তর", "jatiyo" to "জাতীয়", "this" to "দিস", "pan" to "পান",
+        "inshallah" to "ইনশাল্লাহ", "too" to "তো", "deoya" to "দেওয়া", "minute" to "মিনিট",
+        "500" to "৫০০", "live" to "লাইভ", "200" to "২০০", "dilei" to "দিলেই",
+        "boss" to "বস", "modde" to "মধ্যে", "phoner" to "ফোনের", "imo" to "ইমো",
+        "bebohar" to "ব্যবহার", "newa" to "নেওয়া", "boli" to "বলি", "hobo" to "হবো",
+        "kan" to "কেন", "18" to "১৮", "main" to "মেইন", "deken" to "দেখেন",
+        "kar" to "কার", "carry" to "ক্যারি", "nijei" to "নিজেই", "cheye" to "চেয়ে",
+        "yes" to "ইয়েস", "sekhane" to "সেখানে", "hoia" to "হইয়া", "bot" to "বট",
+        "tw" to "তো", "username" to "ইউজারনেম", "gola" to "গুলা", "labh" to "লাভ",
+        "nibe" to "নিবে", "games" to "গেমস", "thx" to "থ্যাংকস", "price" to "প্রাইস",
+        "redmi" to "রেডমি", "bollam" to "বললাম", "gali" to "গালি", "with" to "উইথ",
+        "paile" to "পাইলে", "takle" to "থাকলে", "out" to "আউট", "holeo" to "হলেও",
+        "send" to "সেন্ড", "proxy" to "প্রক্সি", "esob" to "এসব", "text" to "টেক্সট",
+        "ekbar" to "একবার", "kortam" to "করতাম", "pubg" to "পাবজি", "now" to "নাউ",
+        "day" to "ডে", "uchit" to "উচিত", "network" to "নেটওয়ার্ক", "bhaiya" to "ভাইয়া",
+        "min" to "মিন", "bolar" to "বলার", "month" to "মান্থ", "jene" to "জেনে",
+        "pele" to "পেলে", "sry" to "সরি", "banglalink" to "বাংলালিংক", "25" to "২৫",
+        "bal" to "বাল", "registration" to "রেজিস্ট্রেশন", "diten" to "দিতেন", "ete" to "এতে",
+        "kace" to "কাছে", "view" to "ভিউ", "ekto" to "একটু", "notification" to "নোটিফিকেশন",
+        "english" to "ইংলিশ", "kine" to "কিনে", "tobuo" to "তবুও", "korei" to "করেই",
+        "bochor" to "বছর", "awesome" to "অসাম", "friend" to "ফ্রেন্ড", "poren" to "পড়েন",
+        "go" to "গো", "khan" to "খান", "hour" to "আওয়ার", "again" to "এগেইন",
+        "tricks" to "ট্রিকস", "box" to "বক্স", "dhur" to "ধুর", "kor" to "কর",
+        "amak" to "আমাকে", "jibon" to "জীবন", "great" to "গ্রেট", "hindi" to "হিন্দি",
+        "porer" to "পরের", "bank" to "ব্যাংক", "kivaba" to "কিভাবে", "proti" to "প্রতি",
+        "stock" to "স্টক", "kaz" to "কাজ", "service" to "সার্ভিস", "line" to "লাইন",
+        "reported" to "রিপোর্টেড", "chrome" to "ক্রোম", "bibhinno" to "বিভিন্ন", "contributor" to "কন্ট্রিবিউটর",
+        "any" to "এনি", "be" to "বি", "by" to "বাই", "hosting" to "হোস্টিং",
+        "tate" to "তাতে", "amare" to "আমারে", "niben" to "নিবেন", "rakha" to "রাখা",
+        "bondo" to "বন্ধ", "vaii" to "ভাই", "tui" to "তুই", "hoyechilo" to "হয়েছিল",
+        "samne" to "সামনে", "somadhan" to "সমাধান", "bolse" to "বলসে", "5000" to "৫০০০",
+        "diyei" to "দিয়েই", "folder" to "ফোল্ডার", "galaxy" to "গ্যালাক্সি", "brick" to "ব্রিক",
+        "jbe" to "যাবে", "khetre" to "ক্ষেত্রে", "akbar" to "একবার", "player" to "প্লেয়ার",
+        "unroot" to "আনরুট", "jhamela" to "ঝামেলা", "khele" to "খেলে", "sokol" to "সকল",
+        "dam" to "দাম", "etai" to "এটাই", "hotam" to "হতাম", "atar" to "এটার",
+        "likha" to "লিখা", "button" to "বাটন", "doya" to "দয়া", "dur" to "দূর",
+        "korleo" to "করলেও", "jeno" to "যেন", "lagbo" to "লাগবো", "abul" to "আবুল",
+        "quality" to "কোয়ালিটি", "rekhe" to "রেখে", "token" to "টোকেন", "logo" to "লোগো",
+        "niche" to "নিচে", "khulte" to "খুলতে", "cricket" to "ক্রিকেট", "banabo" to "বানাবো",
+        "bisoy" to "বিষয়", "key" to "কি", "whatsapp" to "হোয়াটস্যাপ", "14" to "১৪",
+        "blogger" to "ব্লগার", "banate" to "বানাতে", "team" to "টিম", "korba" to "করবা",
+        "eisob" to "এইসব", "dila" to "দিলে", "mini" to "মিনি", "othoba" to "অথবা",
+        "published" to "পাবলিশড", "information" to "ইনফরমেশন", "note" to "নোট", "oneke" to "অনেকে",
+        "onekei" to "অনেকেই", "nilam" to "নিলাম", "13" to "১৩", "temon" to "তেমন",
+        "bishoye" to "বিষয়ে", "bortomane" to "বর্তমানে", "aca" to "আছে", "love" to "লাভ",
+        "boi" to "বই", "tei" to "তেই", "koyek" to "কয়েক", "erpor" to "এরপর",
+        "need" to "নিড", "faul" to "ফাউল", "unlock" to "আনলক", "type" to "টাইপ",
+        "somvob" to "সম্ভব", "koyta" to "কয়টা", "jdi" to "যদি", "baniye" to "বানিয়ে",
+        "bepar" to "ব্যাপার", "mara" to "মারা", "right" to "রাইট", "color" to "কালার",
+        "desher" to "দেশের", "invest" to "ইনভেস্ট", "possible" to "পসিবল", "naame" to "নামে",
+        "palon" to "পালন", "save" to "সেভ", "matha" to "মাথা", "chipset" to "চিপসেট",
+        "jayna" to "যায়না", "category" to "ক্যাটাগরি", "daw" to "দাও", "ajaira" to "আজাইরা",
+        "ageo" to "আগেও", "evabe" to "এভাবে", "eder" to "এদের", "haha" to "হাহা",
+        "test" to "টেস্ট", "40" to "৪০", "niyom" to "নিয়ম", "kiser" to "কিসের",
+        "krle" to "করলে", "jodio" to "যদিও", "baranor" to "বাড়ানোর", "knock" to "নক",
+        "paoya" to "পাওয়া", "likhte" to "লিখতে", "akdom" to "একদম", "jananor" to "জানানোর",
+        "viya" to "ভাইয়া", "vua" to "ভুয়া", "edu" to "এডু", "chay" to "চায়",
+        "verson" to "ভার্সন", "company" to "কোম্পানি", "hoini" to "হয়নি", "method" to "মেথড",
+        "ora" to "ওরা", "kra" to "করা", "marka" to "মার্কা", "jinis" to "জিনিস",
+        "course" to "কোর্স", "dhaka" to "ঢাকা", "mul" to "মূল", "paichi" to "পাইছি",
+        "laptop" to "ল্যাপটপ", "tnxx" to "থ্যাংকস", "maje" to "মাঝে", "gece" to "গেছে",
+        "koron" to "করুন", "shadhin" to "স্বাধীন", "etc" to "ইটিসি", "bolsen" to "বলসেন",
+        "amn" to "এমন", "khulbo" to "খুলবো", "minimum" to "মিনিমাম", "jonmo" to "জন্ম",
+        "chalano" to "চালানো", "vhalo" to "ভালো", "bivinno" to "বিভিন্ন", "chalai" to "চালাই",
+        "asche" to "আসছে", "shei" to "সেই", "battery" to "ব্যাটারী", "jacche" to "যাচ্ছে",
+        "koy" to "কয়", "jabo" to "যাবো", "eki" to "একই", "osthir" to "অস্থির",
+        "korechilen" to "করেছিলেন", "dekhben" to "দেখবেন", "power" to "পাওয়ার", "korlo" to "করলো",
+        "linux" to "লিনাক্স", "run" to "রান", "besh" to "বেশ", "holei" to "হলেই",
+        "egulo" to "এগুলো", "oder" to "ওদের", "shudu" to "শুধু", "shate" to "সাথে",
+        "chaliye" to "চালিয়ে", "tahola" to "তাহলে", "jaygay" to "জায়গায়", "porichito" to "পরিচিত",
+        "khola" to "খোলা", "3ta" to "৩টা", "asob" to "এসব", "setai" to "সেটাই",
+        "protidin" to "প্রতিদিন", "uthe" to "উঠে", "dao" to "দাও", "bolo" to "বলো",
+        "pora" to "পড়া", "wapkiz" to "ওয়াপকিজ", "baler" to "বালের", "subscribe" to "সাবস্ক্রাইব",
+        "okhane" to "ওখানে", "wallet" to "ওয়ালেট", "iccha" to "ইচ্ছা", "paoa" to "পাওয়া",
+        "earning" to "আর্নিং", "verification" to "ভেরিফিকেশন", "tumar" to "তোমার", "jonnoi" to "জন্যই",
+        "hy" to "হয়", "pete" to "পেতে", "hide" to "হাইড", "uporer" to "উপরের",
+        "kibhabe" to "কিভাবে", "solution" to "সল্যুশন", "sound" to "সাউন্ড", "personal" to "পার্সোনাল",
+        "ekdom" to "একদম", "vaba" to "ভাবে", "bhabe" to "ভাবে", "rate" to "রেট",
+        "proyojon" to "প্রয়োজন", "jinish" to "জিনিস", "shesh" to "শেষ", "blog" to "ব্লগ",
+        "kub" to "খুব", "g" to "জি", "sate" to "সাথে", "latest" to "লেটেস্ট",
+        "start" to "স্টার্ট", "akti" to "একটি", "babohar" to "ব্যবহার", "khelar" to "খেলার",
+        "official" to "অফিসিয়াল", "maddhome" to "মাধ্যমে", "union" to "ইউনিয়ন", "messenger" to "মেসেঞ্জার",
+        "termux" to "টারমাক্স", "purai" to "পুরাই", "settings" to "সেটিংস", "one" to "ওয়ান",
+        "easynet" to "ইজিনেট", "daily" to "ডেইলি", "dik" to "দিক", "bolsi" to "বলসি",
+        "diner" to "দিনের", "result" to "রেজাল্ট", "access" to "এক্সেস", "nay" to "নাই",
+        "kate" to "কাটে", "keep" to "কিপ", "rooted" to "রুটেড", "bolan" to "বলেন",
+        "kota" to "কথা", "hlp" to "হেল্প", "topic" to "টপিক", "airokom" to "এইরকম",
+        "cash" to "ক্যাশ", "tu" to "তো", "bolod" to "বলদ", "vitor" to "ভিতর",
+        "reset" to "রিসেট", "failed" to "ফেইলড", "bachor" to "বছর", "info" to "ইনফো",
+        "2gb" to "২জিবি", "jacce" to "যাচ্ছে", "bin" to "বিন", "jogajog" to "যোগাযোগ",
+        "m" to "এম", "kokhono" to "কখনো", "muslim" to "মুসলিম", "islam" to "ইসলাম",
+        "luck" to "লাক", "may" to "মে", "super" to "সুপার", "pura" to "পুরা",
+        "howa" to "হওয়া", "sohoj" to "সহজ", "mega" to "মেগা", "sothik" to "সঠিক",
+        "de" to "দে", "300" to "৩০০", "setar" to "সেটার", "bolten" to "বলতেন",
+        "downlod" to "ডাউনলোড", "lucky" to "লাকি", "design" to "ডিজাইন", "amni" to "এমনি",
+        "subidha" to "সুবিধা", "bl" to "বিএল", "aar" to "আর", "asce" to "আসছে",
+        "exam" to "এক্সাম", "bisoye" to "বিষয়ে", "otg" to "ওটিজি", "era" to "এরা",
+        "dekhbo" to "দেখবো", "nahole" to "নাহলে", "c" to "সি", "parten" to "পারতেন",
+        "echarao" to "এছাড়াও", "kun" to "কোন", "demo" to "ডেমো", "ooo" to "ওওও",
+        "public" to "পাবলিক", "fix" to "ফিক্স", "lava" to "লাভা", "mere" to "মেরে",
+        "plugin" to "প্লাগইন", "process" to "প্রসেস", "board" to "বোর্ড", "gta" to "জিটিএ",
+        "bangladeshi" to "বাংলাদেশী", "date" to "ডেট", "korto" to "করতো", "khubi" to "খুবই",
+        "prothome" to "প্রথমে", "disconnect" to "ডিসকানেক্ট", "lekhar" to "লেখার", "pashe" to "পাশে",
+        "paini" to "পাইনি", "mon" to "মন", "mas" to "মাস", "atai" to "এটাই",
+        "n" to "এন", "opor" to "ওপর", "asi" to "আছি", "obostha" to "অবস্থা",
+        "verified" to "ভেরিফাইড", "lot" to "লট", "dekhan" to "দেখান", "shobai" to "সবাই",
+        "hoyece" to "হয়েছে", "tin" to "তিন", "obosthit" to "অবস্থিত", "http" to "এইচটিটিপি",
+        "b" to "বি", "camera" to "ক্যামেরা", "realme" to "রিয়েলমি", "barabo" to "বাড়াবো",
+        "paina" to "পাইনা", "php" to "পিএইচপি", "nc" to "নাইস", "symbian" to "সিমবিয়ান",
+        "permission" to "পারমিশন", "dekhar" to "দেখার", "cara" to "ছাড়া", "apply" to "অ্যাপ্লাই",
+        "eivabe" to "এইভাবে", "asle" to "আসলে", "bolchen" to "বলছেন", "ekon" to "এখন",
+        "paisen" to "পাইসেন", "jog" to "যোগ", "hoiya" to "হইয়া", "vule" to "ভুলে",
+        "feature" to "ফিচার", "hot" to "হট", "prove" to "প্রুভ", "kortese" to "করতেসে",
+        "16" to "১৬", "deye" to "দিয়ে", "dore" to "ধরে", "aci" to "আছি",
+        "jabena" to "যাবেনা", "beta" to "বেটা", "rat" to "রাত", "mama" to "মামা",
+        "ekn" to "এখন", "man" to "মান", "566" to "৫৬৬", "iphone" to "আইফোন",
+        "onekdin" to "অনেকদিন", "janar" to "জানার", "broo" to "ব্রো", "minit" to "মিনিট",
+        "delet" to "ডিলিট", "agulo" to "এগুলো", "lagse" to "লাগছে", "thak" to "থাক",
+        "master" to "মাস্টার", "2g" to "২জি", "khula" to "খুলা", "koray" to "করে",
+        "oneker" to "অনেকের", "seita" to "সেইটা", "diche" to "দিছে", "os" to "ওএস",
+        "nile" to "নিলে", "tunar" to "টিউনার", "olpo" to "অল্প", "kotodin" to "কতদিন",
+        "solve" to "সল্ভ", "deoa" to "দেওয়া", "tool" to "টুল", "vabei" to "ভাবেই",
+        "khelay" to "খেলায়", "sarkar" to "সরকার", "purbo" to "পূর্ব", "daler" to "দলের",
+        "background" to "ব্যাকগ্রাউন্ড", "kali" to "কালি", "kaw" to "কেউ", "v" to "ভি",
+        "chan" to "চান", "asun" to "আসুন", "hard" to "হার্ড", "much" to "মাচ",
+        "list" to "লিস্ট", "netflix" to "নেটফ্লিক্স", "paro" to "পারো", "acha" to "আছে",
+        "mtk" to "এমটিকে", "korechilo" to "করেছিল", "paste" to "পেস্ট", "can" to "ক্যান",
+        "kicui" to "কিছুই", "korai" to "করাই", "songe" to "সঙ্গে", "bolcen" to "বলছেন",
+        "class" to "ক্লাস", "kico" to "কিছু", "buji" to "বুঝি", "krar" to "করার",
+        "thakar" to "থাকার", "duita" to "দুইটা", "vitore" to "ভিতরে", "dark" to "ডার্ক",
+        "visitor" to "ভিসিটর", "kb" to "কেবি", "dharona" to "ধারণা", "jasse" to "যাচ্ছে",
+        "always" to "অলওয়েজ", "ullekh" to "উল্লেখ", "location" to "লোকেশন", "style" to "স্টাইল",
+        "bash" to "বাঁশ", "aage" to "আগে", "thakleo" to "থাকলেও", "lok" to "লোক",
+        "nie" to "নিয়ে", "ongsho" to "অংশ", "bolei" to "বলেই", "bit" to "বিট",
+        "found" to "ফাউন্ড", "parchina" to "পারছিনা", "ashbe" to "আসবে", "host" to "হোস্ট",
+        "kibave" to "কিভাবে", "bolchi" to "বলছি", "holen" to "হলেন", "khusi" to "খুশি",
+        "bishesh" to "বিশেষ", "korchilam" to "করছিলাম", "nh" to "না", "obb" to "ওবিবি",
+        "takai" to "টাকায়", "noi" to "নয়", "select" to "সিলেক্ট", "promote" to "প্রমোট",
+        "member" to "মেম্বার", "parina" to "পারিনা", "lollipop" to "ললিপপ", "tune" to "টিউন",
+        "mil" to "মিল", "rakhte" to "রাখতে", "bosor" to "বছর", "phon" to "ফোন",
+        "bollo" to "বললো", "manager" to "ম্যানেজার", "upokrito" to "উপকৃত", "tule" to "তুলে",
+        "launcher" to "লঞ্চার", "jono" to "জন্য", "jaigai" to "জায়গায়", "poster" to "পোস্টের",
+        "korini" to "করিনি", "muloto" to "মূলত", "arekta" to "আরেকটা", "khob" to "খুব",
+        "kokhon" to "কখন", "bujhi" to "বুঝি", "vy" to "ভাই", "dine" to "দিনে",
+        "achi" to "আছি", "plzzzz" to "প্লিজ", "fole" to "ফলে", "aki" to "একই",
+        "janena" to "জানেনা", "jaina" to "যায়না", "insallah" to "ইনশাল্লাহ", "bortoman" to "বর্তমান",
+        "echara" to "এছাড়া", "ucit" to "উচিত", "khoti" to "ক্ষতি", "rakhen" to "রাখেন",
+        "dileo" to "দিলেও", "mile" to "মিলে", "ae" to "এই", "amaka" to "আমাকে",
+        "imei" to "আইএমইআই", "ahmed" to "আহমেদ", "picture" to "পিকচার", "hudai" to "হুদাই",
+        "joy" to "জয়", "idea" to "আইডিয়া", "exchange" to "এক্সচেঞ্জ", "transfer" to "ট্রান্সফার",
+        "oitar" to "ঐটার", "deke" to "দেখে", "boka" to "বোকা", "kome" to "কমে",
+        "kingba" to "কিংবা", "grame" to "গ্রামে", "puroskar" to "পুরস্কার", "doler" to "দলের",
+        "bharoter" to "ভারতের", "pakistan" to "পাকিস্তান", "hd" to "এইচডি", "bananor" to "বানানোর",
+        "miss" to "মিস", "vaya" to "ভাইয়া", "moderator" to "মডারেটর", "poste" to "পোস্টে",
+        "social" to "সোশ্যাল", "121" to "১২১", "mash" to "মাস", "aponi" to "আপনি",
+        "porobortite" to "পরবর্তীতে", "bolche" to "বলছে", "250" to "২৫০", "original" to "অরিজিনাল",
+        "dhora" to "ধরা", "second" to "সেকেন্ড", "ma" to "মা", "dakhen" to "দেখেন",
+        "virus" to "ভাইরাস", "lagto" to "লাগতো", "storage" to "স্টোরেজ", "image" to "ইমেজ",
+        "koreo" to "করেও", "jayga" to "জায়গা", "chalate" to "চালাতে", "kamon" to "কেমন",
+        "step" to "স্টেপ", "record" to "রেকর্ড", "emn" to "এমন", "p" to "পি",
+        "kothao" to "কোথাও", "manusher" to "মানুষের", "language" to "ল্যাঙ্গুয়েজ", "okk" to "ওকে",
+        "babe" to "ভাবে", "oitai" to "ওইটাই", "150" to "১৫০", "jak" to "যাক",
+        "agey" to "আগেই", "hola" to "হলে", "bari" to "বাড়ি", "football" to "ফুটবল",
+        "byabohar" to "ব্যবহার", "shikkha" to "শিক্ষা", "jonmogrohon" to "জন্মগ্রহণ", "chalachitro" to "চলচ্চিত্র",
+        "nari" to "নারী", "parban" to "পারবেন", "anek" to "অনেক", "paice" to "পাইছে",
+        "scam" to "স্ক্যাম", "bolci" to "বলছি", "tnks" to "থ্যাংকস", "kinemaster" to "কাইনমাস্টার",
+        "he" to "হে", "hoibo" to "হইবো", "security" to "সিকিউরিটি", "64" to "৬৪",
+        "dol" to "দল", "school" to "স্কুল", "nodi" to "নদী", "poschim" to "পশ্চিম",
+        "512" to "৫১২", "shundor" to "সুন্দর", "url" to "ইউআরএল", "19" to "১৯",
+        "really" to "রিয়েলি", "hello" to "হ্যালো", "coment" to "কমেন্ট", "koita" to "কয়টা",
+        "plus" to "প্লাস", "series" to "সিরিজ", "jukto" to "যুক্ত", "400" to "৪০০",
+        "office" to "অফিস", "loading" to "লোডিং", "khane" to "খানে", "its" to "ইটস",
+        "suggest" to "সাজেস্ট", "without" to "উইথআউট", "bolce" to "বলসে", "down" to "ডাউন",
+        "gore" to "গড়ে", "plan" to "প্ল্যান", "kahini" to "কাহিনী", "jeto" to "যেত",
+        "form" to "ফর্ম", "ohh" to "ওহ", "uni" to "উনি", "aitar" to "এইটার",
+        "pleasa" to "প্লিজ", "60" to "৬০", "prodan" to "প্রদান", "biye" to "বিয়ে",
+        "biruddhe" to "বিরুদ্ধে", "tools" to "টুলস", "jonyo" to "জন্য", "saal" to "সাল",
+        "british" to "ব্রিটিশ", "eigula" to "এইগুলা", "eirokom" to "এইরকম", "baba" to "বাবা",
+        "amke" to "আমাকে", "cholse" to "চলছে", "deo" to "দেও", "baire" to "বাইরে",
+        "bah" to "বাহ্", "hoyce" to "হইসে", "xiaomi" to "শাওমি", "kamna" to "কেমনে",
+        "prb" to "প্রব্লেম", "90" to "৯০", "pita" to "পিতা", "biyer" to "বিয়ের",
+        "taader" to "তাদের", "basic" to "বেসিক", "gia" to "গিয়ে", "thaki" to "থাকি",
+        "partesi" to "পারতেসি", "life" to "লাইফ", "limited" to "লিমিটেড", "korcilam" to "করছিলাম",
+        "ea" to "এ", "kire" to "কিরে", "nato" to "নাতো", "pacci" to "পাচ্ছি",
+        "tau" to "তাও", "home" to "হোম", "dure" to "দূরে", "jano" to "জানো",
+        "proman" to "প্রমাণ", "match" to "ম্যাচ", "dubbed" to "ডাবড", "bohu" to "বহু",
+        "bishoy" to "বিষয়", "sokale" to "সকালে", "hobar" to "হবার", "panel" to "প্যানেল",
+        "rail" to "রেল", "raja" to "রাজা", "kotobar" to "কতবার", "romance" to "রোম্যান্স",
+        "content" to "কনটেন্ট", "rajshahi" to "রাজশাহী", "aisob" to "এইসব", "trial" to "ট্রায়াল",
+        "bade" to "বাদে", "eitar" to "এইটার", "vhi" to "ভাই", "sign" to "সাইন",
+        "rajdhani" to "রাজধানী", "gelam" to "গেলাম", "x" to "এক্স", "teletalk" to "টেলিটক",
+        "wlc" to "ওয়েলকাম", "pdf" to "পিডিএফ", "king" to "কিং", "aslo" to "আসলো",
+        "primo" to "প্রিমো", "kinle" to "কিনলে", "bypass" to "বাইপাস", "deki" to "দেখি",
+        "ghonta" to "ঘন্টা", "features" to "ফিচারস", "gf" to "জিএফ", "deshe" to "দেশে",
+        "city" to "সিটি", "order" to "অর্ডার", "refar" to "রেফার", "vag" to "ভাগ",
+        "stop" to "স্টপ", "krsi" to "করছি", "tokon" to "তখন", "j2" to "জে২",
+        "koyekta" to "কয়েকটা", "aber" to "আবার", "parcina" to "পারছিনা", "voy" to "ভয়",
+        "puron" to "পূরণ", "joma" to "জমা", "gcam" to "জিক্যাম", "kicho" to "কিছু",
+        "onner" to "অন্যের", "source" to "সোর্স", "abdul" to "আবদুল", "shonge" to "সঙ্গে",
+        "taake" to "তাকে", "dokkhin" to "দক্ষিণ", "tag" to "ট্যাগ", "kau" to "কেউ",
+        "mx" to "এমএক্স", "ssc" to "এসএসসি", "krci" to "করছি", "apnakeo" to "আপনাকেও",
+        "akono" to "এখনো", "modhe" to "মধ্যে", "joner" to "জনের", "dicen" to "দিসেন",
+        "par" to "পার", "pola" to "পোলা", "zay" to "যায়", "donnobad" to "ধন্যবাদ",
+        "janina" to "জানিনা", "kortesi" to "করতেছি", "gulu" to "গুলো", "prime" to "প্রাইম",
+        "dear" to "ডিয়ার", "hoite" to "হইতে", "emni" to "এমনি", "laga" to "লাগে",
+        "porte" to "পড়তে", "gular" to "গুলার", "dita" to "দিতে", "deklam" to "দেখলাম",
+        "money" to "মানি", "banned" to "ব্যানড", "abedon" to "আবেদন", "ceye" to "চেয়ে",
+        "trusted" to "ট্রাস্টেড", "short" to "শর্ট", "golo" to "গুলো", "dice" to "দিসে",
+        "gan" to "গান", "banai" to "বানাই", "hisabe" to "হিসাবে", "sad" to "স্যাড",
+        "buja" to "বুঝা", "bug" to "বাগ", "ese" to "এসে", "submit" to "সাবমিট",
+        "khushi" to "খুশি", "minutes" to "মিনিটস", "police" to "পুলিশ", "mukto" to "মুক্ত",
+        "acc" to "একাউন্ট", "upojelar" to "উপজেলার", "obosthan" to "অবস্থান", "dhanda" to "ধান্দা",
+        "cheak" to "চেক", "hoisa" to "হইসে", "sharing" to "শেয়ারিং", "seo" to "এসইও",
+        "mind" to "মাইন্ড", "shohore" to "শহরে", "dara" to "দ্বারা", "sd" to "এসডি",
+        "photoshop" to "ফটোশপ", "think" to "থিঙ্ক", "chobi" to "ছবি", "prachin" to "প্রাচীন",
+        "disse" to "দিচ্ছে", "hoyese" to "হয়েছে", "css" to "সিএসএস", "setup" to "সেটআপ",
+        "indian" to "ইন্ডিয়ান", "complete" to "কমপ্লিট", "porbo" to "পর্ব", "prai" to "প্রায়",
+        "word" to "ওয়ার্ড", "tunner" to "টিউনার", "massage" to "মেসেজ", "bikri" to "বিক্রি",
+        "mathay" to "মাথায়", "week" to "উইক", "clone" to "ক্লোন", "kbps" to "কেবিপিএস",
+        "extract" to "এক্সট্র্যাক্ট", "buje" to "বুঝে", "menu" to "মেনু", "poriman" to "পরিমাণ",
+        "painai" to "পাইনাই", "stay" to "স্টে", "dekhasse" to "দেখাচ্ছে", "chat" to "চ্যাট",
+        "automatic" to "অটোমেটিক", "crack" to "ক্র্যাক", "gift" to "গিফট", "ey" to "এই",
+        "porichalona" to "পরিচালনা", "dwara" to "দ্বারা", "clan" to "ক্লান", "acca" to "আচ্ছা",
+        "28" to "২৮", "cup" to "কাপ", "jotil" to "জটিল", "default" to "ডিফল্ট",
+        "dissi" to "দিচ্ছি", "desktop" to "ডেস্কটপ", "hotspot" to "হটস্পট", "motoi" to "মতোই",
+        "job" to "জব", "21" to "২১", "invite" to "ইনভাইট", "star" to "ষ্টার",
+        "chalan" to "চালান", "aache" to "আছে", "thanx" to "থ্যাংকস", "barbe" to "বাড়বে",
+        "jehetu" to "যেহেতু", "sir" to "স্যার", "bhasha" to "ভাষা", "ore" to "ওরে",
+        "joss" to "জোস", "sm" to "এসএম", "developer" to "ডেভেলপার", "ghote" to "ঘটে",
+        "deta" to "দিতে", "per" to "পার", "toto" to "তত", "hoyar" to "হওয়ার",
+        "calu" to "চালু", "mouse" to "মাউস", "high" to "হাই", "comments" to "কমেন্টস",
+        "lagche" to "লাগছে", "basi" to "বেশি", "koresen" to "করেসেন", "apnk" to "আপনাকে",
+        "cholena" to "চলেনা", "dns" to "ডিএনএস", "router" to "রাউটার", "dawa" to "দেয়া",
+        "restore" to "রিস্টোর", "daka" to "দেখা", "emoji" to "ইমোজি", "chek" to "চেক",
+        "ee" to "ই", "doller" to "ডলার", "restart" to "রিস্টার্ট", "max" to "ম্যাক্স",
+        "ashole" to "আসলে", "thekeo" to "থেকেও", "helpful" to "হেল্পফুল", "tachara" to "তাছাড়া",
+        "siter" to "সাইটের", "dekhle" to "দেখলে", "kormu" to "করমু", "dhukte" to "ঢুকতে",
+        "dicci" to "দিচ্ছি", "poriborton" to "পরিবর্তন", "parini" to "পারিনি", "mukti" to "মুক্তি",
+        "ghoshona" to "ঘোষণা", "uccho" to "উচ্চ", "kendro" to "কেন্দ্র", "duti" to "দুটি",
+        "nirman" to "নির্মাণ", "prokashito" to "প্রকাশিত", "markin" to "মার্কিন", "mbps" to "এমবিপিএস",
+        "gesi" to "গেসি", "dien" to "দিয়েন", "processor" to "প্রসেসর", "tir" to "টির",
+        "see" to "সি", "work" to "ওয়ার্ক", "ka" to "কে", "v75" to "ভি৭৫",
+        "md" to "এমডি", "es" to "ইএস", "takhon" to "তখন", "teo" to "তেও",
+        "ayta" to "এইটা", "brooo" to "ব্রো", "arek" to "আরেক", "dekay" to "দেখায়",
+        "zabe" to "যাবে", "janabo" to "জানাবো", "00" to "০০", "kheyal" to "খেয়াল",
+        "country" to "কান্ট্রি", "pawar" to "পাওয়ার", "khobor" to "খবর", "usa" to "ইউএসএ",
+        "dichen" to "দিছেন", "song" to "সং", "care" to "কেয়ার", "z" to "জেড",
+        "bolbe" to "বলবে", "paye" to "পেয়ে", "deposit" to "ডিপোজিট", "mne" to "মনে",
+        "porar" to "পড়ার", "vidmate" to "ভিডমেট", "posta" to "পোস্টটা", "banay" to "বানায়",
+        "bujbo" to "বুঝবো", "al" to "আল", "pacchi" to "পাচ্ছি", "regular" to "রেগুলার",
+        "risk" to "রিস্ক", "nea" to "নিয়ে", "issa" to "ইচ্ছা", "guli" to "গুলি",
+        "hate" to "হাতে", "command" to "কমান্ড", "otp" to "ওটিপি", "passi" to "পাচ্ছি",
+        "follower" to "ফলোয়ার", "animation" to "অ্যানিমেশন", "sub" to "সাব", "eo" to "এও",
+        "dakhai" to "দেখায়", "hye" to "হয়ে", "bhi" to "ভাই", "bujiye" to "বুঝিয়ে",
+        "cholche" to "চলছে", "sikhte" to "শিখতে", "bose" to "বসে", "ebar" to "এবার",
+        "dent" to "ডেন্ট", "adhunik" to "আধুনিক", "nana" to "নানা", "guruttopurno" to "গুরুত্বপূর্ণ",
+        "grohon" to "গ্রহণ", "bhumika" to "ভূমিকা", "pakistani" to "পাকিস্তানি", "obhinoy" to "অভিনয়",
+        "bolechi" to "বলেছি", "boilen" to "বইলেন", "bujhe" to "বুঝে", "hi" to "হাই",
+        "nijeke" to "নিজেকে", "colour" to "কালার", "asena" to "আসেনা", "korteci" to "করতেছি",
+        "subtitle" to "সাবটাইটেল", "template" to "টেম্পলেট", "jokon" to "যখন", "32" to "৩২",
+        "vhabe" to "ভাবে", "hadis" to "হাদিস", "vedio" to "ভিডিও", "thakbo" to "থাকবো",
+        "diea" to "দিয়ে", "eid" to "ঈদ", "krn" to "করেন", "space" to "স্পেস",
+        "ajob" to "আজব", "tomuk" to "তমুক", "goto" to "গত", "dekhacche" to "দেখাচ্ছে",
+        "mr" to "মিস্টার", "bujben" to "বুঝবেন", "17" to "১৭", "watermark" to "ওয়াটারমার্ক",
+        "80" to "৮০", "porbe" to "পড়বে", "audio" to "অডিও", "acount" to "একাউন্ট",
+        "asar" to "আসার", "iris" to "আইরিস", "rakhi" to "রাখি", "tah" to "টা",
+        "invalid" to "ইনভ্যালিড", "ulta" to "উল্টা", "chalanor" to "চালানোর", "ne" to "নে",
+        "article" to "আর্টিকেল", "somadan" to "সমাধান", "gulor" to "গুলোর", "islamic" to "ইসলামিক",
+        "pin" to "পিন", "chance" to "চান্স", "mansommoto" to "মানসম্মত", "segula" to "সেগুলা",
+        "kena" to "কেনা", "pblm" to "প্রবলেম", "neyar" to "নেয়ার", "fele" to "ফেলে",
+        "hota" to "হতে", "usb" to "ইউএসবি", "wowbox" to "ওয়াওবক্স", "sing" to "সাইন",
+        "asol" to "আসল", "dimu" to "দিমু", "important" to "ইম্পরট্যান্ট", "desh" to "দেশ",
+        "baccha" to "বাচ্চা", "ditam" to "দিতাম", "poreo" to "পরেও", "bare" to "বাড়ে",
+        "kortechi" to "করতেছি", "print" to "প্রিন্ট", "tunnel" to "টানেল", "onujayi" to "অনুযায়ী",
+        "register" to "রেজিস্টার", "clash" to "ক্ল্যাশ", "installed" to "ইনস্টলড", "tuku" to "টুকু",
+        "paowa" to "পাওয়া", "mukh" to "মুখ", "deoyar" to "দেওয়ার", "akoi" to "একই",
+        "jaan" to "যান", "99" to "৯৯", "caile" to "চাইলে", "pokkhe" to "পক্ষে",
+        "prokash" to "প্রকাশ", "jibone" to "জীবনে", "purbe" to "পূর্বে", "dayitto" to "দায়িত্ব",
+        "biman" to "বিমান", "bharot" to "ভারত", "protishthito" to "প্রতিষ্ঠিত", "madhyome" to "মাধ্যমে",
+        "korban" to "করবেন", "apatoto" to "আপাতত", "22" to "২২", "hobei" to "হবেই",
+        "sompurno" to "সম্পূর্ণ", "bootloader" to "বুটলোডার", "replace" to "রিপ্লেস", "ashen" to "আসেন",
+        "dekhabe" to "দেখাবে", "bangali" to "বাঙালি", "hoben" to "হবেন", "daki" to "দেখি",
+        "am" to "এম", "2000" to "২০০০", "wellcome" to "ওয়েলকাম", "pst" to "পোস্ট",
+        "omuk" to "অমুক", "shohor" to "শহর", "korbena" to "করবেনা", "puraton" to "পুরাতন",
+        "wc" to "ওয়েলকাম", "avabe" to "এভাবে", "dwitiyo" to "দ্বিতীয়", "opore" to "উপরে",
+        "sobay" to "সবাই", "dekhci" to "দেখছি", "2018" to "২০১৮", "nicher" to "নিচের",
+        "national" to "ন্যাশনাল", "likhle" to "লিখলে", "okay" to "ওকে", "etodin" to "এতদিন",
+        "upgrade" to "আপগ্রেড", "busy" to "বিজি", "top" to "টপ", "dicche" to "দিচ্ছে",
+        "amay" to "আমায়", "why" to "হোয়াই", "hat" to "হাত", "tahle" to "তাহলে",
+        "mayad" to "মেয়াদ", "downloader" to "ডাউনলোডার", "mean" to "মিন", "puran" to "পুরান",
+        "deri" to "দেরি", "ati" to "এটি", "music" to "মিউজিক", "updated" to "আপডেটেড",
+        "bojlam" to "বুঝলাম", "hoyche" to "হয়েছে", "val" to "ভাল", "ga" to "গা",
+        "fee" to "ফী", "drkr" to "দরকার", "vdo" to "ভিডিও", "jaiga" to "জায়গা",
+        "wrong" to "রং", "face" to "ফেস", "osadharon" to "অসাধারণ", "koydin" to "কয়দিন",
+        "daken" to "দেখেন", "patcher" to "প্যাচার", "apnio" to "আপনিও", "pochondo" to "পছন্দ",
+        "mining" to "মাইনিং", "dorker" to "দরকার", "low" to "লো", "sokal" to "সকাল",
+        "sent" to "সেন্ট", "tasara" to "তাছাড়া", "namer" to "নামের", "adsence" to "এডসেন্স",
+        "collect" to "কালেক্ট", "khulle" to "খুললে", "othe" to "ওঠে", "gaming" to "গেমিং",
+        "total" to "টোটাল", "elakar" to "এলাকার", "nodir" to "নদীর", "jela" to "জেলা",
+        "degree" to "ডিগ্রী", "taara" to "তারা", "byabohrito" to "ব্যবহৃত", "most" to "মোস্ট",
+        "itel" to "আইটেল", "movi" to "মুভি", "mukhe" to "মুখে", "dekho" to "দেখো",
+        "what" to "হোয়াট", "100mb" to "১০০এমবি", "oo" to "ও", "giya" to "গিয়ে",
+        "chilam" to "ছিলাম", "hocchena" to "হচ্ছেনা", "tmr" to "তোমার", "aigula" to "এইগুলা",
+        "2010" to "২০১০", "2012" to "২০১২", "45" to "৪৫", "kri" to "করি",
+        "dakha" to "দেখা", "vivo" to "ভিভো", "dakan" to "দেখেন", "hoccena" to "হচ্ছেনা",
+        "namber" to "নাম্বার", "amito" to "আমিতো", "unzip" to "আনজিপ", "kebol" to "কেবল",
+        "tnxxx" to "থ্যাংকস", "jevabe" to "যেভাবে", "korina" to "করিনা", "korvo" to "করবো",
+        "bujhlen" to "বুঝলেন", "deben" to "দেবেন", "thakben" to "থাকবেন", "dekhn" to "দেখেন",
+        "kach" to "কাছ", "krbe" to "করবে", "format" to "ফরমেট", "bas" to "বাস",
+        "kothin" to "কঠিন", "hours" to "আওয়ার্স", "big" to "বিগ", "deka" to "দেখা",
+        "fan" to "ফ্যান", "core" to "কোর", "tarporo" to "তারপরও", "bi" to "ভাই",
+        "puro" to "পুরো", "modify" to "মোডিফাই", "loss" to "লস", "ferot" to "ফেরত",
+        "how" to "হাউ", "kj" to "কাজ", "attack" to "অ্যাটাক", "done" to "ডান",
+        "ter" to "টার", "parven" to "পারবেন", "maddome" to "মাধ্যমে", "sofol" to "সফল",
+        "vuya" to "ভুয়া", "miui" to "এমআইইউআই", "khota" to "কথা", "oikhane" to "ঐখানে",
+        "kheli" to "খেলি", "meye" to "মেয়ে", "blue" to "ব্লু", "icca" to "ইচ্ছা",
+        "advance" to "অ্যাডভান্স", "translate" to "ট্রান্সলেট", "icon" to "আইকন", "akane" to "এখানে",
+        "porei" to "পরেই", "rahman" to "রহমান", "purono" to "পুরোনো", "sobaike" to "সবাইকে",
+        "recover" to "রিকভার", "india" to "ইন্ডিয়া", "ate" to "এতে", "league" to "লীগ",
+        "banglar" to "বাংলার", "kam" to "কাম", "hoa" to "হয়ে", "maren" to "মারেন",
+        "diba" to "দিবা", "27" to "২৭", "kpn" to "কেপিএন", "voice" to "ভয়েস",
+        "display" to "ডিসপ্লে", "arektu" to "আরেকটু", "x008c" to "008", "sera" to "সেরা",
+        "tab" to "ট্যাব", "lekhok" to "লেখক", "release" to "রিলিজ", "paichen" to "পাইছেন",
+        "ektao" to "একটাও", "sadharon" to "সাধারণ", "namok" to "নামক", "bujen" to "বুঝেন",
+        "2013" to "২০১৩", "newar" to "নেওয়ার", "ortho" to "অর্থ", "porjaye" to "পর্যায়ে",
+        "hum" to "হুম", "bochorer" to "বছরের", "laav" to "লাভ", "haate" to "হাতে",
+        "juddhe" to "যুদ্ধে", "ityadi" to "ইত্যাদি", "kendriyo" to "কেন্দ্রীয়", "tinti" to "তিনটি",
+        "oncholer" to "অঞ্চলের", "shorkari" to "সরকারি", "shorkar" to "সরকার", "nao" to "নাও",
+        "koris" to "করিস", "kivave" to "কিভাবে", "touch" to "টাচ", "nichi" to "নিছি",
+        "normal" to "নরমাল", "bdix" to "বিডিআইএক্স", "eke" to "একে", "khai" to "খাই",
+        "shakib" to "ইউজার", "deactive" to "ডিএক্টিভ", "emulator" to "এমুলেটর", "kevabe" to "কিভাবে",
+        "3rd" to "থার্ড", "lagce" to "লাগছে", "cay" to "চায়", "abaro" to "আবারো",
+        "dole" to "দলে", "asia" to "এশিয়া", "more" to "মোর", "prosno" to "প্রশ্ন",
+        "kolkatar" to "কলকাতার", "tnk" to "থ্যাংক", "supported" to "সাপোর্টেড", "korean" to "করেন",
+        "robir" to "রবির", "don" to "ডন", "falto" to "ফালতু", "bon" to "বোন",
+        "mistake" to "মিস্টেক", "neta" to "নেতা", "alochona" to "আলোচনা", "leka" to "লেখা",
+        "i10" to "আই১০", "da" to "দা", "jaibo" to "যাইবো", "dean" to "দেন",
+        "chere" to "ছেড়ে", "gt" to "জিটি", "debar" to "দেবার", "jorito" to "জড়িত",
+        "chalabo" to "চালাবো", "hariye" to "হারিয়ে", "orginal" to "অরিজিনাল", "70" to "৭০",
+        "segulo" to "সেগুলো", "korecen" to "করেছেন", "browse" to "ব্রাউজ", "lekhen" to "লেখেন",
+        "waiting" to "ওয়েটিং", "bujle" to "বুঝলে", "sodo" to "শুধু", "bolechen" to "বলেছেন",
+        "jegula" to "যেগুলা", "ktha" to "কথা", "chaite" to "চাইতে", "jao" to "যাও",
+        "pa" to "পা", "khelle" to "খেললে", "buy" to "বাই", "gulai" to "গুলাই",
+        "base" to "বেস", "hall" to "হল", "sheta" to "সেটা", "room" to "রুম",
+        "linkta" to "লিংকটা", "kas" to "কাছ", "manuser" to "মানুষের", "calate" to "চালাতে",
+        "aivabe" to "এইভাবে", "janiye" to "জানিয়ে", "unar" to "উনার", "shoho" to "সহ",
+        "certificate" to "সার্টিফিকেট", "dwnld" to "ডাউনলোড", "party" to "পার্টি", "lagte" to "লাগতে",
+        "karap" to "খারাপ", "dabi" to "দাবি", "bujlen" to "বুঝলেন", "nirvor" to "নির্ভর",
+        "replay" to "রিপ্লাই", "29" to "২৯", "february" to "ফেব্রুয়ারি", "sujog" to "সুযোগ",
+        "shareit" to "শেয়ারইট", "market" to "মার্কেট", "prochur" to "প্রচুর", "trail" to "ট্রায়াল",
+        "bisesh" to "বিশেষ", "sale" to "সালে", "january" to "জানুয়ারি", "england" to "ইংল্যান্ড",
+        "sthapon" to "স্থাপন", "sthan" to "স্থান", "srishti" to "সৃষ্টি", "unioner" to "ইউনিয়নের",
+        "nirmito" to "নির্মিত", "kag" to "কাজ", "dekun" to "দেখুন", "korn" to "করেন",
+        "txt" to "টেক্সট", "github" to "গিটহাব", "asbo" to "আসবো", "niyome" to "নিয়মে",
+        "natok" to "নাটক", "2017" to "২০১৭", "pase" to "পাশে", "deyna" to "দেয়না",
+        "partam" to "পারতাম", "nise" to "নিসে", "gpeasynet" to "জিপিইজিনেট", "know" to "নো",
+        "webtunnel" to "ওয়েবটানেল", "mojar" to "মজার", "infinix" to "ইনফিনিক্স", "asolei" to "আসলেই",
+        "pashapashi" to "পাশাপাশি", "alhamdulillah" to "আলহামদুলিল্লাহ", "paicen" to "পাইছেন", "ho" to "হ",
+        "ftp" to "এফটিপি", "paran" to "পারেন", "must" to "মাস্ট", "options" to "অপশনস",
+        "kii" to "কী", "kingoroot" to "কিংরুট", "subscription" to "সাবস্ক্রিপশন", "khankir" to "খানকির",
+        "barate" to "বাড়াতে", "somoi" to "সময়", "win" to "উইন", "expert" to "এক্সপার্ট",
+        "past" to "পেস্ট", "oppo" to "অপ্পো", "dhuke" to "ঢুকে", "1971" to "১৯৭১",
+        "mene" to "মেনে", "konodin" to "কোনোদিন", "kichudin" to "কিছুদিন", "dwonload" to "ডাউনলোড",
+        "dela" to "দিলে", "anyway" to "এনিওয়ে", "rules" to "রুলস", "emonki" to "এমনকি",
+        "chor" to "চোর", "2011" to "২০১১", "lab" to "লাভ", "janlam" to "জানলাম",
+        "night" to "নাইট", "vhul" to "ভুল", "disconnected" to "ডিসকানেক্টেড", "august" to "আগস্ট",
+        "west" to "ওয়েস্ট", "explorer" to "এক্সপ্লোরার", "vmos" to "ভিমোস", "gold" to "গোল্ড",
+        "success" to "সাকসেস", "1mbps" to "১এমবিপিএস", "gase" to "গেছে", "pailen" to "পাইলেন",
+        "lekhe" to "লেখে", "apnak" to "আপনাকে", "dakhan" to "দেখান", "75" to "৭৫",
+        "churi" to "চুরি", "etao" to "এটাও", "rakhben" to "রাখবেন", "khomota" to "ক্ষমতা",
+        "browsing" to "ব্রাউজিং", "lagena" to "লাগেনা", "mto" to "মতো", "bujhen" to "বুঝেন",
+        "boleche" to "বলেছে", "build" to "বিল্ড", "hoe" to "হয়ে", "bor" to "বর",
+        "kalo" to "কালো", "mark" to "মার্ক", "likhun" to "লিখুন", "jeita" to "যেইটা",
+        "batil" to "বাতিল", "poddhoti" to "পদ্ধতি", "agee" to "আগে", "bujha" to "বুঝা",
+        "jugajug" to "যোগাযোগ", "other" to "আদার", "march" to "মার্চ", "wicket" to "উইকেট",
+        "porinoto" to "পরিণত", "mondir" to "মন্দির", "abosthito" to "অবস্থিত", "bhashay" to "ভাষায়",
+        "sthane" to "স্থানে", "nirbachito" to "নির্বাচিত", "rajnoitik" to "রাজনৈতিক", "bartoman" to "বর্তমান",
+        "koreni" to "করেনি", "bishal" to "বিশাল", "wps" to "ডাবলুপিএস", "deban" to "দিবেন",
+        "ignore" to "ইগনোর", "freebasic" to "ফ্রিবেসিক", "fun" to "ফান", "manei" to "মানেই",
+        "rakhun" to "রাখুন", "porun" to "পড়ুন", "example" to "এক্সাম্পল", "khaben" to "খাবেন",
+        "plzzzzz" to "প্লিজ", "mashe" to "মাসে", "green" to "গ্রীন", "trickbdr" to "ট্রিকবিডির",
+        "achen" to "আছেন", "sony" to "সনি", "kake" to "কাকে", "purush" to "পুরুষ",
+        "bharotiyo" to "ভারতীয়", "antorjatik" to "আন্তর্জাতিক", "vaiii" to "ভাই", "holam" to "হলাম",
+        "hoica" to "হইসে", "rakhe" to "রাখে", "adress" to "এড্রেস", "char" to "চার",
+        "bissas" to "বিশ্বাস", "rakhar" to "রাখার", "costom" to "কাস্টম", "banaise" to "বানাইসে",
+        "yeasin" to "ইউজার", "screenshots" to "স্ক্রিনশটস", "tore" to "তোরে", "tbe" to "তবে",
+        "korley" to "করলে", "tarporeo" to "তারপরেও", "compressed" to "কম্প্রেসড", "charai" to "ছাড়াই",
+        "kasa" to "কাছে", "likhen" to "লিখেন", "bahir" to "বাহির", "copyright" to "কপিরাইট",
+        "suspend" to "সাসপেন্ড", "black" to "ব্ল্যাক", "simple" to "সিম্পল", "gaan" to "গান",
+        "victim" to "ভিক্টিম", "pement" to "পেমেন্ট", "kothata" to "কথাটা", "usd" to "ইউএসডি",
+        "dekhano" to "দেখানো", "nmbr" to "নাম্বার", "paya" to "পেয়ে", "sime" to "সিমে",
+        "rakhle" to "রাখলে", "ante" to "আনতে", "shere" to "শেয়ার", "student" to "স্টুডেন্ট",
+        "onekbar" to "অনেকবার", "nij" to "নিজ", "kory" to "করে", "internal" to "ইন্টারনাল",
+        "bepare" to "ব্যাপারে", "cholba" to "চলবে", "kara" to "কারা", "bul" to "ভুল",
+        "prof" to "প্রুফ", "jamela" to "ঝামেলা", "para" to "পারে", "korso" to "করসো",
+        "golpo" to "গল্প", "subject" to "সাবজেক্ট", "jakhon" to "যখন", "about" to "এবাউট",
+        "ray" to "রায়", "blur" to "ব্লার", "egiye" to "এগিয়ে", "ekdin" to "একদিন",
+        "hocca" to "হচ্ছে", "related" to "রিলেটেড", "h" to "এইচ", "cheshta" to "চেষ্টা",
+        "bolta" to "বলতে", "soft" to "সফট", "lal" to "লাল", "mar" to "মার",
+        "korty" to "করতে", "head" to "হেড", "jeti" to "যেটি", "mobiler" to "মোবাইলের",
+        "maner" to "মানের", "cholto" to "চলতো", "oreo" to "ওরিও", "banglay" to "বাংলায়",
+        "bere" to "বেড়ে", "5gb" to "৫জিবি", "arab" to "আরব", "react" to "রিয়েক্ট",
+        "extra" to "এক্সট্রা", "subida" to "সুবিধা", "oigula" to "ওইগুলা", "hacker" to "হ্যাকার",
+        "bondhu" to "বন্ধু", "su" to "সু", "smart" to "স্মার্ট", "bangladeshe" to "বাংলাদেশে",
+        "dosh" to "দোষ", "path" to "পাঠ", "islami" to "ইসলামী", "november" to "নভেম্বর",
+        "punoray" to "পুনরায়", "tamil" to "তামিল", "mathar" to "মাথার", "kolkata" to "কলকাতা",
+        "september" to "সেপ্টেম্বর", "ekmatro" to "একমাত্র", "thakla" to "থাকলে", "gramer" to "গ্রামের",
+        "somoye" to "সময়ে", "rochito" to "রচিত", "france" to "ফ্রান্স", "prathomik" to "প্রাথমিক",
+        "bibhager" to "বিভাগের", "bahini" to "বাহিনী", "shohorer" to "শহরের", "bachorer" to "বছরের",
+        "sai" to "সেই", "mt6572" to "এমটি৬৫৭২", "vaijan" to "ভাইজান", "mana" to "মানা",
+        "opokar" to "উপকার", "safe" to "সেফ", "nisi" to "নিসি", "tmi" to "তুমি",
+        "graphics" to "গ্রাফিক্স", "hove" to "হবে", "banaben" to "বানাবেন", "parsina" to "পারছিনা",
+        "skyvpn" to "স্কাইভিপিএন", "tarai" to "তারাই", "station" to "স্টেশন", "skype" to "স্কাইপ",
+        "sky" to "স্কাই", "cholce" to "চলছে", "frnd" to "ফ্রেন্ড", "okkk" to "ওকে",
+        "prem" to "প্রেম", "kortece" to "করতেসে", "10000" to "১০০০০", "level" to "লেভেল",
+        "chi" to "চাই", "side" to "সাইড", "eshob" to "এসব", "book" to "বুক",
+        "aia" to "এই", "sb" to "সব", "viber" to "ভাইবার", "ali" to "আলী",
+        "druto" to "দ্রুত", "mononito" to "মনোনীত", "ghate" to "ঘটে", "noyto" to "নয়তো",
+        "hbena" to "হবেনা", "mt" to "এমটি", "likhbo" to "লিখবো", "dekhchi" to "দেখছি",
+        "inshaallah" to "ইনশাআল্লাহ", "flexiplan" to "ফ্লেক্সিপ্লান", "pathan" to "পাঠান", "obosthito" to "অবস্থিত",
+        "film" to "ফিল্ম", "bhul" to "ভুল", "amai" to "আমায়", "korlay" to "করলে",
+        "rag" to "রাগ", "khelbo" to "খেলবো", "claim" to "ক্লেইম", "idm" to "আইডিএম",
+        "chinta" to "চিন্তা", "chele" to "ছেলে", "have" to "হ্যাভ", "moderation" to "মডারেশন",
+        "anime" to "এনিমে", "fail" to "ফেইল", "motamot" to "মতামত", "non" to "নন",
+        "track" to "ট্র্যাক", "chanel" to "চ্যানেল", "extension" to "এক্সটেনশন", "late" to "লেট",
+        "kotai" to "কোথায়", "vice" to "ভাইস", "enable" to "এনাবেল", "somoyer" to "সময়ের",
+        "happy" to "হ্যাপি", "atto" to "এত্ত", "tora" to "তোরা", "gulate" to "গুলাতে",
+        "bol" to "বল", "tulbo" to "তুলবো", "operator" to "অপারেটর", "poroborti" to "পরবর্তী",
+        "p6" to "পি৬", "cookie" to "কুকি", "hoisilo" to "হইসিলো", "poribarer" to "পরিবারের",
+        "janate" to "জানাতে", "humm" to "হুমম", "deoar" to "দেওয়ার", "cable" to "ক্যাবল",
+        "dawonload" to "ডাউনলোড", "amder" to "আমাদের", "fnd" to "ফ্রেন্ড", "taholei" to "তাহলেই",
+        "theka" to "থেকে", "force" to "ফোর্স", "japani" to "জাপানি", "perfect" to "পারফেক্ট",
+        "bolban" to "বলবেন", "neoya" to "নেওয়া", "anbo" to "আনবো", "an" to "এন",
+        "castom" to "কাস্টম", "jnne" to "জন্যে", "thaika" to "থেইকা", "common" to "কমন",
+        "elakay" to "এলাকায়", "obossoy" to "অবশ্যই", "stopped" to "স্টপড", "onnek" to "অনেক",
+        "halka" to "হালকা", "doge" to "ডোজ", "deowa" to "দেওয়া", "korbi" to "করবি",
+        "faka" to "ফাঁকা", "saudi" to "সৌদি", "moner" to "মনের", "parteci" to "পারতেসি",
+        "kheye" to "খেয়ে", "kortase" to "করতাছে", "delhi" to "দিল্লি", "lenden" to "লেনদেন",
+        "sorboccho" to "সর্বোচ্চ", "thaklei" to "থাকলেই", "nebo" to "নেবো", "story" to "স্টোরি",
+        "trust" to "ট্রাস্ট", "khular" to "খুলার", "kortay" to "করতে", "rank" to "রাঙ্ক",
+        "shah" to "শাহ", "jode" to "যদি", "doa" to "দোয়া", "jmn" to "যেমন",
+        "haat" to "হাত", "jini" to "যিনি", "creat" to "ক্রিয়েট", "2015" to "২০১৫",
+        "mato" to "মত", "tech" to "টেক", "ekhan" to "এখান", "pathano" to "পাঠানো",
+        "madhome" to "মাধ্যমে", "niyomito" to "নিয়মিত", "koyekti" to "কয়েকটি", "baro" to "বড়",
+        "operation" to "অপারেশন", "mrityur" to "মৃত্যুর", "bahinir" to "বাহিনীর", "probesh" to "প্রবেশ",
+        "hoyechilen" to "হয়েছিলেন", "porajito" to "পরাজিত", "purno" to "পূর্ণ", "bibaho" to "বিবাহ",
+        "angsho" to "অংশ", "ongshogrohon" to "অংশগ্রহণ", "onchole" to "অঞ্চলে", "ditiyo" to "দ্বিতীয়",
+        "prostab" to "প্রস্তাব", "briddhi" to "বৃদ্ধি", "upojela" to "উপজেলা", "christabde" to "খ্রিস্টাব্দে",
+        "paay" to "পায়", "hindu" to "হিন্দু", "flexiload" to "ফ্লেক্সিলোড", "bahi" to "ভাই",
+        "puffin" to "পাফিন", "asey" to "আসে", "eikhane" to "এইখানে", "legeche" to "লেগেছে",
+        "messege" to "মেসেজ", "kormo" to "করমু", "colena" to "চলেনা", "vinno" to "ভিন্ন",
+        "dekhsi" to "দেখসি", "silam" to "ছিলাম", "eitai" to "এইটাই", "bashi" to "বেশি",
+        "35" to "৩৫", "j1" to "জে১", "youtuber" to "ইউটিউবার", "hoysa" to "হইসে",
+        "helpfull" to "হেল্পফুল", "hyna" to "হয়না", "hater" to "হাতের", "niyen" to "নিয়েন",
+        "gaja" to "গাঁজা", "koyekdin" to "কয়েকদিন", "agge" to "আগে", "3gb" to "৩জিবি",
+        "apnare" to "আপনারে", "nikot" to "নিকট", "paare" to "পারে", "hochhe" to "হচ্ছে",
+        "bartomane" to "বর্তমানে", "juddho" to "যুদ্ধ", "byabostha" to "ব্যবস্থা", "dekhon" to "দেখুন",
+        "than" to "দেন", "naaa" to "না", "koriyen" to "করিয়েন", "parena" to "পারেনা",
+        "get" to "গেট", "salar" to "শালার", "apnaka" to "আপনাকে", "double" to "ডাবল",
+        "meyed" to "মেয়াদ", "opekkha" to "অপেক্ষা", "anar" to "আনার", "captcha" to "ক্যাপচা",
+        "temp" to "টেম্প", "tr" to "তার", "dbbl" to "ডিবিবিএল", "cz" to "কজ",
+        "blogging" to "ব্লগিং", "krun" to "করুন", "2016" to "২০১৬", "ahead" to "অ্যাহেড",
+        "passport" to "পাসপোর্ট", "convert" to "কনভার্ট", "maker" to "মেকার", "catagory" to "ক্যাটাগরি",
+        "dhukle" to "ঢুকলে", "joruri" to "জরুরি", "beshir" to "বেশির", "joldi" to "জলদি",
+        "mare" to "মারে", "aksathe" to "একসাথে", "investment" to "ইনভেস্টমেন্ট", "hotat" to "হঠাৎ",
+        "calano" to "চালানো", "framework" to "ফ্রেমওয়ার্ক", "moddhei" to "মধ্যেই", "dead" to "ডেড",
+        "press" to "প্রেস", "caliye" to "চালিয়ে", "oshadharon" to "অসাধারণ", "shes" to "শেষ",
+        "atke" to "আটকে", "confirm" to "কনফার্ম", "funny" to "ফানি", "eth" to "ইটিএইচ",
+        "dicchi" to "দিচ্ছি", "setao" to "সেটাও", "idr" to "আইডির", "mittha" to "মিথ্যা",
+        "23" to "২৩", "oni" to "উনি", "tato" to "তাতো", "takbe" to "থাকবে",
+        "ana" to "আনা", "obosta" to "অবস্থা", "shodo" to "শুধু", "will" to "উইল",
+        "shomporke" to "সম্পর্কে", "challenge" to "চ্যালেঞ্জ", "janale" to "জানালে", "chap" to "চাপ",
+        "science" to "সাইন্স", "du" to "দু", "eibar" to "এইবার", "karjokrom" to "কার্যক্রম",
+        "xml" to "এক্সএমএল", "vab" to "ভাব", "ridmik" to "রিদমিক", "action" to "অ্যাকশন",
+        "dte" to "দিতে", "somvabona" to "সম্ভাবনা", "sata" to "সেটা", "apanr" to "আপনার",
+        "insha" to "ইনশা", "num" to "নাম", "dakte" to "দেখতে", "diyeo" to "দিয়েও",
+        "dolar" to "ডলার", "vloi" to "ভালোই", "volume" to "ভলিউম", "nici" to "নিসি",
+        "birokto" to "বিরক্ত", "xplorer" to "এক্সপ্লোরার", "fingerprint" to "ফিঙ্গারপ্রিন্ট", "korer" to "করার",
+        "microsoft" to "মাইক্রোসফট", "phishing" to "ফিশিং", "ltc" to "এলটিসি", "sal" to "সাল",
+        "jiboner" to "জীবনের", "xyz" to "এক্সওয়াইজেড", "license" to "লাইসেন্স", "warning" to "ওয়ার্নিং",
+        "cholar" to "চলার", "because" to "বিকজ", "kere" to "কেরে", "aktao" to "একটাও",
+        "khabe" to "খাবে", "asholei" to "আসলেই", "masher" to "মাসের", "hake" to "হ্যাক",
+        "babar" to "বাবার", "dekben" to "দেখবেন", "kare" to "কারে", "hossa" to "হচ্ছে",
+        "deksi" to "দেখসি", "batpar" to "বাটপার", "asay" to "আশায়", "kibhave" to "কিভাবে",
+        "ff" to "এফএফ", "marar" to "মারার", "ze" to "যে", "ui" to "ইউআই",
+        "agai" to "আগেই", "000" to "০০০", "lagbena" to "লাগবেনা", "tottho" to "তথ্য",
+        "kothar" to "কথার", "astese" to "আসতেছে", "jonopriyo" to "জনপ্রিয়", "prithibir" to "পৃথিবীর",
+        "shera" to "সেরা", "odhikar" to "অধিকার", "dekhechi" to "দেখেছি", "december" to "ডিসেম্বর",
+        "charao" to "ছাড়াও", "poshak" to "পোশাক", "prodhanoto" to "প্রধানত", "june" to "জুন",
+        "probhriti" to "প্রভৃতি", "mondirer" to "মন্দিরের", "shorkarer" to "সরকারের", "mohila" to "মহিলা",
+        "maddhyome" to "মাধ্যমে", "aaro" to "আরো", "byapok" to "ব্যাপক", "senabahinir" to "সেনাবাহিনীর",
+        "shadhinota" to "স্বাধীনতা", "juddher" to "যুদ্ধের", "mousume" to "মৌসুমে", "porichalok" to "পরিচালক",
+        "prakritik" to "প্রাকৃতিক", "crickete" to "ক্রিকেটে", "gobeshona" to "গবেষণা", "bhumikay" to "ভূমিকায়",
+        "digree" to "ডিগ্রি", "protistha" to "প্রতিষ্ঠা", "club" to "ক্লাব", "gothon" to "গঠন",
+        "shadharon" to "সাধারণ", "zodi" to "যদি", "dekbo" to "দেখবো", "4gb" to "৪জিবি",
+        "tell" to "টেল", "ogula" to "ওগুলা", "pori" to "পড়ি", "close" to "ক্লোজ",
+        "r8" to "রাইট", "hsc" to "এইচএসসি", "likhechen" to "লিখেছেন", "payout" to "পেআউট",
+        "dakta" to "দেখতে", "light" to "লাইট", "oporer" to "ওপরের", "ms" to "এমএস",
+        "diban" to "দিবেন", "vodi" to "ভডি", "red" to "রেড", "needed" to "নিডেড",
+        "business" to "বিজনেস", "soon" to "সুন", "true" to "ট্রু", "korecilam" to "করেছিলাম",
+        "pamu" to "পামু", "private" to "প্রাইভেট", "aii" to "এই", "dn" to "দেন",
+        "1996" to "১৯৯৬", "bipokkhe" to "বিপক্ষে", "putro" to "পুত্র", "gothito" to "গঠিত",
+        "customer" to "কাস্টমার", "mona" to "মনে", "boy" to "বয়", "asus" to "আসুস",
+        "bhaia" to "ভাইয়া", "tobu" to "তবুও", "l" to "ল", "used" to "ইউজড",
+        "korate" to "করাতে", "kortesen" to "করতেসেন", "korey" to "করে", "gorom" to "গরম",
+        "sorasori" to "সরাসরি", "thiki" to "ঠিকই", "kola" to "কলা", "hyse" to "হইছে",
+        "amin" to "আমিন", "dhonnobaad" to "ধন্যবাদ", "teh" to "তে", "sohoje" to "সহজে",
+        "nxt" to "নেক্সট", "hishabe" to "হিসাবে", "onnoder" to "অন্যদের", "opekkhay" to "অপেক্ষায়",
+        "hey" to "হেই", "abol" to "আবোল", "shobar" to "সবার", "55" to "৫৫",
+        "hala" to "হালা", "dekhei" to "দেখেই", "cloner" to "ক্লোনার", "chalo" to "চালু",
+        "sakib" to "সাকিব", "cc" to "সিসি", "ekono" to "এখনো", "friends" to "ফ্রেন্ডস",
+        "hle" to "হলে", "photos" to "ফটোস", "nija" to "নিজে", "amdr" to "আমাদের",
+        "crash" to "ক্র্যাশ", "payoneer" to "পেওনিয়ার", "sohojei" to "সহজেই", "poco" to "পোকো",
+        "khulun" to "খুলুন", "robot" to "রোবট", "survey" to "সার্ভে", "aitai" to "এইটাই",
+        "jawar" to "যাওয়ার", "reboot" to "রিবুট", "lgbe" to "লাগবে", "studio" to "ষ্টুডিও",
+        "taa" to "টা", "vote" to "ভোট", "ara" to "এরা", "blocked" to "ব্লকড",
+        "konotai" to "কোনোটাই", "nilen" to "নিলেন", "mase" to "মাসে", "likhar" to "লিখার",
+        "eyta" to "এইটা", "ekoi" to "একই", "atodin" to "এতদিন", "isp" to "আইএসপি",
+        "somporko" to "সম্পর্ক", "mi" to "এমআই", "800" to "৮০০", "niom" to "নিয়ম",
+        "we" to "উই", "onar" to "ওনার", "plss" to "প্লিজ", "dot" to "ডট",
+        "bcz" to "বিকজ", "chk" to "চেক", "dokan" to "দোকান", "bap" to "বাপ",
+        "4ta" to "৪টা", "janlen" to "জানলেন", "requ" to "রিকু", "amazing" to "অ্যামেজিং",
+        "long" to "লং", "modem" to "মডেম", "eksathe" to "একসাথে", "vaai" to "ভাই",
+        "years" to "ইয়ার্স", "baddho" to "বাধ্য", "calai" to "চালাই", "suggestion" to "সাজেশন",
+        "prob" to "প্রব", "kothaw" to "কোথাও", "etir" to "এটির", "driver" to "ড্রাইভার",
+        "mood" to "মুড", "blank" to "ব্ল্যাংক", "diamond" to "ডায়মন্ড", "marketing" to "মার্কেটিং",
+        "gechi" to "গেছি", "tekhe" to "থেকে", "tulte" to "তুলতে", "phne" to "ফোন",
+        "subscriber" to "সাবস্ক্রাইবার", "barbar" to "বারবার", "rule" to "রুল", "fack" to "ফেক",
+        "osam" to "অসাম", "express" to "এক্সপ্রেস", "jokhn" to "যখন", "palta" to "পাল্টা",
+        "shortcut" to "শর্টকাট", "world" to "ওয়ার্ল্ড", "sune" to "শুনে", "bipode" to "বিপদে",
+        "continue" to "কন্টিনিউ", "south" to "সাউথ", "korcho" to "করছো", "contract" to "কন্ট্রাক্ট",
+        "american" to "আমেরিকান", "aje" to "আজে", "amro" to "আমারো", "korechilam" to "করেছিলাম",
+        "rakte" to "রাখতে", "thke" to "থেকে", "university" to "ইউনিভার্সিটি", "likhchen" to "লিখছেন",
+        "unstall" to "আনইনস্টল", "120" to "১২০", "porichoy" to "পরিচয়", "october" to "অক্টোবর",
+        "pixel" to "পিক্সেল", "april" to "এপ্রিল", "vat" to "ভ্যাট", "protiti" to "প্রতিটি",
+        "vejal" to "ভেজাল", "uddhar" to "উদ্ধার", "jatra" to "যাত্রা", "2007" to "২০০৭",
+        "phire" to "ফিরে", "2008" to "২০০৮", "arjon" to "অর্জন", "bigyan" to "বিজ্ঞান",
+        "jouno" to "যৌন", "shilpo" to "শিল্প", "chattagram" to "চট্টগ্রাম", "probahito" to "প্রবাহিত",
+        "choudhury" to "চৌধুরী", "1980" to "১৯৮০", "jonopriyota" to "জনপ্রিয়তা", "poribare" to "পরিবারে",
+        "porikolpona" to "পরিকল্পনা", "srenir" to "শ্রেণীর", "probhab" to "প্রভাব", "birodhi" to "বিরোধী",
+        "oitihaasik" to "ঐতিহাসিক", "kamal" to "কামাল", "samorik" to "সামরিক", "ayojon" to "আয়োজন",
+        "shomoye" to "সময়ে", "shokkhom" to "সক্ষম", "product" to "প্রোডাক্ট", "api" to "এপিআই",
+        "crome" to "ক্রোম", "rdp" to "আরডিপি", "target" to "টার্গেট", "bolesi" to "বলেসি",
+        "emergency" to "ইমার্জেন্সি", "astece" to "আসতেছে", "ny" to "নাই", "parbn" to "পারবেন",
+        "mbl" to "মোবাইল", "01" to "০১", "cookies" to "কুকিজ", "bolla" to "বললে",
+        "likhben" to "লিখবেন", "daya" to "দেয়া", "agent" to "এজেন্ট", "neo" to "নিও",
+        "paba" to "পাবে", "cheat" to "চিট", "apn" to "এপিএন", "dekai" to "দেখায়",
+        "air" to "এয়ার", "birth" to "বার্থ", "2019" to "২০১৯", "oto" to "ওতো",
+        "kyc" to "কেওয়াইসি", "oy" to "ওই", "shala" to "শালা", "lvl" to "লেভেল",
+        "hahahaha" to "হাহাহাহা", "khelen" to "খেলেন", "sada" to "সাদা", "sadharonoto" to "সাধারণত",
+        "totkalin" to "তৎকালীন", "2009" to "২০০৯", "kothakar" to "কোথাকার", "dicce" to "দিচ্ছে",
+        "dekhbe" to "দেখবে", "biswas" to "বিশ্বাস", "likhsen" to "লিখসেন", "tolar" to "তোলার",
+        "manob" to "মানব", "amara" to "আমরা", "future" to "ফিউচার", "temporary" to "টেম্পোরারি",
+        "cpanel" to "সিপ্যানেল", "kao" to "কেউ", "bujhay" to "বুঝায়", "golden" to "গোল্ডেন",
+        "sey" to "সেই", "1k" to "১কে", "salam" to "সালাম", "parlen" to "পারলেন",
+        "thumbnail" to "থাম্বনেইল", "tokhn" to "তখন", "control" to "কন্ট্রোল", "darona" to "ধারণা",
+        "kisudin" to "কিছুদিন", "dito" to "দিতো", "pendrive" to "পেনড্রাইভ", "chorom" to "চরম",
+        "ama" to "আমা", "coupon" to "কুপন", "505" to "৫০৫", "dawnload" to "ডাউনলোড",
+        "koruk" to "করুক", "kotokhon" to "কতক্ষণ", "blen" to "বলেন", "akhno" to "এখনো",
+        "dye" to "দিয়ে", "terminal" to "টার্মিনাল", "turbo" to "টার্বো", "kortasi" to "করতাসি",
+        "easily" to "ইসিলি", "dekci" to "দেখছি", "mission" to "মিশন", "onumoti" to "অনুমতি",
+        "choltese" to "চলতেছে", "kuje" to "খুজে", "karor" to "কারোর", "pawya" to "পাওয়া",
+        "obosthay" to "অবস্থায়", "vol" to "ভুল", "bebostha" to "ব্যবস্থা", "traffic" to "ট্রাফিক",
+        "privacy" to "প্রাইভেসি", "holew" to "হলেও", "embed" to "এম্বেড", "ekbare" to "একবারে",
+        "paper" to "পেপার", "neoa" to "নেওয়া", "saradin" to "সারাদিন", "jeye" to "যেয়ে",
+        "gace" to "গেছে", "hoitam" to "হইতাম", "600" to "৬০০", "jave" to "যাবে",
+        "3000" to "৩০০০", "mention" to "মেনশন", "eror" to "এরর", "history" to "হিস্টোরি",
+        "kise" to "কিসে", "bojte" to "বুঝতে", "connet" to "কানেক্ট", "protibar" to "প্রতিবার",
+        "kinen" to "কিনেন", "thakay" to "থাকায়", "spotify" to "স্পটিফাই", "toi" to "তুই",
+        "tike" to "টিকে", "package" to "প্যাকেজ", "kivbe" to "কিভাবে", "j7" to "জে৭",
+        "korece" to "করেসে", "cancel" to "ক্যান্সেল", "kisher" to "কিসের", "hoynai" to "হয়নাই",
+        "jawa" to "যাওয়া", "jni" to "জানি", "marle" to "মারলে", "reader" to "রিডার",
+        "hlo" to "হলো", "maira" to "মাইরা", "obosshoi" to "অবশ্যই", "roilam" to "রইলাম",
+        "aktai" to "একটাই", "kobi" to "কবি", "sort" to "সর্ট", "etto" to "এত্ত",
+        "barer" to "বারের", "auther" to "অথর", "khon" to "ক্ষণ", "hoyechen" to "হয়েছেন",
+        "houar" to "হওয়ার", "8gb" to "৮জিবি", "gulao" to "গুলাও", "ref" to "রেফ",
+        "aprove" to "এপ্রুভ", "dele" to "দিলে", "valoy" to "ভালোয়", "referral" to "রেফারেল",
+        "lakha" to "লেখা", "media" to "মিডিয়া", "vablam" to "ভাবলাম", "janbe" to "জানবে",
+        "bujhiye" to "বুঝিয়ে", "gulay" to "গুলায়", "ghure" to "ঘুরে", "dis" to "দিস",
+        "single" to "সিঙ্গেল", "dakhi" to "দেখি", "cholte" to "চলতে", "dakun" to "দেখুন",
+        "grameenphone" to "গ্রামীণফোন", "niea" to "নিয়ে", "sobgula" to "সবগুলা", "virtual" to "ভার্চুয়াল",
+        "dorkari" to "দরকারি", "tplink" to "টিপিলিংক", "bujhate" to "বুঝাতে", "diyeci" to "দিয়েছি",
+        "configuration" to "কনফিগারেশন", "likhi" to "লিখি", "pod" to "পদ", "enough" to "এনাফ",
+        "front" to "ফ্রন্ট", "26" to "২৬", "performance" to "পারফরমেন্স", "icc" to "আইসিসি",
+        "somay" to "সময়", "koresilam" to "করেছিলাম", "korteche" to "করতেছে", "priyo" to "প্রিয়",
+        "dada" to "দাদা", "udp" to "ইউডিপি", "development" to "ডেভেলপমেন্ট", "knowledge" to "নলেজ",
+        "radio" to "রেডিও", "sec" to "সেক", "diyechen" to "দিয়েছেন", "bujhle" to "বুঝলে",
+        "fokir" to "ফকির", "bujhbo" to "বুঝবো", "clans" to "ক্ল্যান্স", "thek" to "থেকে",
+        "1998" to "১৯৯৮", "luv" to "লাভ", "kortei" to "করতেই", "chalaite" to "চালাইতে",
+        "aabar" to "আবার", "porle" to "পড়লে", "views" to "ভিউজ", "shujog" to "সুযোগ",
+        "jhonno" to "জন্য", "pacche" to "পাচ্ছে", "enter" to "এন্টার", "dekhiye" to "দেখিয়ে",
+        "ostir" to "অস্থির", "shikkhar" to "শিক্ষার", "peyechen" to "পেয়েছেন", "beche" to "বেঁচে"
+    )
+
+    // Curated high-frequency Bangladeshi Person and Place Names
+    private val COMMON_NAMES: Map<String, String> = mapOf(
+        "rahim" to "রহিম", "rohim" to "রহিম", "karim" to "করিম", "korim" to "করিম",
+        "hasan" to "হাসান", "hassan" to "হাসান", "hossain" to "হোসেন", "hussain" to "হোসেন",
+        "tanvir" to "তানভীর", "tanveer" to "তানভীর", "sakib" to "সাকিব", "shakib" to "সাকিব",
+        "sabbir" to "সাব্বির", "akash" to "আকাশ", "sohel" to "সোহেল", "mahmud" to "মাহমুদ",
+        "arafat" to "আরাফাত", "arif" to "আরিফ", "sumon" to "সুমন", "shuvo" to "শুভ", "subho" to "শুভ",
+        "bristi" to "বৃষ্টি", "tamim" to "তামিম", "mushfiq" to "মুশফিক", "mehedi" to "মেহেদী",
+        "tarek" to "তারেক", "tareq" to "তারেক", "kamal" to "কামাল", "jamal" to "জামাল",
+        "rafiq" to "রফিক", "salam" to "সালাম", "barkat" to "বরকত", "jabbar" to "জব্বার",
+        "anika" to "আনিকা", "sadia" to "সাদিয়া", "nusrat" to "নুসরাত", "fatema" to "ফাতেমা",
+        "aisha" to "আয়েশা", "khadija" to "খাদিজা", "mim" to "মীম", "sneha" to "স্নেহা",
+        "nodi" to "নদী", "shila" to "শিলা", "rima" to "রিমা", "lima" to "লিমা",
+        "tania" to "তানিয়া", "farhana" to "ফারহানা", "sharmin" to "শারমিন", "mowsumi" to "মৌসুমী",
+        "jannat" to "জান্নাত", "monir" to "মনির", "sohag" to "সোহাগ", "rubel" to "রুবেল",
+        "mithun" to "মিথুন", "biplob" to "বিপ্লব", "alif" to "আলিফ", "ayan" to "আয়ান",
+        "rayhan" to "রায়হান", "fahim" to "ফাহিম", "ashik" to "আশিক", "shaun" to "শাউন",
+        "nabil" to "নাবিল", "nahid" to "নাহিদ", "joy" to "জয়", "bijoy" to "বিজয়",
+        "liton" to "লিটন", "saiful" to "সাইফুল", "ashraf" to "আশরাফ", "asif" to "আসিফ",
+        "habib" to "হাবিব", "masud" to "মাসুদ", "babu" to "বাবু", "bappi" to "বাপ্পি",
+        "shanto" to "শান্ত", "shanta" to "শান্তা", "tasnim" to "তাসনিম", "fariha" to "ফারিহা",
+        "maliha" to "মালিহা", "sami" to "সামি", "samir" to "সমীর", "shafiq" to "শফিক",
+        "iqbal" to "ইকবাল", "jahid" to "জাহিদ", "zahid" to "জাহিদ", "jahangir" to "জাহাঙ্গীর",
+        "alamin" to "আল-আমিন", "amin" to "আমিন", "imran" to "ইমরান", "polash" to "পলাশ",
+        "shojib" to "সজীব", "shakil" to "শাকিল", "sakil" to "শাকিল", "faisal" to "ফয়সাল",
+        "foysal" to "ফয়সাল", "zubair" to "জুবায়ের", "saad" to "সাদ", "riad" to "রিয়াদ",
+        "nazmul" to "নাজমুল", "mominul" to "মুমিনুল", "tawhid" to "তাওহীদ", "siam" to "সিয়াম",
+        "maruf" to "মারুফ", "noman" to "নোমান", "shakawat" to "সাখাওয়াত", "abdullah" to "আব্দুল্লাহ",
+        "abdur" to "আব্দুর", "rahman" to "রহমান", "ali" to "আলী", "ahmed" to "আহমেদ",
+        "chowdhury" to "চৌধুরী", "khan" to "খান", "islam" to "ইসলাম", "haque" to "হক",
+        "swapno" to "স্বপ্ন", "shwapno" to "স্বপ্ন", "unimart" to "ইউনিমার্ট", "agora" to "আগোরা",
+        "aarong" to "আড়ং", "meenabazar" to "মীনা বাজার", "chaldal" to "চালডাল"
+    )
+
+    // Canonical Banglish Financial Lexicon -> English Semantic Gloss
+    private val BANGLISH_TO_ENGLISH_GLOSS: Map<String, String> = mapOf(
+        // Pronouns & Connectors
+        "ami" to "I", "amra" to "we", "amar" to "my", "amader" to "our",
+        "tumi" to "you", "apni" to "you", "tomar" to "your", "apnar" to "your",
+        "ar" to "and", "ebong" to "and", "diye" to "with", "diya" to "with", "dia" to "with",
+        "jonno" to "for", "jonne" to "for", "theke" to "from", "kach" to "from", "kache" to "from",
+        // Family & Recipients
+        "ma" to "mother", "ammu" to "mother", "amma" to "mother",
+        "baba" to "father", "abbu" to "father", "abba" to "father",
+        "bhai" to "brother", "vai" to "brother", "bhaiya" to "brother", "vaiya" to "brother",
+        "bon" to "sister", "apu" to "sister", "apa" to "sister",
+        "dost" to "friend", "bondhu" to "friend", "chele" to "son", "meye" to "daughter",
+        // Expense Action Verbs
+        "dilam" to "paid", "disi" to "paid", "diyechi" to "paid",
+        "korsi" to "spent", "korlam" to "spent", "korechi" to "spent",
+        "kinlam" to "bought", "kinechi" to "bought", "kinsi" to "bought", "kinbo" to "will buy",
+        "khelam" to "ate", "kheyechi" to "ate", "khaisi" to "ate",
+        "pathalam" to "sent", "pathaisi" to "sent", "pathiyechi" to "sent",
+        "laglo" to "cost", "lagse" to "cost", "lagbe" to "will cost",
+        "gese" to "spent", "gelo" to "spent", "hoise" to "spent", "holo" to "was",
+        "khoroch" to "expense", "khorocher" to "of expense",
+        // Income Action Verbs & Nouns
+        "paisi" to "received", "pelam" to "received", "peyechi" to "received",
+        "dilo" to "gave me", "dise" to "gave me", "pathaise" to "sent me", "ashlo" to "came",
+        "beton" to "salary", "salary" to "salary", "bonus" to "bonus", "income" to "income",
+        "tuition" to "tuition income", "labh" to "profit", "cashback" to "cashback",
+        // Transport
+        "vara" to "fare/rent", "bus" to "bus", "rickshaw" to "rickshaw",
+        "cng" to "CNG auto", "auto" to "auto", "metro" to "metro", "train" to "train",
+        "uber" to "Uber", "pathao" to "Pathao", "gari" to "vehicle", "tempo" to "tempo",
+        // Food
+        "khabar" to "food", "nasta" to "breakfast/snacks", "lunch" to "lunch", "dinner" to "dinner",
+        "bhat" to "rice meal", "biryani" to "biryani", "kacchi" to "kacchi biryani", "tehari" to "tehari",
+        "khichuri" to "khichuri", "cha" to "tea", "coffee" to "coffee", "ruti" to "bread",
+        "parata" to "paratha", "singara" to "singara snack", "fuchka" to "fuchka snack",
+        "chotpoti" to "chotpoti snack", "halim" to "haleem", "misti" to "sweets", "jhalmuri" to "jhalmuri",
+        // Grocery
+        "bazar" to "grocery market", "sobji" to "vegetables", "chal" to "rice", "dal" to "lentils",
+        "tel" to "oil", "dim" to "eggs", "dudh" to "milk", "mach" to "fish", "mangsho" to "meat",
+        "murgi" to "chicken", "torkari" to "curry/groceries", "aloo" to "potato", "peyaj" to "onion",
+        "roshun" to "garlic", "morich" to "chili", "chini" to "sugar", "lobon" to "salt", "ata" to "flour",
+        // Bills & Utilities
+        "bill" to "bill", "current" to "electricity", "biddut" to "electricity", "gas" to "gas",
+        "pani" to "water", "wifi" to "wifi", "internet" to "internet", "recharge" to "mobile recharge",
+        "load" to "mobile load", "basha" to "house",
+        // Health & Shopping
+        "osudh" to "medicine", "doctor" to "doctor", "hospital" to "hospital",
+        "shopping" to "shopping", "jama" to "clothes", "kapor" to "clothes", "juta" to "shoes",
+        "boi" to "book", "khata" to "notebook",
+        // E-Commerce, Delivery & Canteen
+        "daraz" to "Daraz online shopping", "foodpanda" to "Foodpanda delivery", "delivery" to "delivery charge",
+        "courier" to "courier fee", "canteen" to "canteen food", "dining" to "dining hall meal",
+        "biri" to "cigarette", "cigarette" to "cigarette",
+        "kisti" to "loan installment/EMI", "advance" to "advance deposit", "dps" to "DPS savings",
+        "chanda" to "donation/contribution", "qurbani" to "Qurbani sacrifice", "sadakah" to "charity",
+        "fitra" to "Fitra charity", "zakat" to "Zakat charity", "milad" to "religious event",
+        // Vehicle & Maintenance
+        "brta" to "vehicle authority fee", "toll" to "highway toll", "puncture" to "tyre puncture repair",
+        "servicing" to "servicing/maintenance", "mobil" to "engine oil", "hawa" to "tyre air inflation", "grease" to "vehicle greasing",
+        "filter" to "engine air oil filter", "helmet" to "safety helmet", "raincoat" to "raincoat",
+        "pickup" to "pickup van fare", "truck" to "truck transport fare", "coolie" to "porter/labour",
+        "labour" to "labour charge", "lebor" to "labour charge",
+        // Food, Street Snacks & Sweets
+        "bakorkhani" to "traditional bakorkhani bread", "jilapi" to "jilapi sweet", "roshogolla" to "roshogolla sweet",
+        "chomchom" to "chomchom sweet", "kulfi" to "kulfi ice cream", "nihari" to "beef mutton nihari soup", "paya" to "paya stew",
+        "polao" to "morog polao dish", "panipuri" to "panipuri fuchka", "velpuri" to "velpuri street snack", "bhelpuri" to "bhelpuri snack",
+        "churmur" to "churmur snack", "chanachur" to "spicy chanachur", "badam" to "fried peanuts", "roll" to "chicken egg roll",
+        "chowmein" to "chowmein noodles", "pasta" to "pasta dish", "momo" to "steamed momos", "paan" to "betel leaf paan", "zorda" to "scented tobacco zorda",
+        // Baby Care & Household Cleaning
+        "diaper" to "baby diaper", "pampers" to "baby diaper", "cerelac" to "baby cereal food",
+        "feeder" to "baby milk bottle", "harpic" to "toilet cleaner", "vim" to "dish soap",
+        "tanki" to "water tank cleaning", "moyla" to "garbage disposal fee", "daroan" to "security guard salary",
+        "inverter" to "IPS inverter", "generator" to "standby generator bill", "capacitor" to "ceiling fan capacitor", "pump" to "water pump motor",
+        // Agriculture & Rural
+        "sar" to "fertilizer", "keetnashok" to "pesticide", "beej" to "seeds",
+        // Legal, Academic & Official
+        "ukil" to "lawyer/advocate fee", "advocate" to "lawyer fee", "court" to "court fee",
+        "notary" to "notary public fee", "stamp" to "stamp paper fee",
+        "mamla" to "police traffic fine", "passport" to "passport application fee",
+        "recheck" to "board exam re-check fee", "transcript" to "academic transcript fee", "convocation" to "university convocation fee",
+        "reunion" to "alumni batch reunion fee", "attestation" to "document attestation fee",
+        // Events, Weddings & Social
+        "biye" to "wedding expense", "holud" to "Gaye Holud ceremony", "catering" to "catering service",
+        "photographer" to "photographer fee", "stage" to "event stage decoration", "borhani" to "borhani drink",
+        "salami" to "Eid salami gift",
+        // Sports, Gaming, Tailoring & Household
+        "turf" to "turf court rental", "futsal" to "futsal turf rental", "diamond" to "game diamond top-up",
+        "badminton" to "badminton sports fee", "darji" to "tailor stitching fee", "tailor" to "tailor fee",
+        "selai" to "stitching fee", "piko" to "saree fall and piko", "polish" to "shoe polish", "laundry" to "laundry service fee", "dhobi" to "washerman fee",
+        "chador" to "bedsheet", "balish" to "pillow", "toshok" to "mattress", "porda" to "curtains",
+        "photocopy" to "photocopy charges",
+        // Construction, Aviation & Winter Wear
+        "cement" to "cement for construction", "rajmistri" to "mason wage", "biman" to "flight ticket",
+        "flight" to "airline ticket", "kambal" to "blanket", "lep" to "winter quilt", "sweater" to "sweater",
+        "chabi" to "lock key making", "chata" to "umbrella repair", "gamca" to "GAMCA medical test fee",
+        "bokshish" to "tip/baksheesh", "bhushi" to "cattle wheat bran feed",
+        "shave" to "barber shave", "facial" to "parlour facial treatment", "mehedi" to "henna mehendi art",
+        "rebonding" to "hair rebonding", "binding" to "spiral binding", "lamination" to "document lamination",
+        "multiplug" to "electrical multiplug power strip", "bulb" to "LED light bulb", "homeo" to "homeopathy medicine",
+        "bike" to "motorbike", "daab" to "green coconut drink", "lichu" to "litchi fruit", "koshai" to "butcher meat cutting fee",
+        "savlon" to "antiseptic lotion", "hexisol" to "hand rub sanitizer", "inhaler" to "asthma inhaler medicine",
+        "khelna" to "children toy", "blender" to "kitchen blender grinder", "korai" to "cooking wok pan",
+        "cbc" to "CBC blood test", "creatinine" to "serum creatinine kidney test", "lipid" to "lipid profile test", "urine" to "urine routine test", "stool" to "stool test", "thyroid" to "thyroid hormone test", "dope" to "dope test clearance", "bandage" to "medical wound bandage", "gauze" to "sterile gauze pad", "cotton" to "absorbent surgical cotton",
+        "tempered" to "tempered glass protector", "cover" to "smartphone back cover",
+        "chillar" to "small change coins/notes", "bhangti" to "money change", "uthkho" to "incidental miscellaneous expense", "ghaat" to "out-of-pocket incidental expense",
+        // Health, Fitness & Gadgets
+        "ecg" to "ECG test", "ultrasono" to "ultrasonography test", "physio" to "physiotherapy",
+        "gym" to "gym fee", "mistri" to "repair technician", "domain" to "domain renewal",
+        "hosting" to "web hosting", "copilot" to "AI subscription", "display" to "screen repair",
+        // Time & Questions
+        "ajke" to "today", "aj" to "today", "gotokal" to "yesterday", "kalke" to "yesterday/tomorrow",
+        "porshu" to "day before yesterday", "shokale" to "in morning", "dupure" to "at noon",
+        "bikale" to "in afternoon", "shondhay" to "in evening", "raate" to "at night", "raat" to "night",
+        "mashe" to "month", "mash" to "month", "shoptah" to "week", "bochor" to "year",
+        "ei" to "this", "ai" to "this", "tarikh" to "date",
+        "koto" to "how much", "kon" to "which", "konta" to "which one", "kothay" to "where",
+        "kivabe" to "how", "keno" to "why", "ki" to "what",
+        "mot" to "total", "shob" to "all", "sob" to "all", "shobcheye" to "most/highest",
+        "beshi" to "highest/most", "boro" to "largest", "baki" to "remaining balance",
+        "ache" to "is available", "ase" to "is available", "hisab" to "account/summary",
+        "dekhao" to "show", "bolo" to "tell", "muche" to "delete", "felo" to "now",
+        "batil" to "cancel/delete", "koro" to "do", "shesh" to "last", "bondho" to "pause/stop",
+        "chalu" to "activate/start", "dio" to "set/give", "bachabo" to "save", "shonchoy" to "savings",
+        "history" to "transaction history", "statement" to "account statement", "ledger" to "accounting ledger",
+        "khatiyan" to "transaction log", "log" to "expense log", "search" to "search transactions", "find" to "find expense"
+    )
+
+    // Pre-computed phonetic profiles for canonical financial roots (length >= 4)
+    private val PHONETIC_PROFILE_INDEX: Map<String, List<String>> by lazy {
+        val map = mutableMapOf<String, MutableList<String>>()
+        for (word in BANGLISH_TO_ENGLISH_GLOSS.keys) {
+            if (word.length >= 4) {
+                val prof = getBanglishPhoneticProfile(word)
+                if (prof.length >= 2) {
+                    map.getOrPut(prof) { mutableListOf() }.add(word)
+                }
+            }
+        }
+        map
+    }
+
+    // English words that should never be fuzzy-rewritten to Banglish canonical tokens
+    private val PROTECTED_ENGLISH_WORDS = setOf(
+        "food", "lunch", "dinner", "breakfast", "coffee", "from", "with", "this", "that",
+        "what", "when", "where", "which", "week", "month", "year", "today", "yesterday",
+        "total", "amount", "balance", "money", "save", "saving", "savings", "budget",
+        "expense", "expenses", "income", "salary", "bonus", "cashback", "credit", "debit",
+        "delete", "remove", "clear", "update", "show", "list", "recent", "last", "first",
+        "transaction", "transactions", "reminder", "reminders", "pause", "activate", "toggle",
+        "stats", "database", "telemetry", "summary", "report", "highest", "biggest", "most",
+        "spent", "paid", "bought", "cost", "bill", "rent", "train", "metro", "uber", "auto",
+        "shirt", "pant", "shoe", "shoes", "cloth", "book", "movie", "game", "school", "college",
+        "doctor", "hospital", "medicine", "health", "grocery", "shopping", "transport", "other",
+        "help", "hello", "thank", "thanks", "please", "check", "tell", "about", "rule",
+        "mobile", "phone", "change", "display", "repair", "service", "fee", "charge", "card", "bank",
+        "pickup", "truck", "stage", "court", "notary", "stamp", "diaper", "pampers", "catering", "photo", "photographer",
+        "turf", "futsal", "diamond", "pubg", "game", "laundry", "iron", "curtain", "passport", "print",
+        "cement", "rod", "brick", "flight", "blanket", "sweater", "hoodie", "jacket", "feed", "tips",
+        "bike", "facial", "color", "binding", "bulb", "strip",
+        "coconut", "lotion", "inhaler", "toy", "toys", "blender", "cooker",
+        "soup", "momo", "pasta", "roll", "filter", "plug", "helmet", "raincoat", "pump", "cover", "glass", "polish", "bandage", "gauze", "cotton", "test",
+        "history", "statement", "ledger", "log", "search", "find"
+    )
+
+    // Canonical alias map for frequent multi-character Banglish spelling variants
+    private val CANONICAL_BANGLISH_ALIASES: Map<String, String> = mapOf(
+        "riksa" to "rickshaw",
+        "riksha" to "rickshaw",
+        "rikshaw" to "rickshaw",
+        "bhara" to "vara",
+        "bada" to "vara",
+        "bajar" to "bazar",
+        "osud" to "osudh",
+        "oshudh" to "osudh",
+        "oushodh" to "osudh",
+        "khoros" to "khoroch",
+        "khoroc" to "khoroch",
+        "koroch" to "khoroch",
+        "nashta" to "nasta",
+        "shingara" to "singara",
+        "biriyani" to "biryani",
+        "khicuri" to "khichuri",
+        "shobji" to "sobji",
+        "mangso" to "mangsho",
+        "murgir" to "murgi",
+        "alu" to "aloo",
+        "piaj" to "peyaj",
+        "rosun" to "roshun",
+        "teha" to "tk",
+        "tyaha" to "tk",
+        "taeha" to "tk",
+        "diasilam" to "dilam",
+        "disilam" to "dilam",
+        "dislam" to "dilam",
+        "kharach" to "khoroch",
+        "lebor" to "labour",
+        "cooli" to "coolie",
+        "pamper" to "pampers",
+        "istri" to "iron",
+        "tailering" to "tailor",
+        "dorji" to "darji",
+        "baksheesh" to "bokshish",
+        "bosta" to "bag",
+        "balu" to "bali",
+        "mehendi" to "mehedi",
+        "homeopathy" to "homeo",
+        "dhab" to "daab",
+        "kosai" to "koshai",
+        "khorai" to "korai",
+        "roshgolla" to "roshogolla",
+        "rasgulla" to "roshogolla",
+        "bakarkhani" to "bakorkhani",
+        "jalebi" to "jilapi"
+    )
+
+    /**
+     * Produces a canonical phonetic consonant signature for a Banglish word.
+     * Collapses aspirated/phonetic equivalents (ck -> k, bh/v -> b, kh -> k, sh/ch/c/z -> s, ph -> f)
+     * and strips interior vowels/semi-vowels so phonetic spelling variations map to the same profile.
+     */
+    fun getBanglishPhoneticProfile(word: String): String {
+        var w = word.lowercase().trim()
+        if (w.length <= 1) return w
+        w = w.replace("ck", "k")
+        w = w.replace(Regex("bh|v"), "b")
+        w = w.replace("kh", "k")
+        w = w.replace("gh", "g")
+        w = w.replace(Regex("sh|ch|c|z"), "s")
+        w = w.replace("dh", "d")
+        w = w.replace("ph", "f")
+        w = w.replace(Regex("rh"), "r")
+        w = w.replace("j", "s")
+        w = w.replace(Regex("(.)\\1+"), "$1")
+        if (w.length > 1) {
+            val first = w[0]
+            val rest = w.substring(1).replace(Regex("[aeiouyw]"), "")
+            return "$first$rest"
+        }
+        return w
+    }
+
+    /**
+     * Computes classic Levenshtein edit distance between two strings.
+     */
+    fun levenshteinDistance(s1: String, s2: String): Int {
+        if (s1 == s2) return 0
+        if (s1.isEmpty()) return s2.length
+        if (s2.isEmpty()) return s1.length
+
+        var prev = IntArray(s2.length + 1) { it }
+        var curr = IntArray(s2.length + 1)
+
+        for (i in s1.indices) {
+            curr[0] = i + 1
+            for (j in s2.indices) {
+                val cost = if (s1[i] == s2[j]) 0 else 1
+                curr[j + 1] = minOf(
+                    curr[j] + 1,
+                    prev[j + 1] + 1,
+                    prev[j] + cost
+                )
+            }
+            val tmp = prev
+            prev = curr
+            curr = tmp
+        }
+        return prev[s2.length]
+    }
+
+    /**
+     * Resolves an arbitrary or misspelled Banglish word to its canonical financial Banglish root
+     * using exact lookup, suffix stripping, and phonetic consonant profile + edit distance.
+     */
+    fun resolveCanonicalBanglishWord(token: String): String {
+        val lower = token.lowercase().trim()
+        if (lower.length < 3 || lower in PROTECTED_ENGLISH_WORDS || COMMON_NAMES.containsKey(lower)) {
+            return lower
+        }
+        CANONICAL_BANGLISH_ALIASES[lower]?.let { return it }
+        if (BANGLISH_TO_ENGLISH_GLOSS.containsKey(lower)) {
+            return lower
+        }
+
+        // 1. Check phonetic profile match against canonical financial vocabulary
+        if (lower.length >= 4) {
+            val profile = getBanglishPhoneticProfile(lower)
+            val candidates = PHONETIC_PROFILE_INDEX[profile]
+            if (!candidates.isNullOrEmpty()) {
+                val best = candidates.minByOrNull { levenshteinDistance(lower, it) }
+                if (best != null) {
+                    val dist = levenshteinDistance(lower, best)
+                    val maxAllowed = if (lower.length >= 6) 2 else 1
+                    if (dist <= maxAllowed) {
+                        return best
+                    }
+                }
+            }
+        }
+
+        // 2. Conservative Levenshtein fallback for close typos (distance == 1 for words >= 5 chars)
+        if (lower.length >= 5) {
+            var bestMatch: String? = null
+            var bestDist = Int.MAX_VALUE
+            for (canon in BANGLISH_TO_ENGLISH_GLOSS.keys) {
+                if (canon.length >= 5 && canon[0] == lower[0] && kotlin.math.abs(canon.length - lower.length) <= 1) {
+                    val d = levenshteinDistance(lower, canon)
+                    if (d == 1 && d < bestDist) {
+                        bestDist = d
+                        bestMatch = canon
+                    }
+                }
+            }
+            if (bestMatch != null) return bestMatch
+        }
+
+        return lower
+    }
+
+    /**
+     * Checks if a word or phrase contains a known Bengali person or merchant name.
+     */
+    fun isKnownNameOrMerchant(name: String): Boolean {
+        val clean = name.lowercase().trim()
+        if (COMMON_NAMES.containsKey(clean)) return true
+        val words = clean.split(Regex("\\s+")).filter { it.isNotBlank() }
+        return words.isNotEmpty() && words.any { COMMON_NAMES.containsKey(it) }
+    }
+
+    /**
+     * Translates a single Banglish token to its authentic Bengali script word.
+     * Supports exact matches, person/merchant names, grammatical inflections (-ke, -er, -te, -theke),
+     * and phonetic fuzzy resolution for unseen spelling variations.
+     */
+    fun transliterateWord(token: String): String {
+        val lower = token.lowercase().trim()
+        val direct = COMMON_NAMES[lower] ?: DICTIONARY[lower]
+        if (direct != null) return direct
+
+        // Check common Banglish attached grammatical case suffixes
+        val suffixes = listOf(
+            "theke" to "থেকে",
+            "ke" to "কে",
+            "er" to "এর",
+            "te" to "তে",
+            "re" to "রে",
+            "ra" to "রা",
+            "gula" to "গুলা",
+            "gulo" to "গুলো",
+            "tay" to "টায়",
+            "ta" to "টা"
+        )
+        for ((suffix, bnSuffix) in suffixes) {
+            if (lower.length > suffix.length + 2 && lower.endsWith(suffix)) {
+                val stem = lower.substring(0, lower.length - suffix.length)
+                val stemTrans = COMMON_NAMES[stem] ?: DICTIONARY[stem]
+                    ?: resolveCanonicalBanglishWord(stem).let { DICTIONARY[it] }
+                if (stemTrans != null) {
+                    return stemTrans + bnSuffix
+                }
+            }
+        }
+
+        // Try phonetic canonical resolution
+        val canonical = resolveCanonicalBanglishWord(lower)
+        if (canonical != lower) {
+            DICTIONARY[canonical]?.let { return it }
+        }
+
+        return token
+    }
+
+    /**
+     * Translates a full Banglish sentence into Bengali script token by token.
+     * Keeps ASCII digits as digits unless transliterateDigits is set to true.
+     */
+    fun transliterateSentence(sentence: String, transliterateDigits: Boolean = false): String {
+        val regex = Regex("[a-zA-Z0-9]+|[^a-zA-Z0-9\\s]+|\\s+")
+        return regex.replace(sentence) { matchResult ->
+            val tok = matchResult.value
+            if (tok.matches(Regex("[0-9]+"))) {
+                if (transliterateDigits) DICTIONARY[tok] ?: tok else tok
+            } else if (tok.matches(Regex("[a-zA-Z]+"))) {
+                transliterateWord(tok)
+            } else {
+                tok
+            }
+        }
+    }
+
+    /**
+     * Translates a Banglish or mixed Banglish-English sentence into an English semantic gloss
+     * so small English-centric LLMs (like Gemma 3 270M) can understand every word and grammatical role.
+     */
+    fun translateToEnglishGloss(sentence: String): String {
+        val tokens = sentence.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
+        if (tokens.isEmpty()) return ""
+
+        val glossTokens = mutableListOf<String>()
+        var i = 0
+        while (i < tokens.size) {
+            val rawTok = tokens[i]
+            val cleanTok = rawTok.lowercase().trimEnd(',', '.', '?', '!')
+            val punct = rawTok.substring(cleanTok.length)
+
+            // Check two-word idioms first
+            if (i + 1 < tokens.size) {
+                val nextClean = tokens[i + 1].lowercase().trimEnd(',', '.', '?', '!')
+                val pair = "$cleanTok $nextClean"
+                val pairGloss = when (pair) {
+                    "muche felo", "batil koro", "delete koro" -> "delete"
+                    "bondho koro", "off koro" -> "pause"
+                    "chalu koro", "on koro" -> "activate"
+                    "shobcheye beshi", "sobcheye beshi", "shobcheye boro" -> "highest"
+                    "ei mashe", "ai mashe", "ei mash" -> "this month"
+                    "ei shoptah", "ai shoptah", "ei week", "ai week" -> "this week"
+                    "khoroch hoise", "khoroch holo", "khoroch gese", "cost hoiche", "cost hoise" -> "spent"
+                    "send korsi", "send korlam" -> "sent"
+                    "delivery charge", "delivery fee" -> "delivery fee"
+                    "courier charge", "courier fee" -> "courier fee"
+                    "meal charge", "dining bill" -> "canteen/dining cost"
+                    "kisti dilam", "kisti pay" -> "paid installment"
+                    "advance dilam" -> "paid advance"
+                    "taka bachabo" -> "save money"
+                    "kemon acho" -> "how are you"
+                    "tumi ke" -> "who are you"
+                    "ki korte paro" -> "what can you do"
+                    else -> null
+                }
+                if (pairGloss != null) {
+                    glossTokens.add(pairGloss)
+                    i += 2
+                    continue
+                }
+            }
+
+            // Handle postposition markers ("ke", "k", "re" after a person/recipient)
+            if (cleanTok in setOf("ke", "k", "re") && glossTokens.isNotEmpty()) {
+                val prev = glossTokens.removeAt(glossTokens.lastIndex)
+                glossTokens.add("to $prev$punct")
+                i++
+                continue
+            }
+
+            // Handle attached suffixes like "rahimke", "bazare", "mashe", "9tay"
+            if (cleanTok.endsWith("ke") && cleanTok.length > 4 && !BANGLISH_TO_ENGLISH_GLOSS.containsKey(cleanTok)) {
+                val stem = cleanTok.removeSuffix("ke")
+                if (COMMON_NAMES.containsKey(stem) || BANGLISH_TO_ENGLISH_GLOSS.containsKey(stem)) {
+                    val stemGloss = BANGLISH_TO_ENGLISH_GLOSS[stem] ?: stem
+                    glossTokens.add("to $stemGloss$punct")
+                    i++
+                    continue
+                }
+            }
+
+            val canonical = resolveCanonicalBanglishWord(cleanTok)
+            val gloss = when {
+                cleanTok == "tk" || cleanTok == "taka" -> "BDT"
+                BANGLISH_TO_ENGLISH_GLOSS.containsKey(canonical) -> BANGLISH_TO_ENGLISH_GLOSS[canonical]!!
+                else -> rawTok.trimEnd(',', '.', '?', '!')
+            }
+            glossTokens.add("$gloss$punct")
+            i++
+        }
+
+        return glossTokens.joinToString(" ").replace(Regex("\\s+"), " ").trim()
+    }
+
+    /**
+     * Detects whether a user input contains Banglish words or Bengali script.
+     */
+    fun containsBanglishOrBengali(input: String): Boolean {
+        if (input.any { it in '\u0980'..'\u09FF' }) return true
+        val words = input.lowercase().split(Regex("[^a-zA-Z0-9]+")).filter { it.isNotBlank() }
+        return words.any { w ->
+            w == "tk" || w == "taka" ||
+                (w !in PROTECTED_ENGLISH_WORDS && (BANGLISH_TO_ENGLISH_GLOSS.containsKey(w) ||
+                        COMMON_NAMES.containsKey(w) ||
+                        resolveCanonicalBanglishWord(w) != w))
+        }
+    }
+}
