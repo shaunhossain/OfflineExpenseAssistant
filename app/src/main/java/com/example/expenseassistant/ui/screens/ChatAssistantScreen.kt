@@ -31,6 +31,9 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.SmartToy
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -38,10 +41,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -73,6 +78,8 @@ fun ChatAssistantScreen(
     val pendingConfirmation by viewModel.pendingConfirmation.collectAsState()
     val pendingMultipleConfirmation by viewModel.pendingMultipleConfirmation.collectAsState()
     val pendingReminder by viewModel.pendingReminderConfirmation.collectAsState()
+    val pendingDelete by viewModel.pendingDeleteConfirmation.collectAsState()
+    val pendingClear by viewModel.pendingClearConfirmation.collectAsState()
 
     var inputText by remember { mutableStateOf("") }
     val listState = rememberLazyListState()
@@ -92,45 +99,93 @@ fun ChatAssistantScreen(
 
     // Confirmation dialogs
     pendingConfirmation?.let { conf ->
-        ConfirmationDialog(
-            confirmation = conf,
-            onConfirm = { amountMinor, category, note, type ->
-                viewModel.confirmSaveTransaction(
-                    amountMinor = amountMinor,
-                    category = category,
-                    note = note,
-                    type = type,
-                    sourceText = conf.sourceText,
-                    occurredAt = conf.validationResult.occurredAt
-                )
-            },
-            onDismiss = { viewModel.cancelPendingConfirmation() }
-        )
+        key(conf) {
+            ConfirmationDialog(
+                confirmation = conf,
+                onConfirm = { amountMinor, category, note, type ->
+                    viewModel.confirmSaveTransaction(
+                        amountMinor = amountMinor,
+                        category = category,
+                        note = note,
+                        type = type,
+                        sourceText = conf.sourceText,
+                        occurredAt = conf.validationResult.occurredAt
+                    )
+                },
+                onDismiss = { viewModel.cancelPendingConfirmation() }
+            )
+        }
     }
 
     pendingMultipleConfirmation?.let { mult ->
-        MultipleConfirmationDialog(
-            confirmation = mult,
-            onConfirm = { items, sourceText ->
-                viewModel.confirmSaveMultipleTransactions(items, sourceText)
-            },
-            onDismiss = { viewModel.cancelPendingMultipleConfirmation() }
-        )
+        key(mult) {
+            MultipleConfirmationDialog(
+                confirmation = mult,
+                onConfirm = { items, sourceText ->
+                    viewModel.confirmSaveMultipleTransactions(items, sourceText)
+                },
+                onDismiss = { viewModel.cancelPendingMultipleConfirmation() }
+            )
+        }
     }
 
     pendingReminder?.let { rem ->
-        ReminderConfirmationDialog(
-            confirmation = rem,
-            onConfirm = { title, message, hour, minute, reason ->
-                viewModel.confirmSaveReminder(
-                    title = title,
-                    message = message,
-                    hourOfDay = hour,
-                    minute = minute,
-                    reason = reason
-                )
+        key(rem) {
+            ReminderConfirmationDialog(
+                confirmation = rem,
+                onConfirm = { title, message, hour, minute, reason ->
+                    viewModel.confirmSaveReminder(
+                        title = title,
+                        message = message,
+                        hourOfDay = hour,
+                        minute = minute,
+                        reason = reason
+                    )
+                },
+                onDismiss = { viewModel.cancelPendingReminder() }
+            )
+        }
+    }
+
+    pendingDelete?.let { del ->
+        AlertDialog(
+            onDismissRequest = { viewModel.cancelPendingDelete() },
+            title = { Text("Confirm Deletion", fontWeight = FontWeight.Bold) },
+            text = { Text(del.message) },
+            confirmButton = {
+                Button(
+                    onClick = { viewModel.confirmDeleteTransaction(del.transactionId) },
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
+                ) {
+                    Text("Delete", color = MaterialTheme.colorScheme.onError)
+                }
             },
-            onDismiss = { viewModel.cancelPendingReminder() }
+            dismissButton = {
+                TextButton(onClick = { viewModel.cancelPendingDelete() }) {
+                    Text("Cancel")
+                }
+            }
+        )
+    }
+
+    pendingClear?.let { clr ->
+        AlertDialog(
+            onDismissRequest = { viewModel.cancelPendingClear() },
+            title = { Text("⚠️ Clear All Transactions", fontWeight = FontWeight.Bold) },
+            text = { Text(clr.message) },
+            confirmButton = {
+                Button(
+                    onClick = { viewModel.confirmClearAllTransactions() },
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
+                ) {
+                    Text("Delete All", color = MaterialTheme.colorScheme.onError)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { viewModel.cancelPendingClear() }) {
+                    Text("Cancel")
+                }
+            }
         )
     }
 

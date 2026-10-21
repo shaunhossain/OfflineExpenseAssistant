@@ -1,0 +1,8275 @@
+{
+  "total_rows_scanned": 245727,
+  "lemmas": {
+    "টাকা": {
+      "canonical": "taka",
+      "group": "currency",
+      "variants": {
+        "taka": {
+          "count": 493,
+          "total_freq": 556,
+          "score": 0.783,
+          "source": "corpus_mined"
+        },
+        "tk": {
+          "count": 432,
+          "total_freq": 527,
+          "score": 0.502,
+          "source": "corpus_mined"
+        },
+        "takay": {
+          "count": 57,
+          "total_freq": 59,
+          "score": 0.446,
+          "source": "corpus_mined"
+        },
+        "takar": {
+          "count": 47,
+          "total_freq": 49,
+          "score": 0.438,
+          "source": "corpus_mined"
+        },
+        "takai": {
+          "count": 33,
+          "total_freq": 38,
+          "score": 0.427,
+          "source": "corpus_mined"
+        },
+        "thaka": {
+          "count": 9,
+          "total_freq": 163,
+          "score": 0.407,
+          "source": "corpus_mined"
+        },
+        "teke": {
+          "count": 8,
+          "total_freq": 106,
+          "score": 0.256,
+          "source": "corpus_mined"
+        },
+        "4taka": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.403,
+          "source": "corpus_mined"
+        },
+        "tik": {
+          "count": 3,
+          "total_freq": 179,
+          "score": 0.252,
+          "source": "corpus_mined"
+        },
+        "tka": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "taaka": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "1taka": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "takha": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "5taka": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "takla": {
+          "count": 1,
+          "total_freq": 6,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "tska": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "jaka": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "tata": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "laka": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "teka": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "takhe": {
+          "count": 1,
+          "total_freq": 8,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "taaky": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "tke": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "tok": {
+          "count": 1,
+          "total_freq": 9,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "tky": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "takaye": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:takaye|takay|thaka|takhe|takai|taaky|takar|1taka|taaka|5taka|4taka|takla|takha|taka|teke|teka|tata|tska|jaka|laka|tky|tke|tka|tok|tik|tk)\\b"
+    },
+    "টাকার": {
+      "canonical": "takar",
+      "group": "currency",
+      "variants": {
+        "takar": {
+          "count": 47,
+          "total_freq": 49,
+          "score": 0.927,
+          "source": "corpus_mined"
+        },
+        "taka": {
+          "count": 8,
+          "total_freq": 556,
+          "score": 0.413,
+          "source": "corpus_mined"
+        },
+        "tkr": {
+          "count": 5,
+          "total_freq": 5,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "tkar": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.432,
+          "source": "corpus_mined"
+        },
+        "takai": {
+          "count": 2,
+          "total_freq": 38,
+          "score": 0.42,
+          "source": "corpus_mined"
+        },
+        "rakar": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.416,
+          "source": "corpus_mined"
+        },
+        "takay": {
+          "count": 1,
+          "total_freq": 59,
+          "score": 0.408,
+          "source": "corpus_mined"
+        },
+        "tker": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.316,
+          "source": "corpus_mined"
+        },
+        "takare": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:takare|takai|takay|rakar|takar|taka|tker|tkar|tkr)\\b"
+    },
+    "টাকায়": {
+      "canonical": "takay",
+      "group": "currency",
+      "variants": {
+        "takay": {
+          "count": 20,
+          "total_freq": 59,
+          "score": 0.72,
+          "source": "corpus_mined"
+        },
+        "takai": {
+          "count": 7,
+          "total_freq": 38,
+          "score": 0.5,
+          "source": "corpus_mined"
+        },
+        "taka": {
+          "count": 2,
+          "total_freq": 556,
+          "score": 0.403,
+          "source": "corpus_mined"
+        },
+        "tk": {
+          "count": 2,
+          "total_freq": 527,
+          "score": 0.204,
+          "source": "corpus_mined"
+        },
+        "tke": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.229,
+          "source": "corpus_mined"
+        },
+        "takaye": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "takat": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:takaye|takay|takai|takat|taka|tke|tk)\\b"
+    },
+    "পয়সা": {
+      "canonical": "poisa",
+      "group": "currency",
+      "variants": {
+        "poisao": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.75,
+          "source": "corpus_mined"
+        },
+        "poesha": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "poysha": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "poisha": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "poisa": {
+          "count": 0,
+          "total_freq": 5,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:poisao|poisha|poysha|poesha|poisa)\\b"
+    },
+    "হাজার": {
+      "canonical": "hajar",
+      "group": "magnitude",
+      "variants": {
+        "hajar": {
+          "count": 48,
+          "total_freq": 66,
+          "score": 0.827,
+          "source": "corpus_mined"
+        },
+        "hazar": {
+          "count": 14,
+          "total_freq": 26,
+          "score": 0.531,
+          "source": "corpus_mined"
+        },
+        "hajaro": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.441,
+          "source": "corpus_mined"
+        },
+        "hajer": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.424,
+          "source": "corpus_mined"
+        },
+        "hajare": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.429,
+          "source": "corpus_mined"
+        },
+        "2hajar": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.429,
+          "source": "corpus_mined"
+        },
+        "hajr": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.412,
+          "source": "corpus_mined"
+        },
+        "haja": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.412,
+          "source": "corpus_mined"
+        },
+        "halar": {
+          "count": 1,
+          "total_freq": 8,
+          "score": 0.411,
+          "source": "corpus_mined"
+        },
+        "hszar": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.312,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:hajare|2hajar|hajaro|hajar|hajer|hazar|hszar|halar|hajr|haja)\\b"
+    },
+    "লাখ": {
+      "canonical": "lakh",
+      "group": "magnitude",
+      "variants": {
+        "lakh": {
+          "count": 10,
+          "total_freq": 15,
+          "score": 0.778,
+          "source": "corpus_mined"
+        },
+        "lakho": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.483,
+          "source": "corpus_mined"
+        },
+        "4lakh": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.445,
+          "source": "corpus_mined"
+        },
+        "1lakh": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.445,
+          "source": "corpus_mined"
+        },
+        "lakhs": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.443,
+          "source": "corpus_mined"
+        },
+        "lakhe": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "lac": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "laakh": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:4lakh|lakho|1lakh|lakhe|laakh|lakhs|lakh|lac)\\b"
+    },
+    "লক্ষ": {
+      "canonical": "lakh",
+      "group": "magnitude",
+      "variants": {
+        "lokkho": {
+          "count": 19,
+          "total_freq": 20,
+          "score": 0.474,
+          "source": "corpus_mined"
+        },
+        "lakh": {
+          "count": 3,
+          "total_freq": 15,
+          "score": 0.537,
+          "source": "corpus_mined"
+        },
+        "lokkhyo": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "lokkhye": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "lokkhe": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.28,
+          "source": "corpus_mined"
+        },
+        "lokko": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.23,
+          "source": "corpus_mined"
+        },
+        "labh": {
+          "count": 1,
+          "total_freq": 62,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "lokho": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.315,
+          "source": "corpus_mined"
+        },
+        "lakkhyo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "lokkhi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.265,
+          "source": "corpus_mined"
+        },
+        "lok": {
+          "count": 1,
+          "total_freq": 43,
+          "score": 0.259,
+          "source": "corpus_mined"
+        },
+        "like": {
+          "count": 1,
+          "total_freq": 144,
+          "score": 0.255,
+          "source": "corpus_mined"
+        },
+        "lokkh": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:lokkhye|lokkhyo|lakkhyo|lokkhi|lokkho|lokkhe|lokho|lokkh|lokko|like|labh|lakh|lok)\\b"
+    },
+    "কোটি": {
+      "canonical": "koti",
+      "group": "magnitude",
+      "variants": {
+        "koti": {
+          "count": 11,
+          "total_freq": 19,
+          "score": 0.824,
+          "source": "corpus_mined"
+        },
+        "kotir": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.463,
+          "source": "corpus_mined"
+        },
+        "kuti": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.434,
+          "source": "corpus_mined"
+        },
+        "poti": {
+          "count": 1,
+          "total_freq": 5,
+          "score": 0.425,
+          "source": "corpus_mined"
+        },
+        "kotee": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "crore": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:kotee|kotir|crore|poti|koti|kuti)\\b"
+    },
+    "শত": {
+      "canonical": "shoto",
+      "group": "magnitude",
+      "variants": {
+        "shoto": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.532,
+          "source": "corpus_mined"
+        },
+        "soto": {
+          "count": 2,
+          "total_freq": 21,
+          "score": 0.418,
+          "source": "corpus_mined"
+        },
+        "shotok": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.428,
+          "source": "corpus_mined"
+        },
+        "shot": {
+          "count": 1,
+          "total_freq": 67,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "choto": {
+          "count": 1,
+          "total_freq": 82,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "sotoe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.311,
+          "source": "corpus_mined"
+        },
+        "sot": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.311,
+          "source": "corpus_mined"
+        },
+        "sotte": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.211,
+          "source": "corpus_mined"
+        },
+        "sut": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.211,
+          "source": "corpus_mined"
+        },
+        "saat": {
+          "count": 1,
+          "total_freq": 6,
+          "score": 0.21,
+          "source": "corpus_mined"
+        },
+        "sat": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.21,
+          "source": "corpus_mined"
+        },
+        "jeto": {
+          "count": 1,
+          "total_freq": 39,
+          "score": 0.208,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:shotok|sotte|choto|shoto|sotoe|saat|jeto|soto|shot|sut|sat|sot)\\b"
+    },
+    "শ": {
+      "canonical": "sho",
+      "group": "magnitude",
+      "variants": {
+        "show": {
+          "count": 133,
+          "total_freq": 155,
+          "score": 0.39,
+          "source": "corpus_mined"
+        },
+        "so": {
+          "count": 71,
+          "total_freq": 247,
+          "score": 0.341,
+          "source": "corpus_mined"
+        },
+        "shot": {
+          "count": 62,
+          "total_freq": 67,
+          "score": 0.382,
+          "source": "corpus_mined"
+        },
+        "soho": {
+          "count": 47,
+          "total_freq": 102,
+          "score": 0.38,
+          "source": "corpus_mined"
+        },
+        "shei": {
+          "count": 29,
+          "total_freq": 54,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "tho": {
+          "count": 15,
+          "total_freq": 70,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "sha": {
+          "count": 10,
+          "total_freq": 14,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "shop": {
+          "count": 8,
+          "total_freq": 13,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "seo": {
+          "count": 6,
+          "total_freq": 28,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "she": {
+          "count": 4,
+          "total_freq": 12,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "shaa": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.25,
+          "source": "corpus_mined"
+        },
+        "shor": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "shi": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "shey": {
+          "count": 2,
+          "total_freq": 4,
+          "score": 0.25,
+          "source": "corpus_mined"
+        },
+        "shuye": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.2,
+          "source": "corpus_mined"
+        },
+        "sho": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.5,
+          "source": "corpus_mined"
+        },
+        "shod": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "asho": {
+          "count": 1,
+          "total_freq": 5,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "shoy": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "shol": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "soo": {
+          "count": 1,
+          "total_freq": 8,
+          "score": 0.333,
+          "source": "corpus_mined"
+        },
+        "oho": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.333,
+          "source": "corpus_mined"
+        },
+        "chao": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.25,
+          "source": "corpus_mined"
+        },
+        "cheo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.25,
+          "source": "corpus_mined"
+        },
+        "chou": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.25,
+          "source": "corpus_mined"
+        },
+        "chioo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.2,
+          "source": "corpus_mined"
+        },
+        "chaoa": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.2,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:shuye|chaoa|chioo|shey|shaa|asho|chou|shei|shol|shod|shot|cheo|show|shop|shor|chao|soho|shoy|sha|tho|soo|oho|seo|sho|shi|she|so)\\b"
+    },
+    "দেড়": {
+      "canonical": "der",
+      "group": "fraction",
+      "variants": {
+        "der": {
+          "count": 3,
+          "total_freq": 204,
+          "score": 0.514,
+          "source": "corpus_mined"
+        },
+        "dur": {
+          "count": 1,
+          "total_freq": 49,
+          "score": 0.352,
+          "source": "corpus_mined"
+        },
+        "den": {
+          "count": 1,
+          "total_freq": 1285,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "derh": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "dedh": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:derh|dedh|der|dur|den)\\b"
+    },
+    "আড়াই": {
+      "canonical": "arai",
+      "group": "fraction",
+      "variants": {
+        "adhai": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "arhai": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "arai": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:adhai|arhai|arai)\\b"
+    },
+    "সাড়ে": {
+      "canonical": "sare",
+      "group": "fraction",
+      "variants": {
+        "sare": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.833,
+          "source": "corpus_mined"
+        },
+        "saare": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.6,
+          "source": "corpus_mined"
+        },
+        "share": {
+          "count": 0,
+          "total_freq": 518,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "sade": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:share|saare|sare|sade)\\b"
+    },
+    "খরচ": {
+      "canonical": "khoroch",
+      "group": "expense_keyword",
+      "variants": {
+        "khoroch": {
+          "count": 17,
+          "total_freq": 17,
+          "score": 0.788,
+          "source": "corpus_mined"
+        },
+        "khoros": {
+          "count": 9,
+          "total_freq": 9,
+          "score": 0.534,
+          "source": "corpus_mined"
+        },
+        "khoroc": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.495,
+          "source": "corpus_mined"
+        },
+        "khoroj": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.403,
+          "source": "corpus_mined"
+        },
+        "koros": {
+          "count": 2,
+          "total_freq": 26,
+          "score": 0.315,
+          "source": "corpus_mined"
+        },
+        "khoroche": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.461,
+          "source": "corpus_mined"
+        },
+        "khorch": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.452,
+          "source": "corpus_mined"
+        },
+        "khroch": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.452,
+          "source": "corpus_mined"
+        },
+        "khorach": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.452,
+          "source": "corpus_mined"
+        },
+        "koroch": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.451,
+          "source": "corpus_mined"
+        },
+        "khrch": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.38,
+          "source": "corpus_mined"
+        },
+        "khorcha": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.38,
+          "source": "corpus_mined"
+        },
+        "kharach": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.38,
+          "source": "corpus_mined"
+        },
+        "khorchay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.336,
+          "source": "corpus_mined"
+        },
+        "korechi": {
+          "count": 1,
+          "total_freq": 142,
+          "score": 0.291,
+          "source": "corpus_mined"
+        },
+        "korsii": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.237,
+          "source": "corpus_mined"
+        },
+        "korse": {
+          "count": 1,
+          "total_freq": 180,
+          "score": 0.219,
+          "source": "corpus_mined"
+        },
+        "korsi": {
+          "count": 1,
+          "total_freq": 346,
+          "score": 0.217,
+          "source": "corpus_mined"
+        },
+        "koroc": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "khorche": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:khorchay|khoroche|khorcha|khoroch|khorche|khorach|kharach|korechi|khroch|khorch|koroch|khoros|khoroj|khoroc|korsii|korsi|koroc|koros|korse|khrch)\\b"
+    },
+    "খরচের": {
+      "canonical": "khorocher",
+      "group": "expense_keyword",
+      "variants": {
+        "koroser": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "khorocer": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "korocher": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "khoroser": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "khorocher": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:khorocher|khoroser|khorocer|korocher|koroser)\\b"
+    },
+    "দিলাম": {
+      "canonical": "dilam",
+      "group": "verb_give",
+      "variants": {
+        "dilam": {
+          "count": 162,
+          "total_freq": 171,
+          "score": 0.95,
+          "source": "corpus_mined"
+        },
+        "delam": {
+          "count": 11,
+          "total_freq": 14,
+          "score": 0.454,
+          "source": "corpus_mined"
+        },
+        "dilm": {
+          "count": 7,
+          "total_freq": 7,
+          "score": 0.436,
+          "source": "corpus_mined"
+        },
+        "dilem": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.41,
+          "source": "corpus_mined"
+        },
+        "diram": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.405,
+          "source": "corpus_mined"
+        },
+        "dlam": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.405,
+          "source": "corpus_mined"
+        },
+        "dilan": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.405,
+          "source": "corpus_mined"
+        },
+        "delem": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.305,
+          "source": "corpus_mined"
+        },
+        "dlm": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.305,
+          "source": "corpus_mined"
+        },
+        "diasilam": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "disilam": {
+          "count": 0,
+          "total_freq": 18,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:diasilam|disilam|dilam|delem|dilem|delam|diram|dilan|dlam|dilm|dlm)\\b"
+    },
+    "দিয়েছি": {
+      "canonical": "diyechi",
+      "group": "verb_give",
+      "variants": {
+        "disi": {
+          "count": 11,
+          "total_freq": 237,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "diyechi": {
+          "count": 8,
+          "total_freq": 43,
+          "score": 0.591,
+          "source": "corpus_mined"
+        },
+        "dieci": {
+          "count": 2,
+          "total_freq": 5,
+          "score": 0.397,
+          "source": "corpus_mined"
+        },
+        "diechi": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.449,
+          "source": "corpus_mined"
+        },
+        "diyeci": {
+          "count": 1,
+          "total_freq": 10,
+          "score": 0.447,
+          "source": "corpus_mined"
+        },
+        "diachi": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "diyesi": {
+          "count": 1,
+          "total_freq": 10,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "deachi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.307,
+          "source": "corpus_mined"
+        },
+        "diyac": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.307,
+          "source": "corpus_mined"
+        },
+        "diaci": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.306,
+          "source": "corpus_mined"
+        },
+        "deyce": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.236,
+          "source": "corpus_mined"
+        },
+        "dece": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.234,
+          "source": "corpus_mined"
+        },
+        "diyeche": {
+          "count": 0,
+          "total_freq": 25,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:diyeche|diyechi|diyeci|deachi|diyesi|diachi|diechi|dieci|deyce|diaci|diyac|disi|dece)\\b"
+    },
+    "দিছি": {
+      "canonical": "disi",
+      "group": "verb_give",
+      "variants": {
+        "disi": {
+          "count": 75,
+          "total_freq": 237,
+          "score": 0.655,
+          "source": "corpus_mined"
+        },
+        "dici": {
+          "count": 71,
+          "total_freq": 133,
+          "score": 0.562,
+          "source": "corpus_mined"
+        },
+        "dichi": {
+          "count": 36,
+          "total_freq": 63,
+          "score": 0.417,
+          "source": "corpus_mined"
+        },
+        "dese": {
+          "count": 4,
+          "total_freq": 31,
+          "score": 0.264,
+          "source": "corpus_mined"
+        },
+        "dissi": {
+          "count": 3,
+          "total_freq": 26,
+          "score": 0.411,
+          "source": "corpus_mined"
+        },
+        "dechi": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.212,
+          "source": "corpus_mined"
+        },
+        "disci": {
+          "count": 2,
+          "total_freq": 4,
+          "score": 0.408,
+          "source": "corpus_mined"
+        },
+        "dsi": {
+          "count": 2,
+          "total_freq": 4,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "dise": {
+          "count": 2,
+          "total_freq": 121,
+          "score": 0.38,
+          "source": "corpus_mined"
+        },
+        "deshi": {
+          "count": 2,
+          "total_freq": 8,
+          "score": 0.308,
+          "source": "corpus_mined"
+        },
+        "dicci": {
+          "count": 2,
+          "total_freq": 28,
+          "score": 0.307,
+          "source": "corpus_mined"
+        },
+        "deci": {
+          "count": 2,
+          "total_freq": 6,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "diyechi": {
+          "count": 2,
+          "total_freq": 43,
+          "score": 0.221,
+          "source": "corpus_mined"
+        },
+        "diasi": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "dischi": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.337,
+          "source": "corpus_mined"
+        },
+        "diyesi": {
+          "count": 1,
+          "total_freq": 10,
+          "score": 0.337,
+          "source": "corpus_mined"
+        },
+        "dosh": {
+          "count": 1,
+          "total_freq": 20,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "dica": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "dice": {
+          "count": 1,
+          "total_freq": 31,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "diachi": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "diche": {
+          "count": 1,
+          "total_freq": 35,
+          "score": 0.204,
+          "source": "corpus_mined"
+        },
+        "disen": {
+          "count": 0,
+          "total_freq": 81,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "ditesi": {
+          "count": 0,
+          "total_freq": 4,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:diyechi|dischi|diachi|ditesi|diyesi|disen|dissi|diche|deshi|dichi|dicci|disci|diasi|dechi|deci|dica|dese|dosh|dici|dise|dice|disi|dsi)\\b"
+    },
+    "দিল": {
+      "canonical": "dilo",
+      "group": "verb_give",
+      "variants": {
+        "dile": {
+          "count": 582,
+          "total_freq": 596,
+          "score": 0.706,
+          "source": "corpus_mined"
+        },
+        "dilei": {
+          "count": 62,
+          "total_freq": 62,
+          "score": 0.351,
+          "source": "corpus_mined"
+        },
+        "dila": {
+          "count": 50,
+          "total_freq": 52,
+          "score": 0.416,
+          "source": "corpus_mined"
+        },
+        "dilo": {
+          "count": 37,
+          "total_freq": 38,
+          "score": 0.531,
+          "source": "corpus_mined"
+        },
+        "dileo": {
+          "count": 33,
+          "total_freq": 33,
+          "score": 0.428,
+          "source": "corpus_mined"
+        },
+        "dibo": {
+          "count": 16,
+          "total_freq": 456,
+          "score": 0.385,
+          "source": "corpus_mined"
+        },
+        "dela": {
+          "count": 13,
+          "total_freq": 16,
+          "score": 0.261,
+          "source": "corpus_mined"
+        },
+        "dele": {
+          "count": 12,
+          "total_freq": 15,
+          "score": 0.26,
+          "source": "corpus_mined"
+        },
+        "cilo": {
+          "count": 8,
+          "total_freq": 119,
+          "score": 0.381,
+          "source": "corpus_mined"
+        },
+        "dilm": {
+          "count": 7,
+          "total_freq": 7,
+          "score": 0.381,
+          "source": "corpus_mined"
+        },
+        "dilay": {
+          "count": 6,
+          "total_freq": 7,
+          "score": 0.305,
+          "source": "corpus_mined"
+        },
+        "dili": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "silo": {
+          "count": 4,
+          "total_freq": 90,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "dle": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "dily": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "delea": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.203,
+          "source": "corpus_mined"
+        },
+        "dilao": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "nilo": {
+          "count": 2,
+          "total_freq": 7,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "daily": {
+          "count": 2,
+          "total_freq": 62,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "dilee": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "deleo": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "dil": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "dolo": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "dito": {
+          "count": 1,
+          "total_freq": 15,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "dio": {
+          "count": 1,
+          "total_freq": 11,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "dilai": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "daile": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "diley": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "dhile": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "dol": {
+          "count": 1,
+          "total_freq": 29,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "dely": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "dail": {
+          "count": 1,
+          "total_freq": 19,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "dial": {
+          "count": 1,
+          "total_freq": 70,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "dala": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "dal": {
+          "count": 1,
+          "total_freq": 27,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "deley": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.201,
+          "source": "corpus_mined"
+        },
+        "delei": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.201,
+          "source": "corpus_mined"
+        },
+        "delo": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:deley|deleo|daile|diley|daily|delei|dhile|dilei|dileo|dilai|dilay|delea|dilao|dilee|dail|dele|dolo|silo|dilm|dala|dely|dilo|cilo|dito|dily|dili|nilo|dile|dila|dela|dial|dibo|delo|dio|dle|dal|dol|dil)\\b"
+    },
+    "দিবে": {
+      "canonical": "dibe",
+      "group": "verb_give",
+      "variants": {
+        "diben": {
+          "count": 361,
+          "total_freq": 376,
+          "score": 0.75,
+          "source": "corpus_mined"
+        },
+        "dibe": {
+          "count": 190,
+          "total_freq": 213,
+          "score": 0.719,
+          "source": "corpus_mined"
+        },
+        "dite": {
+          "count": 20,
+          "total_freq": 562,
+          "score": 0.391,
+          "source": "corpus_mined"
+        },
+        "dile": {
+          "count": 19,
+          "total_freq": 596,
+          "score": 0.39,
+          "source": "corpus_mined"
+        },
+        "debe": {
+          "count": 12,
+          "total_freq": 24,
+          "score": 0.393,
+          "source": "corpus_mined"
+        },
+        "dibo": {
+          "count": 8,
+          "total_freq": 456,
+          "score": 0.382,
+          "source": "corpus_mined"
+        },
+        "diba": {
+          "count": 7,
+          "total_freq": 18,
+          "score": 0.385,
+          "source": "corpus_mined"
+        },
+        "dise": {
+          "count": 4,
+          "total_freq": 121,
+          "score": 0.38,
+          "source": "corpus_mined"
+        },
+        "dibn": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.38,
+          "source": "corpus_mined"
+        },
+        "die": {
+          "count": 3,
+          "total_freq": 81,
+          "score": 0.379,
+          "source": "corpus_mined"
+        },
+        "dibay": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.305,
+          "source": "corpus_mined"
+        },
+        "deba": {
+          "count": 3,
+          "total_freq": 11,
+          "score": 0.255,
+          "source": "corpus_mined"
+        },
+        "debo": {
+          "count": 3,
+          "total_freq": 88,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "dbe": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "drive": {
+          "count": 2,
+          "total_freq": 145,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "daba": {
+          "count": 2,
+          "total_freq": 5,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "dibee": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "dibey": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "dibae": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "dive": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "nibe": {
+          "count": 1,
+          "total_freq": 56,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "dike": {
+          "count": 1,
+          "total_freq": 78,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "dice": {
+          "count": 1,
+          "total_freq": 31,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "diva": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.252,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:dibay|drive|dibee|dibae|dibey|diben|nibe|dike|dise|diva|dite|dice|dive|deba|debe|daba|dibe|dile|dibn|debo|dibo|diba|dbe|die)\\b"
+    },
+    "দিতে": {
+      "canonical": "dite",
+      "group": "verb_give",
+      "variants": {
+        "dite": {
+          "count": 541,
+          "total_freq": 562,
+          "score": 0.916,
+          "source": "corpus_mined"
+        },
+        "diten": {
+          "count": 53,
+          "total_freq": 53,
+          "score": 0.467,
+          "source": "corpus_mined"
+        },
+        "dita": {
+          "count": 27,
+          "total_freq": 28,
+          "score": 0.41,
+          "source": "corpus_mined"
+        },
+        "dile": {
+          "count": 25,
+          "total_freq": 596,
+          "score": 0.394,
+          "source": "corpus_mined"
+        },
+        "site": {
+          "count": 22,
+          "total_freq": 688,
+          "score": 0.39,
+          "source": "corpus_mined"
+        },
+        "deta": {
+          "count": 20,
+          "total_freq": 25,
+          "score": 0.276,
+          "source": "corpus_mined"
+        },
+        "dete": {
+          "count": 18,
+          "total_freq": 20,
+          "score": 0.399,
+          "source": "corpus_mined"
+        },
+        "dte": {
+          "count": 10,
+          "total_freq": 12,
+          "score": 0.388,
+          "source": "corpus_mined"
+        },
+        "dibe": {
+          "count": 10,
+          "total_freq": 213,
+          "score": 0.386,
+          "source": "corpus_mined"
+        },
+        "nite": {
+          "count": 8,
+          "total_freq": 276,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "data": {
+          "count": 5,
+          "total_freq": 274,
+          "score": 0.255,
+          "source": "corpus_mined"
+        },
+        "ditay": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.305,
+          "source": "corpus_mined"
+        },
+        "ditei": {
+          "count": 3,
+          "total_freq": 5,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "date": {
+          "count": 3,
+          "total_freq": 40,
+          "score": 0.379,
+          "source": "corpus_mined"
+        },
+        "dise": {
+          "count": 3,
+          "total_freq": 121,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "rate": {
+          "count": 3,
+          "total_freq": 47,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "dithe": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.403,
+          "source": "corpus_mined"
+        },
+        "ditee": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.403,
+          "source": "corpus_mined"
+        },
+        "diteo": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.403,
+          "source": "corpus_mined"
+        },
+        "dice": {
+          "count": 2,
+          "total_freq": 31,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "lite": {
+          "count": 2,
+          "total_freq": 87,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "diteh": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "ditey": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "diteu": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "ditea": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "diite": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "dide": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "die": {
+          "count": 1,
+          "total_freq": 81,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "dute": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "dote": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "duita": {
+          "count": 1,
+          "total_freq": 37,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "detey": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "duate": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "diteeee": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.287,
+          "source": "corpus_mined"
+        },
+        "deti": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "deteyo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "duti": {
+          "count": 1,
+          "total_freq": 24,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "druto": {
+          "count": 1,
+          "total_freq": 16,
+          "score": 0.201,
+          "source": "corpus_mined"
+        },
+        "detay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.201,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:diteeee|deteyo|diteu|ditee|ditea|dithe|diteh|ditey|detay|ditei|diite|diten|diteo|ditay|detey|duita|druto|duate|duti|dete|site|dide|rate|dise|deti|dita|deta|dite|dice|nite|lite|date|dibe|data|dile|dute|dote|die|dte)\\b"
+    },
+    "করলাম": {
+      "canonical": "korlam",
+      "group": "verb_do",
+      "variants": {
+        "korlam": {
+          "count": 369,
+          "total_freq": 392,
+          "score": 0.962,
+          "source": "corpus_mined"
+        },
+        "korlm": {
+          "count": 11,
+          "total_freq": 11,
+          "score": 0.443,
+          "source": "corpus_mined"
+        },
+        "krlam": {
+          "count": 10,
+          "total_freq": 10,
+          "score": 0.441,
+          "source": "corpus_mined"
+        },
+        "krlm": {
+          "count": 7,
+          "total_freq": 7,
+          "score": 0.35,
+          "source": "corpus_mined"
+        },
+        "korlem": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.422,
+          "source": "corpus_mined"
+        },
+        "kortam": {
+          "count": 2,
+          "total_freq": 60,
+          "score": 0.421,
+          "source": "corpus_mined"
+        },
+        "korla": {
+          "count": 1,
+          "total_freq": 80,
+          "score": 0.419,
+          "source": "corpus_mined"
+        },
+        "korlao": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.419,
+          "source": "corpus_mined"
+        },
+        "kirlam": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.419,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:korlao|kortam|korlam|kirlam|korlem|korlm|krlam|korla|krlm)\\b"
+    },
+    "করেছি": {
+      "canonical": "korechi",
+      "group": "verb_do",
+      "variants": {
+        "korechi": {
+          "count": 121,
+          "total_freq": 142,
+          "score": 0.706,
+          "source": "corpus_mined"
+        },
+        "koresi": {
+          "count": 56,
+          "total_freq": 91,
+          "score": 0.461,
+          "source": "corpus_mined"
+        },
+        "koreci": {
+          "count": 51,
+          "total_freq": 75,
+          "score": 0.526,
+          "source": "corpus_mined"
+        },
+        "korsi": {
+          "count": 24,
+          "total_freq": 346,
+          "score": 0.316,
+          "source": "corpus_mined"
+        },
+        "korci": {
+          "count": 16,
+          "total_freq": 300,
+          "score": 0.379,
+          "source": "corpus_mined"
+        },
+        "korchi": {
+          "count": 14,
+          "total_freq": 215,
+          "score": 0.45,
+          "source": "corpus_mined"
+        },
+        "korachi": {
+          "count": 7,
+          "total_freq": 8,
+          "score": 0.444,
+          "source": "corpus_mined"
+        },
+        "koraci": {
+          "count": 4,
+          "total_freq": 5,
+          "score": 0.366,
+          "source": "corpus_mined"
+        },
+        "korche": {
+          "count": 4,
+          "total_freq": 93,
+          "score": 0.365,
+          "source": "corpus_mined"
+        },
+        "koreche": {
+          "count": 3,
+          "total_freq": 76,
+          "score": 0.434,
+          "source": "corpus_mined"
+        },
+        "korese": {
+          "count": 3,
+          "total_freq": 14,
+          "score": 0.292,
+          "source": "corpus_mined"
+        },
+        "korse": {
+          "count": 3,
+          "total_freq": 180,
+          "score": 0.219,
+          "source": "corpus_mined"
+        },
+        "koreshi": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.433,
+          "source": "corpus_mined"
+        },
+        "korichi": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.433,
+          "source": "corpus_mined"
+        },
+        "kreci": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.362,
+          "source": "corpus_mined"
+        },
+        "korece": {
+          "count": 2,
+          "total_freq": 11,
+          "score": 0.362,
+          "source": "corpus_mined"
+        },
+        "krci": {
+          "count": 2,
+          "total_freq": 26,
+          "score": 0.29,
+          "source": "corpus_mined"
+        },
+        "korechoi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.44,
+          "source": "corpus_mined"
+        },
+        "korechil": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.44,
+          "source": "corpus_mined"
+        },
+        "korehi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.431,
+          "source": "corpus_mined"
+        },
+        "krechi": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.431,
+          "source": "corpus_mined"
+        },
+        "krchi": {
+          "count": 1,
+          "total_freq": 5,
+          "score": 0.359,
+          "source": "corpus_mined"
+        },
+        "korecy": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.359,
+          "source": "corpus_mined"
+        },
+        "koreysi": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.359,
+          "source": "corpus_mined"
+        },
+        "korashi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.359,
+          "source": "corpus_mined"
+        },
+        "khoroche": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.315,
+          "source": "corpus_mined"
+        },
+        "karici": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.288,
+          "source": "corpus_mined"
+        },
+        "khoroch": {
+          "count": 1,
+          "total_freq": 17,
+          "score": 0.288,
+          "source": "corpus_mined"
+        },
+        "korace": {
+          "count": 1,
+          "total_freq": 5,
+          "score": 0.288,
+          "source": "corpus_mined"
+        },
+        "koraji": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.288,
+          "source": "corpus_mined"
+        },
+        "krishi": {
+          "count": 1,
+          "total_freq": 6,
+          "score": 0.288,
+          "source": "corpus_mined"
+        },
+        "korce": {
+          "count": 1,
+          "total_freq": 145,
+          "score": 0.287,
+          "source": "corpus_mined"
+        },
+        "korase": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.217,
+          "source": "corpus_mined"
+        },
+        "koros": {
+          "count": 1,
+          "total_freq": 26,
+          "score": 0.216,
+          "source": "corpus_mined"
+        },
+        "krsi": {
+          "count": 1,
+          "total_freq": 29,
+          "score": 0.216,
+          "source": "corpus_mined"
+        },
+        "koris": {
+          "count": 1,
+          "total_freq": 30,
+          "score": 0.216,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:korechoi|khoroche|korechil|korichi|koreshi|khoroch|korashi|koreysi|koreche|korechi|korachi|karici|korecy|korece|krechi|korese|koresi|korche|koraci|korase|krishi|koreci|korchi|koraji|korace|korehi|korce|korsi|korci|koros|korse|koris|kreci|krchi|krsi|krci)\\b"
+    },
+    "করছি": {
+      "canonical": "korsi",
+      "group": "verb_do",
+      "variants": {
+        "korchi": {
+          "count": 189,
+          "total_freq": 215,
+          "score": 0.534,
+          "source": "corpus_mined"
+        },
+        "korci": {
+          "count": 166,
+          "total_freq": 300,
+          "score": 0.562,
+          "source": "corpus_mined"
+        },
+        "korsi": {
+          "count": 158,
+          "total_freq": 346,
+          "score": 0.648,
+          "source": "corpus_mined"
+        },
+        "korce": {
+          "count": 20,
+          "total_freq": 145,
+          "score": 0.323,
+          "source": "corpus_mined"
+        },
+        "krsi": {
+          "count": 19,
+          "total_freq": 29,
+          "score": 0.425,
+          "source": "corpus_mined"
+        },
+        "korse": {
+          "count": 18,
+          "total_freq": 180,
+          "score": 0.42,
+          "source": "corpus_mined"
+        },
+        "korsilam": {
+          "count": 16,
+          "total_freq": 44,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "kori": {
+          "count": 12,
+          "total_freq": 630,
+          "score": 0.409,
+          "source": "corpus_mined"
+        },
+        "krci": {
+          "count": 12,
+          "total_freq": 26,
+          "score": 0.316,
+          "source": "corpus_mined"
+        },
+        "korche": {
+          "count": 9,
+          "total_freq": 93,
+          "score": 0.261,
+          "source": "corpus_mined"
+        },
+        "koresi": {
+          "count": 8,
+          "total_freq": 91,
+          "score": 0.426,
+          "source": "corpus_mined"
+        },
+        "korechi": {
+          "count": 6,
+          "total_freq": 142,
+          "score": 0.293,
+          "source": "corpus_mined"
+        },
+        "korei": {
+          "count": 5,
+          "total_freq": 59,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "koreci": {
+          "count": 5,
+          "total_freq": 75,
+          "score": 0.34,
+          "source": "corpus_mined"
+        },
+        "krchi": {
+          "count": 4,
+          "total_freq": 5,
+          "score": 0.205,
+          "source": "corpus_mined"
+        },
+        "korc": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.304,
+          "source": "corpus_mined"
+        },
+        "kirchi": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "korsii": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.419,
+          "source": "corpus_mined"
+        },
+        "karchi": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "korssi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.418,
+          "source": "corpus_mined"
+        },
+        "korsa": {
+          "count": 1,
+          "total_freq": 11,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "korbi": {
+          "count": 1,
+          "total_freq": 18,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "korso": {
+          "count": 1,
+          "total_freq": 15,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "korti": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "korcii": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "korcci": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "koris": {
+          "count": 1,
+          "total_freq": 30,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "kurci": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "korca": {
+          "count": 1,
+          "total_freq": 8,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "korco": {
+          "count": 1,
+          "total_freq": 9,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "korcho": {
+          "count": 1,
+          "total_freq": 11,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "khoros": {
+          "count": 1,
+          "total_freq": 9,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "khrchi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "koroch": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.251,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:korsilam|korechi|karchi|korcho|korssi|koresi|korche|khrchi|koroch|khoros|korchi|koreci|kirchi|korcii|korcci|korsii|korce|korsi|korso|kurci|korsa|korci|korei|korbi|korse|koris|korca|korco|krchi|korti|korc|krsi|kori|krci)\\b"
+    },
+    "কিনলাম": {
+      "canonical": "kinlam",
+      "group": "verb_buy",
+      "variants": {
+        "kinlam": {
+          "count": 7,
+          "total_freq": 8,
+          "score": 0.967,
+          "source": "corpus_mined"
+        },
+        "kinlem": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:kinlem|kinlam)\\b"
+    },
+    "কিনেছি": {
+      "canonical": "kinechi",
+      "group": "verb_buy",
+      "variants": {
+        "kinesilam": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "kinechi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.643,
+          "source": "corpus_mined"
+        },
+        "kineci": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.554,
+          "source": "corpus_mined"
+        },
+        "kineche": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:kinesilam|kinechi|kineche|kineci)\\b"
+    },
+    "কিনছি": {
+      "canonical": "kinsi",
+      "group": "verb_buy",
+      "variants": {
+        "kinchi": {
+          "count": 6,
+          "total_freq": 6,
+          "score": 0.533,
+          "source": "corpus_mined"
+        },
+        "kinsi": {
+          "count": 4,
+          "total_freq": 10,
+          "score": 0.618,
+          "source": "corpus_mined"
+        },
+        "kinci": {
+          "count": 3,
+          "total_freq": 5,
+          "score": 0.503,
+          "source": "corpus_mined"
+        },
+        "kinchilam": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "kineci": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.372,
+          "source": "corpus_mined"
+        },
+        "kunci": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.34,
+          "source": "corpus_mined"
+        },
+        "kince": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.338,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:kinchilam|kineci|kinchi|kunci|kinsi|kince|kinci)\\b"
+    },
+    "কিনব": {
+      "canonical": "kinbo",
+      "group": "verb_buy",
+      "variants": {
+        "kinbo": {
+          "count": 40,
+          "total_freq": 44,
+          "score": 0.864,
+          "source": "corpus_mined"
+        },
+        "kinbe": {
+          "count": 5,
+          "total_freq": 5,
+          "score": 0.47,
+          "source": "corpus_mined"
+        },
+        "kinba": {
+          "count": 5,
+          "total_freq": 7,
+          "score": 0.468,
+          "source": "corpus_mined"
+        },
+        "kinboo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.432,
+          "source": "corpus_mined"
+        },
+        "kenbo": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.415,
+          "source": "corpus_mined"
+        },
+        "kibo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.415,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:kinboo|kinbe|kinba|kinbo|kenbo|kibo)\\b"
+    },
+    "খেলাম": {
+      "canonical": "khelam",
+      "group": "verb_eat",
+      "variants": {
+        "khelam": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.833,
+          "source": "corpus_mined"
+        },
+        "khalam": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.617,
+          "source": "corpus_mined"
+        },
+        "khellem": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.557,
+          "source": "corpus_mined"
+        },
+        "khailam": {
+          "count": 0,
+          "total_freq": 4,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:khellem|khailam|khelam|khalam)\\b"
+    },
+    "খেয়েছি": {
+      "canonical": "kheyechi",
+      "group": "verb_eat",
+      "variants": {
+        "khaici": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.583,
+          "source": "corpus_mined"
+        },
+        "kheyechi": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "canonical"
+        },
+        "khaisi": {
+          "count": 0,
+          "total_freq": 7,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:kheyechi|khaici|khaisi)\\b"
+    },
+    "পাঠালাম": {
+      "canonical": "pathalam",
+      "group": "verb_send",
+      "variants": {
+        "pathalam": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 1.0,
+          "source": "corpus_mined"
+        },
+        "pathaylam": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:pathaylam|pathalam)\\b"
+    },
+    "পাঠিয়েছি": {
+      "canonical": "pathiyechi",
+      "group": "verb_send",
+      "variants": {
+        "pathiyechi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "corpus_mined"
+        },
+        "pathechi": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "pathayechi": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:pathiyechi|pathayechi|pathechi)\\b"
+    },
+    "পাঠাইছি": {
+      "canonical": "pathaisi",
+      "group": "verb_send",
+      "variants": {
+        "pathaisio": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.587,
+          "source": "corpus_mined"
+        },
+        "pathaichi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.532,
+          "source": "corpus_mined"
+        },
+        "paithachi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.476,
+          "source": "corpus_mined"
+        },
+        "pathayci": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "pathaisi": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "canonical"
+        },
+        "pathaysi": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:pathaichi|pathaisio|paithachi|pathaysi|pathayci|pathaisi)\\b"
+    },
+    "পেলাম": {
+      "canonical": "pelam",
+      "group": "verb_receive",
+      "variants": {
+        "pelam": {
+          "count": 97,
+          "total_freq": 98,
+          "score": 0.945,
+          "source": "corpus_mined"
+        },
+        "pailam": {
+          "count": 8,
+          "total_freq": 115,
+          "score": 0.367,
+          "source": "corpus_mined"
+        },
+        "palam": {
+          "count": 7,
+          "total_freq": 10,
+          "score": 0.454,
+          "source": "corpus_mined"
+        },
+        "pelan": {
+          "count": 2,
+          "total_freq": 4,
+          "score": 0.416,
+          "source": "corpus_mined"
+        },
+        "paylam": {
+          "count": 2,
+          "total_freq": 4,
+          "score": 0.349,
+          "source": "corpus_mined"
+        },
+        "felam": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.408,
+          "source": "corpus_mined"
+        },
+        "pelm": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.408,
+          "source": "corpus_mined"
+        },
+        "plm": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.308,
+          "source": "corpus_mined"
+        },
+        "paialm": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.258,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:paylam|pailam|paialm|pelam|pelan|palam|felam|pelm|plm)\\b"
+    },
+    "পেয়েছি": {
+      "canonical": "peyechi",
+      "group": "verb_receive",
+      "variants": {
+        "paichi": {
+          "count": 5,
+          "total_freq": 45,
+          "score": 0.349,
+          "source": "corpus_mined"
+        },
+        "peyechi": {
+          "count": 3,
+          "total_freq": 13,
+          "score": 0.564,
+          "source": "corpus_mined"
+        },
+        "payci": {
+          "count": 3,
+          "total_freq": 6,
+          "score": 0.361,
+          "source": "corpus_mined"
+        },
+        "peyesi": {
+          "count": 2,
+          "total_freq": 7,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "peyeci": {
+          "count": 1,
+          "total_freq": 6,
+          "score": 0.454,
+          "source": "corpus_mined"
+        },
+        "payachi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.386,
+          "source": "corpus_mined"
+        },
+        "paici": {
+          "count": 1,
+          "total_freq": 81,
+          "score": 0.223,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:payachi|peyechi|peyesi|peyeci|paichi|payci|paici)\\b"
+    },
+    "পাইছি": {
+      "canonical": "paisi",
+      "group": "verb_receive",
+      "variants": {
+        "paici": {
+          "count": 40,
+          "total_freq": 81,
+          "score": 0.584,
+          "source": "corpus_mined"
+        },
+        "paichi": {
+          "count": 36,
+          "total_freq": 45,
+          "score": 0.532,
+          "source": "corpus_mined"
+        },
+        "paisi": {
+          "count": 26,
+          "total_freq": 80,
+          "score": 0.62,
+          "source": "corpus_mined"
+        },
+        "paice": {
+          "count": 5,
+          "total_freq": 31,
+          "score": 0.33,
+          "source": "corpus_mined"
+        },
+        "pisi": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.414,
+          "source": "corpus_mined"
+        },
+        "payesi": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.348,
+          "source": "corpus_mined"
+        },
+        "payci": {
+          "count": 2,
+          "total_freq": 6,
+          "score": 0.314,
+          "source": "corpus_mined"
+        },
+        "pachi": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.314,
+          "source": "corpus_mined"
+        },
+        "paisy": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.407,
+          "source": "corpus_mined"
+        },
+        "pais": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.407,
+          "source": "corpus_mined"
+        },
+        "paysi": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.407,
+          "source": "corpus_mined"
+        },
+        "passi": {
+          "count": 1,
+          "total_freq": 26,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "paisee": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.341,
+          "source": "corpus_mined"
+        },
+        "pacci": {
+          "count": 1,
+          "total_freq": 30,
+          "score": 0.306,
+          "source": "corpus_mined"
+        },
+        "paiche": {
+          "count": 1,
+          "total_freq": 8,
+          "score": 0.257,
+          "source": "corpus_mined"
+        },
+        "paichiii": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.257,
+          "source": "corpus_mined"
+        },
+        "paise": {
+          "count": 0,
+          "total_freq": 24,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:paichiii|payesi|paiche|paisee|paichi|paysi|paisi|payci|pacci|passi|pachi|paici|paice|paisy|paise|pisi|pais)\\b"
+    },
+    "লাগলো": {
+      "canonical": "laglo",
+      "group": "verb_cost",
+      "variants": {
+        "laglo": {
+          "count": 147,
+          "total_freq": 153,
+          "score": 0.973,
+          "source": "corpus_mined"
+        },
+        "laglu": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.413,
+          "source": "corpus_mined"
+        },
+        "lagle": {
+          "count": 2,
+          "total_freq": 84,
+          "score": 0.408,
+          "source": "corpus_mined"
+        },
+        "lagloy": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.423,
+          "source": "corpus_mined"
+        },
+        "lglo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "lagbo": {
+          "count": 1,
+          "total_freq": 49,
+          "score": 0.405,
+          "source": "corpus_mined"
+        },
+        "lagsilo": {
+          "count": 0,
+          "total_freq": 4,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:lagsilo|lagloy|lagle|laglu|lagbo|laglo|lglo)\\b"
+    },
+    "লাগবে": {
+      "canonical": "lagbe",
+      "group": "verb_cost",
+      "variants": {
+        "lagbe": {
+          "count": 674,
+          "total_freq": 705,
+          "score": 0.942,
+          "source": "corpus_mined"
+        },
+        "lagba": {
+          "count": 45,
+          "total_freq": 46,
+          "score": 0.452,
+          "source": "corpus_mined"
+        },
+        "lage": {
+          "count": 20,
+          "total_freq": 441,
+          "score": 0.416,
+          "source": "corpus_mined"
+        },
+        "lgbe": {
+          "count": 12,
+          "total_freq": 12,
+          "score": 0.414,
+          "source": "corpus_mined"
+        },
+        "lagve": {
+          "count": 9,
+          "total_freq": 9,
+          "score": 0.411,
+          "source": "corpus_mined"
+        },
+        "lagbei": {
+          "count": 7,
+          "total_freq": 7,
+          "score": 0.425,
+          "source": "corpus_mined"
+        },
+        "laagbe": {
+          "count": 5,
+          "total_freq": 5,
+          "score": 0.423,
+          "source": "corpus_mined"
+        },
+        "lagce": {
+          "count": 3,
+          "total_freq": 22,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "lakbe": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "lagby": {
+          "count": 3,
+          "total_freq": 4,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "lagle": {
+          "count": 3,
+          "total_freq": 84,
+          "score": 0.403,
+          "source": "corpus_mined"
+        },
+        "lagbea": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.419,
+          "source": "corpus_mined"
+        },
+        "laghbe": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.419,
+          "source": "corpus_mined"
+        },
+        "lagbo": {
+          "count": 2,
+          "total_freq": 49,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "lagbi": {
+          "count": 2,
+          "total_freq": 4,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "lagaba": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.336,
+          "source": "corpus_mined"
+        },
+        "lagbay": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.336,
+          "source": "corpus_mined"
+        },
+        "nlagbe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.418,
+          "source": "corpus_mined"
+        },
+        "lagbey": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.418,
+          "source": "corpus_mined"
+        },
+        "laggbe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.418,
+          "source": "corpus_mined"
+        },
+        "lagbeo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.418,
+          "source": "corpus_mined"
+        },
+        "lagse": {
+          "count": 1,
+          "total_freq": 37,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "labe": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "kagbe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "lagte": {
+          "count": 1,
+          "total_freq": 19,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "lajbe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "legbe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "lahbe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "laagby": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "legb": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "lagabay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.287,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:lagabay|laghbe|laggbe|lagbey|nlagbe|laagby|lagbea|lagbei|lagbeo|lagaba|laagbe|lagbay|lagve|lagba|lagbe|lakbe|lahbe|lajbe|lagbi|lagce|kagbe|lagte|lagle|lagbo|legbe|lagse|lagby|lgbe|lage|legb|labe)\\b"
+    },
+    "গেল": {
+      "canonical": "gelo",
+      "group": "verb_cost",
+      "variants": {
+        "gele": {
+          "count": 203,
+          "total_freq": 207,
+          "score": 0.682,
+          "source": "corpus_mined"
+        },
+        "gelo": {
+          "count": 111,
+          "total_freq": 114,
+          "score": 0.695,
+          "source": "corpus_mined"
+        },
+        "galo": {
+          "count": 16,
+          "total_freq": 17,
+          "score": 0.409,
+          "source": "corpus_mined"
+        },
+        "gelei": {
+          "count": 12,
+          "total_freq": 13,
+          "score": 0.326,
+          "source": "corpus_mined"
+        },
+        "gula": {
+          "count": 12,
+          "total_freq": 496,
+          "score": 0.263,
+          "source": "corpus_mined"
+        },
+        "gala": {
+          "count": 9,
+          "total_freq": 15,
+          "score": 0.269,
+          "source": "corpus_mined"
+        },
+        "geleo": {
+          "count": 6,
+          "total_freq": 6,
+          "score": 0.413,
+          "source": "corpus_mined"
+        },
+        "gale": {
+          "count": 6,
+          "total_freq": 10,
+          "score": 0.263,
+          "source": "corpus_mined"
+        },
+        "gela": {
+          "count": 4,
+          "total_freq": 5,
+          "score": 0.384,
+          "source": "corpus_mined"
+        },
+        "gulo": {
+          "count": 4,
+          "total_freq": 275,
+          "score": 0.38,
+          "source": "corpus_mined"
+        },
+        "galy": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.257,
+          "source": "corpus_mined"
+        },
+        "geli": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.379,
+          "source": "corpus_mined"
+        },
+        "gulu": {
+          "count": 2,
+          "total_freq": 28,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "galay": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.204,
+          "source": "corpus_mined"
+        },
+        "gelom": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "gely": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "gell": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "golo": {
+          "count": 1,
+          "total_freq": 33,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "glo": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "geele": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "golao": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "gelay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "gle": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.252,
+          "source": "corpus_mined"
+        },
+        "gali": {
+          "count": 1,
+          "total_freq": 63,
+          "score": 0.252,
+          "source": "corpus_mined"
+        },
+        "gola": {
+          "count": 1,
+          "total_freq": 68,
+          "score": 0.252,
+          "source": "corpus_mined"
+        },
+        "gayla": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.202,
+          "source": "corpus_mined"
+        },
+        "galai": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.202,
+          "source": "corpus_mined"
+        },
+        "galae": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.202,
+          "source": "corpus_mined"
+        },
+        "gulai": {
+          "count": 1,
+          "total_freq": 23,
+          "score": 0.202,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:gelom|galay|golao|gelay|gulai|gelei|galai|geleo|galae|geele|gayla|gela|gale|gala|galy|gell|gula|gele|gulu|golo|gulo|gali|gely|gelo|galo|geli|gola|glo|gle)\\b"
+    },
+    "গেছে": {
+      "canonical": "gese",
+      "group": "verb_cost",
+      "variants": {
+        "geche": {
+          "count": 81,
+          "total_freq": 82,
+          "score": 0.541,
+          "source": "corpus_mined"
+        },
+        "gese": {
+          "count": 57,
+          "total_freq": 132,
+          "score": 0.648,
+          "source": "corpus_mined"
+        },
+        "gece": {
+          "count": 29,
+          "total_freq": 50,
+          "score": 0.47,
+          "source": "corpus_mined"
+        },
+        "gase": {
+          "count": 9,
+          "total_freq": 20,
+          "score": 0.408,
+          "source": "corpus_mined"
+        },
+        "gace": {
+          "count": 9,
+          "total_freq": 11,
+          "score": 0.284,
+          "source": "corpus_mined"
+        },
+        "gache": {
+          "count": 6,
+          "total_freq": 8,
+          "score": 0.223,
+          "source": "corpus_mined"
+        },
+        "gasa": {
+          "count": 4,
+          "total_freq": 10,
+          "score": 0.265,
+          "source": "corpus_mined"
+        },
+        "gesen": {
+          "count": 3,
+          "total_freq": 9,
+          "score": 0.411,
+          "source": "corpus_mined"
+        },
+        "gesa": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "gele": {
+          "count": 2,
+          "total_freq": 207,
+          "score": 0.379,
+          "source": "corpus_mined"
+        },
+        "geca": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "gesi": {
+          "count": 1,
+          "total_freq": 25,
+          "score": 0.379,
+          "source": "corpus_mined"
+        },
+        "gse": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.379,
+          "source": "corpus_mined"
+        },
+        "geseee": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.337,
+          "source": "corpus_mined"
+        },
+        "gecce": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.304,
+          "source": "corpus_mined"
+        },
+        "gasce": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.304,
+          "source": "corpus_mined"
+        },
+        "gche": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "ghace": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.204,
+          "source": "corpus_mined"
+        },
+        "gechi": {
+          "count": 1,
+          "total_freq": 13,
+          "score": 0.204,
+          "source": "corpus_mined"
+        },
+        "gesilo": {
+          "count": 0,
+          "total_freq": 3,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:geseee|gesilo|gache|ghace|geche|gasce|gecce|gechi|gesen|gace|gche|gesa|geca|gese|gele|gece|gasa|gase|gesi|gse)\\b"
+    },
+    "হলো": {
+      "canonical": "holo",
+      "group": "verb_cost",
+      "variants": {
+        "holo": {
+          "count": 433,
+          "total_freq": 588,
+          "score": 0.909,
+          "source": "corpus_mined"
+        },
+        "hoilo": {
+          "count": 10,
+          "total_freq": 95,
+          "score": 0.418,
+          "source": "corpus_mined"
+        },
+        "hlo": {
+          "count": 7,
+          "total_freq": 11,
+          "score": 0.39,
+          "source": "corpus_mined"
+        },
+        "holona": {
+          "count": 6,
+          "total_freq": 6,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "holei": {
+          "count": 3,
+          "total_freq": 44,
+          "score": 0.306,
+          "source": "corpus_mined"
+        },
+        "hoto": {
+          "count": 2,
+          "total_freq": 491,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "hoile": {
+          "count": 2,
+          "total_freq": 87,
+          "score": 0.304,
+          "source": "corpus_mined"
+        },
+        "hoolo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "holoo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "holow": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "kholo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.402,
+          "source": "corpus_mined"
+        },
+        "hol": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "hola": {
+          "count": 1,
+          "total_freq": 35,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "halo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "hyloi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "hill": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.252,
+          "source": "corpus_mined"
+        },
+        "hilei": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.202,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:holona|hyloi|hoile|hilei|holoo|kholo|hoolo|hoilo|holow|holei|hoto|hill|hola|halo|holo|hol|hlo)\\b"
+    },
+    "হইছে": {
+      "canonical": "hoise",
+      "group": "verb_cost",
+      "variants": {
+        "hoiche": {
+          "count": 73,
+          "total_freq": 107,
+          "score": 0.533,
+          "source": "corpus_mined"
+        },
+        "hoice": {
+          "count": 63,
+          "total_freq": 166,
+          "score": 0.548,
+          "source": "corpus_mined"
+        },
+        "hoise": {
+          "count": 57,
+          "total_freq": 174,
+          "score": 0.632,
+          "source": "corpus_mined"
+        },
+        "hoyse": {
+          "count": 12,
+          "total_freq": 40,
+          "score": 0.44,
+          "source": "corpus_mined"
+        },
+        "hoisa": {
+          "count": 8,
+          "total_freq": 25,
+          "score": 0.428,
+          "source": "corpus_mined"
+        },
+        "hyse": {
+          "count": 7,
+          "total_freq": 12,
+          "score": 0.326,
+          "source": "corpus_mined"
+        },
+        "hoica": {
+          "count": 5,
+          "total_freq": 18,
+          "score": 0.318,
+          "source": "corpus_mined"
+        },
+        "hoyce": {
+          "count": 3,
+          "total_freq": 30,
+          "score": 0.31,
+          "source": "corpus_mined"
+        },
+        "hoyche": {
+          "count": 3,
+          "total_freq": 22,
+          "score": 0.261,
+          "source": "corpus_mined"
+        },
+        "hocche": {
+          "count": 3,
+          "total_freq": 235,
+          "score": 0.256,
+          "source": "corpus_mined"
+        },
+        "hoiasa": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.341,
+          "source": "corpus_mined"
+        },
+        "haiche": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "hoisee": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.421,
+          "source": "corpus_mined"
+        },
+        "hoisen": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.42,
+          "source": "corpus_mined"
+        },
+        "hoige": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "hoisy": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "house": {
+          "count": 1,
+          "total_freq": 9,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "hoisi": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "hoile": {
+          "count": 1,
+          "total_freq": 87,
+          "score": 0.403,
+          "source": "corpus_mined"
+        },
+        "hoicee": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.337,
+          "source": "corpus_mined"
+        },
+        "hoisay": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.337,
+          "source": "corpus_mined"
+        },
+        "hoyese": {
+          "count": 1,
+          "total_freq": 30,
+          "score": 0.337,
+          "source": "corpus_mined"
+        },
+        "hoysa": {
+          "count": 1,
+          "total_freq": 13,
+          "score": 0.304,
+          "source": "corpus_mined"
+        },
+        "hossa": {
+          "count": 1,
+          "total_freq": 16,
+          "score": 0.304,
+          "source": "corpus_mined"
+        },
+        "hcse": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.304,
+          "source": "corpus_mined"
+        },
+        "huice": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.304,
+          "source": "corpus_mined"
+        },
+        "hoicy": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.304,
+          "source": "corpus_mined"
+        },
+        "hocce": {
+          "count": 1,
+          "total_freq": 141,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "hosche": {
+          "count": 1,
+          "total_freq": 11,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "hoicha": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "hoicay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "hoyeche": {
+          "count": 1,
+          "total_freq": 194,
+          "score": 0.216,
+          "source": "corpus_mined"
+        },
+        "haysa": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.204,
+          "source": "corpus_mined"
+        },
+        "hyche": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.204,
+          "source": "corpus_mined"
+        },
+        "hcce": {
+          "count": 1,
+          "total_freq": 11,
+          "score": 0.204,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:hoyeche|hoiche|hoicay|hoisay|haiche|hosche|hoicha|hocche|hoisen|hoicee|hoiasa|hoisee|hoyese|hoyche|hoyse|hoice|hoile|hoisy|hoisi|hyche|hoysa|hossa|hoyce|house|hoige|huice|hocce|hoica|hoisa|hoicy|haysa|hoise|hcce|hcse|hyse)\\b"
+    },
+    "ভাড়া": {
+      "canonical": "vara",
+      "group": "transport",
+      "variants": {
+        "vara": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.643,
+          "source": "corpus_mined"
+        },
+        "bharay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.5,
+          "source": "corpus_mined"
+        },
+        "varah": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "varar": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "bharar": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "bhara": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "bada": {
+          "count": 0,
+          "total_freq": 5,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "vaada": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:bharar|bharay|varah|varar|bhara|vaada|bada|vara)\\b"
+    },
+    "বাস": {
+      "canonical": "bus",
+      "group": "transport",
+      "variants": {
+        "basa": {
+          "count": 28,
+          "total_freq": 29,
+          "score": 0.33,
+          "source": "corpus_mined"
+        },
+        "bas": {
+          "count": 11,
+          "total_freq": 18,
+          "score": 0.366,
+          "source": "corpus_mined"
+        },
+        "but": {
+          "count": 11,
+          "total_freq": 1988,
+          "score": 0.338,
+          "source": "corpus_mined"
+        },
+        "basay": {
+          "count": 10,
+          "total_freq": 10,
+          "score": 0.23,
+          "source": "corpus_mined"
+        },
+        "baas": {
+          "count": 7,
+          "total_freq": 7,
+          "score": 0.271,
+          "source": "corpus_mined"
+        },
+        "bus": {
+          "count": 5,
+          "total_freq": 6,
+          "score": 0.515,
+          "source": "corpus_mined"
+        },
+        "bass": {
+          "count": 3,
+          "total_freq": 9,
+          "score": 0.259,
+          "source": "corpus_mined"
+        },
+        "bash": {
+          "count": 3,
+          "total_freq": 34,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "beshi": {
+          "count": 3,
+          "total_freq": 249,
+          "score": 0.205,
+          "source": "corpus_mined"
+        },
+        "basi": {
+          "count": 2,
+          "total_freq": 26,
+          "score": 0.256,
+          "source": "corpus_mined"
+        },
+        "boss": {
+          "count": 2,
+          "total_freq": 60,
+          "score": 0.255,
+          "source": "corpus_mined"
+        },
+        "besi": {
+          "count": 2,
+          "total_freq": 260,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "basha": {
+          "count": 2,
+          "total_freq": 4,
+          "score": 0.206,
+          "source": "corpus_mined"
+        },
+        "buse": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "buje": {
+          "count": 1,
+          "total_freq": 32,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "buja": {
+          "count": 1,
+          "total_freq": 33,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "bashi": {
+          "count": 1,
+          "total_freq": 13,
+          "score": 0.203,
+          "source": "corpus_mined"
+        },
+        "bhasa": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.203,
+          "source": "corpus_mined"
+        },
+        "bassa": {
+          "count": 1,
+          "total_freq": 5,
+          "score": 0.203,
+          "source": "corpus_mined"
+        },
+        "basai": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.203,
+          "source": "corpus_mined"
+        },
+        "basae": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.203,
+          "source": "corpus_mined"
+        },
+        "buser": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:basai|buser|beshi|bashi|basha|bhasa|bassa|basay|basae|bash|basa|buje|bass|buse|besi|basi|buja|boss|baas|bas|bus|but)\\b"
+    },
+    "রিকশা": {
+      "canonical": "rickshaw",
+      "group": "transport",
+      "variants": {
+        "rickshaw": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.643,
+          "source": "corpus_mined"
+        },
+        "rikshaw": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.58,
+          "source": "corpus_mined"
+        },
+        "ricksha": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.58,
+          "source": "corpus_mined"
+        },
+        "ricksa": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "riksha": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "riksa": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:rickshaw|rikshaw|ricksha|ricksa|riksha|riksa)\\b"
+    },
+    "সিএনজি": {
+      "canonical": "cng",
+      "group": "transport",
+      "variants": {
+        "cng": {
+          "count": 3,
+          "total_freq": 9,
+          "score": 0.75,
+          "source": "corpus_mined"
+        },
+        "c.n.g": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:c\\.n\\.g|cng)\\b"
+    },
+    "অটো": {
+      "canonical": "auto",
+      "group": "transport",
+      "variants": {
+        "auto": {
+          "count": 82,
+          "total_freq": 88,
+          "score": 0.858,
+          "source": "corpus_mined"
+        },
+        "ata": {
+          "count": 7,
+          "total_freq": 769,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "aita": {
+          "count": 4,
+          "total_freq": 361,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "outo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.382,
+          "source": "corpus_mined"
+        },
+        "auro": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.382,
+          "source": "corpus_mined"
+        },
+        "akto": {
+          "count": 1,
+          "total_freq": 101,
+          "score": 0.379,
+          "source": "corpus_mined"
+        },
+        "ato": {
+          "count": 1,
+          "total_freq": 202,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "atuo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.257,
+          "source": "corpus_mined"
+        },
+        "otou": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:aita|otou|outo|auto|akto|auro|atuo|ata|ato)\\b"
+    },
+    "ট্রেন": {
+      "canonical": "train",
+      "group": "transport",
+      "variants": {
+        "train": {
+          "count": 8,
+          "total_freq": 12,
+          "score": 0.603,
+          "source": "corpus_mined"
+        },
+        "traino": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.432,
+          "source": "corpus_mined"
+        },
+        "brain": {
+          "count": 1,
+          "total_freq": 5,
+          "score": 0.414,
+          "source": "corpus_mined"
+        },
+        "trein": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:traino|train|brain|trein)\\b"
+    },
+    "মেট্রো": {
+      "canonical": "metro",
+      "group": "transport",
+      "variants": {
+        "metro": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.75,
+          "source": "corpus_mined"
+        },
+        "metroi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.667,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:metroi|metro)\\b"
+    },
+    "উবার": {
+      "canonical": "uber",
+      "group": "transport",
+      "variants": {
+        "uber": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\buber\\b"
+    },
+    "পাঠাও": {
+      "canonical": "pathao",
+      "group": "transport",
+      "variants": {
+        "pathao": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\bpathao\\b"
+    },
+    "গাড়ি": {
+      "canonical": "gari",
+      "group": "transport",
+      "variants": {
+        "gari": {
+          "count": 5,
+          "total_freq": 8,
+          "score": 0.75,
+          "source": "corpus_mined"
+        },
+        "garir": {
+          "count": 3,
+          "total_freq": 6,
+          "score": 0.567,
+          "source": "corpus_mined"
+        },
+        "gadi": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:garir|gari|gadi)\\b"
+    },
+    "খাবার": {
+      "canonical": "khabar",
+      "group": "food",
+      "variants": {
+        "khabar": {
+          "count": 10,
+          "total_freq": 11,
+          "score": 0.9,
+          "source": "corpus_mined"
+        },
+        "khabaar": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "khabare": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:khabaar|khabare|khabar)\\b"
+    },
+    "নাস্তা": {
+      "canonical": "nasta",
+      "group": "food",
+      "variants": {
+        "nastah": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "nasta": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        },
+        "nashta": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:nastah|nashta|nasta)\\b"
+    },
+    "লাঞ্চ": {
+      "canonical": "lunch",
+      "group": "food",
+      "variants": {
+        "luncher": {
+          "count": 3,
+          "total_freq": 5,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "lanch": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.511,
+          "source": "corpus_mined"
+        },
+        "lunch": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:luncher|lunch|lanch)\\b"
+    },
+    "ডিনার": {
+      "canonical": "dinner",
+      "group": "food",
+      "variants": {
+        "dinner": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.7,
+          "source": "corpus_mined"
+        },
+        "dinar": {
+          "count": 0,
+          "total_freq": 2,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:dinner|dinar)\\b"
+    },
+    "ভাত": {
+      "canonical": "bhat",
+      "group": "food",
+      "variants": {
+        "bhat": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.611,
+          "source": "corpus_mined"
+        },
+        "vat": {
+          "count": 2,
+          "total_freq": 12,
+          "score": 0.324,
+          "source": "corpus_mined"
+        },
+        "bhatu": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.463,
+          "source": "corpus_mined"
+        },
+        "vhat": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.438,
+          "source": "corpus_mined"
+        },
+        "bat": {
+          "count": 1,
+          "total_freq": 14,
+          "score": 0.409,
+          "source": "corpus_mined"
+        },
+        "vaate": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.263,
+          "source": "corpus_mined"
+        },
+        "vaat": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:bhatu|vaate|bhat|vaat|vhat|bat|vat)\\b"
+    },
+    "বিরিয়ানি": {
+      "canonical": "biryani",
+      "group": "food",
+      "variants": {
+        "biryani": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        },
+        "biriyani": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "biriani": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:biriyani|biryani|biriani)\\b"
+    },
+    "চা": {
+      "canonical": "cha",
+      "group": "food",
+      "variants": {
+        "chai": {
+          "count": 248,
+          "total_freq": 258,
+          "score": 0.465,
+          "source": "corpus_mined"
+        },
+        "chay": {
+          "count": 51,
+          "total_freq": 53,
+          "score": 0.395,
+          "source": "corpus_mined"
+        },
+        "chan": {
+          "count": 32,
+          "total_freq": 36,
+          "score": 0.388,
+          "source": "corpus_mined"
+        },
+        "char": {
+          "count": 15,
+          "total_freq": 15,
+          "score": 0.381,
+          "source": "corpus_mined"
+        },
+        "chap": {
+          "count": 15,
+          "total_freq": 17,
+          "score": 0.381,
+          "source": "corpus_mined"
+        },
+        "cha": {
+          "count": 12,
+          "total_freq": 20,
+          "score": 0.505,
+          "source": "corpus_mined"
+        },
+        "chi": {
+          "count": 8,
+          "total_freq": 16,
+          "score": 0.337,
+          "source": "corpus_mined"
+        },
+        "cheye": {
+          "count": 7,
+          "total_freq": 71,
+          "score": 0.203,
+          "source": "corpus_mined"
+        },
+        "chat": {
+          "count": 5,
+          "total_freq": 28,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "acha": {
+          "count": 5,
+          "total_freq": 44,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "chaw": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "chy": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "chas": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "chao": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "kha": {
+          "count": 2,
+          "total_freq": 7,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "chaya": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "tea": {
+          "count": 1,
+          "total_freq": 8,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "chea": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "icha": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "chal": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "ucha": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.375,
+          "source": "corpus_mined"
+        },
+        "sha": {
+          "count": 1,
+          "total_freq": 14,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "tha": {
+          "count": 1,
+          "total_freq": 11,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "ca": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "chk": {
+          "count": 1,
+          "total_freq": 12,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "che": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "cpa": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.334,
+          "source": "corpus_mined"
+        },
+        "chaiy": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.3,
+          "source": "corpus_mined"
+        },
+        "chayy": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.3,
+          "source": "corpus_mined"
+        },
+        "cheai": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.3,
+          "source": "corpus_mined"
+        },
+        "chaii": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.3,
+          "source": "corpus_mined"
+        },
+        "chaoa": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.3,
+          "source": "corpus_mined"
+        },
+        "chaay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.3,
+          "source": "corpus_mined"
+        },
+        "caia": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.25,
+          "source": "corpus_mined"
+        },
+        "chsi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.25,
+          "source": "corpus_mined"
+        },
+        "chaoya": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.25,
+          "source": "corpus_mined"
+        },
+        "cayoa": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.2,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:chaoya|cheai|chaiy|chaay|cheye|chayy|chaii|chaoa|chaya|cayoa|icha|chat|chap|char|chai|ucha|acha|chaw|caia|chay|chea|chao|chal|chan|chsi|chas|sha|che|tea|chi|chk|chy|tha|cha|kha|cpa|ca)\\b"
+    },
+    "কফি": {
+      "canonical": "coffee",
+      "group": "food",
+      "variants": {
+        "coffee": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.786,
+          "source": "corpus_mined"
+        },
+        "coffe": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.702,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:coffee|coffe)\\b"
+    },
+    "রুটি": {
+      "canonical": "ruti",
+      "group": "food",
+      "variants": {
+        "truti": {
+          "count": 6,
+          "total_freq": 9,
+          "score": 0.733,
+          "source": "corpus_mined"
+        },
+        "tuti": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.475,
+          "source": "corpus_mined"
+        },
+        "roote": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.3,
+          "source": "corpus_mined"
+        },
+        "roti": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "ruti": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:truti|roote|roti|ruti|tuti)\\b"
+    },
+    "পরোটা": {
+      "canonical": "parata",
+      "group": "food",
+      "variants": {
+        "parata": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        },
+        "porata": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "porota": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:parata|porata|porota)\\b"
+    },
+    "সিঙ্গারা": {
+      "canonical": "singara",
+      "group": "food",
+      "variants": {
+        "singara": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        },
+        "shingara": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:shingara|singara)\\b"
+    },
+    "ফুচকা": {
+      "canonical": "fuchka",
+      "group": "food",
+      "variants": {
+        "fuchka": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        },
+        "fuska": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:fuchka|fuska)\\b"
+    },
+    "বাজার": {
+      "canonical": "bazar",
+      "group": "grocery",
+      "variants": {
+        "bazar": {
+          "count": 10,
+          "total_freq": 13,
+          "score": 0.682,
+          "source": "corpus_mined"
+        },
+        "bajare": {
+          "count": 5,
+          "total_freq": 5,
+          "score": 0.44,
+          "source": "corpus_mined"
+        },
+        "bajar": {
+          "count": 4,
+          "total_freq": 5,
+          "score": 0.485,
+          "source": "corpus_mined"
+        },
+        "bazare": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.462,
+          "source": "corpus_mined"
+        },
+        "bazaar": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.44,
+          "source": "corpus_mined"
+        },
+        "baazar": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:bazaar|baazar|bajare|bazare|bazar|bajar)\\b"
+    },
+    "চাল": {
+      "canonical": "chal",
+      "group": "grocery",
+      "variants": {
+        "chalu": {
+          "count": 76,
+          "total_freq": 82,
+          "score": 0.498,
+          "source": "corpus_mined"
+        },
+        "chaliye": {
+          "count": 45,
+          "total_freq": 46,
+          "score": 0.346,
+          "source": "corpus_mined"
+        },
+        "chalai": {
+          "count": 44,
+          "total_freq": 46,
+          "score": 0.393,
+          "source": "corpus_mined"
+        },
+        "calu": {
+          "count": 22,
+          "total_freq": 24,
+          "score": 0.281,
+          "source": "corpus_mined"
+        },
+        "saale": {
+          "count": 18,
+          "total_freq": 287,
+          "score": 0.218,
+          "source": "corpus_mined"
+        },
+        "chalay": {
+          "count": 15,
+          "total_freq": 16,
+          "score": 0.354,
+          "source": "corpus_mined"
+        },
+        "calai": {
+          "count": 15,
+          "total_freq": 16,
+          "score": 0.221,
+          "source": "corpus_mined"
+        },
+        "chilo": {
+          "count": 13,
+          "total_freq": 418,
+          "score": 0.312,
+          "source": "corpus_mined"
+        },
+        "chalo": {
+          "count": 12,
+          "total_freq": 17,
+          "score": 0.417,
+          "source": "corpus_mined"
+        },
+        "chole": {
+          "count": 11,
+          "total_freq": 360,
+          "score": 0.31,
+          "source": "corpus_mined"
+        },
+        "calo": {
+          "count": 7,
+          "total_freq": 8,
+          "score": 0.26,
+          "source": "corpus_mined"
+        },
+        "chai": {
+          "count": 6,
+          "total_freq": 258,
+          "score": 0.381,
+          "source": "corpus_mined"
+        },
+        "chali": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "chaile": {
+          "count": 4,
+          "total_freq": 68,
+          "score": 0.339,
+          "source": "corpus_mined"
+        },
+        "chala": {
+          "count": 3,
+          "total_freq": 5,
+          "score": 0.404,
+          "source": "corpus_mined"
+        },
+        "chalie": {
+          "count": 3,
+          "total_freq": 5,
+          "score": 0.338,
+          "source": "corpus_mined"
+        },
+        "chalia": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.338,
+          "source": "corpus_mined"
+        },
+        "saal": {
+          "count": 3,
+          "total_freq": 34,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "calay": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.204,
+          "source": "corpus_mined"
+        },
+        "chaal": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.403,
+          "source": "corpus_mined"
+        },
+        "chat": {
+          "count": 2,
+          "total_freq": 28,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "chap": {
+          "count": 2,
+          "total_freq": 17,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "chaw": {
+          "count": 2,
+          "total_freq": 4,
+          "score": 0.378,
+          "source": "corpus_mined"
+        },
+        "chailai": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.289,
+          "source": "corpus_mined"
+        },
+        "cholle": {
+          "count": 2,
+          "total_freq": 12,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "calao": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.203,
+          "source": "corpus_mined"
+        },
+        "chal": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.501,
+          "source": "corpus_mined"
+        },
+        "chalk": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "chan": {
+          "count": 1,
+          "total_freq": 36,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "char": {
+          "count": 1,
+          "total_freq": 15,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "cha": {
+          "count": 1,
+          "total_freq": 20,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "chalau": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "chaili": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "chailo": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "chlay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "chila": {
+          "count": 1,
+          "total_freq": 5,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "chalaya": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.287,
+          "source": "corpus_mined"
+        },
+        "chaliya": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.287,
+          "source": "corpus_mined"
+        },
+        "chailay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.287,
+          "source": "corpus_mined"
+        },
+        "chailaii": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "chailiye": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "call": {
+          "count": 1,
+          "total_freq": 140,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "clai": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "chaliyea": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "chaaaaal": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "school": {
+          "count": 1,
+          "total_freq": 33,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "shilo": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.201,
+          "source": "corpus_mined"
+        },
+        "calea": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.201,
+          "source": "corpus_mined"
+        },
+        "colle": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.201,
+          "source": "corpus_mined"
+        },
+        "caluu": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.201,
+          "source": "corpus_mined"
+        },
+        "calia": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.201,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:chailaii|chailiye|chaaaaal|chaliyea|chailay|chalaya|chaliye|chaliya|chailai|chailo|chaile|chaili|chalie|chalau|chalia|cholle|chalai|chalay|school|chalk|chole|chaal|chlay|calai|shilo|chalo|chala|chilo|saale|calao|chila|calay|colle|caluu|chali|chalu|calea|calia|calo|chat|chap|chai|saal|char|chaw|calu|call|clai|chal|chan|cha)\\b"
+    },
+    "ডাল": {
+      "canonical": "dal",
+      "group": "grocery",
+      "variants": {
+        "dal": {
+          "count": 2,
+          "total_freq": 27,
+          "score": 0.547,
+          "source": "corpus_mined"
+        },
+        "dall": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.434,
+          "source": "corpus_mined"
+        },
+        "dile": {
+          "count": 1,
+          "total_freq": 596,
+          "score": 0.252,
+          "source": "corpus_mined"
+        },
+        "daal": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:daal|dile|dall|dal)\\b"
+    },
+    "তেল": {
+      "canonical": "tel",
+      "group": "grocery",
+      "variants": {
+        "tel": {
+          "count": 10,
+          "total_freq": 13,
+          "score": 0.744,
+          "source": "corpus_mined"
+        },
+        "tele": {
+          "count": 3,
+          "total_freq": 4,
+          "score": 0.469,
+          "source": "corpus_mined"
+        },
+        "atel": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.409,
+          "source": "corpus_mined"
+        },
+        "ten": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.366,
+          "source": "corpus_mined"
+        },
+        "oil": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "toil": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:atel|toil|tele|ten|tel|oil)\\b"
+    },
+    "ডিম": {
+      "canonical": "dim",
+      "group": "grocery",
+      "variants": {
+        "dim": {
+          "count": 9,
+          "total_freq": 10,
+          "score": 0.743,
+          "source": "corpus_mined"
+        },
+        "dims": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.411,
+          "source": "corpus_mined"
+        },
+        "odim": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.411,
+          "source": "corpus_mined"
+        },
+        "die": {
+          "count": 1,
+          "total_freq": 81,
+          "score": 0.343,
+          "source": "corpus_mined"
+        },
+        "deem": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:dims|odim|deem|die|dim)\\b"
+    },
+    "দুধ": {
+      "canonical": "dudh",
+      "group": "grocery",
+      "variants": {
+        "dudu": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.542,
+          "source": "corpus_mined"
+        },
+        "dod": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.45,
+          "source": "corpus_mined"
+        },
+        "dud": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "dudh": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:dudh|dudu|dod|dud)\\b"
+    },
+    "মাছ": {
+      "canonical": "mach",
+      "group": "grocery",
+      "variants": {
+        "mach": {
+          "count": 17,
+          "total_freq": 17,
+          "score": 0.886,
+          "source": "corpus_mined"
+        },
+        "macher": {
+          "count": 6,
+          "total_freq": 7,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "much": {
+          "count": 2,
+          "total_freq": 32,
+          "score": 0.409,
+          "source": "corpus_mined"
+        },
+        "machi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.436,
+          "source": "corpus_mined"
+        },
+        "maas": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.282,
+          "source": "corpus_mined"
+        },
+        "maach": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:macher|maach|machi|maas|mach|much)\\b"
+    },
+    "মাংস": {
+      "canonical": "mangsho",
+      "group": "grocery",
+      "variants": {
+        "mangsho": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.667,
+          "source": "corpus_mined"
+        },
+        "mangso": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:mangsho|mangso)\\b"
+    },
+    "মুরগি": {
+      "canonical": "murgi",
+      "group": "grocery",
+      "variants": {
+        "murgi": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.833,
+          "source": "corpus_mined"
+        },
+        "murgir": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.617,
+          "source": "corpus_mined"
+        },
+        "morgi": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "moorgi": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:murgir|moorgi|morgi|murgi)\\b"
+    },
+    "সবজি": {
+      "canonical": "sobji",
+      "group": "grocery",
+      "variants": {
+        "sobji": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 1.0,
+          "source": "corpus_mined"
+        },
+        "shobjee": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "shobji": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:shobjee|shobji|sobji)\\b"
+    },
+    "তরকারি": {
+      "canonical": "torkari",
+      "group": "grocery",
+      "variants": {
+        "torkari": {
+          "count": 3,
+          "total_freq": 4,
+          "score": 0.929,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\btorkari\\b"
+    },
+    "আলু": {
+      "canonical": "aloo",
+      "group": "grocery",
+      "variants": {
+        "alu": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.583,
+          "source": "corpus_mined"
+        },
+        "aloo": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:aloo|alu)\\b"
+    },
+    "পেঁয়াজ": {
+      "canonical": "peyaj",
+      "group": "grocery",
+      "variants": {
+        "piyaj": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "peaj": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "peyaj": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:piyaj|peyaj|peaj)\\b"
+    },
+    "রসুন": {
+      "canonical": "roshun",
+      "group": "grocery",
+      "variants": {
+        "rosun": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "roshun": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:roshun|rosun)\\b"
+    },
+    "মরিচ": {
+      "canonical": "morich",
+      "group": "grocery",
+      "variants": {
+        "morich": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        },
+        "moris": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:morich|moris)\\b"
+    },
+    "বিল": {
+      "canonical": "bill",
+      "group": "bills",
+      "variants": {
+        "bill": {
+          "count": 7,
+          "total_freq": 11,
+          "score": 0.558,
+          "source": "corpus_mined"
+        },
+        "bil": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.41,
+          "source": "corpus_mined"
+        },
+        "boli": {
+          "count": 3,
+          "total_freq": 62,
+          "score": 0.268,
+          "source": "corpus_mined"
+        },
+        "bola": {
+          "count": 3,
+          "total_freq": 147,
+          "score": 0.262,
+          "source": "corpus_mined"
+        },
+        "bole": {
+          "count": 2,
+          "total_freq": 445,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "billy": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.409,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:billy|bill|bole|bola|boli|bil)\\b"
+    },
+    "বিদ্যুৎ": {
+      "canonical": "biddut",
+      "group": "bills",
+      "variants": {
+        "bidyut": {
+          "count": 6,
+          "total_freq": 6,
+          "score": 0.792,
+          "source": "corpus_mined"
+        },
+        "bidut": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.571,
+          "source": "corpus_mined"
+        },
+        "biddut": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.591,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:bidyut|biddut|bidut)\\b"
+    },
+    "কারেন্ট": {
+      "canonical": "current",
+      "group": "bills",
+      "variants": {
+        "current": {
+          "count": 6,
+          "total_freq": 6,
+          "score": 0.9,
+          "source": "corpus_mined"
+        },
+        "karent": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:current|karent)\\b"
+    },
+    "গ্যাস": {
+      "canonical": "gas",
+      "group": "bills",
+      "variants": {
+        "gass": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.625,
+          "source": "corpus_mined"
+        },
+        "gyasiyo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.464,
+          "source": "corpus_mined"
+        },
+        "gas": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:gyasiyo|gass|gas)\\b"
+    },
+    "পানি": {
+      "canonical": "pani",
+      "group": "bills",
+      "variants": {
+        "paani": {
+          "count": 8,
+          "total_freq": 8,
+          "score": 0.467,
+          "source": "corpus_mined"
+        },
+        "panir": {
+          "count": 8,
+          "total_freq": 8,
+          "score": 0.467,
+          "source": "corpus_mined"
+        },
+        "pani": {
+          "count": 7,
+          "total_freq": 8,
+          "score": 0.559,
+          "source": "corpus_mined"
+        },
+        "pan": {
+          "count": 2,
+          "total_freq": 64,
+          "score": 0.386,
+          "source": "corpus_mined"
+        },
+        "panio": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.409,
+          "source": "corpus_mined"
+        },
+        "pane": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.384,
+          "source": "corpus_mined"
+        },
+        "bani": {
+          "count": 1,
+          "total_freq": 6,
+          "score": 0.384,
+          "source": "corpus_mined"
+        },
+        "panno": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.309,
+          "source": "corpus_mined"
+        },
+        "ponyo": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.209,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:panio|panno|ponyo|paani|panir|pani|bani|pane|pan)\\b"
+    },
+    "ওয়াইফাই": {
+      "canonical": "wifi",
+      "group": "bills",
+      "variants": {
+        "wifi": {
+          "count": 83,
+          "total_freq": 289,
+          "score": 0.721,
+          "source": "corpus_mined"
+        },
+        "wife": {
+          "count": 1,
+          "total_freq": 8,
+          "score": 0.386,
+          "source": "corpus_mined"
+        },
+        "wi-fi": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:wi\\-fi|wifi|wife)\\b"
+    },
+    "ইন্টারনেট": {
+      "canonical": "internet",
+      "group": "bills",
+      "variants": {
+        "internet": {
+          "count": 84,
+          "total_freq": 98,
+          "score": 0.944,
+          "source": "corpus_mined"
+        },
+        "net": {
+          "count": 5,
+          "total_freq": 502,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "intarnet": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.459,
+          "source": "corpus_mined"
+        },
+        "5internet": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.455,
+          "source": "corpus_mined"
+        },
+        "interet": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.448,
+          "source": "corpus_mined"
+        },
+        "intrnet": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.448,
+          "source": "corpus_mined"
+        },
+        "nternet": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.448,
+          "source": "corpus_mined"
+        },
+        "internate": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.4,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:internate|5internet|intarnet|internet|intrnet|interet|nternet|net)\\b"
+    },
+    "রিচার্জ": {
+      "canonical": "recharge",
+      "group": "bills",
+      "variants": {
+        "recharge": {
+          "count": 102,
+          "total_freq": 111,
+          "score": 0.938,
+          "source": "corpus_mined"
+        },
+        "recherge": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.462,
+          "source": "corpus_mined"
+        },
+        "reacharge": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.461,
+          "source": "corpus_mined"
+        },
+        "recharg": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.454,
+          "source": "corpus_mined"
+        },
+        "reacherge": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.405,
+          "source": "corpus_mined"
+        },
+        "rrecharge": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.453,
+          "source": "corpus_mined"
+        },
+        "rechatge": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.446,
+          "source": "corpus_mined"
+        },
+        "recarge": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.446,
+          "source": "corpus_mined"
+        },
+        "rechrge": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.446,
+          "source": "corpus_mined"
+        },
+        "rechrg": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "rchrg": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.321,
+          "source": "corpus_mined"
+        },
+        "ricarg": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.321,
+          "source": "corpus_mined"
+        },
+        "rcrg": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.258,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:reacharge|rrecharge|reacherge|recharge|rechatge|recherge|recharg|recarge|rechrge|rechrg|ricarg|rchrg|rcrg)\\b"
+    },
+    "লোড": {
+      "canonical": "load",
+      "group": "bills",
+      "variants": {
+        "load": {
+          "count": 54,
+          "total_freq": 55,
+          "score": 0.532,
+          "source": "corpus_mined"
+        },
+        "dload": {
+          "count": 8,
+          "total_freq": 9,
+          "score": 0.405,
+          "source": "corpus_mined"
+        },
+        "lode": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.252,
+          "source": "corpus_mined"
+        },
+        "flaxiload": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "flexi": {
+          "count": 1,
+          "total_freq": 28,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "lod": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "coad": {
+          "count": 1,
+          "total_freq": 9,
+          "score": 0.376,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:flaxiload|flexi|dload|lode|load|coad|lod)\\b"
+    },
+    "বাসা": {
+      "canonical": "basha",
+      "group": "bills",
+      "variants": {
+        "basa": {
+          "count": 28,
+          "total_freq": 29,
+          "score": 0.68,
+          "source": "corpus_mined"
+        },
+        "basay": {
+          "count": 10,
+          "total_freq": 10,
+          "score": 0.423,
+          "source": "corpus_mined"
+        },
+        "bashar": {
+          "count": 8,
+          "total_freq": 9,
+          "score": 0.517,
+          "source": "corpus_mined"
+        },
+        "basha": {
+          "count": 2,
+          "total_freq": 4,
+          "score": 0.527,
+          "source": "corpus_mined"
+        },
+        "vasa": {
+          "count": 2,
+          "total_freq": 13,
+          "score": 0.324,
+          "source": "corpus_mined"
+        },
+        "bassa": {
+          "count": 1,
+          "total_freq": 5,
+          "score": 0.413,
+          "source": "corpus_mined"
+        },
+        "bassai": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.347,
+          "source": "corpus_mined"
+        },
+        "bhasa": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.314,
+          "source": "corpus_mined"
+        },
+        "basai": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.314,
+          "source": "corpus_mined"
+        },
+        "basae": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.314,
+          "source": "corpus_mined"
+        },
+        "bass": {
+          "count": 1,
+          "total_freq": 9,
+          "score": 0.312,
+          "source": "corpus_mined"
+        },
+        "vasay": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.214,
+          "source": "corpus_mined"
+        },
+        "boss": {
+          "count": 1,
+          "total_freq": 60,
+          "score": 0.208,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:bashar|bassai|bhasa|basai|bassa|basay|vasay|basae|basha|vasa|basa|bass|boss)\\b"
+    },
+    "বিকাশ": {
+      "canonical": "bkash",
+      "group": "mfs",
+      "variants": {
+        "bkash": {
+          "count": 153,
+          "total_freq": 161,
+          "score": 0.926,
+          "source": "corpus_mined"
+        },
+        "bikash": {
+          "count": 22,
+          "total_freq": 22,
+          "score": 0.517,
+          "source": "corpus_mined"
+        },
+        "bksh": {
+          "count": 5,
+          "total_freq": 5,
+          "score": 0.425,
+          "source": "corpus_mined"
+        },
+        "bikas": {
+          "count": 5,
+          "total_freq": 5,
+          "score": 0.325,
+          "source": "corpus_mined"
+        },
+        "bekash": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.432,
+          "source": "corpus_mined"
+        },
+        "bkas": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.415,
+          "source": "corpus_mined"
+        },
+        "bkashe": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.427,
+          "source": "corpus_mined"
+        },
+        "bikashe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.362,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:bikashe|bkashe|bikash|bekash|bkash|bikas|bkas|bksh)\\b"
+    },
+    "নগদ": {
+      "canonical": "nagad",
+      "group": "mfs",
+      "variants": {
+        "nagad": {
+          "count": 7,
+          "total_freq": 10,
+          "score": 0.804,
+          "source": "corpus_mined"
+        },
+        "nogod": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.535,
+          "source": "corpus_mined"
+        },
+        "nagat": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.471,
+          "source": "corpus_mined"
+        },
+        "nogode": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "nagade": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:nogode|nagade|nagad|nagat|nogod)\\b"
+    },
+    "রকেট": {
+      "canonical": "rocket",
+      "group": "mfs",
+      "variants": {
+        "rocket": {
+          "count": 14,
+          "total_freq": 16,
+          "score": 0.878,
+          "source": "corpus_mined"
+        },
+        "roket": {
+          "count": 5,
+          "total_freq": 5,
+          "score": 0.609,
+          "source": "corpus_mined"
+        },
+        "rockt": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.46,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:rocket|roket|rockt)\\b"
+    },
+    "উপায়": {
+      "canonical": "upay",
+      "group": "mfs",
+      "variants": {
+        "upay": {
+          "count": 20,
+          "total_freq": 76,
+          "score": 0.672,
+          "source": "corpus_mined"
+        },
+        "upai": {
+          "count": 7,
+          "total_freq": 37,
+          "score": 0.466,
+          "source": "corpus_mined"
+        },
+        "upaye": {
+          "count": 4,
+          "total_freq": 6,
+          "score": 0.487,
+          "source": "corpus_mined"
+        },
+        "upaay": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.424,
+          "source": "corpus_mined"
+        },
+        "upoy": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.398,
+          "source": "corpus_mined"
+        },
+        "upaiye": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.358,
+          "source": "corpus_mined"
+        },
+        "upye": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.274,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:upaiye|upaay|upaye|upye|upoy|upai|upay)\\b"
+    },
+    "সেলফিন": {
+      "canonical": "cellfin",
+      "group": "mfs",
+      "variants": {
+        "cellfin": {
+          "count": 5,
+          "total_freq": 5,
+          "score": 1.0,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\bcellfin\\b"
+    },
+    "ফুডপান্ডা": {
+      "canonical": "foodpanda",
+      "group": "services",
+      "variants": {
+        "foodpanda": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\bfoodpanda\\b"
+    },
+    "চালডাল": {
+      "canonical": "chaldal",
+      "group": "services",
+      "variants": {
+        "chaldal": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\bchaldal\\b"
+    },
+    "স্বপ্ন": {
+      "canonical": "shwapno",
+      "group": "services",
+      "variants": {
+        "shopno": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "swapno": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "shwapno": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:shwapno|swapno|shopno)\\b"
+    },
+    "দারাজ": {
+      "canonical": "daraz",
+      "group": "shopping",
+      "variants": {
+        "daraz": {
+          "count": 11,
+          "total_freq": 14,
+          "score": 0.94,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\bdaraz\\b"
+    },
+    "ওষুধ": {
+      "canonical": "osudh",
+      "group": "health",
+      "variants": {
+        "osudh": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.667,
+          "source": "corpus_mined"
+        },
+        "oshudh": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.583,
+          "source": "corpus_mined"
+        },
+        "oiosudh": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.524,
+          "source": "corpus_mined"
+        },
+        "oushudh": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.5,
+          "source": "corpus_mined"
+        },
+        "oushodh": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.411,
+          "source": "corpus_mined"
+        },
+        "medicine": {
+          "count": 0,
+          "total_freq": 2,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "ousodh": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:medicine|oiosudh|oushudh|oushodh|oshudh|ousodh|osudh)\\b"
+    },
+    "ডাক্তার": {
+      "canonical": "doctor",
+      "group": "health",
+      "variants": {
+        "doctor": {
+          "count": 5,
+          "total_freq": 9,
+          "score": 0.708,
+          "source": "corpus_mined"
+        },
+        "daktar": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "doctorra": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.438,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:doctorra|doctor|daktar)\\b"
+    },
+    "হাসপাতাল": {
+      "canonical": "hospital",
+      "group": "health",
+      "variants": {
+        "haspatale": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.697,
+          "source": "corpus_mined"
+        },
+        "haspatal": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.486,
+          "source": "corpus_mined"
+        },
+        "hospital": {
+          "count": 0,
+          "total_freq": 2,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:haspatale|haspatal|hospital)\\b"
+    },
+    "শপিং": {
+      "canonical": "shopping",
+      "group": "shopping",
+      "variants": {
+        "shopping": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.833,
+          "source": "corpus_mined"
+        },
+        "shoping": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.771,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:shopping|shoping)\\b"
+    },
+    "জামা": {
+      "canonical": "jama",
+      "group": "shopping",
+      "variants": {
+        "jama": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.583,
+          "source": "corpus_mined"
+        },
+        "jaman": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.483,
+          "source": "corpus_mined"
+        },
+        "jamat": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.443,
+          "source": "corpus_mined"
+        },
+        "jamai": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.443,
+          "source": "corpus_mined"
+        },
+        "jamar": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.443,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:jamar|jaman|jamai|jamat|jama)\\b"
+    },
+    "কাপড়": {
+      "canonical": "kapor",
+      "group": "shopping",
+      "variants": {
+        "kaporer": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "kapore": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.667,
+          "source": "corpus_mined"
+        },
+        "kapor": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "canonical"
+        },
+        "kapod": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:kaporer|kapore|kapor|kapod)\\b"
+    },
+    "বেতন": {
+      "canonical": "beton",
+      "group": "income",
+      "variants": {
+        "beton": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.9,
+          "source": "corpus_mined"
+        },
+        "betan": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.543,
+          "source": "corpus_mined"
+        },
+        "veton": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:veton|betan|beton)\\b"
+    },
+    "ইনকাম": {
+      "canonical": "income",
+      "group": "income",
+      "variants": {
+        "income": {
+          "count": 131,
+          "total_freq": 150,
+          "score": 0.938,
+          "source": "corpus_mined"
+        },
+        "incom": {
+          "count": 3,
+          "total_freq": 4,
+          "score": 0.436,
+          "source": "corpus_mined"
+        },
+        "incomee": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.435,
+          "source": "corpus_mined"
+        },
+        "incomer": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.435,
+          "source": "corpus_mined"
+        },
+        "incoome": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.435,
+          "source": "corpus_mined"
+        },
+        "icome": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.423,
+          "source": "corpus_mined"
+        },
+        "invome": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.423,
+          "source": "corpus_mined"
+        },
+        "incm": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.34,
+          "source": "corpus_mined"
+        },
+        "incam": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.34,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:incoome|incomee|incomer|invome|income|incam|icome|incom|incm)\\b"
+    },
+    "বোনাস": {
+      "canonical": "bonus",
+      "group": "income",
+      "variants": {
+        "bonus": {
+          "count": 46,
+          "total_freq": 51,
+          "score": 0.942,
+          "source": "corpus_mined"
+        },
+        "bonas": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.454,
+          "source": "corpus_mined"
+        },
+        "bonous": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.453,
+          "source": "corpus_mined"
+        },
+        "bounas": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.352,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:bounas|bonous|bonus|bonas)\\b"
+    },
+    "ক্যাশব্যাক": {
+      "canonical": "cashback",
+      "group": "income",
+      "variants": {
+        "cashback": {
+          "count": 12,
+          "total_freq": 14,
+          "score": 0.914,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\bcashback\\b"
+    },
+    "আজকে": {
+      "canonical": "ajke",
+      "group": "temporal",
+      "variants": {
+        "ajke": {
+          "count": 87,
+          "total_freq": 90,
+          "score": 0.844,
+          "source": "corpus_mined"
+        },
+        "ajk": {
+          "count": 26,
+          "total_freq": 29,
+          "score": 0.51,
+          "source": "corpus_mined"
+        },
+        "ajker": {
+          "count": 12,
+          "total_freq": 12,
+          "score": 0.469,
+          "source": "corpus_mined"
+        },
+        "ajkei": {
+          "count": 9,
+          "total_freq": 9,
+          "score": 0.452,
+          "source": "corpus_mined"
+        },
+        "ajka": {
+          "count": 6,
+          "total_freq": 6,
+          "score": 0.411,
+          "source": "corpus_mined"
+        },
+        "ajkeo": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.412,
+          "source": "corpus_mined"
+        },
+        "aajke": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "ajhke": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "ajkea": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "ajkey": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.406,
+          "source": "corpus_mined"
+        },
+        "aske": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.381,
+          "source": "corpus_mined"
+        },
+        "ajko": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.381,
+          "source": "corpus_mined"
+        },
+        "aijka": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.306,
+          "source": "corpus_mined"
+        },
+        "ajkai": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.306,
+          "source": "corpus_mined"
+        },
+        "ajkao": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.306,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:aijka|aajke|ajkeo|ajkey|ajkai|ajkei|ajhke|ajkea|ajkao|ajker|aske|ajka|ajke|ajko|ajk)\\b"
+    },
+    "আজ": {
+      "canonical": "aj",
+      "group": "temporal",
+      "variants": {
+        "aj": {
+          "count": 166,
+          "total_freq": 181,
+          "score": 0.74,
+          "source": "corpus_mined"
+        },
+        "kaj": {
+          "count": 29,
+          "total_freq": 1656,
+          "score": 0.347,
+          "source": "corpus_mined"
+        },
+        "ajk": {
+          "count": 26,
+          "total_freq": 29,
+          "score": 0.382,
+          "source": "corpus_mined"
+        },
+        "aaj": {
+          "count": 18,
+          "total_freq": 18,
+          "score": 0.367,
+          "source": "corpus_mined"
+        },
+        "aje": {
+          "count": 16,
+          "total_freq": 16,
+          "score": 0.364,
+          "source": "corpus_mined"
+        },
+        "az": {
+          "count": 5,
+          "total_freq": 14,
+          "score": 0.26,
+          "source": "corpus_mined"
+        },
+        "ajj": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.341,
+          "source": "corpus_mined"
+        },
+        "ajo": {
+          "count": 4,
+          "total_freq": 6,
+          "score": 0.341,
+          "source": "corpus_mined"
+        },
+        "aju": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.339,
+          "source": "corpus_mined"
+        },
+        "aji": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.337,
+          "source": "corpus_mined"
+        },
+        "aajo": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.254,
+          "source": "corpus_mined"
+        },
+        "ajb": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "aja": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.335,
+          "source": "corpus_mined"
+        },
+        "ajai": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.252,
+          "source": "corpus_mined"
+        },
+        "as": {
+          "count": 1,
+          "total_freq": 24,
+          "score": 0.252,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:aajo|ajai|aju|ajb|ajk|aje|aji|ajo|aaj|ajj|kaj|aja|as|az|aj)\\b"
+    },
+    "কালকে": {
+      "canonical": "kalke",
+      "group": "temporal",
+      "variants": {
+        "kalke": {
+          "count": 41,
+          "total_freq": 42,
+          "score": 0.902,
+          "source": "corpus_mined"
+        },
+        "klk": {
+          "count": 5,
+          "total_freq": 6,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "kalkei": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.464,
+          "source": "corpus_mined"
+        },
+        "kalker": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.449,
+          "source": "corpus_mined"
+        },
+        "kalk": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.432,
+          "source": "corpus_mined"
+        },
+        "kalka": {
+          "count": 2,
+          "total_freq": 3,
+          "score": 0.432,
+          "source": "corpus_mined"
+        },
+        "kalkeo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.433,
+          "source": "corpus_mined"
+        },
+        "kalkk": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.416,
+          "source": "corpus_mined"
+        },
+        "kaalke": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:kalkeo|kalker|kalkei|kaalke|kalka|kalke|kalkk|kalk|klk)\\b"
+    },
+    "গতকাল": {
+      "canonical": "gotokal",
+      "group": "temporal",
+      "variants": {
+        "gotokal": {
+          "count": 14,
+          "total_freq": 14,
+          "score": 0.9,
+          "source": "corpus_mined"
+        },
+        "gotokl": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.474,
+          "source": "corpus_mined"
+        },
+        "gottkal": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.474,
+          "source": "corpus_mined"
+        },
+        "gotokaler": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "gotokalke": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:gotokaler|gotokalke|gottkal|gotokal|gotokl)\\b"
+    },
+    "পরশু": {
+      "canonical": "porshu",
+      "group": "temporal",
+      "variants": {
+        "porsu": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.617,
+          "source": "corpus_mined"
+        },
+        "prsu": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.533,
+          "source": "corpus_mined"
+        },
+        "porso": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.533,
+          "source": "corpus_mined"
+        },
+        "porshu": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "canonical"
+        }
+      },
+      "regex": "\\b(?:porshu|porso|porsu|prsu)\\b"
+    },
+    "তারিখ": {
+      "canonical": "tarikh",
+      "group": "temporal",
+      "variants": {
+        "tarikhe": {
+          "count": 17,
+          "total_freq": 20,
+          "score": 0.624,
+          "source": "corpus_mined"
+        },
+        "tarik": {
+          "count": 17,
+          "total_freq": 20,
+          "score": 0.612,
+          "source": "corpus_mined"
+        },
+        "tarikh": {
+          "count": 15,
+          "total_freq": 18,
+          "score": 0.676,
+          "source": "corpus_mined"
+        },
+        "tarike": {
+          "count": 3,
+          "total_freq": 3,
+          "score": 0.46,
+          "source": "corpus_mined"
+        },
+        "tarkh": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.431,
+          "source": "corpus_mined"
+        },
+        "tarika": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.431,
+          "source": "corpus_mined"
+        },
+        "tarikheo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.39,
+          "source": "corpus_mined"
+        },
+        "tarikhei": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.39,
+          "source": "corpus_mined"
+        },
+        "tariik": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.348,
+          "source": "corpus_mined"
+        },
+        "trik": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.347,
+          "source": "corpus_mined"
+        },
+        "tarek": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:tarikheo|tarikhei|tarikhe|tarike|tariik|tarikh|tarika|tarkh|tarik|tarek|trik)\\b"
+    },
+    "কত": {
+      "canonical": "koto",
+      "group": "question",
+      "variants": {
+        "koto": {
+          "count": 491,
+          "total_freq": 522,
+          "score": 0.831,
+          "source": "corpus_mined"
+        },
+        "kto": {
+          "count": 41,
+          "total_freq": 44,
+          "score": 0.416,
+          "source": "corpus_mined"
+        },
+        "moto": {
+          "count": 19,
+          "total_freq": 627,
+          "score": 0.387,
+          "source": "corpus_mined"
+        },
+        "hoto": {
+          "count": 11,
+          "total_freq": 491,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "kosto": {
+          "count": 8,
+          "total_freq": 174,
+          "score": 0.407,
+          "source": "corpus_mined"
+        },
+        "kot": {
+          "count": 6,
+          "total_freq": 8,
+          "score": 0.381,
+          "source": "corpus_mined"
+        },
+        "kotho": {
+          "count": 5,
+          "total_freq": 5,
+          "score": 0.405,
+          "source": "corpus_mined"
+        },
+        "koro": {
+          "count": 5,
+          "total_freq": 234,
+          "score": 0.379,
+          "source": "corpus_mined"
+        },
+        "koyta": {
+          "count": 3,
+          "total_freq": 47,
+          "score": 0.303,
+          "source": "corpus_mined"
+        },
+        "kete": {
+          "count": 3,
+          "total_freq": 95,
+          "score": 0.253,
+          "source": "corpus_mined"
+        },
+        "kote": {
+          "count": 2,
+          "total_freq": 6,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "oto": {
+          "count": 2,
+          "total_freq": 16,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "kato": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "joto": {
+          "count": 2,
+          "total_freq": 89,
+          "score": 0.377,
+          "source": "corpus_mined"
+        },
+        "khota": {
+          "count": 2,
+          "total_freq": 20,
+          "score": 0.302,
+          "source": "corpus_mined"
+        },
+        "kooto": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "kotoy": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "kotob": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "kotou": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "kotok": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "kotoi": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "kotto": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "korto": {
+          "count": 1,
+          "total_freq": 42,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "kotoo": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "khoto": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.401,
+          "source": "corpus_mined"
+        },
+        "kotw": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "kotu": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "ksto": {
+          "count": 1,
+          "total_freq": 5,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "kota": {
+          "count": 1,
+          "total_freq": 48,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "coto": {
+          "count": 1,
+          "total_freq": 7,
+          "score": 0.376,
+          "source": "corpus_mined"
+        },
+        "kotai": {
+          "count": 1,
+          "total_freq": 14,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "khoti": {
+          "count": 1,
+          "total_freq": 33,
+          "score": 0.301,
+          "source": "corpus_mined"
+        },
+        "kate": {
+          "count": 1,
+          "total_freq": 40,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "khot": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "kita": {
+          "count": 1,
+          "total_freq": 9,
+          "score": 0.251,
+          "source": "corpus_mined"
+        },
+        "khete": {
+          "count": 1,
+          "total_freq": 9,
+          "score": 0.201,
+          "source": "corpus_mined"
+        },
+        "kutta": {
+          "count": 1,
+          "total_freq": 10,
+          "score": 0.201,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:kotok|kosto|kotoi|kotob|kotoo|koyta|kotai|khoto|khoti|kotoy|kotou|kutta|khota|kotto|korto|kooto|kotho|khete|joto|kita|ksto|hoto|khot|moto|kate|coto|kotw|kete|kote|koro|koto|kotu|kota|kato|kto|kot|oto)\\b"
+    },
+    "হিসাব": {
+      "canonical": "hisab",
+      "group": "question",
+      "variants": {
+        "hisabe": {
+          "count": 23,
+          "total_freq": 30,
+          "score": 0.634,
+          "source": "corpus_mined"
+        },
+        "hisab": {
+          "count": 17,
+          "total_freq": 20,
+          "score": 0.677,
+          "source": "corpus_mined"
+        },
+        "hisebe": {
+          "count": 13,
+          "total_freq": 118,
+          "score": 0.4,
+          "source": "corpus_mined"
+        },
+        "hishabe": {
+          "count": 11,
+          "total_freq": 12,
+          "score": 0.482,
+          "source": "corpus_mined"
+        },
+        "hishebe": {
+          "count": 5,
+          "total_freq": 119,
+          "score": 0.311,
+          "source": "corpus_mined"
+        },
+        "hisan": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.413,
+          "source": "corpus_mined"
+        },
+        "hiseb": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.413,
+          "source": "corpus_mined"
+        },
+        "hiseba": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.346,
+          "source": "corpus_mined"
+        },
+        "heshabe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.299,
+          "source": "corpus_mined"
+        },
+        "hisebeo": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.298,
+          "source": "corpus_mined"
+        },
+        "hosebe": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.263,
+          "source": "corpus_mined"
+        },
+        "hishab": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:heshabe|hishebe|hishabe|hisebeo|hishab|hiseba|hisabe|hosebe|hisebe|hiseb|hisan|hisab)\\b"
+    },
+    "ব্যালেন্স": {
+      "canonical": "balance",
+      "group": "question",
+      "variants": {
+        "balance": {
+          "count": 27,
+          "total_freq": 68,
+          "score": 0.757,
+          "source": "corpus_mined"
+        },
+        "blance": {
+          "count": 4,
+          "total_freq": 7,
+          "score": 0.519,
+          "source": "corpus_mined"
+        },
+        "balace": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.455,
+          "source": "corpus_mined"
+        },
+        "balence": {
+          "count": 1,
+          "total_freq": 4,
+          "score": 0.453,
+          "source": "corpus_mined"
+        },
+        "blence": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "balens": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.312,
+          "source": "corpus_mined"
+        },
+        "blnc": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.311,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:balance|balence|blence|blance|balace|balens|blnc)\\b"
+    },
+    "মোট": {
+      "canonical": "mot",
+      "group": "question",
+      "variants": {
+        "mot": {
+          "count": 17,
+          "total_freq": 39,
+          "score": 0.604,
+          "source": "corpus_mined"
+        },
+        "moto": {
+          "count": 6,
+          "total_freq": 627,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "mota": {
+          "count": 5,
+          "total_freq": 6,
+          "score": 0.413,
+          "source": "corpus_mined"
+        },
+        "mote": {
+          "count": 4,
+          "total_freq": 49,
+          "score": 0.398,
+          "source": "corpus_mined"
+        },
+        "moteo": {
+          "count": 4,
+          "total_freq": 4,
+          "score": 0.331,
+          "source": "corpus_mined"
+        },
+        "mod": {
+          "count": 3,
+          "total_freq": 253,
+          "score": 0.341,
+          "source": "corpus_mined"
+        },
+        "mut": {
+          "count": 2,
+          "total_freq": 2,
+          "score": 0.349,
+          "source": "corpus_mined"
+        },
+        "emot": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "motu": {
+          "count": 1,
+          "total_freq": 3,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "moti": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.383,
+          "source": "corpus_mined"
+        },
+        "dot": {
+          "count": 1,
+          "total_freq": 15,
+          "score": 0.341,
+          "source": "corpus_mined"
+        },
+        "muta": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "muti": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.258,
+          "source": "corpus_mined"
+        },
+        "moth": {
+          "count": 0,
+          "total_freq": 3,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:moteo|mota|mote|moti|muta|moth|moto|motu|muti|emot|dot|mod|mut|mot)\\b"
+    },
+    "সবচেয়ে": {
+      "canonical": "shobcheye",
+      "group": "question",
+      "variants": {
+        "sobcheye": {
+          "count": 18,
+          "total_freq": 26,
+          "score": 0.702,
+          "source": "corpus_mined"
+        },
+        "shobcheye": {
+          "count": 13,
+          "total_freq": 14,
+          "score": 0.724,
+          "source": "corpus_mined"
+        },
+        "sobceye": {
+          "count": 4,
+          "total_freq": 7,
+          "score": 0.467,
+          "source": "corpus_mined"
+        },
+        "shbcheye": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.467,
+          "source": "corpus_mined"
+        },
+        "sabcheye": {
+          "count": 1,
+          "total_freq": 1,
+          "score": 0.411,
+          "source": "corpus_mined"
+        },
+        "sbceye": {
+          "count": 1,
+          "total_freq": 2,
+          "score": 0.355,
+          "source": "corpus_mined"
+        },
+        "shobche": {
+          "count": 0,
+          "total_freq": 1,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        },
+        "sobche": {
+          "count": 0,
+          "total_freq": 0,
+          "score": 1.0,
+          "source": "domain_lexicon"
+        }
+      },
+      "regex": "\\b(?:shobcheye|sobcheye|sabcheye|shbcheye|shobche|sobceye|sbceye|sobche)\\b"
+    },
+    "বাকি": {
+      "canonical": "baki",
+      "group": "question",
+      "variants": {
+        "baki": {
+          "count": 79,
+          "total_freq": 86,
+          "score": 0.927,
+          "source": "corpus_mined"
+        },
+        "bai": {
+          "count": 2,
+          "total_freq": 199,
+          "score": 0.382,
+          "source": "corpus_mined"
+        }
+      },
+      "regex": "\\b(?:baki|bai)\\b"
+    }
+  },
+  "unsupervised_entities": [
+    [
+      "request",
+      28
+    ],
+    [
+      "download",
+      23
+    ],
+    [
+      "vlo",
+      19
+    ],
+    [
+      "install",
+      14
+    ],
+    [
+      "message",
+      12
+    ],
+    [
+      "msg",
+      11
+    ],
+    [
+      "bole",
+      10
+    ],
+    [
+      "upload",
+      8
+    ],
+    [
+      "req",
+      8
+    ],
+    [
+      "withdraw",
+      7
+    ],
+    [
+      "kharap",
+      7
+    ],
+    [
+      "kaje",
+      7
+    ],
+    [
+      "knock",
+      6
+    ],
+    [
+      "bhalo",
+      6
+    ],
+    [
+      "update",
+      6
+    ],
+    [
+      "bolei",
+      6
+    ],
+    [
+      "bad",
+      4
+    ],
+    [
+      "valoi",
+      4
+    ],
+    [
+      "flash",
+      4
+    ],
+    [
+      "add",
+      4
+    ],
+    [
+      "report",
+      4
+    ],
+    [
+      "rom",
+      4
+    ],
+    [
+      "dollar",
+      3
+    ],
+    [
+      "sshot",
+      3
+    ],
+    [
+      "requ",
+      3
+    ],
+    [
+      "reply",
+      3
+    ],
+    [
+      "search",
+      3
+    ],
+    [
+      "pass",
+      3
+    ],
+    [
+      "sms",
+      3
+    ],
+    [
+      "reqest",
+      2
+    ],
+    [
+      "bas",
+      2
+    ],
+    [
+      "reqst",
+      2
+    ],
+    [
+      "screenshot",
+      2
+    ],
+    [
+      "hisebe",
+      2
+    ],
+    [
+      "apk",
+      2
+    ],
+    [
+      "kotha",
+      2
+    ],
+    [
+      "dhora",
+      2
+    ],
+    [
+      "balo",
+      2
+    ],
+    [
+      "time",
+      2
+    ],
+    [
+      "mja",
+      2
+    ],
+    [
+      "kemon",
+      2
+    ],
+    [
+      "sundor",
+      2
+    ],
+    [
+      "setai",
+      2
+    ],
+    [
+      "trick",
+      2
+    ],
+    [
+      "din",
+      2
+    ],
+    [
+      "jeta",
+      2
+    ],
+    [
+      "pack",
+      2
+    ],
+    [
+      "bash",
+      2
+    ],
+    [
+      "thanks",
+      2
+    ],
+    [
+      "credit",
+      2
+    ],
+    [
+      "photo",
+      2
+    ],
+    [
+      "kre",
+      2
+    ],
+    [
+      "vabe",
+      2
+    ],
+    [
+      "vhalo",
+      2
+    ],
+    [
+      "pin",
+      2
+    ],
+    [
+      "load",
+      2
+    ],
+    [
+      "proof",
+      2
+    ],
+    [
+      "but",
+      2
+    ],
+    [
+      "net",
+      2
+    ],
+    [
+      "koira",
+      2
+    ],
+    [
+      "akare",
+      2
+    ],
+    [
+      "uninstall",
+      2
+    ],
+    [
+      "nock",
+      2
+    ],
+    [
+      "restart",
+      2
+    ],
+    [
+      "rekhe",
+      2
+    ],
+    [
+      "review",
+      2
+    ],
+    [
+      "diyei",
+      2
+    ],
+    [
+      "twrp",
+      2
+    ],
+    [
+      "valoy",
+      2
+    ],
+    [
+      "val",
+      2
+    ],
+    [
+      "code",
+      2
+    ],
+    [
+      "keno",
+      1
+    ],
+    [
+      "information",
+      1
+    ],
+    [
+      "recuest",
+      1
+    ],
+    [
+      "dharona",
+      1
+    ],
+    [
+      "golpo",
+      1
+    ],
+    [
+      "droidvpn",
+      1
+    ],
+    [
+      "amr",
+      1
+    ],
+    [
+      "zorexzira",
+      1
+    ],
+    [
+      "name",
+      1
+    ],
+    [
+      "prove",
+      1
+    ],
+    [
+      "cookies",
+      1
+    ],
+    [
+      "solution",
+      1
+    ],
+    [
+      "arokom",
+      1
+    ],
+    [
+      "number",
+      1
+    ],
+    [
+      "janiye",
+      1
+    ],
+    [
+      "amiw",
+      1
+    ],
+    [
+      "seita",
+      1
+    ],
+    [
+      "short",
+      1
+    ],
+    [
+      "limit",
+      1
+    ],
+    [
+      "login",
+      1
+    ],
+    [
+      "bar",
+      1
+    ],
+    [
+      "toku",
+      1
+    ],
+    [
+      "doller",
+      1
+    ],
+    [
+      "soraiya",
+      1
+    ],
+    [
+      "baad",
+      1
+    ],
+    [
+      "likec",
+      1
+    ],
+    [
+      "boka",
+      1
+    ],
+    [
+      "mar",
+      1
+    ],
+    [
+      "recharge",
+      1
+    ]
+  ],
+  "top_tokens_after_numbers": [
+    [
+      "saale",
+      286
+    ],
+    [
+      "mb",
+      242
+    ],
+    [
+      "din",
+      197
+    ],
+    [
+      "tk",
+      188
+    ],
+    [
+      "gb",
+      178
+    ],
+    [
+      "taka",
+      166
+    ],
+    [
+      "saaler",
+      111
+    ],
+    [
+      "bar",
+      99
+    ],
+    [
+      "year",
+      77
+    ],
+    [
+      "month",
+      56
+    ],
+    [
+      "min",
+      54
+    ],
+    [
+      "hour",
+      53
+    ],
+    [
+      "jon",
+      52
+    ],
+    [
+      "takay",
+      49
+    ],
+    [
+      "sal",
+      43
+    ],
+    [
+      "dollar",
+      41
+    ],
+    [
+      "minute",
+      40
+    ],
+    [
+      "number",
+      34
+    ],
+    [
+      "point",
+      34
+    ],
+    [
+      "saal",
+      32
+    ],
+    [
+      "tar",
+      31
+    ],
+    [
+      "version",
+      30
+    ],
+    [
+      "days",
+      29
+    ],
+    [
+      "mas",
+      29
+    ],
+    [
+      "takai",
+      29
+    ],
+    [
+      "bochor",
+      28
+    ],
+    [
+      "root",
+      28
+    ],
+    [
+      "ti",
+      26
+    ],
+    [
+      "diner",
+      25
+    ],
+    [
+      "second",
+      25
+    ],
+    [
+      "kb",
+      25
+    ],
+    [
+      "minit",
+      24
+    ],
+    [
+      "hours",
+      24
+    ],
+    [
+      "takar",
+      24
+    ],
+    [
+      "no",
+      24
+    ],
+    [
+      "bosor",
+      23
+    ],
+    [
+      "mbps",
+      22
+    ],
+    [
+      "kbps",
+      22
+    ],
+    [
+      "ghonta",
+      21
+    ],
+    [
+      "tarik",
+      19
+    ],
+    [
+      "mash",
+      19
+    ],
+    [
+      "minutes",
+      19
+    ],
+    [
+      "coin",
+      18
+    ],
+    [
+      "sale",
+      18
+    ],
+    [
+      "use",
+      17
+    ],
+    [
+      "satoshi",
+      17
+    ],
+    [
+      "pro",
+      17
+    ],
+    [
+      "bit",
+      16
+    ],
+    [
+      "week",
+      16
+    ],
+    [
+      "hajar",
+      15
+    ]
+  ],
+  "top_tokens_around_currency": [
+    [
+      "koto",
+      39
+    ],
+    [
+      "10",
+      27
+    ],
+    [
+      "50",
+      22
+    ],
+    [
+      "20",
+      20
+    ],
+    [
+      "but",
+      16
+    ],
+    [
+      "100",
+      15
+    ],
+    [
+      "30",
+      11
+    ],
+    [
+      "trickrace",
+      10
+    ],
+    [
+      "thakle",
+      9
+    ],
+    [
+      "300",
+      9
+    ],
+    [
+      "15",
+      8
+    ],
+    [
+      "19",
+      8
+    ],
+    [
+      "500",
+      8
+    ],
+    [
+      "25",
+      8
+    ],
+    [
+      "kivabe",
+      8
+    ],
+    [
+      "katbe",
+      6
+    ],
+    [
+      "kto",
+      6
+    ],
+    [
+      "1000",
+      6
+    ],
+    [
+      "200",
+      6
+    ],
+    [
+      "12",
+      6
+    ],
+    [
+      "60",
+      6
+    ],
+    [
+      "45",
+      6
+    ],
+    [
+      "oi",
+      5
+    ],
+    [
+      "29",
+      5
+    ],
+    [
+      "lagbe",
+      5
+    ],
+    [
+      "18",
+      5
+    ],
+    [
+      "por",
+      5
+    ],
+    [
+      "5000",
+      4
+    ],
+    [
+      "24",
+      4
+    ],
+    [
+      "koy",
+      4
+    ],
+    [
+      "amr",
+      4
+    ],
+    [
+      "korlei",
+      4
+    ],
+    [
+      "150",
+      4
+    ],
+    [
+      "sei",
+      4
+    ],
+    [
+      "tara",
+      4
+    ],
+    [
+      "nai",
+      3
+    ],
+    [
+      "250",
+      3
+    ],
+    [
+      "160",
+      3
+    ],
+    [
+      "kintu",
+      3
+    ],
+    [
+      "besi",
+      3
+    ],
+    [
+      "vaia",
+      3
+    ],
+    [
+      "lage",
+      3
+    ],
+    [
+      "4000",
+      3
+    ],
+    [
+      "ato",
+      3
+    ],
+    [
+      "55",
+      3
+    ],
+    [
+      "000",
+      3
+    ],
+    [
+      "49",
+      3
+    ],
+    [
+      "11",
+      3
+    ],
+    [
+      "hazar",
+      3
+    ],
+    [
+      "apnake",
+      3
+    ]
+  ]
+}

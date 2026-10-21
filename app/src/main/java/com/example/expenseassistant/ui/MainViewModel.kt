@@ -26,6 +26,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 data class ChatMessage(
     val id: String = java.util.UUID.randomUUID().toString(),
@@ -67,7 +70,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val gemmaEngine = GemmaEngine.getInstance()
     private val tools = ExpenseTools(repository)
     private val toolRegistry = McpToolRegistry(tools)
-    private val assistantRouter = AssistantRouter(gemmaEngine, toolRegistry)
+    private val assistantRouter = AssistantRouter(gemmaEngine, toolRegistry, repository)
 
     val engineState: StateFlow<EngineState> = gemmaEngine.state
 
@@ -106,6 +109,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _pendingReminderConfirmation = MutableStateFlow<PendingReminderConfirmation?>(null)
     val pendingReminderConfirmation: StateFlow<PendingReminderConfirmation?> = _pendingReminderConfirmation.asStateFlow()
+
+    private val _pendingDeleteConfirmation = MutableStateFlow<ToolResult.RequireDeleteConfirmation?>(null)
+    val pendingDeleteConfirmation: StateFlow<ToolResult.RequireDeleteConfirmation?> = _pendingDeleteConfirmation.asStateFlow()
+
+    private val _pendingClearConfirmation = MutableStateFlow<ToolResult.RequireClearConfirmation?>(null)
+    val pendingClearConfirmation: StateFlow<ToolResult.RequireClearConfirmation?> = _pendingClearConfirmation.asStateFlow()
 
     init {
         refreshSummary()
@@ -213,7 +222,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             is ToolResult.SearchResults -> {
                 val count = result.results.size
                 val msg = if (count > 0) {
-                    "Found $count transactions matching '${result.query}'."
+                    val dateFormat = SimpleDateFormat("dd MMM, hh:mm a", Locale.getDefault())
+                    val totalMinor = result.results.sumOf { it.amountMinor }
+                    val totalStr = Money(totalMinor).toFormattedString()
+                    val sb = StringBuilder("Found $count transactions matching '${result.query}' (Total: $totalStr):\n\n")
+                    result.results.take(8).forEachIndexed { idx, tx ->
+                        val dateStr = dateFormat.format(Date(tx.occurredAt))
+                        val sign = if (tx.isExpense) "🔴" else "🟢"
+                        sb.append("$sign ${idx + 1}. ${Money(tx.amountMinor).toFormattedString()} • ${tx.note} [${tx.category}] ($dateStr)\n")
+                    }
+                    if (result.results.size > 8) {
+                        sb.append("... and ${result.results.size - 8} more transactions.\n")
+                    }
+                    sb.toString().trim()
                 } else {
                     "No transactions found matching '${result.query}'."
                 }
@@ -233,6 +254,49 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 _chatMessages.value = _chatMessages.value + ChatMessage(
                     sender = MessageSender.ASSISTANT,
                     text = "Spending Habits:\n$patternsText",
+                    toolResult = result
+                )
+            }
+
+            is ToolResult.RequireDeleteConfirmation -> {
+                _pendingDeleteConfirmation.value = result
+                _chatMessages.value = _chatMessages.value + ChatMessage(
+                    sender = MessageSender.ASSISTANT,
+                    text = result.message,
+                    toolResult = result
+                )
+            }
+
+            is ToolResult.RequireClearConfirmation -> {
+                _pendingClearConfirmation.value = result
+                _chatMessages.value = _chatMessages.value + ChatMessage(
+                    sender = MessageSender.ASSISTANT,
+                    text = result.message,
+                    toolResult = result
+                )
+            }
+
+            is ToolResult.DatabaseStatsResult -> {
+                refreshSummary()
+                _chatMessages.value = _chatMessages.value + ChatMessage(
+                    sender = MessageSender.ASSISTANT,
+                    text = result.message,
+                    toolResult = result
+                )
+            }
+
+            is ToolResult.ReminderListResult -> {
+                _chatMessages.value = _chatMessages.value + ChatMessage(
+                    sender = MessageSender.ASSISTANT,
+                    text = result.message,
+                    toolResult = result
+                )
+            }
+
+            is ToolResult.RecentTransactionsResult -> {
+                _chatMessages.value = _chatMessages.value + ChatMessage(
+                    sender = MessageSender.ASSISTANT,
+                    text = result.message,
                     toolResult = result
                 )
             }
@@ -257,6 +321,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         sourceText: String,
         occurredAt: Long? = null
     ) {
+        _pendingConfirmation.value = null
         viewModelScope.launch {
             repository.saveExpense(
                 amountMinor = amountMinor,
@@ -267,7 +332,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 sourceText = sourceText,
                 needsReview = false
             )
-            _pendingConfirmation.value = null
             refreshSummary()
             refreshHabits()
 
@@ -295,6 +359,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         items: List<SingleItemConfirmation>,
         sourceText: String
     ) {
+        _pendingMultipleConfirmation.value = null
         viewModelScope.launch {
             items.forEach { item ->
                 repository.saveExpense(
@@ -307,7 +372,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     needsReview = false
                 )
             }
-            _pendingMultipleConfirmation.value = null
             refreshSummary()
             refreshHabits()
 
@@ -334,6 +398,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         minute: Int,
         reason: String
     ) {
+        _pendingReminderConfirmation.value = null
         viewModelScope.launch {
             val id = repository.saveReminder(
                 title = title,
@@ -350,7 +415,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 title = title,
                 message = message
             )
-            _pendingReminderConfirmation.value = null
             val time = String.format("%02d:%02d", hourOfDay, minute)
             _chatMessages.value = _chatMessages.value + ChatMessage(
                 sender = MessageSender.ASSISTANT,
@@ -403,5 +467,47 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 )
             )
         }
+    }
+
+    fun confirmDeleteTransaction(id: Long) {
+        viewModelScope.launch {
+            repository.deleteExpense(id)
+            _pendingDeleteConfirmation.value = null
+            refreshSummary()
+            refreshHabits()
+            _chatMessages.value = _chatMessages.value + ChatMessage(
+                sender = MessageSender.ASSISTANT,
+                text = "🗑️ Deleted transaction #$id successfully."
+            )
+        }
+    }
+
+    fun cancelPendingDelete() {
+        _pendingDeleteConfirmation.value = null
+        _chatMessages.value = _chatMessages.value + ChatMessage(
+            sender = MessageSender.ASSISTANT,
+            text = "Deletion canceled."
+        )
+    }
+
+    fun confirmClearAllTransactions() {
+        viewModelScope.launch {
+            repository.clearAllExpenses()
+            _pendingClearConfirmation.value = null
+            refreshSummary()
+            refreshHabits()
+            _chatMessages.value = _chatMessages.value + ChatMessage(
+                sender = MessageSender.ASSISTANT,
+                text = "🗑️ All recorded transactions have been deleted."
+            )
+        }
+    }
+
+    fun cancelPendingClear() {
+        _pendingClearConfirmation.value = null
+        _chatMessages.value = _chatMessages.value + ChatMessage(
+            sender = MessageSender.ASSISTANT,
+            text = "Clear all canceled."
+        )
     }
 }

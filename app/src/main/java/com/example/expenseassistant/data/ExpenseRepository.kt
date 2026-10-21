@@ -13,6 +13,17 @@ data class SpendingSummary(
     val transactions: List<ExpenseEntity> = emptyList()
 )
 
+data class DatabaseStats(
+    val totalTransactions: Int,
+    val expenseTransactions: Int,
+    val incomeTransactions: Int,
+    val totalExpenseMinor: Long,
+    val totalIncomeMinor: Long,
+    val earliestOccurredAt: Long?,
+    val latestOccurredAt: Long?,
+    val totalReminders: Int
+)
+
 class ExpenseRepository(private val dao: ExpenseDao) {
 
     val allExpenses: Flow<List<ExpenseEntity>> = dao.getAllExpenses()
@@ -129,6 +140,38 @@ class ExpenseRepository(private val dao: ExpenseDao) {
         )
     }
 
+    suspend fun getThisWeekSummary(): SpendingSummary {
+        val cal = Calendar.getInstance()
+        cal.firstDayOfWeek = Calendar.MONDAY
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+        cal.set(Calendar.HOUR_OF_DAY, 0)
+        cal.set(Calendar.MINUTE, 0)
+        cal.set(Calendar.SECOND, 0)
+        cal.set(Calendar.MILLISECOND, 0)
+        if (cal.timeInMillis > System.currentTimeMillis()) {
+            cal.add(Calendar.DAY_OF_MONTH, -7)
+        }
+        val startTime = cal.timeInMillis
+
+        val calEnd = Calendar.getInstance()
+        calEnd.add(Calendar.DAY_OF_MONTH, 7)
+        val endTime = calEnd.timeInMillis
+
+        val expenses = dao.getExpensesBetweenSync(startTime, endTime)
+        val expenseTotalMinor = dao.getTotalAmountBetween(startTime, endTime, TransactionType.EXPENSE.name)
+        val incomeTotalMinor = dao.getTotalAmountBetween(startTime, endTime, TransactionType.INCOME.name)
+        val categoryBreakdown = dao.getCategoryTotals(startTime, endTime, TransactionType.EXPENSE.name)
+
+        return SpendingSummary(
+            totalExpense = Money(expenseTotalMinor),
+            totalIncome = Money(incomeTotalMinor),
+            netBalance = Money(incomeTotalMinor - expenseTotalMinor),
+            transactionCount = expenses.size,
+            categoryBreakdown = categoryBreakdown,
+            transactions = expenses
+        )
+    }
+
     suspend fun getAllExpenses(): List<ExpenseEntity> = dao.getAllExpensesSync()
 
     suspend fun saveReminder(
@@ -160,8 +203,43 @@ class ExpenseRepository(private val dao: ExpenseDao) {
 
     suspend fun deleteReminder(id: Long) = dao.deleteReminderById(id)
 
+    suspend fun getExpenseById(id: Long): ExpenseEntity? = dao.getExpenseById(id)
+
+    suspend fun getLatestExpense(): ExpenseEntity? = dao.getLatestExpense()
+
+    suspend fun getRecentExpensesSync(limit: Int = 10): List<ExpenseEntity> = dao.getRecentExpensesSync(limit)
+
+    suspend fun getAllRemindersSync(): List<ReminderEntity> = dao.getActiveRemindersSync()
+
+    suspend fun clearAllExpenses() = dao.deleteAllExpenses()
+
     suspend fun clearAllData() {
         dao.deleteAllExpenses()
         dao.deleteAllReminders()
+    }
+
+    suspend fun getDatabaseStats(): DatabaseStats {
+        val totalCount = dao.getExpenseCount()
+        val expenseCount = dao.getTotalExpenseTransactionCount()
+        val incomeCount = dao.getTotalIncomeTransactionCount()
+        val earliest = dao.getEarliestExpenseDate()
+        val latest = dao.getLatestExpenseDate()
+        val reminders = dao.getReminderCount()
+
+        val startTime = earliest ?: 0L
+        val endTime = latest ?: System.currentTimeMillis()
+        val totalExpense = if (earliest != null) dao.getTotalAmountBetween(startTime, endTime, TransactionType.EXPENSE.name) else 0L
+        val totalIncome = if (earliest != null) dao.getTotalAmountBetween(startTime, endTime, TransactionType.INCOME.name) else 0L
+
+        return DatabaseStats(
+            totalTransactions = totalCount,
+            expenseTransactions = expenseCount,
+            incomeTransactions = incomeCount,
+            totalExpenseMinor = totalExpense,
+            totalIncomeMinor = totalIncome,
+            earliestOccurredAt = earliest,
+            latestOccurredAt = latest,
+            totalReminders = reminders
+        )
     }
 }

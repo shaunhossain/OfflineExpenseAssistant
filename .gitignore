@@ -12,3 +12,7 @@
 *.apk
 *.aab
 *.ap_
+
+# OpenSpec & AI agents
+.agents/
+openspec/

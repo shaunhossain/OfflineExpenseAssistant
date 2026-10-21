@@ -1,6 +1,5 @@
 package com.example.expenseassistant.ai
 
-import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 
@@ -14,17 +13,37 @@ data class ParsedModelIntent(
     val reminderMinute: Int? = null,
     val query: String? = null,
     val items: List<com.example.expenseassistant.mcp.SingleItemConfirmation> = emptyList(),
-    val rawJson: String = ""
+    val rawJson: String = "",
+    val id: Long? = null,
+    val limit: Int? = null,
+    val isActive: Boolean? = null,
+    val occurredAt: Long? = null
 )
 
 object ModelOutputParser {
 
-    private val gson = Gson()
+    fun sanitizeJson(candidate: String): String {
+        var s = candidate.trim()
+
+        // Normalize smart / typographic quotes to standard ASCII quotes
+        s = s.replace('“', '"').replace('”', '"')
+        s = s.replace('‘', '\'').replace('’', '\'')
+
+        // Remove trailing commas before closing braces or brackets: e.g. ", }" or ", ]"
+        s = s.replace(Regex(",\\s*([}\\]])"), "$1")
+
+        // If single quotes are used for JSON properties/values: e.g. {'intent': 'prepare_expense'}
+        if (s.contains("'") && !s.contains("\"")) {
+            s = s.replace("'", "\"")
+        }
+
+        return s
+    }
 
     fun parse(rawOutput: String): ParsedModelIntent? {
         val trimmed = rawOutput.trim()
 
-        // Locate first '{' and last '}'
+        // Locate outermost '{' and '}'
         val startIndex = trimmed.indexOf('{')
         val endIndex = trimmed.lastIndexOf('}')
 
@@ -32,33 +51,38 @@ object ModelOutputParser {
             return null
         }
 
-        val jsonCandidate = trimmed.substring(startIndex, endIndex + 1)
+        val rawCandidate = trimmed.substring(startIndex, endIndex + 1)
+        val candidate = sanitizeJson(rawCandidate)
 
         return try {
-            val jsonElement = JsonParser.parseString(jsonCandidate)
+            val jsonElement = JsonParser.parseString(candidate)
             if (!jsonElement.isJsonObject) return null
             val obj = jsonElement.asJsonObject
 
             var intent = obj.get("intent")?.asString ?: "prepare_expense"
-            val amount = if (obj.has("amount") && !obj.get("amount").isJsonNull) {
-                obj.get("amount").asDouble
-            } else null
+            val amount = parseAmount(obj)
             val currency = obj.get("currency")?.asString ?: "BDT"
             val category = if (obj.has("category") && !obj.get("category").isJsonNull) {
-                obj.get("category").asString
+                obj.get("category").asString.trim()
             } else null
             val note = if (obj.has("note") && !obj.get("note").isJsonNull) {
-                obj.get("note").asString
+                obj.get("note").asString.trim()
             } else null
-            val reminderHour = if (obj.has("reminder_hour") && !obj.get("reminder_hour").isJsonNull) {
-                obj.get("reminder_hour").asInt
-            } else null
-            val reminderMinute = if (obj.has("reminder_minute") && !obj.get("reminder_minute").isJsonNull) {
-                obj.get("reminder_minute").asInt
-            } else null
+            val reminderHour = parseNullableInt(obj, "reminder_hour")
+            val reminderMinute = parseNullableInt(obj, "reminder_minute")
             val query = if (obj.has("query") && !obj.get("query").isJsonNull) {
-                obj.get("query").asString
+                obj.get("query").asString.trim()
             } else null
+            val id = parseNullableLong(obj, "id")
+            val limit = parseNullableInt(obj, "limit")
+            val isActive = if (obj.has("isActive") && !obj.get("isActive").isJsonNull) {
+                try {
+                    obj.get("isActive").asBoolean
+                } catch (e: Exception) {
+                    obj.get("isActive").asString.toBooleanStrictOrNull()
+                }
+            } else null
+            val occurredAt = parseNullableLong(obj, "occurredAt")
 
             val items = mutableListOf<com.example.expenseassistant.mcp.SingleItemConfirmation>()
             if (obj.has("items") && obj.get("items").isJsonArray) {
@@ -66,9 +90,13 @@ object ModelOutputParser {
                 for (elem in array) {
                     if (elem.isJsonObject) {
                         val itemObj = elem.asJsonObject
-                        val itemAmt = if (itemObj.has("amount")) itemObj.get("amount").asDouble else 0.0
-                        val itemCat = if (itemObj.has("category")) itemObj.get("category").asString else "Other"
-                        val itemNote = if (itemObj.has("note")) itemObj.get("note").asString else ""
+                        val itemAmt = parseAmount(itemObj) ?: 0.0
+                        val itemCat = if (itemObj.has("category") && !itemObj.get("category").isJsonNull) {
+                            itemObj.get("category").asString.trim()
+                        } else "Other"
+                        val itemNote = if (itemObj.has("note") && !itemObj.get("note").isJsonNull) {
+                            itemObj.get("note").asString.trim()
+                        } else ""
                         if (itemAmt > 0 && itemNote.isNotBlank()) {
                             items.add(
                                 com.example.expenseassistant.mcp.SingleItemConfirmation(
@@ -95,10 +123,55 @@ object ModelOutputParser {
                 reminderMinute = reminderMinute,
                 query = query,
                 items = items,
-                rawJson = jsonCandidate
+                rawJson = candidate,
+                id = id,
+                limit = limit,
+                isActive = isActive,
+                occurredAt = occurredAt
             )
         } catch (e: Exception) {
             null
         }
     }
+
+    private fun parseAmount(obj: JsonObject): Double? {
+        if (!obj.has("amount") || obj.get("amount").isJsonNull) return null
+        val elem = obj.get("amount")
+        return try {
+            if (elem.isJsonPrimitive) {
+                val prim = elem.asJsonPrimitive
+                if (prim.isNumber) {
+                    prim.asDouble
+                } else {
+                    val rawStr = prim.asString.replace("tk", "", ignoreCase = true)
+                        .replace("taka", "", ignoreCase = true)
+                        .replace("৳", "")
+                        .replace(",", "")
+                        .trim()
+                    rawStr.toDoubleOrNull()
+                }
+            } else null
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    private fun parseNullableInt(obj: JsonObject, field: String): Int? {
+        if (!obj.has(field) || obj.get(field).isJsonNull) return null
+        return try {
+            obj.get(field).asInt
+        } catch (e: Exception) {
+            obj.get(field).asString.toIntOrNull()
+        }
+    }
+
+    private fun parseNullableLong(obj: JsonObject, field: String): Long? {
+        if (!obj.has(field) || obj.get(field).isJsonNull) return null
+        return try {
+            obj.get(field).asLong
+        } catch (e: Exception) {
+            obj.get(field).asString.toLongOrNull()
+        }
+    }
 }
+
